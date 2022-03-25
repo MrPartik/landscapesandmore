@@ -36,18 +36,13 @@
         <link rel="stylesheet" href="{{ url('fonts/elegant_font/HTML_CSS/style.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ url('fonts/et-line-font/style.css') }}" type="text/css">
 
-        <!-- RS5.0 Stylesheet -->
-        <link rel="stylesheet" href="{{ url('revolution/css/settings.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url('revolution/css/layers.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url('revolution/css/navigation.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url('css/rev-settings.css') }}" type="text/css">
-
         <!-- custom font -->
-        <link rel="stylesheet" href="css/font-style-2.css" type="text/css">
+        <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
+
         @yield('extra-css')
         <title>@yield('title')</title>
     </head>
-    <body class="@yield('body-class')" id="@yield('body-id')">
+    <body class="@yield('body-class') de_light" id="homepage">
         @yield('body')
     </body>
     <!-- Javascript Files

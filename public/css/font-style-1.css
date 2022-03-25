@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i&display=swap');
+
+@font-face {
+    font-family: abril-display;
+    src: url(https://use.typekit.net/af/6482d7/0000000000000000000119a6/27/l?subset_id=2&fvd=n4&v=3) format("woff2"), url(https://use.typekit.net/af/6482d7/0000000000000000000119a6/27/d?subset_id=2&fvd=n4&v=3) format("woff"), url(https://use.typekit.net/af/6482d7/0000000000000000000119a6/27/a?subset_id=2&fvd=n4&v=3) format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: abril-fatface;
+    src: url(https://use.typekit.net/af/cf830b/0000000000000000000119b2/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff2"), url(https://use.typekit.net/af/cf830b/0000000000000000000119b2/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff"), url(https://use.typekit.net/af/cf830b/0000000000000000000119b2/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: aktiv-grotesk;
+    src: url(https://use.typekit.net/af/572e5b/00000000000000000001786f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff2"), url(https://use.typekit.net/af/572e5b/00000000000000000001786f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff"), url(https://use.typekit.net/af/572e5b/00000000000000000001786f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: aktiv-grotesk;
+    src: url(https://use.typekit.net/af/a5aede/000000000000000000017873/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff2"), url(https://use.typekit.net/af/a5aede/000000000000000000017873/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff"), url(https://use.typekit.net/af/a5aede/000000000000000000017873/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: aktiv-grotesk;
+    src: url(https://use.typekit.net/af/2b9aa5/000000000000000000017871/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3) format("woff2"), url(https://use.typekit.net/af/2b9aa5/000000000000000000017871/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3) format("woff"), url(https://use.typekit.net/af/2b9aa5/000000000000000000017871/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3) format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: aktiv-grotesk;
+    src: url(https://use.typekit.net/af/97f831/000000000000000000017875/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("woff2"), url(https://use.typekit.net/af/97f831/000000000000000000017875/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("woff"), url(https://use.typekit.net/af/97f831/000000000000000000017875/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("opentype");
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: aktiv-grotesk;
+    src: url(https://use.typekit.net/af/f0f4a0/000000000000000000017877/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3) format("woff2"), url(https://use.typekit.net/af/f0f4a0/000000000000000000017877/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3) format("woff"), url(https://use.typekit.net/af/f0f4a0/000000000000000000017877/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3) format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+
+h1, h2, h3, h4, h5, h6,
+.big-white,
+.ultra-big-white,
+.de_tab.tab_steps .de_nav li span,
+.teaser-text,
+.text-slider,
+#mainmenu,
+.btn,
+a.btn,
+.btn-line,
+a.btn-line,
+#filters,
+.ultra-big-white,
+.wm,
+blockquote.testimonial-big.s2 .title,
+.tp-title,
+.countdown-amount,
+.countdown-period,
+.de_count h3,
+.ultra-big-2,
+.tp-caption,
+.pricing-s1.light .top .price b,
+blockquote.testimonial-big .title,
+.mm-style-2,
+.big-white,
+.ultra-big-white,
+.title-style-1 {
+    font-family: 'abril-fatface';
+}
+
+
+h1, h2, h3, h4, h5, h6,
+.de_tab.tab_steps .de_nav li span {
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+#mainmenu > li {
+    font-weight: 500;
+}
+
+#subheader h1 {
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.blog-list h3, .blog-read h3 {
+    font-size: 22px;
+}
+
+.big-white {
+    font-size: 13px;
+}
+
+.ultra-big-white {
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 72px;
+}
+
+.text-slider {
+    font-size: 60px;
+    letter-spacing: 5px;
+}
+
+.big-custom-1 {
+    font-family: "Poppins";
+    font-size: 60px;
+    letter-spacing: 0;
+    font-weight: bold;
+    line-height: 1.1em;
+    letter-spacing: -1px;
+}
+
+.small-white {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+@media only screen and (max-width: 480px) {
+    .small-white {
+        margin-left: 50px;
+        font-size: 60px;
+        margin-top: -150px;
+    }
+
+    .big-custom-1 {
+        margin-left: 50px;
+        font-size: 120px;
+    }
+
+    .tp-caption .btn-custom {
+        margin-left: 20px;
+        margin-top: 30px;
+    }
+}
