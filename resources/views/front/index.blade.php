@@ -1,11 +1,11 @@
-@extends('layouts.front')
+@extends('layouts.front', ['title' => 'Landscaping | Home'])
 @section('body')
     <div id="wrapper">
         @include('front.navigation.header', ['active' => 'home'])
         <!-- content begin -->
         <div id="content" class="no-bottom no-top">
             <!-- parallax section -->
-            <section style="background: url('{{ url('images-main/landscapes/zooming-house.jpg') }}') center fixed" class="full-height" data-speed="3" data-type="background">
+            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url('images-main/landscapes/zooming-house.jpg') }}') center fixed" class="full-height" data-type="background">
                 <div class="center-y text-center">
 
                     <div class="spacer-double"></div>

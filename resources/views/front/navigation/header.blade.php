@@ -1,6 +1,6 @@
 
 <!-- header begin -->
-<header class="autoshow header-light">
+<header class="{{ (isset($auto_show) === false || $auto_show === true) ? 'autoshow' : '' }} header-light">
     <div class="info">
         <div class="container">
             <div class="row">

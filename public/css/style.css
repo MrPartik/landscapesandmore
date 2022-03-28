@@ -4321,14 +4321,14 @@ footer.light .social-icons i {
 }
 
 .de_tab.tab_steps .de_nav li span {
-    padding: 30px 0 30px 0;
+    padding: 65px 0 30px 0;
     color: #222;
     font-family: "Dosis";
     font-size: 16px;
     border-radius: 120px;
     -moz-border-radius: 120px;
     -webkit-border-radius: 120px;
-    line-height: 120px;
+    line-height: 25px;
     width: 180px;
     height: 180px;
     text-align: center;
@@ -4782,7 +4782,7 @@ footer.light .social-icons i {
 }
 
 .timeline.exp .tl-block .tl-bar {
-    margin-left: 180px;
+    margin-left: 227px;
 }
 
 .timeline.exp {
@@ -4795,7 +4795,7 @@ footer.light .social-icons i {
     content: '';
     position: absolute;
     top: 0;
-    left: 193px;
+    left: 240px;
     height: 100%;
     width: 1px;
     background: rgba(255, 255, 255, .1);
@@ -4811,7 +4811,7 @@ footer.light .social-icons i {
 }
 
 .de_light .timeline .tl-block .tl-line {
-    background: #333;
+    background: var(--primary-color-1);
 }
 
 .de_light .timeline.exp:before {

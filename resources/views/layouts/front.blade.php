@@ -40,7 +40,7 @@
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
 
         @yield('extra-css')
-        <title>@yield('title')</title>
+        <title>{{ $title ?? '' }}</title>
     </head>
     <body class="@yield('body-class') de_light" id="homepage">
         @yield('body')
