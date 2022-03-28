@@ -38,12 +38,12 @@
                 <!-- mainmenu begin -->
                 <nav>
                     <ul id="mainmenu">
-                        <li><a href="{{ url('/') }}">Home<span></span></a></li>
-                        <li><a href="{{ url('/process') }}">Our Process</a></li>
-                        <li><a href="javascript:">Projects</a></li>
-                        <li><a href="javascript:">Blog</a></li>
-                        <li><a href="javascript:">Contact Us</a></li>
-                        <li><a href="javascript:">Warranty</a></li>
+                        <li><a class="{{ $active === 'home' ? 'active' : '' }}" href="{{ url('/') }}">Home<span></span></a></li>
+                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Our Process</a></li>
+                        <li><a class="{{ $active === 'projects' ? 'active' : '' }}" href="{{ url('/projects') }}">Projects</a></li>
+                        <li><a class="{{ $active === 'blog' ? 'active' : '' }}" href="javascript:">Blog</a></li>
+                        <li><a class="{{ $active === 'contact-us' ? 'active' : '' }}" href="javascript:">Contact Us</a></li>
+                        <li><a class="{{ $active === 'warranty' ? 'active' : '' }}" href="javascript:">Warranty</a></li>
                     </ul>
                 </nav>
 

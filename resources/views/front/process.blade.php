@@ -34,7 +34,7 @@
                                     <li class="active wow fadeIn" data-wow-delay="0s"><span>Install Landscape and Design</span>
                                         <div class="v-border"></div>
                                     </li>
-                                    <li class="wow fadeIn" data-wow-delay=".4s" onclick="window.scrollTo(window.scrollX, window.scrollY + .5);"><span>Maintenance and Turf Care Services</span>
+                                    <li class="wow fadeIn" data-wow-delay=".4s" onclick="window.scrollTo(window.scrollX, window.scrollY + 1);"><span>Maintenance and Turf Care Services</span>
                                         <div class="v-border"></div>
                                     </li>
                                 </ul>
@@ -242,7 +242,7 @@
                 </div>
             </section>
             <!-- section close -->
-            @include('front.navigation.footer')
+        @include('front.navigation.footer')
     </div>
 @endsection
 @section('extra-js')

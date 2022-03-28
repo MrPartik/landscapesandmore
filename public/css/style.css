@@ -10120,3 +10120,7 @@ section .overlay-center-div {
     padding: 15px;
     width: 80vw;
 }
+
+#mainmenu .active {
+    color: var(--primary-color-1) !important;
+}

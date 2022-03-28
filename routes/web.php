@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/process', function () {
     return view('front.process');
 });
+Route::get('/projects', function () {
+    return view('front.projects');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
