@@ -5,7 +5,7 @@
         <!-- content begin -->
         <div id="content" class="no-bottom no-top">
             <!-- parallax section -->
-            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url('images-main/landscapes/zooming-house.jpg') }}') center fixed" class="full-height" data-type="background">
+            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url('img/landscapes/traditional firepit.jpg') }}') center fixed" class="full-height" data-type="background">
                 <div class="center-y text-center">
 
                     <div class="spacer-double"></div>
@@ -55,8 +55,8 @@
                         </div>
 
                         <div class="col-md-4 wow fadeInLeft">
-                            <a class="image-popup-no-margins" href="{{ url('/images-main/services/landscaping.png') }}">
-                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/images-main/services/landscaping.png') }}" class="img-responsive" alt="">
+                            <a class="image-popup-no-margins" href="{{ url('/img/services/landscaping.png') }}">
+                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/img/services/landscaping.png') }}" class="img-responsive" alt="">
                             </a>
                             <div class="spacer-single"></div>
                             <h3><span class="id-color">Install Landscape and </span> Design</h3>
@@ -68,8 +68,8 @@
                         </div>
 
                         <div class="col-md-4 wow fadeInUp" data-wow-delay=".2s">
-                            <a class="image-popup-no-margins" href="{{ url('/images-main/services/maintenance.jpg') }}">
-                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/images-main/services/maintenance.jpg') }}" class="img-responsive" alt="">
+                            <a class="image-popup-no-margins" href="{{ url('/img/services/maintenance.jpg') }}">
+                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/img/services/maintenance.jpg') }}" class="img-responsive" alt="">
                             </a>
                             <div class="spacer-single"></div>
                             <h3><span class="id-color">Maintenance </span>Services</h3>
@@ -81,8 +81,8 @@
                         </div>
 
                         <div class="col-md-4 wow fadeInRight">
-                            <a class="image-popup-no-margins" href="{{ url('/images-main/services/turf-care.png') }}">
-                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/images-main/services/turf-care.png') }}" class="img-responsive" alt="">
+                            <a class="image-popup-no-margins" href="{{ url('/img/services/turf-care.png') }}">
+                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/img/services/turf-care.png') }}" class="img-responsive" alt="">
                             </a>
                             <div class="spacer-single"></div>
                             <h3><span class="id-color">Turf Care </span>Services</h3>
@@ -99,7 +99,7 @@
             <!-- section close -->
 
             <!-- section begin -->
-            <section style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('images-main/landscapes/zooming-house.jpg') }}') center fixed" class="text-light"  >
+            <section style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/zooming-house.jpg') }}') center fixed" class="text-light"  >
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 offset-md-3 text-center wow fadeInUp">

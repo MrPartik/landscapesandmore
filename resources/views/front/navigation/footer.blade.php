@@ -38,7 +38,7 @@
             <div class="row align-items-middle">
                 <div class="col-md-3">
                     <a href="{{ url('/') }}">
-                        <img class="logo" src="{{ url('/images-main/logo/logo-wide-white.png') }}" alt="">
+                        <img class="logo" src="{{ url('/img/logo/logo-wide-white.png') }}" alt="">
                     </a>
                 </div>
 
