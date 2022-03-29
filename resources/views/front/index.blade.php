@@ -5,9 +5,8 @@
         <!-- content begin -->
         <div id="content" class="no-bottom no-top">
             <!-- parallax section -->
-            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url('img/landscapes/traditional firepit.jpg') }}') center fixed" class="full-height" data-type="background">
+            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url('img/landscapes/frontyard.png') }}') center fixed" class="full-height" data-type="background">
                 <div class="center-y text-center">
-
                     <div class="spacer-double"></div>
                     <h1 class="text-white">Creating Masterpieces</h1>
                     <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
@@ -21,7 +20,7 @@
             </section>
             <!-- parallax section close -->
 
-            <section id="section-text" style="margin: 0 0 -110px 0">
+            <section id="section-text">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-12 wow fadeInRight" data-wow-delay=".2s">
@@ -137,14 +136,7 @@
 
                         <div class="col-md-12 wow fadeInUp" data-wow-delay="0s">
                             <div id="logo-carousel" class="owl-carousel owl-theme">
-                                <img src="images-webstudio/logo/1.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/2.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/3.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/4.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/5.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/6.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/7.png" class="img-responsive" alt="">
-                                <img src="images-webstudio/logo/8.png" class="img-responsive" alt="">
+                                <img src="{{ url('img/awards/angi-2021.png') }}" class="img-responsive" alt="">
                             </div>
                         </div>
 

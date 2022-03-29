@@ -16,13 +16,19 @@ class Projects extends Migration
         Schema::create('projects', function(Blueprint $oTable) {
             $oTable->bigIncrements('project_id');
             $oTable->unsignedBigInteger('project_type_id');
+            $oTable->unsignedBigInteger('user_id');
             $oTable->string('url');
             $oTable->string('description');
+            $oTable->tinyInteger('is_active')->default(1);
             $oTable->timestamps();
 
             $oTable->foreign('project_type_id')
                 ->on('project_types')
                 ->references('project_type_id');
+
+            $oTable->foreign('user_id')
+                ->on('users')
+                ->references('id');
         });
     }
 

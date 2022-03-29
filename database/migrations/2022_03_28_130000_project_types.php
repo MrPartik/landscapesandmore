@@ -16,7 +16,8 @@ class ProjectTypes extends Migration
         Schema::create('project_types', function(Blueprint $oTable) {
             $oTable->bigIncrements('project_type_id');
             $oTable->string('name');
-            $oTable->string('description');
+            $oTable->string('description')->nullable();
+            $oTable->tinyInteger('is_active')->default(1);
             $oTable->timestamps();
         });
     }

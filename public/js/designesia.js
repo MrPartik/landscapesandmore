@@ -799,7 +799,8 @@ jQuery(document).ready(function () {
 
     jQuery("#logo-carousel").owlCarousel({
         items: 6,
-        loop:true,
+        loop:false,
+        center: true,
 		dots: false,
         autoPlay: true,
         responsive:{

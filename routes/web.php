@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProjectTypes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,7 @@ Route::get('/projects', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('test', function () {
+    return \App\Models\Projects::with('user', 'projectType')->where('is_active', '!=', 0)->get();
+});
