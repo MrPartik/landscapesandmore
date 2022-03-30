@@ -24,6 +24,18 @@ Route::get('/projects', function () {
     return view('front.projects');
 });
 
+Route::get('/blog', function () {
+    return view('front.blog');
+});
+
+Route::get('/contact-us', function () {
+    return view('front.contact-us');
+});
+
+Route::get('/warranty', function () {
+    return view('front.warranty');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\ProjectTypes as ProjectTypesModel;
 use Livewire\Component;
 use App\Models\Projects as ProjectsModel;
+use App\Models\ProjectTypes as ProjectTypesModel;
 
 class Projects extends Component
 {
