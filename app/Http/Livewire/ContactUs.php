@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 use App\Models\ContactUs as ContactUsModel;
 
@@ -81,5 +82,20 @@ class ContactUs extends Component
     public function submitContactUs()
     {
         $aValidated = $this->validate($this->aContactUsRules);
+
+        $oContactUsModel = new ContactUsModel();
+        $oContactUsModel->first_name = Crypt::encrypt($aValidated['firstName'] ?? '-');
+        $oContactUsModel->last_name = Crypt::encrypt($aValidated['lastName'] ?? '-');
+        $oContactUsModel->email = Crypt::encrypt($aValidated['emailAddress'] ?? '-');
+        $oContactUsModel->phone = Crypt::encrypt($aValidated['phoneNo'] ?? '-');
+        $oContactUsModel->home_address = Crypt::encrypt($aValidated['homeAddress'] ?? '-');
+        $oContactUsModel->city_address = Crypt::encrypt($aValidated['cityAddress'] ?? '-');
+        $oContactUsModel->zip_code = Crypt::encrypt($aValidated['zipCode'] ?? '-');
+        $oContactUsModel->project_description = Crypt::encrypt($aValidated['projectDescription'] ?? '-');
+        $oContactUsModel->message = Crypt::encrypt($aValidated['message'] ?? '-');
+        $oContactUsModel->save();
+
+        $this->emit('contact-us-success');
+
     }
 }

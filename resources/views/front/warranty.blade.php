@@ -18,11 +18,10 @@
             </div>
         </section>
         <!-- content begin -->
-        @livewire('warranty')
+        <section aria-label="section">
+            @livewire('warranty')
         </section>
         <!-- subheader close -->
         @include('front.navigation.footer')
     </div>
-@endsection
-@section('extra-js')
 @endsection

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div name="contactForm" id='contact_form' action="javascript:void(0);">
+            <form name="contactForm" id='contact_form' action="javascript:void(0);">
                 <div class="row">
                     <div class="col-md-12 mb10">
                         <h3>Send Us Message</h3>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <h3>Project Description</h3>
+                        <strong>Project Description</strong>
                         <div class="de_form de_radio">
                             <span class="mr20">
                                 <input wire:model.lazy="projectDescription" id="project_description_1" name="project_description" type="radio" value="landscape" checked="checked">
@@ -69,7 +69,7 @@
                         <div id='mail_fail' class='error'>Sorry, error occured this time sending your message.</div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div id="sidebar" class="col-md-4">
             <div class="widget widget_text">
@@ -83,4 +83,25 @@
             </div>
         </div>
     </div>
+    @section('extra-js')
+        <script>
+            function successContactUsSubmission() {
+                Swal.fire({
+                    icon: 'success',
+                    html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
+                        'Please allow us 24-48hrs to review your information. <br/>' +
+                        'You may check the status of your application status here: <a href="javascript:"> Application Status.</a>',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    allowOutsideClick: false,
+                })
+            }
+
+            window.livewire.on('contact-us-success', function(oResult) {
+                successContactUsSubmission();
+                $('#contact_form').find('input, textarea').not('[type=submit]').val('');
+            });
+        </script>
+    @endsection
 </div>

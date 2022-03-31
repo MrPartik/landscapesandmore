@@ -15,14 +15,15 @@ class ContactUs extends Migration
     {
         Schema::create('contact_us', function(Blueprint $oTable) {
             $oTable->bigIncrements('contact_us_id');
-            $oTable->string('first_name');
-            $oTable->string('last_name');
-            $oTable->string('email');
-            $oTable->string('home_address');
-            $oTable->string('city_address');
-            $oTable->string('zip_code');
-            $oTable->string('project_description');
-            $oTable->string('message');
+            $oTable->text('first_name');
+            $oTable->text('last_name');
+            $oTable->text('email');
+            $oTable->text('phone');
+            $oTable->text('home_address');
+            $oTable->text('city_address');
+            $oTable->text('zip_code');
+            $oTable->text('project_description');
+            $oTable->text('message');
             $oTable->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class ContactUs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('awards');
+        Schema::dropIfExists('contact_us');
     }
 }

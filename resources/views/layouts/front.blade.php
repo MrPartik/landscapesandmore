@@ -72,17 +72,7 @@
     <!-- RS5.0 Core JS Files -->
     <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
     <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js?rev=5.0') }}"></script>
-
-    <!-- RS5.0 Extensions Files -->
-    <script src="{{ url('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireScripts
     @yield('extra-js')
 </html>
