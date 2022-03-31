@@ -13,10 +13,12 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        @livewireStyles
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="bg-light font-sans antialiased">
         {{ $slot }}
     </body>
+    @livewireScripts
 </html>

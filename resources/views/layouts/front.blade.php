@@ -39,7 +39,9 @@
         <!-- custom font -->
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
 
+        @livewireStyles
         @yield('extra-css')
+
         <title>{{ $title ?? '' }}</title>
     </head>
     <body class="@yield('body-class') de_light" id="homepage">
@@ -59,7 +61,6 @@
     <script src="{{ url('js/jquery.countTo.js') }}"></script>
     <script src="{{ url('js/classie.js') }}"></script>
     <script src="{{ url('js/video.resize.js') }}"></script>
-    <script src="{{ url('js/validation.js') }}"></script>
     <script src="{{ url('js/wow.min.js') }}"></script>
     <script src="{{ url('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ url('js/jquery.stellar.min.js') }}"></script>
@@ -82,5 +83,6 @@
     <script src="{{ url('revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
     <script src="{{ url('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
 
+    @livewireScripts
     @yield('extra-js')
 </html>

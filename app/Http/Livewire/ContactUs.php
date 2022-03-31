@@ -11,50 +11,75 @@ class ContactUs extends Component
      * First Name
      * @var string
      */
-    public $sFirstName = '';
+    public $firstName = '';
     /**
      * Last Name
      * @var string
      */
-    public $sLastName = '';
+    public $lastName = '';
     /**
      * Email Address
      * @var string
      */
-    public $sEmailAddress = '';
+    public $emailAddress = '';
     /**
      * Phone No.
      * @var string
      */
-    public $sPhoneNo = '';
+    public $phoneNo = '';
     /**
      * Home Address
      * @var string
      */
-    public $sHomeAddress = '';
+    public $homeAddress = '';
     /**
      * City Address
      * @var string
      */
-    public $sCityAddress = '';
+    public $cityAddress = '';
     /**
      * Zip Code
      * @var string
      */
-    public $sZipCode = '';
+    public $zipCode = '';
     /**
      * Message
      * @var string
      */
-    public $sMessage = '';
+    public $message = '';
     /**
      * Project Description
      * @var string
      */
-    public $sProjectDescription = '';
+    public $projectDescription = 'landscape';
+
+    /**
+     * Validation Rules
+     *
+     * @var array
+     */
+    private $aContactUsRules = [
+        'firstName'          => 'required',
+        'lastName'           => 'required',
+        'emailAddress'       => 'required|email',
+        'phoneNo'            => 'required',
+        'homeAddress'        => 'required',
+        'cityAddress'        => 'required',
+        'zipCode'            => 'required',
+        'message'            => 'required',
+        'projectDescription' => 'required| in:landscape,maintenance-and-turf-care'
+    ];
 
     public function render()
     {
         return view('livewire.contact-us');
+    }
+
+    /**
+     * Submit Contact Us
+     */
+    public function submitContactUs()
+    {
+        $aValidated = $this->validate($this->aContactUsRules);
     }
 }
