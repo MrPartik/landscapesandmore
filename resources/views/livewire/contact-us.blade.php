@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <form name="contactForm" id='contact_form' action="javascript:void(0);">
+            <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off">
                 <div class="row">
                     <div class="col-md-12 mb10">
                         <h3>Send Us Message</h3>
@@ -30,17 +30,17 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id='home_address' class='error'>Please enter your home address.</div>
+                        <div id='home_address_error' class='error'>Please enter your home address.</div>
                         <div>
                             <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address' class="form-control" placeholder="Home Address" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div id='city_address' class='error'>Please enter your city address.</div>
+                                <div id='city_address_error' class='error'>Please enter your city address.</div>
                                 <input wire:model.lazy="cityAddress" type='text' name='city_address' id='city_address' class="form-control" placeholder="City Address" required>
                             </div>
                             <div class="col-md-6">
-                                <div id='zip_code' class='error'>Please enter your zip code</div>
+                                <div id='zip_code_error' class='error'>Please enter your zip code</div>
                                 <input wire:model.lazy="zipCode" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
                             </div>
                         </div>
@@ -84,6 +84,69 @@
         </div>
     </div>
     @section('extra-js')
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNB_ctjnT8IlQWxuGF-S56hhhtML9dlPE&callback=initAutocomplete&libraries=places&v=weekly"></script>
+        <script>
+            let autocomplete;
+            let address1Field;
+            let address2Field;
+            let postalField;
+
+            function initAutocomplete() {
+                address1Field = document.querySelector("#home_address");
+                address2Field = document.querySelector("#city_address");
+                postalField = document.querySelector("#zip_code");
+                // Create the autocomplete object, restricting the search predictions to
+                // addresses in the US and Canada.
+                autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                    componentRestrictions: { country: ["us", "ca", "ga", "ph"] },
+                    fields: ["address_components", "geometry"],
+                    types: ["address"],
+                });
+                address1Field.focus();
+                // When the user selects an address from the drop-down, populate the
+                // address fields in the form.
+                autocomplete.addListener("place_changed", fillInAddress);
+            }
+
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                const place = autocomplete.getPlace();
+                let address1 = "";
+                let postcode = "";
+
+                // Get each component of the address from the place details,
+                // and then fill-in the corresponding field on the form.
+                // place.address_components are google.maps.GeocoderAddressComponent objects
+                // which are documented at http://goo.gle/3l5i5Mr
+                console.log(place.address_components);
+                for (const component of place.address_components) {
+                    const componentType = component.types[0];
+                    switch (componentType) {
+                        case "street_number": {
+                            address1 = `${component.long_name} ${address1}`;
+                            break;
+                        }
+
+                        case "route": {
+                            address1 += component.short_name;
+                            break;
+                        }
+
+                        case "postal_code": {
+                            postcode = `${component.long_name}${postcode}`;
+                            break;
+                        }
+                    }
+                }
+
+                address1Field.value = address1;
+                postalField.value = postcode;
+                // After filling the form with address components from the Autocomplete
+                // prediction, set cursor focus on the second address line to encourage
+                // entry of subpremise information such as apartment, unit, or floor number.
+                address2Field.focus();
+            }
+        </script>
         <script>
             function successContactUsSubmission() {
                 Swal.fire({

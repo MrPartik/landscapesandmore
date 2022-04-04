@@ -41,5 +41,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('test', function () {
-    return \App\Models\Projects::with('user', 'projectType')->where('is_active', '!=', 0)->get();
+    return (new \App\Services\VerifyContactStreak(new \App\Http\StreakApi\StreakFunctions(new \GuzzleHttp\Client())))->checkEmail(request()->get('email'));
 });
