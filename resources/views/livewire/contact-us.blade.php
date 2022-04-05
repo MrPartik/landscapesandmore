@@ -84,7 +84,7 @@
         </div>
     </div>
     @section('extra-js')
-        <script async src="https://maps.googleapis.com/maps/api/js?key={{ config('google.api_key') }}&callback=initAutocomplete&libraries=places&v=weekly"></script>
+        <script async src="{{ url('js/google-api/maps.js') }}"></script>
         <script>
             let autocomplete;
             let address1Field;

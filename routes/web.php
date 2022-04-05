@@ -43,3 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('test', function () {
     return (new \App\Services\VerifyContactStreak(new \App\Http\StreakApi\StreakFunctions(new \GuzzleHttp\Client())))->checkEmail(request()->get('email'));
 });
+
+Route::get('js/google-api/maps.js', function () {
+    return file_get_contents('https://maps.googleapis.com/maps/api/js?key=' . config('google.api_key') . '&callback=initAutocomplete&libraries=places&v=weekly');
+});
