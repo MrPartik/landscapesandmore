@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\ProjectTypes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,36 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
-Route::get('/process', function () {
-    return view('front.process');
-});
-Route::get('/projects', function () {
-    return view('front.projects');
-});
-
-Route::get('/blog', function () {
-    return view('front.blog');
-});
-
-Route::get('/contact-us', function () {
-    return view('front.contact-us');
-});
-
-Route::get('/warranty', function () {
-    return view('front.warranty');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
 Route::get('test', function () {
     return (new \App\Services\VerifyContactStreak(new \App\Http\StreakApi\StreakFunctions(new \GuzzleHttp\Client())))->checkEmail(request()->get('email'));
 });
 
 Route::get('js/google-api/maps.js', function () {
     return file_get_contents('https://maps.googleapis.com/maps/api/js?key=' . config('google.api_key') . '&callback=initAutocomplete&libraries=places&v=weekly');
+});
+
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function() {
+
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin');
+
+    Route::get('/our-process', function () {
+        return view('admin.our-process');
+    })->name('our_process');
+
+    Route::get('/blog', function () {
+        return view('admin.blog');
+    })->name('blog');
+
+    Route::get('/contact-us-and-warranty', function () {
+        return view('admin.contact-us-and-warranty');
+    })->name('contact_us_and_warranty');
+
+    Route::get('/projects', function () {
+        return view('admin.projects');
+    })->name('projects');
+
+    Route::get('/pre-defined-values', function () {
+        return view('admin.pre-defined-values');
+    })->name('pre-defined-values');
 });

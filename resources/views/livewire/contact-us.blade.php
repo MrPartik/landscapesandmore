@@ -41,12 +41,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div id='zip_code_error' class='error'>Please enter your zip code</div>
-                                <input wire:model.lazy="zipCode" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
+                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
                             </div>
                         </div>
                         <div id='message_error' class='error'>Please enter your message.</div>
                         <div>
-                            <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Your Message"></textarea>
+                            <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -86,77 +86,101 @@
     @section('extra-js')
         <script async src="{{ url('js/google-api/maps.js') }}"></script>
         <script>
-            let oAutocomplete;
-            let oAddressField;
+            $(document).ready(function () {
+                let oAutocomplete;
+                let oAddressField;
 
-            function initAutocomplete() {
-                oAddressField = document.querySelector('#home_address');
-                oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
-                    componentRestrictions: { country: ['us', 'ca', 'ga', 'ph'] },
-                    fields: ['address_components', 'geometry'],
-                    types: ['address'],
-                });
+                /**
+                 * Initialized Auto Complete Places Google API
+                 */
+                function initAutocomplete() {
+                    oAddressField = document.querySelector('#home_address');
+                    oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
+                        componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
+                        fields: ['address_components', 'geometry'],
+                        types: ['address'],
+                    });
 
-                oAutocomplete.addListener('place_changed', fillInAddress);
-            }
-
-            function fillInAddress() {
-                const oPlace = oAutocomplete.getPlace();
-                let sAddress = '';
-                let sCity = '';
-                let sPostalCode = '';
-                for (const oComponent of oPlace.address_components) {
-                    const componentType = oComponent.types[0];
-                    switch (componentType) {
-                        case 'street_number': {
-                            sAddress = `${oComponent.long_name} ${sAddress}`;
-                            break;
+                    oAutocomplete.addListener('place_changed', fillInAddress);
+                    oAddressField.addEventListener('input', function (oThis) {
+                        if (oThis.target.value.length <= 10) {
+                        @this.set('zipCode', '');
+                        @this.set('cityAddress', '');
                         }
-                        case 'route': {
-                            sAddress += oComponent.short_name;
-                            break;
-                        }
-                        case 'administrative_area_level_1': {
-                            sAddress += ', ' + oComponent.long_name;
-                            break;
-                        }
-                        case 'country': {
-                            sAddress += ', ' + oComponent.long_name;
-                            break;
-                        }
-                        case 'locality': {
-                            sCity = oComponent.long_name;
-                            break;
-                        }
-                        case 'postal_code': {
-                            sPostalCode = `${oComponent.long_name}${sPostalCode}`;
-                            break;
-                        }
-                    }
+                    });
                 }
-                @this.set('homeAddress', sAddress);
-                @this.set('zipCode', sPostalCode);
-                @this.set('cityAddress', sCity);
-            }
-        </script>
-        <script>
-            function successContactUsSubmission() {
-                Swal.fire({
-                    icon: 'success',
-                    html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
-                        'Please allow us 24-48hrs to review your information. <br/>' +
-                        'You may check the status of your application status here: <a href="javascript:"> Application Status.</a>',
-                    showCancelButton: false,
-                    showConfirmButton: false,
-                    showCloseButton: true,
-                    allowOutsideClick: false,
-                })
-            }
 
-            window.livewire.on('contact-us-success', function(oResult) {
-                successContactUsSubmission();
-                $('#contact_form').find('input, textarea').not('[type=submit]').val('');
-            });
+                    /**
+                     * Fill in the address
+                     */
+                    function fillInAddress() {
+                        const oPlace = oAutocomplete.getPlace();
+                        let sAddress = '';
+                        let sCity = '';
+                        let sPostalCode = '';
+                        for (const oComponent of oPlace.address_components) {
+                            const componentType = oComponent.types[0];
+                            switch (componentType) {
+                                case 'street_number': {
+                                    sAddress = `${oComponent.long_name} ${sAddress}`;
+                                    break;
+                                }
+                                case 'route': {
+                                    sAddress += oComponent.short_name;
+                                    break;
+                                }
+                                case 'administrative_area_level_1': {
+                                    sAddress += ', ' + oComponent.long_name;
+                                    break;
+                                }
+                                case 'country': {
+                                    sAddress += ', ' + oComponent.long_name;
+                                    break;
+                                }
+                                case 'locality': {
+                                    sCity = oComponent.long_name;
+                                    break;
+                                }
+                                case 'postal_code': {
+                                    sPostalCode = `${oComponent.long_name}${sPostalCode}`;
+                                    break;
+                                }
+                            }
+                        }
+                    @this.set('homeAddress', sAddress);
+                    @this.set('zipCode', sPostalCode);
+                    @this.set('cityAddress', sCity);
+                    }
+
+                    function successWarrantySubmission() {
+                        Swal.fire({
+                            icon: 'success',
+                            html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
+                                'Please allow us 24-48hrs to review your information. <br/>' +
+                                'You may check the status of your application status here: <a href="javascript:"> Application Status.</a>',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            showCloseButton: true,
+                            allowOutsideClick: false,
+                        });
+                    }
+
+                    function errorNotServiceableArea() {
+                        Swal.fire({
+                            icon: 'info',
+                            html: 'You have entered a non-serviceable area. If you believe there is an error, you may check this page (map) for the area we service',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            showCloseButton: true,
+                            allowOutsideClick: false,
+                        });
+                    }
+
+                    window.livewire.on('contact-us-success', function (oResult) {
+                        successWarrantySubmission();
+                        $('#contact_form').find('input, textarea').not('[type=submit]').val('');
+                    });
+                )};
         </script>
     @endsection
 </div>

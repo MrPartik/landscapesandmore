@@ -100,6 +100,6 @@ class Warranty extends Component
      */
     public function submitWarrantyForm()
     {
-        dd($this->picturesOfLandscapes);
+        $this->validate($this->aWarrantyRule);
     }
 }

@@ -56,7 +56,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <form name="contactForm" id='contact_form' action="javascript:void(0);">
+            <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off">
                 <div class="row">
                     <div class="col-md-12 mb10">
                         <h3>Warranty Review</h3>
@@ -80,18 +80,18 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id='home_address' class='error'>Please enter your home address.</div>
+                        <div id='home_address_error' class='error'>Please enter your home address.</div>
                         <div>
                             <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address' class="form-control" placeholder="Home Address" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div id='city_address' class='error'>Please enter your city address.</div>
+                                <div id='city_address_error' class='error'>Please enter your city address.</div>
                                 <input wire:model.lazy="cityAddress" type='text' name='city_address' id='city_address' class="form-control" placeholder="City Address" required>
                             </div>
                             <div class="col-md-6">
-                                <div id='zip_code' class='error'>Please enter your zip code</div>
-                                <input wire:model.lazy="zipCode" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
+                                <div id='zip_code_error' class='error'>Please enter your zip code</div>
+                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
                             </div>
                         </div>
                         <div id='phone_error' class='error'>Please enter your phone number.</div>
@@ -180,8 +180,74 @@
         </div>
     </div>
     @section('extra-js')
+        <script async src="{{ url('js/google-api/maps.js') }}"></script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
+                let oAutocomplete;
+                let oAddressField;
+
+                /**
+                 * Initialized Auto Complete Places Google API
+                 */
+                function initAutocomplete() {
+                    oAddressField = document.querySelector('#home_address');
+                    oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
+                        componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
+                        fields: ['address_components', 'geometry'],
+                        types: ['address'],
+                    });
+
+                    oAutocomplete.addListener('place_changed', fillInAddress);
+                    oAddressField.addEventListener('input', function (oThis) {
+                        if (oThis.target.value.length <= 10) {
+                        @this.set('zipCode', '');
+                        @this.set('cityAddress', '');
+                        }
+                    });
+                }
+
+                /**
+                 * Fill in the address
+                 */
+                function fillInAddress() {
+                    const oPlace = oAutocomplete.getPlace();
+                    let sAddress = '';
+                    let sCity = '';
+                    let sPostalCode = '';
+                    for (const oComponent of oPlace.address_components) {
+                        const componentType = oComponent.types[0];
+                        switch (componentType) {
+                            case 'street_number': {
+                                sAddress = `${oComponent.long_name} ${sAddress}`;
+                                break;
+                            }
+                            case 'route': {
+                                sAddress += oComponent.short_name;
+                                break;
+                            }
+                            case 'administrative_area_level_1': {
+                                sAddress += ', ' + oComponent.long_name;
+                                break;
+                            }
+                            case 'country': {
+                                sAddress += ', ' + oComponent.long_name;
+                                break;
+                            }
+                            case 'locality': {
+                                sCity = oComponent.long_name;
+                                break;
+                            }
+                            case 'postal_code': {
+                                sPostalCode = `${oComponent.long_name}${sPostalCode}`;
+                                break;
+                            }
+                        }
+                    }
+                @this.set('homeAddress', sAddress);
+                @this.set('zipCode', sPostalCode);
+                @this.set('cityAddress', sCity);
+                }
+
                 function successWarrantySubmission() {
                     Swal.fire({
                         icon: 'success',
@@ -192,13 +258,25 @@
                         showConfirmButton: false,
                         showCloseButton: true,
                         allowOutsideClick: false,
-                    })
+                    });
                 }
-                window.livewire.on('contact-us-success', function(oResult) {
+
+                function errorNotServiceableArea() {
+                    Swal.fire({
+                        icon: 'error',
+                        html: 'You have entered a non-serviceable area. If you believe there is an error, you may check this page (map) for the area we service',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        allowOutsideClick: false,
+                    });
+                }
+
+                window.livewire.on('contact-us-success', function (oResult) {
                     successWarrantySubmission();
                     $('#contact_form').find('input, textarea').not('[type=submit]').val('');
                 });
-            })
+            )};
         </script>
     @endsection
 </div>

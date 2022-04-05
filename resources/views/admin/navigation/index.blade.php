@@ -11,8 +11,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-jet-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                     {{ __('Dashboard') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('pre-defined-values') }}" :active="request()->routeIs('pre-defined-values')">
+                    {{ __('Pre Defined Values') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('our_process') }}" :active="request()->routeIs('our_process')">
+                    {{ __('Our Process') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
+                    {{ __('Blog') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
+                    {{ __('Projects') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('contact_us_and_warranty') }}" :active="request()->routeIs('contact_us_and_warranty')">
+                    {{ __('Contact Us and Warranty') }}
                 </x-jet-nav-link>
             </ul>
 

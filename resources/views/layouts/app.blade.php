@@ -8,6 +8,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
+        <link rel="stylesheet" href="{{ url('fonts/font-awesome/css/font-awesome.css') }}" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
         <!-- Styles -->
@@ -20,7 +21,7 @@
     </head>
     <body class="font-sans antialiased bg-light">
         <x-jet-banner />
-        @livewire('navigation-menu')
+        @include('admin.navigation.index')
 
         <!-- Page Heading -->
         <header class="d-flex py-3 bg-white shadow-sm border-bottom">
