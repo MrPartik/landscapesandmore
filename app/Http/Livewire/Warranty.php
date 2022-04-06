@@ -89,6 +89,9 @@ class Warranty extends Component
     }
 
 
+    /**
+     * @param int $iKey
+     */
     public function unsetUploadImage(int $iKey)
     {
         unset($this->picturesOfLandscapes[$iKey]);
