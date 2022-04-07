@@ -14,12 +14,33 @@ class ProjectType extends DataTableComponent
      */
     protected $model = ProjectTypes::class;
 
-
+    /**
+     * @var bool
+     */
     public $bShowEditProjectTypeModal = false;
+    /**
+     * @var string
+     */
     public $sName = '';
+    /**
+     * @var string
+     */
     public $sDescription = '';
+    /**
+     * @var int
+     */
     public $iProjectTypeId = 0;
+    /**
+     * @var int
+     */
     public $iIncr = 1;
+    /**
+     * @var array
+     */
+    public $aProjectTypeRule = [
+        'sName'        => 'required',
+        'sDescription' => 'required',
+    ];
 
     /**
      * @inheritDoc
@@ -90,8 +111,12 @@ class ProjectType extends DataTableComponent
         $this->iProjectTypeId = $iProjectTypeId;
     }
 
+    /**
+     *
+     */
     public function saveProjectType()
     {
+        $this->validate($this->aProjectTypeRule);
         $oProjectTypeModel = ProjectTypes::find($this->iProjectTypeId);
         $oProjectTypeModel->name = $this->sName;
         $oProjectTypeModel->description = $this->sDescription;
@@ -101,6 +126,9 @@ class ProjectType extends DataTableComponent
         $this->clear();
     }
 
+    /**
+     *
+     */
     public function clear()
     {
         $this->bShowEditProjectTypeModal = false;

@@ -21,6 +21,13 @@ class Projects extends Component
     public $aProjects = [];
 
     /**
+     * @var array
+     */
+    protected $listeners = [
+        'initProjects'
+    ];
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function render()

@@ -39,4 +39,25 @@ Route::get('test', function () {
     return (new \App\Services\VerifyContactStreak(new \App\Http\StreakApi\StreakFunctions(new \GuzzleHttp\Client())))->checkEmail(request()->get('email'));
 });
 
+Route::get('public/{sFilePath}', function ($sFilePath) {
+    $path = storage_path('public/' . $sFilePath);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+
+    $type = File::mimeType($path);
+
+
+
+    $response = Response::make($file, 200);
+
+    $response->header("Content-Type", $type);
+
+
+
+    return $response;
+});
 

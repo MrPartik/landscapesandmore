@@ -5,15 +5,24 @@ namespace App\Http\Livewire\Admin;
 use App\Http\Livewire\Admin\Datatables\ProjectType;
 use App\Models\Projects as ProjectsModel;
 use App\Models\ProjectTypes as ProjectTypesModel;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Projects extends Component
 {
+    use WithFileUploads;
+
+    /**
+     * Project
+     * @var array
+     */
+    public $aProjects = [];
     /**
      * Project Types
      * @var array
      */
-    public $aProjects = [];
+    public $aProjectTypes = [];
     /**
      * Show Modal
      * @var bool
@@ -29,25 +38,72 @@ class Projects extends Component
      * @var bool
      */
     public $sDescriptionProjectType = '';
-
+    /**
+     * Picture of Project
+     * @var string
+     */
+    public $pictureOfProject = '';
+    /**
+     * @var string
+     */
+    public $sNameOfProject = '';
+    /**
+     * @var int
+     */
+    public $iProjectTypeIdForProject = 0;
+    /**
+     * @var int
+     */
+    public $iProjectTypeIdForProjectSelection = 0;
     /**
      * @var string
      */
     public $sCurrentTab = 'projects';
+    /**
+     * @var array
+     */
+    public $aProjectTypeRule = [
+        'sNameProjectType'        => 'required',
+        'sDescriptionProjectType' => 'required',
+    ];
+    /**
+     * @var array
+     */
+    public $aProjectRule = [
+        'pictureOfProject' => 'required',
+        'sNameOfProject'   => 'required|image',
+    ];
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function render()
     {
         $this->aProjects = $this->initProjects();
+        $this->aProjectTypes = $this->initProjectTypes();
         return view('livewire.admin.projects');
+    }
+
+    /**
+     * Get all project
+     * @return mixed
+     */
+    public function initProjects()
+    {
+        $oProjectModel = ProjectsModel::with('user', 'projectType')->where('is_active', '!=', 0);
+        if ($this->iProjectTypeIdForProjectSelection > 0) {
+            $oProjectModel = $oProjectModel->where('project_type_id', $this->iProjectTypeIdForProjectSelection);
+        }
+        return $oProjectModel->get();
     }
 
     /**
      * Get all project types
      * @return mixed
      */
-    public function initProjects()
+    public function initProjectTypes()
     {
-        return ProjectsModel::with('user', 'projectType')->where('is_active', '!=', 0)->get();
+        return ProjectTypesModel::where('is_active', '!=', 0)->get();
     }
 
     /**
@@ -56,6 +112,18 @@ class Projects extends Component
     public function showAddProjectModal()
     {
         $this->bShowAddProjectModal = true;
+        $this->clearAddProjectForm();
+    }
+
+    /**
+     *
+     */
+    public function clearAddProjectForm()
+    {
+        $this->pictureOfProject = null;
+        $this->sNameOfProject = '';
+        $this->iProjectTypeIdForProject = 0;
+        $this->aProjectTypes = $this->initProjectTypes();
     }
 
     /**
@@ -63,26 +131,58 @@ class Projects extends Component
      */
     public function saveProjectType()
     {
+        $this->validate($this->aProjectTypeRule);
         $oProjectTypeModel = new ProjectTypesModel();
         $oProjectTypeModel->name = $this->sNameProjectType;
         $oProjectTypeModel->description = $this->sDescriptionProjectType;
         $oProjectTypeModel->is_active = true;
         $oProjectTypeModel->save();
-        $this->clear();
+        $this->clearAddProjectTypeForm();
         $this->emit('refreshDatatable');
     }
 
     /**
      *
      */
-    public function clear()
+    public function clearAddProjectTypeForm()
     {
         $this->sNameProjectType = '';
         $this->sDescriptionProjectType = '';
     }
 
+    /**
+     * @param string $sType
+     */
     public function setCurrentTab(string $sType)
     {
         $this->sCurrentTab = $sType;
     }
+
+    /**
+     *
+     */
+    public function removePictureOfProject()
+    {
+        $this->pictureOfProject = null;
+    }
+
+    /**
+     *
+     */
+    public function saveProject()
+    {
+        $this->validate($this->aProjectRule);
+        $sFIlePath = $this->pictureOfProject->storeAs('public', 'project-' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
+        $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
+        $oProject = new ProjectsModel();
+        $oProject->project_type_id = $this->iProjectTypeIdForProject;
+        $oProject->user_id = Auth::id();
+        $oProject->url = $sFIlePath;
+        $oProject->description = $this->sNameOfProject;
+        $oProject->save();
+        $this->emit('initProjects');
+        $this->clearAddProjectForm();
+        $this->bShowAddProjectModal = false;
+    }
 }
+

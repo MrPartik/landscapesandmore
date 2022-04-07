@@ -86,7 +86,6 @@
     @section('extra-js')
         <script async src="{{ url('js/google-api/maps.js') }}"></script>
         <script>
-            $(document).ready(function () {
                 let oAutocomplete;
                 let oAddressField;
 
@@ -147,9 +146,9 @@
                                 }
                             }
                         }
-                    @this.set('homeAddress', sAddress);
-                    @this.set('zipCode', sPostalCode);
-                    @this.set('cityAddress', sCity);
+                        @this.set('homeAddress', sAddress);
+                        @this.set('zipCode', sPostalCode);
+                        @this.set('cityAddress', sCity);
                     }
 
                     function successWarrantySubmission() {
@@ -180,7 +179,6 @@
                         successWarrantySubmission();
                         $('#contact_form').find('input, textarea').not('[type=submit]').val('');
                     });
-                )};
         </script>
     @endsection
 </div>

@@ -9,7 +9,7 @@
                 <ul id="filters" class="wow fadeInUp" data-wow-delay="0s">
                     <li><a href="#" data-filter="*" class="selected">All Projects</a></li>
                     @foreach($aProjectTypes as $aProjectType)
-                        <li><a href="#" data-filter=".{{ $aProjectType['name'] }}">{{ $aProjectType['name'] }}</a></li>
+                        <li><a href="#" data-filter=".project-type-{{ $aProjectType['project_type_id'] }}">{{ $aProjectType['name'] }}</a></li>
                     @endforeach
                 </ul>
 
@@ -19,7 +19,7 @@
         <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
             @foreach($aProjects as $aProject)
                 <!-- gallery item -->
-                <div class="col-md-4 item {{ $aProject['projectType']['name'] }}">
+                <div class="col-md-4 item project-type-{{ $aProject['projectType']['project_type_id'] }}" style="width: 300px;height: 300px">
                     <div class="picframe">
                         <a class="image-popup-gallery" href="{{ url($aProject['url']) }}">
                                     <span class="overlay">

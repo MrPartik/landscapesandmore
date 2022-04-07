@@ -65,7 +65,22 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show {{ $sCurrentTab === 'projects' ? 'active' : '' }}" id="projects-tab-content" role="tabpanel" aria-labelledby="projects-tab">
-                        <button wire:click="showAddProjectModal()" class="mt-4 btn btn-primary text-white"><span class="fa fa-plus"></span> Add Project </button>
+                        <div class="row">
+                            <div class="col-2">
+                                <button wire:click="showAddProjectModal()" class="mt-4 btn btn-primary text-white"><span class="fa fa-plus"></span> Add Project </button>
+                            </div>
+                            <div class="mt-3 form-control col-3">
+                                <label class="col-form-label" for="project_type">
+                                    Project Type
+                                </label>
+                                <select id=project_type wire:model.lazy="iProjectTypeIdForProjectSelection"  type="text" class="form-control" placeholder="{{ __('Project Type') }}">
+                                    <option selected value=""> All Projects </option>
+                                    @foreach($aProjectTypes as $aProjectType)
+                                        <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="mt-2 row" style="display:flow-root; border:1px black dashed; padding: 10px; ">
                             @foreach($aProjects as $iKey => $aProject)
                                 <div class="image-preview-container row"
@@ -124,13 +139,43 @@
                     <label class="col-form-label" for="name">
                         Name
                     </label>
-                    <x-jet-input id=name wire:model.lazy="sName"  type="text" class="form-control" placeholder="{{ __('Name') }}"/>
+                    <x-jet-input id=name wire:model.lazy="sNameOfProject"  type="text" class="form-control" placeholder="{{ __('Name') }}"/>
                 </div>
                 <div class="mb-3">
-                    <label class="col-form-label" for="description">
-                        Description
+                    <label class="col-form-label" for="project_type">
+                        Project Type
                     </label>
-                    <x-jet-input id="description" wire:model.lazy="sDescription"  type="email" class="form-control" placeholder="{{ __('Description') }}"/>
+                    <select id=project_type wire:model.lazy="iProjectTypeIdForProject"  type="text" class="form-control" placeholder="{{ __('Project Type') }}">
+                        <option selected value="" disabled> Select Project Type </option>
+                        @foreach($aProjectTypes as $aProjectType)
+                            <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <div class="de_form">
+                        <label class="de_form" for="input_7_9">Please Provide Pictures Of Your Project</label>
+                        <div>
+                            <input id="uploadPicturesOfLandscapes" style="display: none" wire:model="pictureOfProject" type="file" accept="image/*">
+                            <button onclick="$('#uploadPicturesOfLandscapes').click()" class="btn btn-primary text-white">
+                                <span class="fa fa-file"> </span> Upload Images
+                            </button>
+                            <span>Max. file size: 10 MB.</span>
+                            @if($pictureOfProject !== null && $pictureOfProject !== '')
+                                <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                    <div class="image-preview-container row">
+                                        <div style="background: url('{{ $pictureOfProject->temporaryUrl() ?? '' }}') no-repeat center"
+                                             class="image col-3 m-1"></div>
+                                        <div class="overlay col-3">
+                                            <a href="javascript:" wire:click="removePictureOfProject()" class="icon" title="Remove">
+                                                <i class="fa fa-close"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </x-slot>
@@ -140,7 +185,7 @@
                 {{ __('Nevermind') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="save"  wire:loading.attr="disabled">
+            <x-jet-button class="ml-2" wire:click="saveProject"  wire:loading.attr="disabled">
                 {{ __('Save') }}
             </x-jet-button>
         </x-slot>

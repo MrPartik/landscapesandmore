@@ -37,6 +37,7 @@ $maxWidth = [
     wire:ignore.self
     class="modal fade"
     tabindex="-1"
+    data-bs-backdrop="static" data-bs-keyboard="false"
     id="modal-id-{{ $id }}"
     aria-labelledby="modal-id-{{ $id }}"
     aria-hidden="true"

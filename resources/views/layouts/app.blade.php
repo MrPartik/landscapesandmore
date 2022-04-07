@@ -40,6 +40,7 @@
 
         @livewireScripts
 
+        <script src="{{ url('js/jquery.min.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
