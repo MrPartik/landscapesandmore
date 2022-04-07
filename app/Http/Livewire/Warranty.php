@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Warranty as WarrantyModel;
 
 class Warranty extends Component
 {
@@ -75,12 +76,12 @@ class Warranty extends Component
         'emailAddress'             => 'required|email',
         'phoneNo'                  => 'required',
         'homeAddress'              => 'required',
-        'cityAddress'              => 'required',
-        'zipCode'                  => 'required',
-        'oftenDoYouWater'          => 'nullable',
-        'plantName'                => 'nullable',
+        'cityAddress'              => 'sometimes',
+        'zipCode'                  => 'sometimes',
+        'oftenDoYouWater'          => 'sometimes',
+        'plantName'                => 'sometimes',
         'doYouFollowWateringGuide' => 'required',
-        'picturesOfLandscapes'     => 'required|image|mimes:jpeg,jpg,png,gif',
+        'picturesOfLandscapes'     => 'sometimes',
     ];
 
     public function render()
@@ -103,6 +104,27 @@ class Warranty extends Component
      */
     public function submitWarrantyForm()
     {
-        $this->validate($this->aWarrantyRule);
+        $aValidated = $this->validate($this->aWarrantyRule);
+        $aFilePaths = [];
+        foreach ($this->picturesOfLandscapes as $iIndex => $oImage) {
+            $sFIlePath = $oImage->storeAs('public', 'warranty-' . time() . '-' . $iIndex . '.' . $oImage->getClientOriginalExtension());
+            $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
+            $aFilePaths[] = $sFIlePath;
+        }
+        $oWarrantyModel = new WarrantyModel();
+        $oWarrantyModel->first_name = $aValidated['firstName'] ?? '-';
+        $oWarrantyModel->last_name = $aValidated['lastName'] ?? '-';
+        $oWarrantyModel->email = $aValidated['emailAddress'] ?? '-';
+        $oWarrantyModel->phone = $aValidated['phoneNo'] ?? '-';
+        $oWarrantyModel->home_address = $aValidated['homeAddress'] ?? '-';
+        $oWarrantyModel->city_address = $aValidated['cityAddress'] ?? '-';
+        $oWarrantyModel->zip_code = $aValidated['zipCode'] ?? '-';
+        $oWarrantyModel->often_water = $aValidated['oftenDoYouWater'];
+        $oWarrantyModel->knowledge_in_plant = $aValidated['plantName'];
+        $oWarrantyModel->following_watering_guide = $aValidated['doYouFollowWateringGuide'];
+        $oWarrantyModel->images = json_encode($aFilePaths, true);
+        $oWarrantyModel->save();
+
+        $this->emit('warranty-success');
     }
 }

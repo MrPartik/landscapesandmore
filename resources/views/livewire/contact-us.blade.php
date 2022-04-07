@@ -147,7 +147,7 @@
                             }
                         }
                         @this.set('homeAddress', sAddress);
-                        @this.set('zipCode', sPostalCode);
+                        @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
                         @this.set('cityAddress', sCity);
                     }
 

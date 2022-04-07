@@ -115,11 +115,11 @@
                         <strong>Have you been following the watering guide that has been given to you?</strong>
                         <div class="de_form de_radio">
                             <span class="mr20">
-                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_1" name="doYouFollowWateringGuide" type="radio" value="yes" checked="checked">
+                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_1" name="doYouFollowWateringGuide" type="radio" value="true" checked="checked">
                                     <label for="project_description_1">Yes</label>
                                 </span>
                             <span class="mr20">
-                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_2" name="doYouFollowWateringGuide" type="radio" value="no">
+                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_2" name="doYouFollowWateringGuide" type="radio" value="false">
                                     <label for="project_description_2">No</label>
                                 </span>
                         </div>
@@ -243,7 +243,7 @@
                         }
                     }
                 @this.set('homeAddress', sAddress);
-                @this.set('zipCode', sPostalCode);
+                @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
                 @this.set('cityAddress', sCity);
                 }
 
@@ -271,7 +271,7 @@
                     });
                 }
 
-                window.livewire.on('contact-us-success', function (oResult) {
+                window.livewire.on('warranty-success', function (oResult) {
                     successWarrantySubmission();
                     $('#contact_form').find('input, textarea').not('[type=submit]').val('');
                 });

@@ -2,18 +2,15 @@
 
 namespace App\Http\Livewire\Admin\Datatables;
 
-use App\Models\ProjectTypes;
+use App\Models\ProjectTypes as ProjectTypesModel;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class ProjectType extends DataTableComponent
 {
-    /**
-     * Data Table Model
-     * @var string
-     */
-    protected $model = ProjectTypes::class;
-
+    protected $model = ProjectTypesModel::class;
     /**
      * @var bool
      */
@@ -47,8 +44,7 @@ class ProjectType extends DataTableComponent
      */
     public function configure(): void
     {
-        $this->setPrimaryKey('project_type_id')
-            ->setReorderEnabled();
+        $this->setPrimaryKey('project_type_id');
     }
 
     /**
@@ -64,13 +60,13 @@ class ProjectType extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             Column::make('Is Active', 'is_active')
-                ->format(function ($mValue, $oRow, Column $oColumn) {
+                ->format(function ($mValue) {
                     return ($mValue === 1) ? 'Active' : 'In-Active';
                 })
                 ->sortable()
                 ->searchable(),
             Column::make('Actions', 'project_type_id')
-                ->format(function ($mValue, $oRow, Column $oColumn)  {
+                ->format(function ($mValue, $oRow, $oColumn)  {
                     return view('livewire.admin.datatables.project-type')->with([
                         'iId' => $mValue,
                         'bIsActive' => $oRow->is_active === 1,
@@ -85,7 +81,7 @@ class ProjectType extends DataTableComponent
      */
     public function toggleActiveStatus(int $iProjectTypeId)
     {
-        $oProjectTypeModel = ProjectTypes::find($iProjectTypeId);
+        $oProjectTypeModel = ProjectTypesModel::find($iProjectTypeId);
         $oProjectTypeModel->is_active = !$oProjectTypeModel->is_active;
         $oProjectTypeModel->save();
     }
@@ -95,7 +91,7 @@ class ProjectType extends DataTableComponent
      */
     public function findProjectType(int $iProjectTypeId)
     {
-        $oProjectTypeModel = ProjectTypes::find($iProjectTypeId);
+        $oProjectTypeModel = ProjectTypesModel::find($iProjectTypeId);
         $this->sName = $oProjectTypeModel->name;
         $this->sDescription = $oProjectTypeModel->description;
     }
@@ -117,7 +113,7 @@ class ProjectType extends DataTableComponent
     public function saveProjectType()
     {
         $this->validate($this->aProjectTypeRule);
-        $oProjectTypeModel = ProjectTypes::find($this->iProjectTypeId);
+        $oProjectTypeModel = ProjectTypesModel::find($this->iProjectTypeId);
         $oProjectTypeModel->name = $this->sName;
         $oProjectTypeModel->description = $this->sDescription;
         ($this->iProjectTypeId <= 0) && $oProjectTypeModel->is_active = true;

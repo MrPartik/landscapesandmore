@@ -84,15 +84,15 @@ class ContactUs extends Component
         $aValidated = $this->validate($this->aContactUsRules);
 
         $oContactUsModel = new ContactUsModel();
-        $oContactUsModel->first_name = Crypt::encrypt($aValidated['firstName'] ?? '-');
-        $oContactUsModel->last_name = Crypt::encrypt($aValidated['lastName'] ?? '-');
-        $oContactUsModel->email = Crypt::encrypt($aValidated['emailAddress'] ?? '-');
-        $oContactUsModel->phone = Crypt::encrypt($aValidated['phoneNo'] ?? '-');
-        $oContactUsModel->home_address = Crypt::encrypt($aValidated['homeAddress'] ?? '-');
-        $oContactUsModel->city_address = Crypt::encrypt($aValidated['cityAddress'] ?? '-');
-        $oContactUsModel->zip_code = Crypt::encrypt($aValidated['zipCode'] ?? '-');
-        $oContactUsModel->project_description = Crypt::encrypt($aValidated['projectDescription'] ?? '-');
-        $oContactUsModel->message = Crypt::encrypt($aValidated['message'] ?? '-');
+        $oContactUsModel->first_name = $aValidated['firstName'] ?? '-';
+        $oContactUsModel->last_name = $aValidated['lastName'] ?? '-';
+        $oContactUsModel->email = $aValidated['emailAddress'] ?? '-';
+        $oContactUsModel->phone = $aValidated['phoneNo'] ?? '-';
+        $oContactUsModel->home_address = $aValidated['homeAddress'] ?? '-';
+        $oContactUsModel->city_address = $aValidated['cityAddress'] ?? '-';
+        $oContactUsModel->zip_code = $aValidated['zipCode'] ?? '-';
+        $oContactUsModel->project_description = $aValidated['projectDescription'] ?? '-';
+        $oContactUsModel->message = $aValidated['message'] ?? '-';
         $oContactUsModel->save();
 
         $this->emit('contact-us-success');

@@ -36,9 +36,12 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         return view('admin.blog');
     })->name('blog');
 
-    Route::get('/contact-us-and-warranty', function () {
-        return view('admin.contact-us-and-warranty');
-    })->name('contact_us_and_warranty');
+    Route::get('/contact-us', function () {
+        return view('admin.contact-us');
+    })->name('contact_us');
+    Route::get('/warranty', function () {
+        return view('admin.warranty');
+    })->name('warranty');
 
     Route::get('/projects', function () {
         return view('admin.projects');

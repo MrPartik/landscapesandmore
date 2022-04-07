@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="h4 font-weight-bold">
-            {{ __('Projects') }}
+            {{ __('Contact Us') }}
         </h2>
     </x-slot>
-    @livewire('admin.projects')
+    @livewire('admin.contact-us')
 </x-app-layout>
