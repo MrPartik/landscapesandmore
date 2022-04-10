@@ -26,28 +26,33 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
 
     Route::get('/', function () {
         return view('admin.index');
-    })->name('admin');
+    })->name('admin.dashboard');
 
     Route::get('/our-process', function () {
         return view('admin.our-process');
-    })->name('our_process');
+    })->name('admin.our_process');
 
     Route::get('/blog', function () {
         return view('admin.blog');
-    })->name('blog');
+    })->name('admin.blog');
 
     Route::get('/contact-us', function () {
         return view('admin.contact-us');
-    })->name('contact_us');
+    })->name('admin.contact_us');
+
     Route::get('/warranty', function () {
         return view('admin.warranty');
-    })->name('warranty');
+    })->name('admin.warranty');
 
     Route::get('/projects', function () {
         return view('admin.projects');
-    })->name('projects');
+    })->name('admin.projects');
 
     Route::get('/pre-defined-values', function () {
         return view('admin.pre-defined-values');
-    })->name('pre-defined-values');
+    })->name('admin.pre-defined-values');
+
+    Route::get('/awards', function () {
+        return view('admin.awards');
+    })->name('admin.awards');
 });

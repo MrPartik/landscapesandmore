@@ -11,25 +11,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-jet-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
+                <x-jet-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('pre-defined-values') }}" :active="request()->routeIs('pre-defined-values')">
+                <x-jet-nav-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
                     {{ __('Pre Defined Values') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('our_process') }}" :active="request()->routeIs('our_process')">
+                <x-jet-nav-link href="{{ route('admin.our_process') }}" :active="request()->routeIs('admin.our_process')">
                     {{ __('Our Process') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
+                <x-jet-nav-link href="{{ route('admin.blog') }}" :active="request()->routeIs('admin.blog')">
                     {{ __('Blog') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
+                <x-jet-nav-link href="{{ route('admin.projects') }}" :active="request()->routeIs('admin.projects')">
                     {{ __('Projects') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('contact_us') }}" :active="request()->routeIs('contact_us')">
+                <x-jet-nav-link href="{{ route('admin.awards') }}" :active="request()->routeIs('admin.awards')">
+                    {{ __('Awards') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('admin.contact_us') }}" :active="request()->routeIs('admin.contact_us')">
                     {{ __('Contact Us') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('warranty') }}" :active="request()->routeIs('warranty')">
+                <x-jet-nav-link href="{{ route('admin.warranty') }}" :active="request()->routeIs('admin.warranty')">
                     {{ __('Warranty') }}
                 </x-jet-nav-link>
             </ul>

@@ -172,7 +172,7 @@ class Projects extends Component
     public function saveProject()
     {
         $this->validate($this->aProjectRule);
-        $sFIlePath = $this->pictureOfProject->storeAs('public', 'project-' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
+        $sFIlePath = $this->pictureOfProject->storeAs('public', 'project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
         $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
         $oProject = new ProjectsModel();
         $oProject->project_type_id = $this->iProjectTypeIdForProject;

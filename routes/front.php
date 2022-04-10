@@ -23,9 +23,16 @@ Route::get('/projects', function () {
     return view('front.projects');
 });
 
-Route::get('/blog', function () {
-    return view('front.blog');
+Route::prefix('blog')->group(function() {
+    Route::get('/', function () {
+        return view('front.blog');
+    });
+    Route::get('/{title}', function ($title) {
+        $sTitle = ucwords(str_replace('-', ' ', $title));
+        return view('front.blog-single')->with('sTitle', $sTitle);
+    });
 });
+
 
 Route::get('/contact-us', function () {
     return view('front.contact-us');

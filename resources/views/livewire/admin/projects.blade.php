@@ -146,7 +146,7 @@
                         Project Type
                     </label>
                     <select id=project_type wire:model.lazy="iProjectTypeIdForProject"  type="text" class="form-control" placeholder="{{ __('Project Type') }}">
-                        <option selected value="" disabled> Select Project Type </option>
+                        <option selected value="0" disabled> Select Project Type </option>
                         @foreach($aProjectTypes as $aProjectType)
                             <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
                         @endforeach

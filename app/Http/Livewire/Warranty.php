@@ -107,7 +107,7 @@ class Warranty extends Component
         $aValidated = $this->validate($this->aWarrantyRule);
         $aFilePaths = [];
         foreach ($this->picturesOfLandscapes as $iIndex => $oImage) {
-            $sFIlePath = $oImage->storeAs('public', 'warranty-' . time() . '-' . $iIndex . '.' . $oImage->getClientOriginalExtension());
+            $sFIlePath = $oImage->storeAs('public', 'warranty/' . time() . '-' . $iIndex . '.' . $oImage->getClientOriginalExtension());
             $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
             $aFilePaths[] = $sFIlePath;
         }
