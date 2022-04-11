@@ -15,7 +15,7 @@ class Blog extends Component
     /**
      * @var bool
      */
-    public $bShowAddPage = true;
+    public $bShowAddPage = false;
 
     /**
      * @var null
