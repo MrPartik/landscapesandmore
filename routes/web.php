@@ -36,6 +36,10 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         return view('admin.blog');
     })->name('admin.blog');
 
+    Route::get('/blog/edit/{id}', function ($id) {
+        return view('admin.blog-edit');
+    })->name('admin.blog-edit');
+
     Route::get('/contact-us', function () {
         return view('admin.contact-us');
     })->name('admin.contact_us');

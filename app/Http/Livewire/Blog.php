@@ -20,6 +20,6 @@ class Blog extends Component
 
     public function initBlog()
     {
-        $this->aBlogs =  BlogModel::with('user')->get();
+        $this->aBlogs =  BlogModel::with('user')->where('is_active', 1)->get();
     }
 }

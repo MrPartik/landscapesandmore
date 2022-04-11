@@ -7,15 +7,15 @@
                     <div class="bloglist item">
                         <div class="post-content">
                             <div class="post-image">
-                                <a class="image-popup-no-margins" href="{{ url($aBlog->featured_image) }}">
+                                <a class="" href="/blog/{{ str_replace(' ', '-', mb_strtolower(trim($aBlog->title))) }}">
                                     <img alt="" src="{{ url($aBlog->featured_image) }}">
                                 </a>
                             </div>
                             <div class="post-text">
                                 <span class="p-tagline">{{ $aBlog->tags }}</span>
-                                <h4><a href="/blog/{{ str_replace(' ', '-', mb_strtolower($aBlog->title)) }}">{{ $aBlog->title }}</a></h4>
+                                <h4><a href="/blog/{{ str_replace(' ', '-', mb_strtolower(trim($aBlog->title))) }}">{{ $aBlog->title }}</a></h4>
                                 <p>{{ $aBlog->description }}</p>
-                                <span class="p-date">{{ $aBlog->updated_at }}</span>
+                                <span class="p-date">{{ \Carbon\Carbon::make($aBlog->updated_at)->format('M d, Y h:i a') }}</span>
                             </div>
                         </div>
                     </div>

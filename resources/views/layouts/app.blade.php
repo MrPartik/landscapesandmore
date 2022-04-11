@@ -14,11 +14,15 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <link href="{{ url('/css/kothing/kothing-editor.min.css') }}" rel="stylesheet"/>
+        <script src="{{ url('/js/kothing/kothing-editor.min.js') }}"></script>
 
         @livewireStyles
 
+        @livewireScripts
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ url('js/jquery.min.js') }}"></script>
     </head>
     <body class="font-sans antialiased bg-light">
         <x-jet-banner />
@@ -38,9 +42,8 @@
 
         @stack('modals')
 
-        @livewireScripts
 
-        <script src="{{ url('js/jquery.min.js') }}"></script>
         @stack('scripts')
+        @yield('extra-js')
     </body>
 </html>

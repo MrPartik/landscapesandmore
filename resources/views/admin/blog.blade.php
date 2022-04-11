@@ -4,5 +4,6 @@
             {{ __('Blog') }}
         </h2>
     </x-slot>
-
+    @livewire('admin.blog')
 </x-app-layout>
+
