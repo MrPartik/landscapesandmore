@@ -17,3 +17,28 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/upload-image', function () {
+    $oFile = request()->file('file-0');
+    $sFeaturedImagePath = $oFile->storeAs('public', 'blog/images/uploaded-' . time() . '.' . $oFile->getClientOriginalExtension());
+    $sFeaturedImagePath = '/' . str_replace('public', 'storage', $sFeaturedImagePath);
+    return [
+        'state' => 200,
+        'result' => [
+            [
+                'url' => $sFeaturedImagePath,
+            ]
+        ]
+    ];
+});
+
+Route::get('/get-uploaded-images', function () {
+    return [
+        'state' => 500,
+        'result' => [
+            'tag' => 'a,b,c,d',
+            'name' => 'a,b,c,d',
+            'url' => 'a,b,c,d',
+        ]
+    ];
+});

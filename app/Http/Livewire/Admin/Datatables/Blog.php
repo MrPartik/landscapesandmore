@@ -22,11 +22,14 @@ class Blog extends DataTableComponent
                 ->searchable(),
             Column::make("Description", "description")
                 ->format(function ($mValue) {
-                    return substr($mValue, 0, 50) . '...';
-                })
+                    return '<span title="' . $mValue . '">' . substr($mValue, 0, 25) . ((strlen($mValue) > 25) ? '...' : '') . '</span>';
+                })->html()
                 ->sortable()
                 ->searchable(),
             Column::make("Tags", "tags")
+                ->format(function ($mValue) {
+                    return '<span title="' . $mValue . '">' . substr($mValue, 0, 20) . ((strlen($mValue) > 20) ? '...' : '' ) . '</span>';
+                })->html()
                 ->sortable()
                 ->searchable(),
             Column::make("Is active", "is_active")
@@ -36,6 +39,9 @@ class Blog extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             Column::make("Updated at", "updated_at")
+                ->format(function ($mValue) {
+                    return \Carbon\Carbon::make($mValue)->format('Y-m-d H:i');
+                })
                 ->sortable(),
             Column::make("Actions", "blog_id")
                 ->format(function ($mValue, $oRow, $oColumn)  {

@@ -27,9 +27,12 @@ Route::prefix('blog')->group(function() {
     Route::get('/', function () {
         return view('front.blog');
     });
-    Route::get('/{title}', function ($title) {
-        $sTitle = ucwords(str_replace('-', ' ', $title));
-        return view('front.blog-single')->with('sTitle', $sTitle);
+    Route::get('/{title}/{id}', function ($title, $id) {
+        $sTitle = str_replace('-', ' ', $title);
+        return view('front.blog-single')->with([
+            'sTitle' => $sTitle,
+            'iId'    => $id
+        ]);
     });
 });
 

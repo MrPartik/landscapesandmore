@@ -2,9 +2,9 @@
     <button title="View" class="btn btn-primary">
         <span class="fa fa-eye text-white"></span>
     </button>
-    <button title="Edit" class="btn btn-warning">
+    <a href="{{ url('/admin/blog/edit/' . $iId) }}" title="Edit" class="btn btn-warning">
         <span class="fa fa-pencil"></span>
-    </button>
+    </a>
     @if($bIsActive === true)
         <button title="Deactivate" class="btn btn-danger" wire:click="toggleActiveStatus({{ $iId }})">
             <span class="fa fa-ban text-white"></span>

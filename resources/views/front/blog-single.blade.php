@@ -1,9 +1,11 @@
-@extends('layouts.front', ['title' => 'Landscaping | ' .  $sTitle])
+@extends('layouts.front', ['title' => 'Landscaping | ' .  ucwords($sTitle)])
 @php
-    $aBlog = \App\Models\Blog::with('user')->where('title', trim($sTitle))->where('is_active', 1)->first();
+    $aBlog = \App\Models\Blog::with('user')->where('blog_id', $iId)->where('is_active', 1)->first();
     if(empty($aBlog) === true) abort(404);
 @endphp
 @section('body')
+
+    <link href="{{ url('/css/kothing/kothing-editor.min.css') }}" rel="stylesheet"/>
     <div id="wrapper">
     @include('front.navigation.header', ['active' => 'blog', 'auto_show' => false])
     <!-- subheader -->
@@ -23,7 +25,9 @@
 
                                 <div class="post-text" style="min-width: 200px">
                                     <h3><a href="javscript:">{{ $aBlog->title }}</a></h3>
-                                    {!! @file_get_contents(url($aBlog->content)) ?? '' !!}
+                                    <div class="kothing-editor-editable">
+                                        {!! @file_get_contents(url($aBlog->content)) ?? '' !!}
+                                    </div>
                                     <div class="spacer-single"></div>
                                 </div>
                             </div>

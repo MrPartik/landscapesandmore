@@ -59,14 +59,6 @@ class Blog extends Component
     }
 
     /**
-     *
-     */
-    public function dehydrate() {
-        $this->emit('initializeWysiwyg');
-    }
-
-
-    /**
      * @param bool|null $mIsShown
      */
     public function toggleShowAddPage(?bool $mIsShown = null)
@@ -79,7 +71,7 @@ class Blog extends Component
      */
     public function clearFeaturedImage()
     {
-        $this->featuredImage = [];
+        $this->featuredImage = null;
     }
 
     public function saveBlog()
@@ -103,6 +95,8 @@ class Blog extends Component
         $this->blogTags = '';
         $this->featuredImage = '';
         $this->blogContent = 'Sample Blog Content';
+        $oBlogModel->description = '';
         $this->bShowAddPage = true;
+        $this->emit('initializeWysiwyg');
     }
 }

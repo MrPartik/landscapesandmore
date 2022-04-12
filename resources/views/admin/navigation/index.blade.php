@@ -20,7 +20,7 @@
                 <x-jet-nav-link href="{{ route('admin.our_process') }}" :active="request()->routeIs('admin.our_process')">
                     {{ __('Our Process') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('admin.blog') }}" :active="request()->routeIs('admin.blog')">
+                <x-jet-nav-link href="{{ route('admin.blog') }}" :active="request()->routeIs('admin.blog') || request()->routeIs('admin.blog-edit')">
                     {{ __('Blog') }}
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.projects') }}" :active="request()->routeIs('admin.projects')">

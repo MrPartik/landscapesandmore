@@ -14,6 +14,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <link rel="stylesheet" href="{{ url('/css/kothing/katex.min.css') }}">
+        <script src="{{ url('/js/kothing/katex.min.js') }}"></script>
         <link href="{{ url('/css/kothing/kothing-editor.min.css') }}" rel="stylesheet"/>
         <script src="{{ url('/js/kothing/kothing-editor.min.js') }}"></script>
 
