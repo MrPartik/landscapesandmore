@@ -47,6 +47,7 @@ class Blog extends DataTableComponent
                 ->format(function ($mValue, $oRow, $oColumn)  {
                     return view('livewire.admin.datatables.blog')->with([
                         'iId' => $mValue,
+                        'sTitle' => $oRow->title,
                         'bIsActive' => $oRow->is_active === 1
                     ]);
                 }),

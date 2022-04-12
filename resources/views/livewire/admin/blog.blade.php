@@ -101,8 +101,8 @@
                             </div>
                         @endif
                         <div class="col-2 mt-3">
-                            <button id="saveBlog" class="mb-4 btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                             <button wire:click="toggleShowAddPage(true)" class="mb-4 btn btn-primary text-white"><span class="fa fa-arrow-left"></span> Cancel </button>
+                            <button id="saveBlog" class="mb-4 btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                         </div>
                         <script>
                             $('#saveBlog').click(function(){

@@ -1,7 +1,7 @@
 <div class="">
-    <button title="View" class="btn btn-primary">
+    <a href="{{ url('/blog/' . str_replace(' ', '-', $sTitle) . '/' . $iId) }}" target="_blank" title="View" class="btn btn-primary">
         <span class="fa fa-eye text-white"></span>
-    </button>
+    </a>
     <a href="{{ url('/admin/blog/edit/' . $iId) }}" title="Edit" class="btn btn-warning">
         <span class="fa fa-pencil"></span>
     </a>

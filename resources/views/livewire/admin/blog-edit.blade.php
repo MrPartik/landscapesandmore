@@ -94,6 +94,7 @@
                             </div>
                         @endif
                     <div class="col-2 mt-3">
+                        <a href="/admin/blog" class="mb-4 btn btn-primary text-white"><span class="fa fa-arrow-left"></span> Cancel </a>
                         <button id="saveBlog" class="mb-4 btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                     </div>
                 </div>

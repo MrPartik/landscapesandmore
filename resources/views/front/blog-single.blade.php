@@ -31,7 +31,6 @@
                                     <div class="spacer-single"></div>
                                 </div>
                             </div>
-
                             <div class="post-meta"><span><i class="fa fa-user id-color"></i>By: <a href="javascript:">{{ $aBlog->user->name }}</a></span> <span><i class="fa fa-tag id-color"></i>{{ $aBlog->tags }}</span></div>
                         </div>
                     </div>
