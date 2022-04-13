@@ -28,7 +28,7 @@ class VerifyContactStreak
      */
     public function checkEmail(string $sEmailAddress, string $sType = 'installation')
     {
-        $sPipelineKey = ($sType === 'installation') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
+        $sPipelineKey = ($sType === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
         $aSearchedEmail = $this->oStreakFunctions->search($sEmailAddress, $sPipelineKey);
         $aSearchedContact = @$aSearchedEmail['results']['contacts'][0] ?? [];
         $aSearchedEmail = @$aSearchedContact['emailAddresses'] ?? [];
