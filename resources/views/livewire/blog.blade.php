@@ -13,7 +13,7 @@
                             </div>
                             <div class="post-text">
                                 <span class="p-tagline">{{ $aBlog->tags }}</span>
-                                <h4><a href="/blog/{{ str_replace(' ', '-', mb_strtolower(trim($aBlog->title))) }}">{{ $aBlog->title }}</a></h4>
+                                <h4><a href="/blog/{{ str_replace(' ', '-', mb_strtolower(trim($aBlog->title))) . '/' . $aBlog->blog_id }}">{{ $aBlog->title }}</a></h4>
                                 <p>{{ $aBlog->description }}</p>
                                 <span class="p-date">{{ \Carbon\Carbon::make($aBlog->updated_at)->format('M d, Y h:i a') }}</span>
                             </div>
