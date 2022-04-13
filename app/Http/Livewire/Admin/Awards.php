@@ -48,6 +48,8 @@ class Awards extends Component
     public function backToAdd()
     {
         $this->iAwardId = 0;
+        $this->pictureOfAward = '';
+        $this->description = '';
     }
 
     public function saveAward()

@@ -50,7 +50,25 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <strong>Project Description</strong>
+
+                        <strong for="reference-contactus">
+                            Reference
+                        </strong>
+                        <select id=reference-contactus wire:model="reference"  type="text" class="form-control" placeholder="{{ __('Reference') }}">
+                            <option selected disabled value=""> Select reference </option>
+                            <option value="Angi's List"> Angi's List </option>
+                            <option value="Bruce Referral"> Bruce Referral </option>
+                            <option value="Client Referral"> Client Referral </option>
+                            <option value="Designing Spaces Show"> Designing Spaces Show </option>
+                            <option value="Existing Customer"> Existing Customer </option>
+                            <option value="Google"> Google </option>
+                            <option value="Houzz"> Houzz </option>
+                            <option value="M360"> M360 </option>
+                            <option value="Neighbor"> Neighbor </option>
+                            <option value="Facebook"> Facebook </option>
+                        </select>
+
+                        <strong class="mt-3">Project Description</strong>
                         <div class="de_form de_radio">
                             <span class="mr20">
                                 <input wire:model.lazy="projectDescription" id="project_description_1" name="project_description" type="radio" value="landscape" checked="checked">
@@ -61,7 +79,6 @@
                                     <label for="project_description_2">Maintenance and Turf Care</label>
                                 </span>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6LfHDjsdAAAAANyZQJeyAUNIjTPCB-5PodXpdloe"></div>
                         <p id='submit' class="mt20">
                             <input wire:click="submitContactUs" type='submit' value='Submit Form' class="btn btn-line">
                         </p>

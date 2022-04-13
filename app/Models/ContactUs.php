@@ -23,6 +23,7 @@ class ContactUs extends Model
         'zip_code',
         'project_description',
         'message',
+        'reference',
         'created_at',
         'updated_at',
     ];

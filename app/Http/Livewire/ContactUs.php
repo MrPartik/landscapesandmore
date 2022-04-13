@@ -53,6 +53,11 @@ class ContactUs extends Component
      * @var string
      */
     public $projectDescription = 'landscape';
+    /**
+     * Project Reference
+     * @var string
+     */
+    public $reference = '';
 
     /**
      * Validation Rules
@@ -68,6 +73,7 @@ class ContactUs extends Component
         'cityAddress'        => 'required',
         'zipCode'            => 'required',
         'message'            => 'required',
+        'reference'          => 'required',
         'projectDescription' => 'required| in:landscape,maintenance-and-turf-care'
     ];
 
@@ -93,6 +99,7 @@ class ContactUs extends Component
         $oContactUsModel->zip_code = $aValidated['zipCode'] ?? '-';
         $oContactUsModel->project_description = $aValidated['projectDescription'] ?? '-';
         $oContactUsModel->message = $aValidated['message'] ?? '-';
+        $oContactUsModel->reference = $aValidated['reference'] ?? '-';
         $oContactUsModel->save();
 
         $this->emit('contact-us-success');

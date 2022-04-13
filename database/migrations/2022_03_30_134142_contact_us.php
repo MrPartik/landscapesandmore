@@ -23,6 +23,7 @@ class ContactUs extends Migration
             $oTable->text('city_address');
             $oTable->text('zip_code');
             $oTable->text('project_description');
+            $oTable->string('reference');
             $oTable->text('message');
             $oTable->timestamps();
         });
