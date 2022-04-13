@@ -7,7 +7,7 @@
                     <div class="bloglist item">
                         <div class="post-content">
                             <div class="post-image">
-                                <a class="" href="/blog/{{ str_replace(' ', '-', mb_strtolower(trim($aBlog->title))) }}">
+                                <a class="" href="/blog/{{ str_replace(' ', '-', mb_strtolower(trim($aBlog->title))) . '/' . $aBlog->blog_id }}">
                                     <img alt="" src="{{ url($aBlog->featured_image) }}">
                                 </a>
                             </div>
