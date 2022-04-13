@@ -798,22 +798,11 @@ jQuery(document).ready(function () {
          });
 
     jQuery("#logo-carousel").owlCarousel({
-        items: 6,
+        items: 8,
         loop:false,
         center: true,
-		dots: false,
+		dots: true,
         autoPlay: true,
-        responsive:{
-            1000:{
-                items:6
-            },
-            600:{
-                items:4
-            },
-            0:{
-                items:1
-            }
-        }
     });
 
     jQuery("#contact-carousel").owlCarousel({
