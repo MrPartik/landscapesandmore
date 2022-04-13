@@ -12,8 +12,11 @@
                         <li><a href="#" data-filter=".project-type-{{ $aProjectType['project_type_id'] }}">{{ $aProjectType['name'] }}</a></li>
                     @endforeach
                 </ul>
-
             </div>
+
+            @if(count($aProjects) <= 0)
+                <strong class="pb-5" style="text-align-last: center;">No projects as of the moment.</strong>
+            @endif
         </div>
         <!-- portfolio filter close -->
         <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">

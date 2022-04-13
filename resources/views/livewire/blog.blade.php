@@ -2,6 +2,9 @@
 <div id="content">
     <div class="container">
         <div class="row">
+            @if(count($aBlogs) <= 0)
+                <strong style="text-align-last: center;">No blog as of the moment.</strong>
+            @endif
             @foreach($aBlogs as $aBlog)
                 <div class="col-lg-4 col-md-6 mb30">
                     <div class="bloglist item">
