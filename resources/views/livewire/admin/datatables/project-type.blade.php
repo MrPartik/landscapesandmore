@@ -11,6 +11,11 @@
             <span class="fa fa-check text-white"></span>
         </button>
     @endif
+    @if($iTotalProjects <= 0)
+        <button wire:click="deleteProjectType({{ $iId }})" title="Delete Permanently" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-project-type-modal">
+            <span class="fa text-white fa-trash"></span>
+        </button>
+    @endif
 </div>
     <x-jet-dialog-modal wire:model="bShowEditProjectTypeModal">
         <x-slot name="title">

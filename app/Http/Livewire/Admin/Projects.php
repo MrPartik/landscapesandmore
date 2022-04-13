@@ -70,8 +70,8 @@ class Projects extends Component
      * @var array
      */
     public $aProjectRule = [
-        'pictureOfProject' => 'required',
-        'sNameOfProject'   => 'required|image',
+        'pictureOfProject' => 'required|image',
+        'sNameOfProject'   => 'required',
     ];
 
     /**
@@ -166,6 +166,17 @@ class Projects extends Component
         $this->pictureOfProject = null;
     }
 
+
+    /**
+     * @param int $iProjectId
+     */
+    public function deleteProject(int $iProjectId)
+    {
+        $oProjectModel = ProjectsModel::find($iProjectId);
+        $oProjectModel->delete();
+        $this->emit('refreshDatatable');
+    }
+
     /**
      *
      */
@@ -181,6 +192,7 @@ class Projects extends Component
         $oProject->description = $this->sNameOfProject;
         $oProject->save();
         $this->emit('initProjects');
+        $this->emit('refreshDatatable');
         $this->clearAddProjectForm();
         $this->bShowAddProjectModal = false;
     }

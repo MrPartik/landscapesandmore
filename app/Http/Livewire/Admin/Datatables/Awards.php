@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Datatables;
 
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\WithFileUploads;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Awards as AwardsModel;
@@ -10,17 +11,19 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
 class Awards extends DataTableComponent
 {
+
     public function configure(): void
     {
         $this->setPrimaryKey('awards_id');
     }
 
+    public function findAward(int $iId) {
+        $this->emit('findAward', $iId);
+    }
+
     public function columns(): array
     {
         return [
-            Column::make("Description", "description")
-                ->sortable()
-                ->searchable(),
             ImageColumn::make('Award', 'url')
                 ->location(function($row) {
                     return url($row->url);
@@ -30,17 +33,27 @@ class Awards extends DataTableComponent
                         'style' => 'width: 100px',
                     ];
                 }),
+            Column::make("Description", "description")
+                ->sortable()
+                ->searchable(),
             Column::make("URL", "url")
                 ->sortable(),
             Column::make("Is Active", "is_active")
                 ->format(function ($mValue) {
-                    return ($mValue === 1) ? 'Active' : 'In-Active';
+                    return ($mValue) ? 'Active' : 'In-Active';
                 })
                 ->sortable()
                 ->searchable(),
             Column::make("Updated at", "updated_at")
                 ->sortable()
                 ->searchable(),
+            Column::make('Actions', 'awards_id')
+                ->format(function ($mValue, $oRow, $oColumn)  {
+                    return view('livewire.admin.datatables.awards')->with([
+                        'iId' => $mValue,
+                        'bIsActive' => $oRow->is_active,
+                    ]);
+                }),
         ];
     }
 
@@ -51,5 +64,15 @@ class Awards extends DataTableComponent
     public function builder(): Builder
     {
         return AwardsModel::query()->with('user');
+    }
+
+    /**
+     * @param int $iId
+     */
+    public function toggleActiveStatus(int $iId)
+    {
+        $oAwardModel = AwardsModel::find($iId);
+        $oAwardModel->is_active = !$oAwardModel->is_active;
+        $oAwardModel->save();
     }
 }

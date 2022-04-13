@@ -10,7 +10,6 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class ProjectType extends DataTableComponent
 {
-    protected $model = ProjectTypesModel::class;
     /**
      * @var bool
      */
@@ -59,6 +58,12 @@ class ProjectType extends DataTableComponent
             Column::make('Description', 'description')
                 ->sortable()
                 ->searchable(),
+            Column::make('Total of Projects Attached', 'project_type_id')
+                ->format(function ($mValue, $oRow) {
+                    return count($oRow->projects);
+                })
+                ->sortable()
+                ->searchable(),
             Column::make('Is Active', 'is_active')
                 ->format(function ($mValue) {
                     return ($mValue === 1) ? 'Active' : 'In-Active';
@@ -70,7 +75,8 @@ class ProjectType extends DataTableComponent
                     return view('livewire.admin.datatables.project-type')->with([
                         'iId' => $mValue,
                         'bIsActive' => $oRow->is_active === 1,
-                        'iRowCount' => $this->iIncr++
+                        'iRowCount' => $this->iIncr++,
+                        'iTotalProjects' => count($oRow->projects)
                     ]);
                 }),
         ];
@@ -84,6 +90,15 @@ class ProjectType extends DataTableComponent
         $oProjectTypeModel = ProjectTypesModel::find($iProjectTypeId);
         $oProjectTypeModel->is_active = !$oProjectTypeModel->is_active;
         $oProjectTypeModel->save();
+    }
+
+    /**
+     * @param int $iProjectTypeId
+     */
+    public function deleteProjectType(int $iProjectTypeId)
+    {
+        $oProjectTypeModel = ProjectTypesModel::find($iProjectTypeId);
+        $oProjectTypeModel->delete();
     }
 
     /**
@@ -131,5 +146,10 @@ class ProjectType extends DataTableComponent
         $this->iProjectTypeId = 0;
         $this->sName = '';
         $this->sDescription = '';
+    }
+
+    public function builder(): Builder
+    {
+        return ProjectTypesModel::query()->with('projects');
     }
 }

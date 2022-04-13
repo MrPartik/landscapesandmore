@@ -88,7 +88,7 @@
                                     <div style="background: url('{{ $aProject->url }}') no-repeat center"
                                          class="image col-3 m-1"></div>
                                     <div class="overlay col-3">
-                                        <a href="javascript:" class="icon" title="Remove">
+                                        <a href="javascript:" wire:click="deleteProject({{ $aProject->project_id }})" class="icon" title="Remove">
                                             <i class="fa fa-close"></i>
                                         </a>
                                     </div>
@@ -158,7 +158,7 @@
                         <div>
                             <input id="uploadPicturesOfLandscapes" style="display: none" wire:model="pictureOfProject" type="file" accept="image/*">
                             <button onclick="$('#uploadPicturesOfLandscapes').click()" class="btn btn-primary text-white">
-                                <span class="fa fa-file"> </span> Upload Images
+                                <span class="fa fa-file"> </span> Upload Image
                             </button>
                             <span>Max. file size: 10 MB.</span>
                             @if($pictureOfProject !== null && $pictureOfProject !== '')

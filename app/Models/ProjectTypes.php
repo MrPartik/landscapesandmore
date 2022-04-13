@@ -41,4 +41,9 @@ class ProjectTypes extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    public function projects()
+    {
+        return $this->hasMany(Projects::class, 'project_type_id', 'project_type_id');
+    }
 }
