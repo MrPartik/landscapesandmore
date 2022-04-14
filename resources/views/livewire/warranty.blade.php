@@ -180,7 +180,7 @@
         </div>
     </div>
     @section('extra-js')
-        <script async src="{{ url('js/google-api/maps.js') }}"></script>
+        <script async src="{{ url('js/google-api/maps.js?callback=initAutocomplete') }}"></script>
         <script>
                 let oAutocomplete;
                 let oAddressField;

@@ -1,5 +1,4 @@
 <div>
-
     <!-- section begin -->
     <section aria-label="section">
         <div class="container">
@@ -12,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div id="landscaping-inquiry-form" aria-label="landscaping-inquiry-form" class="{{ ($typeOfInquiry === 'landscape') ? '' : 'hidden'}}">
+            <div id="landscape-form" aria-label="landscaping-inquiry-form" class="{{ ($typeOfInquiry === 'landscape') ? '' : 'hidden'}}">
                 <div class="progress-steps mt-3">
                     <div class="row">
                         <div style="text-align-last: center">
@@ -24,19 +23,25 @@
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-5">
                                     <li class="active contact-us"><strong>Contact Us</strong></li>
-                                    <li class="consultation"><strong>Consultation</strong></li>
-                                    <li class="design"><strong>Design</strong></li>
-                                    <li class="design-presentation"><strong>Design Presentation</strong></li>
-                                    <li class="sold"><strong>Sold Project</strong></li>
+                                    <li class="process-5002 consultation"><strong>Consultation</strong></li>
+                                    <li class="process-5003 design"><strong>Design</strong></li>
+                                    <li class="process-5005 design-presentation"><strong>Design Presentation</strong></li>
+                                    <li class="process-5010 sold"><strong>Sold Project</strong></li>
                                 </ul> <!-- fieldsets -->
-                                <fieldset>
+                                <fieldset class="process-default">
                                     <div class="form-card">
                                         <h2 class="fs-title">Contact Us </h2>
                                         <br/>
+                                        <div class="{{ (($streakApiResult['status'] ?? 500) === 500) ? 'hidden' : '' }}">
+                                            <strong>We have updates in your current inquiry, you want to check it?</strong>
+                                            <br/>
+                                            <br/>
+                                            <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
+                                            <br/>
+                                            <br/>
+                                        </div>
                                         <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
-
-                                        {{ json_encode($streakApiResult) }}
-                                        <div class="row">
+                                        <div class="row {{ ($isProcessed === true) ? 'hidden' : '' }}">
                                             <div class="col-lg-8 col-md-12">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-12">
@@ -73,6 +78,16 @@
                                                             <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
                                                         </div>
                                                     </div>
+                                                    <div class="">
+                                                        <strong for="reference-contactus">
+                                                            Which contact information do you want to contact you?
+                                                        </strong>
+                                                        <select id=reference-contactus wire:model="preferToContactYou"  type="text" class="form-control" placeholder="{{ __('Which contact information do you want to contact you?') }}">
+                                                            <option value="email_phone_no" selected> Email and Phone No. </option>
+                                                            <option value="email" selected> Email </option>
+                                                            <option value="phone_no" selected> Phone No. </option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 </div>
                                             <div id="sidebar" class="col-md-4">
@@ -87,10 +102,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" class="btn-line-black">Submit</a>
+                                        <a href="javascript:;" class="btn-line-black mt-3 {{ ($isProcessed === true) ? 'hidden' : '' }}">Submit</a>
                                     </div>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5002">
                                     <div class="form-card">
                                         <h2 class="fs-title">Consultation</h2>
 
@@ -98,17 +113,17 @@
 {{--                                    <a href="javascript:;" class="previous btn-line-black">Previous Step</a>--}}
 {{--                                    <a href="javascript:;" class="next btn-line-black">Next Step</a>--}}
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5003">
                                     <div class="form-card">
                                         <h2 class="fs-title">Design</h2>
                                     </div>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5005">
                                     <div class="form-card">
                                         <h2 class="fs-title">Design Presentation</h2>
                                     </div>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5010">
                                     <div class="form-card">
                                         <h2 class="fs-title text-center">Sold Project</h2> <br><br>
                                         <div class="row justify-content-center">
@@ -126,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div id="maintenance-inquiry-form" class="{{ ($typeOfInquiry === 'maintenance-and-turf-care') ? '' : 'hidden'}}">
+            <div id="maintenance-and-turf-care-form" class="{{ ($typeOfInquiry === 'maintenance-and-turf-care') ? '' : 'hidden'}}">
                 <div class="progress-steps mt-3">
                     <div class="row">
                         <div style="text-align-last: center">
@@ -138,18 +153,24 @@
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-4">
                                     <li class="active contact-us"><strong>Contact Us</strong></li>
-                                    <li class="consultation"><strong>Consultation</strong></li>
-                                    <li class="signing"><strong>Contract Signing</strong></li>
-                                    <li class="maintenance-service"><strong>Maintenance Service</strong></li>
+                                    <li class="process-5002 consultation"><strong>Consultation</strong></li>
+                                    <li class="process-5004 signing"><strong>Contract Signing</strong></li>
+                                    <li class="process-5006 maintenance-service"><strong>Maintenance Service</strong></li>
                                 </ul> <!-- fieldsets -->
-                                <fieldset>
+                                <fieldset class="process-default">
                                     <div class="form-card">
-                                        <h2 class="fs-title">Contact Us</h2>
+                                        <h2 class="fs-title">Contact Us </h2>
                                         <br/>
+                                        <div class="{{ (($streakApiResult['status'] ?? 500) === 500) ? 'hidden' : '' }}">
+                                            <strong>We have updates in your current inquiry, you want to check it?</strong>
+                                            <br/>
+                                            <br/>
+                                            <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
+                                            <br/>
+                                            <br/>
+                                        </div>
                                         <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
-
-                                        {{ json_encode($streakApiResult) }}
-                                        <div class="row">
+                                        <div class="row {{ ($isProcessed === true) ? 'hidden' : '' }}">
                                             <div class="col-lg-8 col-md-12">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-12">
@@ -186,6 +207,16 @@
                                                             <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
                                                         </div>
                                                     </div>
+                                                    <div class="">
+                                                        <strong for="reference-contactus">
+                                                            Which contact information do you want to contact you?
+                                                        </strong>
+                                                        <select id=reference-contactus wire:model="preferToContactYou"  type="text" class="form-control" placeholder="{{ __('Which contact information do you want to contact you?') }}">
+                                                            <option value="email_phone_no" selected> Email and Phone No. </option>
+                                                            <option value="email" selected> Email </option>
+                                                            <option value="phone_no" selected> Phone No. </option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div id="sidebar" class="col-md-4">
@@ -200,21 +231,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" class="btn-line-black">Submit</a>
+                                        <a href="javascript:;" class="btn-line-black mt-3 {{ ($isProcessed === true) ? 'hidden' : '' }}">Submit</a>
                                     </div>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5002">
                                     <div class="form-card">
                                         <h2 class="fs-title">Consultation</h2>
 
                                     </div>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5004">
                                     <div class="form-card">
                                         <h2 class="fs-title">Contract Signing</h2>
                                     </div>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="process-5006">
                                     <div class="form-card">
                                         <h2 class="fs-title text-center">Maintenance Service</h2> <br><br>
                                         <div class="row justify-content-center">
@@ -236,6 +267,14 @@
     </section>
     <!-- section close -->
     @section('extra-js')
+        <script>
+            window.livewire.on('processCurrentStage', function (sClass, sClassification) {
+                let oCurrentStage = $(sClassification).find('li' + sClass);
+                let oCurrentSection = $(sClassification).find('fieldset' + sClass).show();
+                oCurrentStage.addClass('active').prevAll('li').addClass('active');
+                oCurrentSection.siblings('fieldset').hide();
+            });
+        </script>
         <script src="{{ url('js/google-api/maps.js') }}"></script>
         <script>
             initAutocomplete('#home_address_landscape');
@@ -300,9 +339,9 @@
                         }
                     }
                 }
-            @this.set('homeAddress', sAddress);
-            @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
-            @this.set('cityAddress', sCity);
+                @this.set('homeAddress', sAddress);
+                @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
+                @this.set('cityAddress', sCity);
             }
 
             function successWarrantySubmission() {

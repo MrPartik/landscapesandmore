@@ -51,17 +51,19 @@ class Process extends Component
      */
     public $message = '';
     /**
-     * Project Description
-     * @var string
-     */
-    public $projectDescription = 'landscape';
-    /**
      * Project Reference
      * @var string
      */
     public $reference = '';
+    /**
+     * Which contact information do you want to contact you?
+     * @var string
+     */
+    public $preferToContactYou = 'email_phone_no';
 
     public $streakApiResult = '';
+
+    public $isProcessed = false;
 
     /**
      * Validation Rules
@@ -77,8 +79,8 @@ class Process extends Component
         'cityAddress' => 'required',
         'zipCode' => 'required',
         'message' => 'required',
-        'reference' => 'required',
-        'projectDescription' => 'required| in:landscape,maintenance-and-turf-care'
+        'preferToContactYou' => 'required',
+        'typeOfInquiry' => 'required| in:landscape,maintenance-and-turf-care'
     ];
 
     public function render()
@@ -97,7 +99,8 @@ class Process extends Component
         $this->cityAddress = '';
         $this->zipCode = '';
         $this->message = '';
-        $this->projectDescription = '';
+        $this->preferToContactYou = '';
+        $this->isProcessed = false;
     }
 
     public function validateEmailInStreak()
@@ -105,5 +108,17 @@ class Process extends Component
         $this->streakApiResult = '';
         $this->validate(['emailAddress' => 'required|email']);
         $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->checkEmail($this->emailAddress, $this->typeOfInquiry);
+        $this->phoneNo = @$this->streakApiResult['contact_information']['phoneNumbers'][0] ?? '';
+        $this->homeAddress = @$this->streakApiResult['contact_information']['addresses'][0] ?? '';
+        $this->firstName = @$this->streakApiResult['contact_information']['givenName'] ?? '';
+        $this->lastName = @$this->streakApiResult['contact_information']['familyName'] ?? '';
+    }
+
+    public function processValidation()
+    {
+        if ((@$this->streakApiResult['status'] ?? 500) === 200) {
+            $this->emit('processCurrentStage', '.process-' . $this->streakApiResult['stage']['current_progress_id'], '#' . $this->typeOfInquiry . '-form');
+            $this->isProcessed = true;
+        }
     }
 }

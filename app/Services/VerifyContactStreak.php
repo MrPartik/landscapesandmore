@@ -29,8 +29,8 @@ class VerifyContactStreak
     public function checkEmail(string $sEmailAddress, string $sType = 'landscape')
     {
         $sPipelineKey = ($sType === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
-        $aSearchedEmail = $this->oStreakFunctions->search($sEmailAddress, $sPipelineKey);
-        $aSearchedContact = @$aSearchedEmail['results']['contacts'][0] ?? [];
+        $aSearched = $this->oStreakFunctions->search($sEmailAddress, $sPipelineKey);
+        $aSearchedContact = @$aSearched['results']['contacts'][0] ?? [];
         $aSearchedEmail = @$aSearchedContact['emailAddresses'] ?? [];
         if (in_array($sEmailAddress, $aSearchedEmail) === false)
         {
@@ -47,11 +47,27 @@ class VerifyContactStreak
             return array_key_exists('contacts', $aBox) && @$aBox['contacts'][0]['key'] === $aSearchedContact['key'];
         });
         $sStageKey = @array_values($aAllBoxes)[0]['stageKey'] ?? '';
+        if ($sStageKey === '')
+        {
+            return [
+                'status'  => 500,
+                'message' => 'No data in pipeline',
+                'data'    => [
+                    'email_address' => $sEmailAddress
+                ]
+            ];
+        }
         $aStageInfo = $this->oStreakFunctions->getStage($sPipelineKey, $sStageKey);
         return [
-            'pipeline_type'    => ($sType === 'landscape') ? 'Installation Service' : 'Maintenance Service',
-            'current_progress' => $aStageInfo['name'],
-            'email_address'    => $sEmailAddress
+            'status'              => 200,
+            'message'             => 'Successfully retrieve contact information',
+            'pipeline_type'       => ($sType === 'landscape') ? 'Installation Service' : 'Maintenance Service',
+            'email_address'       => $sEmailAddress,
+            'contact_information' => $aSearchedContact,
+            'stage'               => [
+                'current_progress'    => $aStageInfo['name'],
+                'current_progress_id' => $aStageInfo['key'],
+            ],
         ];
 
     }
