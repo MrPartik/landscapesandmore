@@ -26,7 +26,7 @@ class VerifyContactStreak
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function checkEmail(string $sEmailAddress, string $sType = 'installation')
+    public function checkEmail(string $sEmailAddress, string $sType = 'landscape')
     {
         $sPipelineKey = ($sType === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
         $aSearchedEmail = $this->oStreakFunctions->search($sEmailAddress, $sPipelineKey);
@@ -46,10 +46,10 @@ class VerifyContactStreak
         $aAllBoxes = array_filter($aAllBoxes, function ($aBox) use ($aSearchedContact) {
             return array_key_exists('contacts', $aBox) && @$aBox['contacts'][0]['key'] === $aSearchedContact['key'];
         });
-        $sStageKey = array_values($aAllBoxes)[0]['stageKey'];
+        $sStageKey = @array_values($aAllBoxes)[0]['stageKey'] ?? '';
         $aStageInfo = $this->oStreakFunctions->getStage($sPipelineKey, $sStageKey);
         return [
-            'pipeline_type'    => ($sType === 'installation') ? 'Installation Service' : 'Maintenance Service',
+            'pipeline_type'    => ($sType === 'landscape') ? 'Installation Service' : 'Maintenance Service',
             'current_progress' => $aStageInfo['name'],
             'email_address'    => $sEmailAddress
         ];
