@@ -5,9 +5,9 @@
                 <div class="row">
                     <div class="col-md-12 mb10">
                         <h3>Send Us Message</h3>
-                        <p>We have a minimum project for landscape design and installation projects that starts at $20,000. <br/>
-                            We have a minimum weekly maintenance service that starts at $450.00 <br/>
-                            Turf Care has a minimum of $50.00</p>
+                        <p>We have a minimum project for landscape design and installation projects that starts at {{ config('pre-defined.price.min_landscape_design') }}. <br/>
+                            We have a minimum weekly maintenance service that starts at {{ config('pre-defined.price.min_weekly_maintenance') }} <br/>
+                            Turf Care has a minimum of {{ config('pre-defined.price.min_turf_care') }}</p>
                     </div>
                     <div class="col-md-6">
                         <div id='first_name_error' class='error'>Please enter your first name.</div>
