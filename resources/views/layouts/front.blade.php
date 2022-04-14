@@ -40,6 +40,8 @@
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
 
         @livewireStyles
+        <script src="{{ url('js/jquery.min.js') }}"></script>
+        <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
         @yield('extra-css')
 
         <title>{{ $title ?? '' }}</title>
@@ -49,7 +51,6 @@
     </body>
     <!-- Javascript Files
     ================================================== -->
-    <script src="{{ url('js/jquery.min.js') }}"></script>
     <script src="{{ url('js/jpreLoader.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
     <script src="{{ url('js/bootstrap.bundle.min.js') }}"></script>
