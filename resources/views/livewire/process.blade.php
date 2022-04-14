@@ -56,7 +56,7 @@
                                                     <div class="col-lg-6 col-md-12">
                                                         <div id='home_address_error' class='error'>Please enter your home address.</div>
                                                         <div>
-                                                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address' class="form-control" placeholder="Home Address" required>
+                                                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address_landscape' class="form-control" placeholder="Home Address" required>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-12">
@@ -169,7 +169,7 @@
                                                     <div class="col-lg-6 col-md-12">
                                                         <div id='home_address_error' class='error'>Please enter your home address.</div>
                                                         <div>
-                                                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address' class="form-control" placeholder="Home Address" required>
+                                                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address_maintenance' class="form-control" placeholder="Home Address" required>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-12">
@@ -236,23 +236,24 @@
     </section>
     <!-- section close -->
     @section('extra-js')
-        <script async src="{{ url('js/google-api/maps.js') }}"></script>
+        <script src="{{ url('js/google-api/maps.js') }}"></script>
         <script>
-            let oAutocomplete;
-            let oAddressField;
-
+            initAutocomplete('#home_address_landscape');
+            initAutocomplete('#home_address_maintenance');
             /**
              * Initialized Auto Complete Places Google API
              */
-            function initAutocomplete() {
-                oAddressField = document.querySelector('#home_address');
-                oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
+            function initAutocomplete(sQuery) {
+                let oAddressField = document.querySelector(sQuery);
+                let oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
                     componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
                     fields: ['address_components', 'geometry'],
                     types: ['address'],
                 });
 
-                oAutocomplete.addListener('place_changed', fillInAddress);
+                oAutocomplete.addListener('place_changed', function () {
+                    fillInAddress(oAutocomplete);
+                });
                 oAddressField.addEventListener('input', function (oThis) {
                     if (oThis.target.value.length <= 10) {
                     @this.set('zipCode', '');
@@ -264,8 +265,9 @@
             /**
              * Fill in the address
              */
-            function fillInAddress() {
+            function fillInAddress(oAutocomplete) {
                 const oPlace = oAutocomplete.getPlace();
+                if (oPlace === undefined) return false;
                 let sAddress = '';
                 let sCity = '';
                 let sPostalCode = '';

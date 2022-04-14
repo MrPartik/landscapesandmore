@@ -18,7 +18,7 @@ Route::get('test', function () {
 });
 
 Route::get('js/google-api/maps.js', function () {
-    return file_get_contents('https://maps.googleapis.com/maps/api/js?key=' . config('google.api_key') . '&callback=initAutocomplete&libraries=places&v=weekly');
+    return file_get_contents('https://maps.googleapis.com/maps/api/js?key=' . config('google.api_key') . '&libraries=places&v=weekly');
 });
 
 
