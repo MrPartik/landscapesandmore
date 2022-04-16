@@ -26,7 +26,7 @@ class VerifyContactStreak
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function checkEmail(string $sEmailAddress, string $sType = 'landscape')
+    public function searchEmailData(string $sEmailAddress, string $sType = 'landscape')
     {
         $sPipelineKey = ($sType === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
         $aSearched = $this->oStreakFunctions->search($sEmailAddress, $sPipelineKey);
@@ -44,9 +44,10 @@ class VerifyContactStreak
         }
         $aAllBoxes = $this->oStreakFunctions->getAllBoxes($sPipelineKey);
         $aAllBoxes = array_filter($aAllBoxes, function ($aBox) use ($aSearchedContact) {
-            return array_key_exists('contacts', $aBox) && @$aBox['contacts'][0]['key'] === $aSearchedContact['key'];
+            return array_key_exists('contacts', $aBox) && in_array($aSearchedContact['key'], array_column(@$aBox['contacts'], 'key'));
         });
-        $sStageKey = @array_values($aAllBoxes)[0]['stageKey'] ?? '';
+        $aBox = @array_values($aAllBoxes)[0];
+        $sStageKey = $aBox['stageKey'] ?? '';
         if ($sStageKey === '')
         {
             return [
@@ -64,6 +65,7 @@ class VerifyContactStreak
             'pipeline_type'       => ($sType === 'landscape') ? 'Installation Service' : 'Maintenance Service',
             'email_address'       => $sEmailAddress,
             'contact_information' => $aSearchedContact,
+            'fields'              => $aBox['fields'],
             'stage'               => [
                 'current_progress'    => $aStageInfo['name'],
                 'current_progress_id' => $aStageInfo['key'],

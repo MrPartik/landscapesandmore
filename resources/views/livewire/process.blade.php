@@ -16,13 +16,15 @@
                     <div class="row">
                         <div style="text-align-last: center">
                             <h2><strong>Install Landscape and Design</strong></h2>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <p>
+                                To check the status of your existing application, please enter the email address you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us Form</a>.
+                            </p>
                         </div>
                         <div class="col-md-12 mx-0">
                             <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off" class="progress-steps-form">
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-5">
-                                    <li class="active contact-us"><strong>Contact Us</strong></li>
+                                    <li class="active spinner"><strong>Project Status</strong></li>
                                     <li class="process-5002 consultation"><strong>Consultation</strong></li>
                                     <li class="process-5003 design"><strong>Design</strong></li>
                                     <li class="process-5005 design-presentation"><strong>Design Presentation</strong></li>
@@ -30,67 +32,40 @@
                                 </ul> <!-- fieldsets -->
                                 <fieldset class="process-default">
                                     <div class="form-card">
-                                        <h2 class="fs-title">Contact Us </h2>
-                                        <br/>
-                                        <div class="{{ (($streakApiResult['status'] ?? 500) === 500) ? 'hidden' : '' }}">
-                                            <strong>We have updates in your current inquiry, you want to check it?</strong>
-                                            <br/>
-                                            <br/>
-                                            <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
-                                            <br/>
-                                            <br/>
-                                        </div>
-                                        <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
-                                        <div class="row {{ ($isProcessed === true) ? 'hidden' : '' }}">
-                                            <div class="col-lg-8 col-md-12">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-12">
-                                                        <div>
-                                                            <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
-                                                        </div>
-                                                        <div>
-                                                            <input wire:model.lazy="phoneNo" type='text' name='phone' id='phone' class="form-control" placeholder="Phone" required>
-                                                        </div>
-                                                        <div>
-                                                            <input wire:model.lazy="firstName" type='text' name='first_name' id='first_name' class="form-control" placeholder="First Name" required>
-                                                        </div>
-                                                        <div>
-                                                            <input wire:model.lazy="lastName" type='text' name='last_name' id='last_name' class="form-control" placeholder="Last Name" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12">
-                                                        <div id='home_address_error' class='error'>Please enter your home address.</div>
-                                                        <div>
-                                                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address_landscape' class="form-control" placeholder="Home Address" required>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-12">
-                                                                <div id='city_address_error' class='error'>Please enter your city address.</div>
-                                                                <input wire:model.lazy="cityAddress" type='text' name='city_address' id='city_address' class="form-control" placeholder="City Address" required>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-12">
-                                                                <div id='zip_code_error' class='error'>Please enter your zip code</div>
-                                                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
-                                                            </div>
-                                                        </div>
-                                                        <div id='message_error' class='error'>Please enter your message.</div>
-                                                        <div>
-                                                            <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="">
-                                                        <strong for="reference-contactus">
-                                                            Which contact information do you want to contact you?
-                                                        </strong>
-                                                        <select id=reference-contactus wire:model="preferToContactYou"  type="text" class="form-control" placeholder="{{ __('Which contact information do you want to contact you?') }}">
-                                                            <option value="email_phone_no" selected> Email and Phone No. </option>
-                                                            <option value="email" selected> Email </option>
-                                                            <option value="phone_no" selected> Phone No. </option>
-                                                        </select>
-                                                    </div>
+                                        <h2 class="fs-title">Project Status </h2>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div>
+                                                    <h3>Email Address</h3>
+                                                    <div style="display: {{ $errors->has('emailAddress') ? 'block' : 'none' }}" class='error'>Please enter your valid E-mail ID.</div>
+                                                    <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
                                                 </div>
-                                                </div>
-                                            <div id="sidebar" class="col-md-4">
+                                                <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
+                                                @if(($streakApiResult['status'] ?? 500) === 200 && intval($streakApiResult['stage']['current_progress_id'], 0) === 5001 && $isProcessed === true)
+                                                    <div>
+                                                        <strong>Thank you for reaching out to us, one of our representatives will reach out to you within 24-48 hours, please keep your lines open.</strong>
+                                                    </div>
+                                                @elseif(($streakApiResult['status'] ?? 500) === 200 && $isProcessed === true)
+                                                    <div>
+                                                        <strong>We have updates in your current inquiry, you want to check it?</strong>
+                                                        <br/>
+                                                        <br/>
+                                                            <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
+                                                        <br/>
+                                                        <br/>
+                                                    </div>
+                                                @elseif($isProcessed === true)
+                                                    <div>
+                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us">Contact Us Form</a></strong>
+                                                        <br/>
+                                                        <br/>
+                                                        <a href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
+                                                        <br/>
+                                                        <br/>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
                                                     <h3>Contact Info</h3>
                                                     <address>
@@ -102,13 +77,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" class="btn-line-black mt-3 {{ ($isProcessed === true) ? 'hidden' : '' }}">Submit</a>
                                     </div>
                                 </fieldset>
                                 <fieldset class="process-5002">
                                     <div class="form-card">
                                         <h2 class="fs-title">Consultation</h2>
-
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We have sent your Zoom link to your email address.
+                                                    Your consultation date is on:
+                                                     {{ $sConsultationDate }}</strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 {{--                                    <a href="javascript:;" class="previous btn-line-black">Previous Step</a>--}}
 {{--                                    <a href="javascript:;" class="next btn-line-black">Next Step</a>--}}
@@ -116,25 +107,67 @@
                                 <fieldset class="process-5003">
                                     <div class="form-card">
                                         <h2 class="fs-title">Design</h2>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We have sent your Zoom link to your email address.
+                                                    Your design presentation date is on:
+                                                    {{ $sDesignPresentationDate }}</strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </fieldset>
                                 <fieldset class="process-5005">
                                     <div class="form-card">
-                                        <h2 class="fs-title">Design Presentation</h2>
+                                        <h2 class="fs-title">Design Presentation</h2><div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We have sent your contract to your email address, please open and sign using your device.  </strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </fieldset>
                                 <fieldset class="process-5010">
                                     <div class="form-card">
                                         <h2 class="fs-title text-center">Sold Project</h2> <br><br>
-                                        <div class="row justify-content-center">
-                                            <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                        </div> <br><br>
-                                        <div class="row justify-content-center">
-                                            <div class="col-7 text-center">
-                                                <h5>You Have Successfully Signed Up</h5>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12" style="text-align-last: center;">
+                                                <i class="fa fa-file-invoice-dollar" aria-hidden="true" style="color: var(--primary-color-1);font-size: 75px;margin-bottom: 20px;"></i>
+                                                <br>
+                                                <strong>Congratulations! Your project is underway. One of our representatives will reach out to you via email for your project updates. </strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </fieldset>
                             </form>
                         </div>
@@ -146,7 +179,9 @@
                     <div class="row">
                         <div style="text-align-last: center">
                             <h2><strong>Maintenance and Turf Care</strong></h2>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <p>
+                                To check the status of your existing application, please enter the email address you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us form</a>.
+                            </p>
                         </div>
                         <div class="col-md-12 mx-0">
                             <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off" class="progress-steps-form">
@@ -159,67 +194,36 @@
                                 </ul> <!-- fieldsets -->
                                 <fieldset class="process-default">
                                     <div class="form-card">
-                                        <h2 class="fs-title">Contact Us </h2>
-                                        <br/>
-                                        <div class="{{ (($streakApiResult['status'] ?? 500) === 500) ? 'hidden' : '' }}">
-                                            <strong>We have updates in your current inquiry, you want to check it?</strong>
-                                            <br/>
-                                            <br/>
-                                            <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
-                                            <br/>
-                                            <br/>
-                                        </div>
-                                        <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
-                                        <div class="row {{ ($isProcessed === true) ? 'hidden' : '' }}">
-                                            <div class="col-lg-8 col-md-12">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-12">
-                                                        <div>
-                                                            <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
-                                                        </div>
-                                                        <div>
-                                                            <input wire:model.lazy="phoneNo" type='text' name='phone' id='phone' class="form-control" placeholder="Phone" required>
-                                                        </div>
-                                                        <div>
-                                                            <input wire:model.lazy="firstName" type='text' name='first_name' id='first_name' class="form-control" placeholder="First Name" required>
-                                                        </div>
-                                                        <div>
-                                                            <input wire:model.lazy="lastName" type='text' name='last_name' id='last_name' class="form-control" placeholder="Last Name" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12">
-                                                        <div id='home_address_error' class='error'>Please enter your home address.</div>
-                                                        <div>
-                                                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address_maintenance' class="form-control" placeholder="Home Address" required>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-12">
-                                                                <div id='city_address_error' class='error'>Please enter your city address.</div>
-                                                                <input wire:model.lazy="cityAddress" type='text' name='city_address' id='city_address' class="form-control" placeholder="City Address" required>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-12">
-                                                                <div id='zip_code_error' class='error'>Please enter your zip code</div>
-                                                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
-                                                            </div>
-                                                        </div>
-                                                        <div id='message_error' class='error'>Please enter your message.</div>
-                                                        <div>
-                                                            <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="">
-                                                        <strong for="reference-contactus">
-                                                            Which contact information do you want to contact you?
-                                                        </strong>
-                                                        <select id=reference-contactus wire:model="preferToContactYou"  type="text" class="form-control" placeholder="{{ __('Which contact information do you want to contact you?') }}">
-                                                            <option value="email_phone_no" selected> Email and Phone No. </option>
-                                                            <option value="email" selected> Email </option>
-                                                            <option value="phone_no" selected> Phone No. </option>
-                                                        </select>
-                                                    </div>
+                                        <h2 class="fs-title">Project Status </h2>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div>
+                                                    <h3>Email Address</h3>
+                                                    <div style="display: {{ $errors->has('emailAddress') ? 'block' : 'none' }}" class='error'>Please enter your valid E-mail ID.</div>
+                                                    <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
                                                 </div>
+                                                @if(($streakApiResult['status'] ?? 500) === 200 && $isProcessed === true)
+                                                    <div>
+                                                        <strong>We have updates in your current inquiry, you want to check it?</strong>
+                                                        <br/>
+                                                        <br/>
+                                                        <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
+                                                        <br/>
+                                                        <br/>
+                                                    </div>
+                                                @elseif($isProcessed === true)
+                                                    <div>
+                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us">Contact Us Form</a></strong>
+                                                        <br/>
+                                                        <br/>
+                                                        <a href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
+                                                        <br/>
+                                                        <br/>
+                                                    </div>
+                                                @endif
+                                                <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
                                             </div>
-                                            <div id="sidebar" class="col-md-4">
+                                            <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
                                                     <h3>Contact Info</h3>
                                                     <address>
@@ -231,29 +235,71 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" class="btn-line-black mt-3 {{ ($isProcessed === true) ? 'hidden' : '' }}">Submit</a>
                                     </div>
                                 </fieldset>
                                 <fieldset class="process-5002">
                                     <div class="form-card">
                                         <h2 class="fs-title">Consultation</h2>
-
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We have sent your Zoom link to your email address.
+                                                    Your consultation date is on:
+                                                    {{ $sConsultationDate }}</strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </fieldset>
                                 <fieldset class="process-5004">
                                     <div class="form-card">
                                         <h2 class="fs-title">Contract Signing</h2>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We have sent your contract to your email address, please open and sign using your device. </strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </fieldset>
                                 <fieldset class="process-5006">
                                     <div class="form-card">
                                         <h2 class="fs-title text-center">Maintenance Service</h2> <br><br>
-                                        <div class="row justify-content-center">
-                                            <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                        </div> <br><br>
-                                        <div class="row justify-content-center">
-                                            <div class="col-7 text-center">
-                                                <h5>You Have Successfully Signed Up</h5>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12" style="text-align-last: center;">
+                                                <i class="fa fa-file-invoice-dollar" aria-hidden="true" style="color: var(--primary-color-1);font-size: 75px;margin-bottom: 20px;"></i>
+                                                <br>
+                                                <strong>Congratulations! Your project is underway. One of our representatives will reach out to you via email for your project updates. </strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -275,105 +321,6 @@
                 oCurrentSection.siblings('fieldset').hide();
             });
         </script>
-        <script src="{{ url('js/google-api/maps.js') }}"></script>
-        <script>
-            initAutocomplete('#home_address_landscape');
-            initAutocomplete('#home_address_maintenance');
-            /**
-             * Initialized Auto Complete Places Google API
-             */
-            function initAutocomplete(sQuery) {
-                let oAddressField = document.querySelector(sQuery);
-                let oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
-                    componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
-                    fields: ['address_components', 'geometry'],
-                    types: ['address'],
-                });
-
-                oAutocomplete.addListener('place_changed', function () {
-                    fillInAddress(oAutocomplete);
-                });
-                oAddressField.addEventListener('input', function (oThis) {
-                    if (oThis.target.value.length <= 10) {
-                    @this.set('zipCode', '');
-                    @this.set('cityAddress', '');
-                    }
-                });
-            }
-
-            /**
-             * Fill in the address
-             */
-            function fillInAddress(oAutocomplete) {
-                const oPlace = oAutocomplete.getPlace();
-                if (oPlace === undefined) return false;
-                let sAddress = '';
-                let sCity = '';
-                let sPostalCode = '';
-                for (const oComponent of oPlace.address_components) {
-                    const componentType = oComponent.types[0];
-                    switch (componentType) {
-                        case 'street_number': {
-                            sAddress = `${oComponent.long_name} ${sAddress}`;
-                            break;
-                        }
-                        case 'route': {
-                            sAddress += oComponent.short_name;
-                            break;
-                        }
-                        case 'administrative_area_level_1': {
-                            sAddress += ', ' + oComponent.long_name;
-                            break;
-                        }
-                        case 'country': {
-                            sAddress += ', ' + oComponent.long_name;
-                            break;
-                        }
-                        case 'locality': {
-                            sCity = oComponent.long_name;
-                            break;
-                        }
-                        case 'postal_code': {
-                            sPostalCode = `${oComponent.long_name}${sPostalCode}`;
-                            break;
-                        }
-                    }
-                }
-                @this.set('homeAddress', sAddress);
-                @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
-                @this.set('cityAddress', sCity);
-            }
-
-            function successWarrantySubmission() {
-                Swal.fire({
-                    icon: 'success',
-                    html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
-                        'Please allow us 24-48hrs to review your information. <br/>' +
-                        'You may check the status of your application status here: <a href="javascript:"> Application Status.</a>',
-                    showCancelButton: false,
-                    showConfirmButton: false,
-                    showCloseButton: true,
-                    allowOutsideClick: false,
-                });
-            }
-
-            function errorNotServiceableArea() {
-                Swal.fire({
-                    icon: 'info',
-                    html: 'You have entered a non-serviceable area. If you believe there is an error, you may check this page (map) for the area we service',
-                    showCancelButton: false,
-                    showConfirmButton: false,
-                    showCloseButton: true,
-                    allowOutsideClick: false,
-                });
-            }
-
-            window.livewire.on('contact-us-success', function (oResult) {
-                successWarrantySubmission();
-                $('#contact_form').find('input, textarea').not('[type=submit]').val('');
-            });
-        </script>
-
         <script>
             let current_fs, next_fs, previous_fs;
             let opacity;

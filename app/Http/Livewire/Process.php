@@ -4,121 +4,59 @@ namespace App\Http\Livewire;
 
 use App\Http\StreakApi\StreakFunctions;
 use App\Services\VerifyContactStreak;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Process extends Component
 {
-    public $typeOfInquiry = 'landscape';
 
-    /**
-     * First Name
-     * @var string
-     */
-    public $firstName = '';
-    /**
-     * Last Name
-     * @var string
-     */
-    public $lastName = '';
+    const INQUIRY_TYPE_LANDSCAPE = 'landscape';
+    const INQUIRY_TYPE_MAINTENANCE = 'maintenance-and-turf-care';
+
+    public $typeOfInquiry = self::INQUIRY_TYPE_LANDSCAPE;
+
     /**
      * Email Address
      * @var string
      */
     public $emailAddress = '';
-    /**
-     * Phone No.
-     * @var string
-     */
-    public $phoneNo = '';
-    /**
-     * Home Address
-     * @var string
-     */
-    public $homeAddress = '';
-    /**
-     * City Address
-     * @var string
-     */
-    public $cityAddress = '';
-    /**
-     * Zip Code
-     * @var string
-     */
-    public $zipCode = '';
-    /**
-     * Message
-     * @var string
-     */
-    public $message = '';
-    /**
-     * Project Reference
-     * @var string
-     */
-    public $reference = '';
-    /**
-     * Which contact information do you want to contact you?
-     * @var string
-     */
-    public $preferToContactYou = 'email_phone_no';
+
+    public $sConsultationDate = '';
+    public $sDesignPresentationDate = '';
 
     public $streakApiResult = '';
 
     public $isProcessed = false;
-
-    /**
-     * Validation Rules
-     *
-     * @var array
-     */
-    private $aProcessRule = [
-        'firstName' => 'required',
-        'lastName' => 'required',
-        'emailAddress' => 'required|email',
-        'phoneNo' => 'required',
-        'homeAddress' => 'required',
-        'cityAddress' => 'required',
-        'zipCode' => 'required',
-        'message' => 'required',
-        'preferToContactYou' => 'required',
-        'typeOfInquiry' => 'required| in:landscape,maintenance-and-turf-care'
-    ];
 
     public function render()
     {
         return view('livewire.process');
     }
 
-    public function clearProcessForm()
+    public function clearProcessForm(bool $isEmailWillClear = true)
     {
-        $this->emailAddress = '';
+        ($isEmailWillClear === true) && $this->emailAddress = '';
         $this->streakApiResult = '';
-        $this->firstName = '';
-        $this->lastName = '';
-        $this->phoneNo = '';
-        $this->homeAddress = '';
-        $this->cityAddress = '';
-        $this->zipCode = '';
-        $this->message = '';
-        $this->preferToContactYou = '';
         $this->isProcessed = false;
+        $this->resetErrorBag();
     }
 
     public function validateEmailInStreak()
     {
-        $this->streakApiResult = '';
+        $this->clearProcessForm(false);
         $this->validate(['emailAddress' => 'required|email']);
-        $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->checkEmail($this->emailAddress, $this->typeOfInquiry);
-        $this->phoneNo = @$this->streakApiResult['contact_information']['phoneNumbers'][0] ?? '';
-        $this->homeAddress = @$this->streakApiResult['contact_information']['addresses'][0] ?? '';
-        $this->firstName = @$this->streakApiResult['contact_information']['givenName'] ?? '';
-        $this->lastName = @$this->streakApiResult['contact_information']['familyName'] ?? '';
+        $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->searchEmailData($this->emailAddress, $this->typeOfInquiry);
+        $sConsultation = @$this->streakApiResult['fields'][1009] ?? Carbon::now()->addWeek(2)->getTimestampMs();
+        $sDesignPresentationDate = @$this->streakApiResult['fields'][1026] ?? Carbon::now()->addWeek(2)->getTimestampMs();
+        $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMsUTC($sConsultation)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
+        $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMsUTC($sDesignPresentationDate)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
+        $this->isProcessed = true;
     }
 
     public function processValidation()
     {
         if ((@$this->streakApiResult['status'] ?? 500) === 200) {
             $this->emit('processCurrentStage', '.process-' . $this->streakApiResult['stage']['current_progress_id'], '#' . $this->typeOfInquiry . '-form');
-            $this->isProcessed = true;
         }
     }
 }

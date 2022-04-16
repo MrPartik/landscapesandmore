@@ -46,7 +46,7 @@ Route::get('/warranty', function () {
 });
 
 Route::get('test', function () {
-    return (new \App\Services\VerifyContactStreak(new \App\Http\StreakApi\StreakFunctions(new \GuzzleHttp\Client())))->checkEmail(request()->get('email'));
+    return (new \App\Services\VerifyContactStreak(new \App\Http\StreakApi\StreakFunctions(new \GuzzleHttp\Client())))->searchEmailData(request()->get('email'));
 });
 
 Route::get('public/{sFilePath}', function ($sFilePath) {

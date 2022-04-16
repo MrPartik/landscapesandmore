@@ -10301,6 +10301,11 @@ select.list-dt:focus {
     content: "\f573"
 }
 
+.progress-bar-line .spinner:before {
+    font-family: FontAwesome;
+    content: "\f110"
+}
+
 .progress-bar-line li:before {
     width: 50px;
     height: 50px;
