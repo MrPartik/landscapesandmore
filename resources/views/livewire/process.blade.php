@@ -130,7 +130,10 @@
                                         <h2 class="fs-title">Estimating </h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
-                                                <strong>We are in the process of creating the estimate of your project, one of our representatives will contact you for an update.</strong>
+                                                <strong>
+                                                    We are in the process of creating the estimate of your project, one of our representatives will contact you for an update.
+                                                    Your estimated design presentation date is on: {{ $sDesignPresentationDate }}
+                                                </strong>
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
