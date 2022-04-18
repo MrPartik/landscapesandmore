@@ -23,10 +23,11 @@ class VerifyContactStreak
     /**
      * @param string $sEmailAddress
      * @param string $sType
+     * @param array $aAllowedStageKey
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function searchEmailData(string $sEmailAddress, string $sType = 'landscape')
+    public function searchEmailData(string $sEmailAddress, string $sType = 'landscape', array $aAllowedStageKey = [])
     {
         $sPipelineKey = ($sType === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
         $aSearched = $this->oStreakFunctions->search($sEmailAddress, $sPipelineKey);
@@ -48,7 +49,7 @@ class VerifyContactStreak
         });
         $aBox = @array_values($aAllBoxes)[0];
         $sStageKey = $aBox['stageKey'] ?? '';
-        if ($sStageKey === '')
+        if ($sStageKey === '' || in_array($sStageKey, $aAllowedStageKey) === false)
         {
             return [
                 'status'  => 500,

@@ -13,6 +13,19 @@ class Process extends Component
     const INQUIRY_TYPE_LANDSCAPE = 'landscape';
     const INQUIRY_TYPE_MAINTENANCE = 'maintenance-and-turf-care';
 
+    const ALLOWED_STAGE_LANDSCAPE = [
+        5002,
+        5003,
+        5004,
+        5005,
+        5010
+    ];
+    const ALLOWED_STAGE_MAINTENANCE = [
+        5002,
+        5004,
+        5006
+    ];
+
     public $typeOfInquiry = self::INQUIRY_TYPE_LANDSCAPE;
 
     /**
@@ -45,7 +58,7 @@ class Process extends Component
     {
         $this->clearProcessForm(false);
         $this->validate(['emailAddress' => 'required|email']);
-        $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->searchEmailData($this->emailAddress, $this->typeOfInquiry);
+        $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->searchEmailData($this->emailAddress, $this->typeOfInquiry, (($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? self::ALLOWED_STAGE_LANDSCAPE: self::ALLOWED_STAGE_MAINTENANCE));
         $sConsultation = @$this->streakApiResult['fields'][1009] ?? Carbon::now()->addWeek(2)->getTimestampMs();
         $sDesignPresentationDate = @$this->streakApiResult['fields'][1026] ?? Carbon::now()->addWeek(2)->getTimestampMs();
         $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sConsultation)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
@@ -56,7 +69,6 @@ class Process extends Component
     public function processValidation()
     {
         if ((@$this->streakApiResult['status'] ?? 500) === 200) {
-//            dd($this->streakApiResult);
             $this->emit('processCurrentStage', '.process-' . $this->streakApiResult['stage']['current_progress_id'], '#' . $this->typeOfInquiry . '-form');
         }
     }
