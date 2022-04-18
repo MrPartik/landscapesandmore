@@ -109,9 +109,7 @@
                                         <h2 class="fs-title">Design</h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
-                                                <strong>We have sent your Zoom link to your email address.
-                                                    Your design presentation date is on:
-                                                    {{ $sDesignPresentationDate }}</strong>
+                                                <strong>Your architect will contact you for your design appointment date. We will also send updates for your design appointment. </strong>
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
