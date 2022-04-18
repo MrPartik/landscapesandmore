@@ -25,7 +25,7 @@
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-5">
                                     <li class="active spinner"><strong>Project Status</strong></li>
-                                    <li class="process-5002 consultation"><strong>Consultation</strong></li>
+                                    <li class="process-5002 process-5004 consultation"><strong>Consultation</strong></li>
                                     <li class="process-5003 design"><strong>Design</strong></li>
                                     <li class="process-5005 design-presentation"><strong>Design Presentation</strong></li>
                                     <li class="process-5010 sold"><strong>Sold Project</strong></li>
@@ -112,6 +112,27 @@
                                                 <strong>We have sent your Zoom link to your email address.
                                                     Your design presentation date is on:
                                                     {{ $sDesignPresentationDate }}</strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="process-5004">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Estimating </h2>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We are in the process of creating the estimate of your project, one of our representatives will contact you for an update.</strong>
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">

@@ -48,14 +48,15 @@ class Process extends Component
         $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->searchEmailData($this->emailAddress, $this->typeOfInquiry);
         $sConsultation = @$this->streakApiResult['fields'][1009] ?? Carbon::now()->addWeek(2)->getTimestampMs();
         $sDesignPresentationDate = @$this->streakApiResult['fields'][1026] ?? Carbon::now()->addWeek(2)->getTimestampMs();
-        $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMsUTC($sConsultation)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
-        $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMsUTC($sDesignPresentationDate)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
+        $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sConsultation)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
+        $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignPresentationDate)->format('M d, Y h:i a') : Carbon::now()->addWeek(2)->format('M d, Y h:i a');
         $this->isProcessed = true;
     }
 
     public function processValidation()
     {
         if ((@$this->streakApiResult['status'] ?? 500) === 200) {
+//            dd($this->streakApiResult);
             $this->emit('processCurrentStage', '.process-' . $this->streakApiResult['stage']['current_progress_id'], '#' . $this->typeOfInquiry . '-form');
         }
     }
