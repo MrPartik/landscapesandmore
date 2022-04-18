@@ -47,7 +47,9 @@ class VerifyContactStreak
         $aAllBoxes = array_filter($aAllBoxes, function ($aBox) use ($aSearchedContact) {
             return array_key_exists('contacts', $aBox) && in_array($aSearchedContact['key'], array_column(@$aBox['contacts'], 'key'));
         });
-        $aBox = @array_values($aAllBoxes)[(count($aAllBoxes) > 0) ? count($aAllBoxes) - 1 : 0];
+        $aIStageKeys = array_column($aAllBoxes, 'stageKey');
+        sort($aIStageKeys);
+        $aBox = @array_values($aAllBoxes)[array_search($aIStageKeys[0], array_column($aAllBoxes, 'stageKey'))];
         $sStageKey = $aBox['stageKey'] ?? '';
         if ($sStageKey === '' || in_array($sStageKey, $aAllowedStageKey) === false)
         {
