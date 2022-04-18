@@ -17,7 +17,7 @@
                 <x-jet-nav-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
                     {{ __('Pre Defined Values') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('admin.our_process') }}" :active="request()->routeIs('admin.our_process')">
+                <x-jet-nav-link style="display: none" href="{{ route('admin.our_process') }}" :active="request()->routeIs('admin.our_process')">
                     {{ __('Our Process') }}
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.blog') }}" :active="request()->routeIs('admin.blog') || request()->routeIs('admin.blog-edit')">

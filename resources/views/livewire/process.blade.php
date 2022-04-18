@@ -187,7 +187,7 @@
                             <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off" class="progress-steps-form">
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-4">
-                                    <li class="active contact-us"><strong>Contact Us</strong></li>
+                                    <li class="active spinner"><strong>Project Status</strong></li>
                                     <li class="process-5002 consultation"><strong>Consultation</strong></li>
                                     <li class="process-5004 signing"><strong>Contract Signing</strong></li>
                                     <li class="process-5006 maintenance-service"><strong>Maintenance Service</strong></li>
