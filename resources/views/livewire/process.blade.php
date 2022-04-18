@@ -27,7 +27,7 @@
                                     <li class="active spinner"><strong>Project Status</strong></li>
                                     <li class="process-5002 process-5004 consultation"><strong>Consultation</strong></li>
                                     <li class="process-5003 design"><strong>Design</strong></li>
-                                    <li class="process-5005 design-presentation"><strong>Design Presentation</strong></li>
+                                    <li class="process-5005 signing"><strong>Contract Signing</strong></li>
                                     <li class="process-5010 sold"><strong>Sold Project</strong></li>
                                 </ul> <!-- fieldsets -->
                                 <fieldset class="process-default">
@@ -148,7 +148,7 @@
                                 </fieldset>
                                 <fieldset class="process-5005">
                                     <div class="form-card">
-                                        <h2 class="fs-title">Design Presentation</h2><div class="row" style="color: var(--primary-color-1)">
+                                        <h2 class="fs-title">Contract Signing</h2><div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
                                                 <strong>We have sent your contract to your email address, please open and sign using your device.  </strong>
                                             </div>
@@ -307,7 +307,7 @@
                                             <div class="col-lg-6 col-md-12" style="text-align-last: center;">
                                                 <i class="fa fa-file-invoice-dollar" aria-hidden="true" style="color: var(--primary-color-1);font-size: 75px;margin-bottom: 20px;"></i>
                                                 <br>
-                                                <strong>Congratulations! Your project is underway. One of our representatives will reach out to you via email for your project updates. </strong>
+                                                <strong> Congratulations! Your maintenance service is underway. One of our representatives will reach out to you via email for your project updates.  </strong>
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
