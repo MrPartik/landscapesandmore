@@ -131,7 +131,7 @@
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
                                                 <strong>
-                                                    We are in the process of creating the estimate of your project, one of our representatives will contact you for an update.
+                                                    We are in the process of creating the estimate of your project, one of our representatives will contact you for an update. <br/>
                                                     Your estimated design presentation date is on: {{ $sDesignPresentationDate }}
                                                 </strong>
                                             </div>
