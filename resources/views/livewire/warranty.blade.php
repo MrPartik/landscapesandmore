@@ -115,11 +115,11 @@
                         <strong>Have you been following the watering guide that has been given to you?</strong>
                         <div class="de_form de_radio">
                             <span class="mr20">
-                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_1" name="doYouFollowWateringGuide" type="radio" value="true" checked="checked">
+                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_1" name="doYouFollowWateringGuide[]" type="radio" value="yes" checked="checked">
                                     <label for="project_description_1">Yes</label>
                                 </span>
                             <span class="mr20">
-                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_2" name="doYouFollowWateringGuide" type="radio" value="false">
+                                <input wire:model.lazy="doYouFollowWateringGuide" id="project_description_2" name="doYouFollowWateringGuide[]" type="radio" value="no">
                                     <label for="project_description_2">No</label>
                                 </span>
                         </div>
@@ -128,7 +128,7 @@
                             <strong class="de_form" for="input_7_9">Please Provide Pictures Of Your Landscape In Question</strong>
                             <div>
                                 <input id="uploadPicturesOfLandscapes" style="display: none" wire:model="picturesOfLandscapes" type="file" accept="image/*" multiple>
-                                <input onclick="$('#uploadPicturesOfLandscapes').click()" value='Upload Images' class="btn btn-primary">
+                                <input id="uploadPictureDummyButton" onclick="$('#uploadPicturesOfLandscapes').click()" value='Upload Images' class="btn btn-primary">
                                 <span>Max. file size: 2 GB.</span>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
 
                 window.livewire.on('warranty-success', function (oResult) {
                     successWarrantySubmission();
-                    $('#contact_form').find('input, textarea').not('[type=submit]').val('');
+                    $('#contact_form').find('input, textarea').not('[type=submit],#uploadPictureDummyButton').val('');
                 });
         </script>
     @endsection

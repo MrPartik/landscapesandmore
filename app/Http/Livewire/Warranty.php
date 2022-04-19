@@ -67,7 +67,7 @@ class Warranty extends Component
     public $picturesOfLandscapes = [];
     /**
      * Validation Rules
-     *
+     *Have you been following the watering guide that has been given to you
      * @var array
      */
     private $aWarrantyRule = [
@@ -121,7 +121,7 @@ class Warranty extends Component
         $oWarrantyModel->zip_code = $aValidated['zipCode'] ?? '-';
         $oWarrantyModel->often_water = $aValidated['oftenDoYouWater'];
         $oWarrantyModel->knowledge_in_plant = $aValidated['plantName'];
-        $oWarrantyModel->following_watering_guide = $aValidated['doYouFollowWateringGuide'];
+        $oWarrantyModel->following_watering_guide = $aValidated['doYouFollowWateringGuide'] === 'yes';
         $oWarrantyModel->images = json_encode($aFilePaths, true);
         $oWarrantyModel->save();
 
