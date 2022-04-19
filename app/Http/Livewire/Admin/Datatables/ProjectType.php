@@ -44,6 +44,7 @@ class ProjectType extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('project_type_id');
+        $this->setColumnSelectStatus(false);
     }
 
     /**

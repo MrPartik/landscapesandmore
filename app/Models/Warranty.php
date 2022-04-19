@@ -24,6 +24,8 @@ class Warranty extends Model
         'often_water',
         'knowledge_in_plant',
         'following_watering_guide',
+        'was_resolved',
+        'remarks',
         'images',
         'created_at',
         'updated_at',
@@ -41,6 +43,7 @@ class Warranty extends Model
      * @var array
      */
     protected $casts = [
+        'following_watering_guide' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

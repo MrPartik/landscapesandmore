@@ -16,6 +16,7 @@ class ContactUs extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('contact_us_id');
+        $this->setColumnSelectStatus(false);
     }
 
     /**

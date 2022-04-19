@@ -12,6 +12,7 @@ class Blog extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('blog_id');
+        $this->setColumnSelectStatus(false);
     }
 
     public function columns(): array

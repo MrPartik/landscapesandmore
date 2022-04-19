@@ -16,6 +16,7 @@ class Warranty extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('warranty_id');
+        $this->setColumnSelectStatus(false);
     }
 
     /**
@@ -25,54 +26,52 @@ class Warranty extends DataTableComponent
     {
         return [
             Column::make("Name", 'warranty_id')
-                ->format(function($mValue, $mRow, $oColumn) {
+                ->format(function ($mValue, $mRow, $oColumn) {
                     return $mRow->last_name . ', ' . $mRow->first_name;
                 })
-                ->sortable()
                 ->searchable(),
             Column::make("Email", "email")
-                ->sortable()
                 ->searchable(),
             Column::make("Phone", "phone")
                 ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
-            Column::make("Home address", "home_address")
-                ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
-            Column::make("City address", "city_address")
-                ->collapseOnMobile()
-                ->sortable()
                 ->searchable(),
             Column::make("Zip code", "zip_code")
                 ->collapseOnMobile()
-                ->sortable()
                 ->searchable(),
-            Column::make("How Often Do You Water", "often_water")
-                ->collapseOnMobile()
-                ->sortable()
+            Column::make("Date Resolved", "was_resolved")
+                ->format(function ($mValue) {
+                    return ($mValue) ? \Carbon\Carbon::make($mValue)->format('Y-m-d H:i') : '<span class="text-danger">Not Resolved</span>';
+                })->html()
                 ->searchable(),
-            Column::make("Do you know the name of the plant?", "knowledge_in_plant")
+            Column::make("Remarks", "remarks")
+                ->format(function ($mValue) {
+                    return ($mValue) ?? '-';
+                })
                 ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
-            Column::make("Have you been following the watering guide?", "following_watering_guide")
-                ->collapseOnMobile()
-                ->sortable()
                 ->searchable(),
             Column::make("Updated at", "updated_at")
-                ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
+                ->format(function ($mValue) {
+                    return \Carbon\Carbon::make($mValue)->format('Y-m-d H:i');
+                }),
+            Column::make("Actions", "warranty_id")
+                ->format(function ($mValue, $oRow, $oColumn) {
+                    return view('livewire.admin.datatables.warranty')->with([
+                        'iId' => $mValue,
+                    ]);
+                }),
         ];
     }
 
     /**
      * @inheritDoc
      */
-    public function builder() : Builder
+    public function builder(): Builder
     {
-        return WarrantyModel::query()->select();
+        return WarrantyModel::query()->select()->orderBy('updated_at');
+    }
+
+    public function initWarrantDetails(int $iId)
+    {
+        $this->emit('initWarrantDetails', $iId);
     }
 }

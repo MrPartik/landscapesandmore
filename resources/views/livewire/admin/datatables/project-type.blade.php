@@ -17,7 +17,7 @@
         </button>
     @endif
 </div>
-    <x-jet-dialog-modal wire:model="bShowEditProjectTypeModal">
+<x-jet-dialog-modal wire:model="bShowEditProjectTypeModal">
         <x-slot name="title">
             {{ __('Edit Project Description') }}
         </x-slot>

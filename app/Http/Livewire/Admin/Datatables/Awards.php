@@ -15,6 +15,7 @@ class Awards extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('awards_id');
+        $this->setColumnSelectStatus(false);
     }
 
     public function findAward(int $iId) {
