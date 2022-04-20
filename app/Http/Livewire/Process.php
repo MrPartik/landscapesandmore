@@ -36,6 +36,7 @@ class Process extends Component
 
     public $sConsultationDate = '';
     public $sDesignPresentationDate = '';
+    public $sDesignAppointmentDate = '';
 
     public $streakApiResult = '';
 
@@ -59,10 +60,12 @@ class Process extends Component
         $this->clearProcessForm(false);
         $this->validate(['emailAddress' => 'required|email']);
         $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->searchEmailData($this->emailAddress, $this->typeOfInquiry, (($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? self::ALLOWED_STAGE_LANDSCAPE: self::ALLOWED_STAGE_MAINTENANCE));
-        $sConsultation = @$this->streakApiResult['fields'][1009] ?? Carbon::now()->addWeek(2)->getTimestampMs();
-        $sDesignPresentationDate = @$this->streakApiResult['fields'][(($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? 1026 : 1019)] ?? Carbon::now()->addWeek(2)->getTimestampMs();
+        $sConsultation = @$this->streakApiResult['fields'][1009] ?? 'Not Set';
+        $sDesignAppointmentDate = @$this->streakApiResult['fields'][1012] ?? 'Not Set';
+        $sDesignPresentationDate = @$this->streakApiResult['fields'][(($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? 1026 : 1019)] ?? 'Not Set';
         $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sConsultation)->format('M d, Y h:i a') : 'Not Set';
         $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignPresentationDate)->format('M d, Y h:i a') : 'Not Set';
+        $this->sDesignAppointmentDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignAppointmentDate)->format('M d, Y h:i a') : 'Not Set';
         $this->isProcessed = true;
     }
 
