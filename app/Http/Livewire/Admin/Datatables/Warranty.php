@@ -42,7 +42,7 @@ class Warranty extends DataTableComponent
                             ->orwhere('phone', 'LIKE', '%' . $sText . '%')
                             ->orwhere('zip_code', 'LIKE', '%' . $sText . '%');
                 }),
-            Column::make("Date Resolved", "was_resolved")
+            Column::make("Was Resolved", "was_resolved")
                 ->format(function ($mValue) {
                     return ($mValue) ? \Carbon\Carbon::make($mValue)->format('Y-m-d H:i') : '<span class="text-danger">Not Resolved</span>';
                 })->html()
