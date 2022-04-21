@@ -26,6 +26,7 @@ class Warranty extends Migration
             $oTable->text('knowledge_in_plant');
             $oTable->boolean('following_watering_guide');
             $oTable->datetime('was_resolved')->nullable();
+            $oTable->datetime('was_contacted')->nullable();
             $oTable->text('remarks')->nullable();
             $oTable->text('images');
             $oTable->timestamps();

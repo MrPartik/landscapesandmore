@@ -25,6 +25,7 @@ class Warranty extends Model
         'knowledge_in_plant',
         'following_watering_guide',
         'was_resolved',
+        'was_contacted',
         'remarks',
         'images',
         'created_at',

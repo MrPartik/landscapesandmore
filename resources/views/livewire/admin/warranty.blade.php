@@ -101,4 +101,31 @@
             </x-jet-secondary-button>
         </x-slot>
     </x-jet-dialog-modal>
+
+    <x-jet-dialog-modal wire:model="bShowRemarksModal" >
+        <x-slot name="title">
+            {{ __('Warranty Remarks') }}
+        </x-slot>
+
+        <x-slot name="content">
+            {{ __('Please write your remark.') }}
+            <div class="mt-2" x-data="{}">
+                <div class="mb-3">
+                    <label class="col-form-label" for="name">
+                        Name
+                    </label>
+                    <x-jet-input id=remarks wire:model.lazy="sRemarks"  type="text" class="form-control" placeholder="{{ __('Remarks') }}"/>
+                </div>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('bShowRemarksModal')" wire:loading.attr="disabled">
+                {{ __('Close') }}
+            </x-jet-secondary-button>
+            <x-jet-button class="ml-2" wire:click="markStatusResolve()"  wire:loading.attr="disabled">
+                {{ __('Mark as ' . (($sType === 'resolved') ?  ' Resolved' : 'Un-resolved')) }}
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>

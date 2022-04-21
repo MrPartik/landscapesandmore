@@ -36,6 +36,9 @@ class Warranty extends DataTableComponent
                 ->collapseOnMobile()
                 ->searchable(),
             Column::make("Zip code", "zip_code")
+                ->format(function ($mValue) {
+                    return (in_array($mValue, \config('landscaping.allowed_zip_code'))) ? $mValue : '<span class="text-danger">' . $mValue . '</span>';
+                })->html()
                 ->collapseOnMobile()
                 ->searchable(),
             Column::make("Date Resolved", "was_resolved")
@@ -53,10 +56,27 @@ class Warranty extends DataTableComponent
                 ->format(function ($mValue) {
                     return \Carbon\Carbon::make($mValue)->format('Y-m-d H:i');
                 }),
+            Column::make("Resolved", "was_resolved")
+                ->format(function ($mValue, $oRow) {
+                    return view('livewire.admin.datatables.warranty')->with([
+                        'sType'          => 'is_resolved',
+                        'iId'            => $oRow->warranty_id,
+                        'sResolvedDate'  => $mValue
+                    ]);
+                }),
+            Column::make("Contacted", "was_contacted")
+                ->format(function ($mValue, $oRow) {
+                    return view('livewire.admin.datatables.warranty')->with([
+                        'sType'          => 'is_contacted',
+                        'iId'            => $oRow->warranty_id,
+                        'sContactedDate' => $mValue
+                    ]);
+                }),
             Column::make("Actions", "warranty_id")
                 ->format(function ($mValue, $oRow, $oColumn) {
                     return view('livewire.admin.datatables.warranty')->with([
-                        'iId' => $mValue,
+                        'sType' => 'actions',
+                        'iId'   => $mValue,
                     ]);
                 }),
         ];
@@ -67,11 +87,24 @@ class Warranty extends DataTableComponent
      */
     public function builder(): Builder
     {
-        return WarrantyModel::query()->select()->orderBy('updated_at');
+        return WarrantyModel::query()->select()->orderBy('created_at');
     }
 
     public function initWarrantDetails(int $iId)
     {
         $this->emit('initWarrantDetails', $iId);
     }
+
+    public function markStatusResolve(int $iId, string $sResolutionType)
+    {
+        $this->emit('showRemarksModal', $iId, $sResolutionType);
+    }
+
+    public function saveStatusContact(int $iId)
+    {
+        $oWarranty = WarrantyModel::find($iId);
+        $oWarranty->was_contacted = ($oWarranty->was_contacted === null) ? now() : null;
+        $oWarranty->save();
+    }
+
 }
