@@ -57,20 +57,20 @@ class Warranty extends DataTableComponent
                 ->format(function ($mValue) {
                     return \Carbon\Carbon::make($mValue)->format('Y-m-d H:i');
                 }),
-            Column::make("Resolved", "was_resolved")
-                ->format(function ($mValue, $oRow) {
-                    return view('livewire.admin.datatables.warranty')->with([
-                        'sType'          => 'is_resolved',
-                        'iId'            => $oRow->warranty_id,
-                        'sResolvedDate'  => $mValue
-                    ]);
-                }),
             Column::make("Contacted", "was_contacted")
                 ->format(function ($mValue, $oRow) {
                     return view('livewire.admin.datatables.warranty')->with([
                         'sType'          => 'is_contacted',
                         'iId'            => $oRow->warranty_id,
                         'sContactedDate' => $mValue
+                    ]);
+                }),
+            Column::make("Resolved", "was_resolved")
+                ->format(function ($mValue, $oRow) {
+                    return view('livewire.admin.datatables.warranty')->with([
+                        'sType'          => 'is_resolved',
+                        'iId'            => $oRow->warranty_id,
+                        'sResolvedDate'  => $mValue
                     ]);
                 }),
             Column::make("Actions", "warranty_id")
