@@ -15,6 +15,7 @@
             <button title="Not Contacted" class="btn btn-danger" wire:click="saveStatusContact({{ $iId }})">
                 <span class="fa fa-times text-white"></span>
             </button>
+            <br/>
             {{ \Carbon\Carbon::make($sContactedDate)->format('Y-m-d H:i') }}
         @endif
     @elseif($sType === 'is_resolved')

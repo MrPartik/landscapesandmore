@@ -25,22 +25,23 @@ class Warranty extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Name", 'warranty_id')
+            Column::make("Name", 'last_name')
                 ->format(function ($mValue, $mRow, $oColumn) {
-                    return $mRow->last_name . ', ' . $mRow->first_name;
-                })
-                ->searchable(),
-            Column::make("Email", "email")
-                ->searchable(),
-            Column::make("Phone", "phone")
-                ->collapseOnMobile()
-                ->searchable(),
-            Column::make("Zip code", "zip_code")
-                ->format(function ($mValue) {
-                    return (in_array($mValue, \config('landscaping.allowed_zip_code'))) ? $mValue : '<span class="text-danger">' . $mValue . '</span>';
+                    $sPersonalInfo = '';
+                    $sPersonalInfo .= sprintf('<strong>Name: </strong>%s<br/>', $mRow->last_name . ', ' . $mRow->first_name);
+                    $sPersonalInfo .= sprintf('<strong>Email: </strong>%s<br/>', $mRow->email);
+                    $sPersonalInfo .= sprintf('<strong>Phone: </strong>%s<br/>', $mRow->phone);
+                    $sPersonalInfo .= sprintf('<strong>Zip Code: </strong>%s<br/>', $mRow->zip_code);
+                    return $sPersonalInfo;
                 })->html()
-                ->collapseOnMobile()
-                ->searchable(),
+                ->searchable(function($oQuery, $sText){
+                        return $oQuery
+                            ->orwhere('last_name', 'LIKE', '%' . $sText . '%')
+                            ->orwhere('first_name', 'LIKE', '%' . $sText . '%')
+                            ->orwhere('email', 'LIKE', '%' . $sText . '%')
+                            ->orwhere('phone', 'LIKE', '%' . $sText . '%')
+                            ->orwhere('zip_code', 'LIKE', '%' . $sText . '%');
+                }),
             Column::make("Date Resolved", "was_resolved")
                 ->format(function ($mValue) {
                     return ($mValue) ? \Carbon\Carbon::make($mValue)->format('Y-m-d H:i') : '<span class="text-danger">Not Resolved</span>';
