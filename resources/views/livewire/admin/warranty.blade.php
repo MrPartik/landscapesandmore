@@ -124,7 +124,7 @@
                 {{ __('Close') }}
             </x-jet-secondary-button>
             <x-jet-button class="ml-2" wire:click="markStatusResolve()"  wire:loading.attr="disabled">
-                {{ __('Mark as ' . (($sType === 'resolved') ?  ' Resolved' : 'Un-resolved')) }}
+                {{ __('Mark as ' . (($sType === 'resolve') ?  ' Resolved' : 'Un-resolved')) }}
             </x-jet-button>
         </x-slot>
     </x-jet-dialog-modal>
