@@ -83,7 +83,7 @@
                         </div>
                         <hr class="m-2"/>
                         <div class="col-12">
-                            <div class="row">
+                            <div class="row" style="display: inherit">
                                 @foreach(json_decode($aWarrantyModel->images ?? '[]', true) as $sImageUrl)
                                     <a href="{{ url($sImageUrl) }}" target="_blank"><img class="col-3" src="{{ url($sImageUrl) }}"></a>
                                 @endforeach
