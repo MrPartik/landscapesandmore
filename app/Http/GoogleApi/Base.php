@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\StreakApi;
+namespace App\Http\GoogleApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
@@ -47,12 +47,14 @@ class Base
 
     /**
      * @param string $sUrl
+     * @param array $aData
      * @return array|mixed
      */
-    protected function post(string $sUrl)
+    protected function post(string $sUrl, array $aData = [])
     {
-        $oRequest = $this->http()->post(config('streak.api_domain') . str_replace('//', '/', $this->sApiVersion . $sUrl));
-
+        $oRequest = $this->http()->post(config('streak.api_domain') . str_replace('//', '/', $this->sApiVersion . $sUrl), [
+                'body' => json_encode($aData, true)
+        ]);
         return $oRequest->json() ?? [];
     }
 }

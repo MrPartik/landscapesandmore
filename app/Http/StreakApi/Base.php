@@ -45,14 +45,15 @@ class Base
         return $oRequest->json() ?? [];
     }
 
+
     /**
      * @param string $sUrl
+     * @param array $aData
      * @return array|mixed
      */
-    protected function post(string $sUrl)
+    protected function post(string $sUrl, array $aData = [])
     {
-        $oRequest = $this->http()->post(config('streak.api_domain') . str_replace('//', '/', $this->sApiVersion . $sUrl));
-
+        $oRequest = $this->http()->post(config('streak.api_domain') . str_replace('//', '/', $this->sApiVersion . $sUrl), $aData);
         return $oRequest->json() ?? [];
     }
 }

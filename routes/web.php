@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('test', function () {
-
+    return (new \App\Http\StreakApi\StreakFunctions())->search('jkspiller@msn.com');
 });
 
 Route::get('js/google-api/maps.js', function () {

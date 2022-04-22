@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div id='zip_code_error' class='error'>Please enter your zip code</div>
-                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code" required>
+                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code">
                             </div>
                         </div>
                         <div id='phone_error' class='error'>Please enter your phone number.</div>

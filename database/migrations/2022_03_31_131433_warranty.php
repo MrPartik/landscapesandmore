@@ -15,6 +15,7 @@ class Warranty extends Migration
     {
         Schema::create('warranty', function(Blueprint $oTable) {
             $oTable->bigIncrements('warranty_id');
+            $oTable->string('reference_no', 100);
             $oTable->string('first_name', 100);
             $oTable->string('last_name', 100);
             $oTable->string('email', 100);
