@@ -28,6 +28,7 @@ class Warranty extends DataTableComponent
             Column::make("Name", 'last_name')
                 ->format(function ($mValue, $mRow, $oColumn) {
                     $sPersonalInfo = '';
+                    $sPersonalInfo .= sprintf('<strong>Reference No: </strong>%s<br/>', $mRow->reference_no);
                     $sPersonalInfo .= sprintf('<strong>Name: </strong>%s<br/>', $mRow->last_name . ', ' . $mRow->first_name);
                     $sPersonalInfo .= sprintf('<strong>Email: </strong>%s<br/>', $mRow->email);
                     $sPersonalInfo .= sprintf('<strong>Phone: </strong>%s<br/>', $mRow->phone);
@@ -36,6 +37,7 @@ class Warranty extends DataTableComponent
                 })->html()
                 ->searchable(function($oQuery, $sText){
                         return $oQuery
+                            ->orwhere('reference_no', 'LIKE', '%' . $sText . '%')
                             ->orwhere('last_name', 'LIKE', '%' . $sText . '%')
                             ->orwhere('first_name', 'LIKE', '%' . $sText . '%')
                             ->orwhere('email', 'LIKE', '%' . $sText . '%')
