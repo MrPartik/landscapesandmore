@@ -14,12 +14,33 @@ class Warranty extends Component
     public $sRemarks = '';
     public $iId = 0;
     public $sType = '';
+    public $aCounts = [
+        'serviceable_area' => 0,
+        'contacted'        => 0,
+        'resolved'         => 0,
+        'total'            => 0,
+        'not_contacted'    => 0,
+        'not_resolved'     => 0,
+    ];
 
-    protected $listeners = ['initWarrantDetails', 'showRemarksModal'];
+    protected $listeners = ['initWarrantDetails', 'showRemarksModal', 'initWarrantyDashboardCounter'];
 
     public function render()
     {
+        $this->initWarrantyDashboardCounter();
         return view('livewire.admin.warranty');
+    }
+
+    public function initWarrantyDashboardCounter()
+    {
+        $this->aCounts = [
+            'serviceable_area' => WarrantyModel::all()->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'contacted'        => WarrantyModel::all()->whereNotNull('was_contacted')->count(),
+            'resolved'         => WarrantyModel::all()->whereNotNull('was_resolved')->count(),
+            'total'            => WarrantyModel::all()->count(),
+            'not_contacted'    => WarrantyModel::all()->whereNull('was_contacted')->count(),
+            'not_resolved'     => WarrantyModel::all()->whereNull('was_resolved')->count(),
+        ];
     }
 
     public function initWarrantDetails(int $iWarrantyId)

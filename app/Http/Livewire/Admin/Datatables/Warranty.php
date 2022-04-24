@@ -96,11 +96,13 @@ class Warranty extends DataTableComponent
     public function initWarrantDetails(int $iId)
     {
         $this->emit('initWarrantDetails', $iId);
+        $this->emit('initWarrantyDashboardCounter');
     }
 
     public function markStatusResolve(int $iId, string $sResolutionType)
     {
         $this->emit('showRemarksModal', $iId, $sResolutionType);
+        $this->emit('initWarrantyDashboardCounter');
     }
 
     public function saveStatusContact(int $iId)
@@ -108,6 +110,7 @@ class Warranty extends DataTableComponent
         $oWarranty = WarrantyModel::find($iId);
         $oWarranty->was_contacted = ($oWarranty->was_contacted === null) ? now() : null;
         $oWarranty->save();
+        $this->emit('initWarrantyDashboardCounter');
     }
 
 }

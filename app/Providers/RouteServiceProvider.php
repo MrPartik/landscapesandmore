@@ -50,6 +50,11 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('front')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/front.php'));
+
+            Route::middleware('webhook')
+                ->namespace($this->namespace)
+                ->prefix('webhook')
+                ->group(base_path('routes/webhook.php'));
         });
     }
 

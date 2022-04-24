@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\StreakApi\StreakFunctions;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Warranty as WarrantyModel;
@@ -171,6 +172,12 @@ class Warranty extends Component
                 1008 => implode(', ', $aNewImages)
             ]
         ]);
+        if(@$aResponse['boxKey'] === null) {
+            Log::info('Unable to save streak box', @$oWarrantyModel->toArray ?? []);
+            return ['error' => 'Unable to save streak box'];
+        }
+        $oWarrantyModel->streak_box_key = $aResponse['boxKey'];
+        $oWarrantyModel->save();
         $aSearchedContacts = (new StreakFunctions())->search($oWarrantyModel->email);
         if (empty($aSearchedContacts['results']['contacts'][0]['emailAddresses'][0]) === false && $aSearchedContacts['results']['contacts'][0]['emailAddresses'][0] === $oWarrantyModel->email) {
             $aResponse = (new StreakFunctions())->updateBox($aResponse['boxKey'], [
