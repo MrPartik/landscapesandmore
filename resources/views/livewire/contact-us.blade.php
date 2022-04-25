@@ -172,7 +172,7 @@
                             icon: 'success',
                             html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
                                 'Please allow us 24-48hrs to review your information. <br/>' +
-                                'You may check the status of your application status here: <a href="javascript:"> Application Status.</a>',
+                                'You may check the status of your application status here: <a class="btn-link" href="{{ url('/process') }}"> Application Status.</a>',
                             showCancelButton: false,
                             showConfirmButton: false,
                             showCloseButton: true,
