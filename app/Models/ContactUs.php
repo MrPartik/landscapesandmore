@@ -14,6 +14,8 @@ class ContactUs extends Model
      */
     protected $fillable = [
         'contact_us_id',
+        'reference_no',
+        'streak_box_key',
         'first_name',
         'last_name',
         'email',

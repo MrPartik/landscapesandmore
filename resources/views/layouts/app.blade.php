@@ -18,6 +18,7 @@
         <script src="{{ url('/js/kothing/katex.min.js') }}"></script>
         <link href="{{ url('/css/kothing/kothing-editor.min.css') }}" rel="stylesheet"/>
         <script src="{{ url('/js/kothing/kothing-editor.min.js') }}"></script>
+        <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
 
         @livewireStyles
 

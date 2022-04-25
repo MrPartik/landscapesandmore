@@ -32,7 +32,7 @@ class Warranty extends DataTableComponent
                     $sPersonalInfo .= sprintf('<strong>Name: </strong>%s<br/>', $mRow->last_name . ', ' . $mRow->first_name);
                     $sPersonalInfo .= sprintf('<strong>Email: </strong>%s<br/>', $mRow->email);
                     $sPersonalInfo .= sprintf('<strong>Phone: </strong>%s<br/>', $mRow->phone);
-                    $sPersonalInfo .= sprintf('<strong>Zip Code: </strong>%s<br/>', $mRow->zip_code);
+                    $sPersonalInfo .= sprintf('<span class="%s"><strong>Zip Code: </strong>%s</span><br/>', ((in_array($mRow->zip_code, config('landscaping.allowed_zip_code')) === false ? 'text-danger text' : '')), $mRow->zip_code);
                     return $sPersonalInfo;
                 })->html()
                 ->searchable(function($oQuery, $sText){

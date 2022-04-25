@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\StreakApi\StreakFunctions;
+use App\Library\StreakLibrary;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -148,18 +149,18 @@ class Warranty extends Component
     }
 
     /**
-     * @param $oWarrantyModel
+     * @param $oModel
      * @return mixed
      */
-    private function createBox($oWarrantyModel)
+    private function createBox(WarrantyModel $oModel)
     {
-        $aImages = json_decode($oWarrantyModel->images ?? '[]', true);
+        $aImages = json_decode($oModel->images ?? '[]', true);
         $aNewImages = [];
         foreach ($aImages as $sImageUrl) {
             $aNewImages[] = config('app.url') . $sImageUrl;
         }
-        $aResponse = (new StreakFunctions())->createBox(config('streak.warranty_claim_pipeline_key'),  [
-            'name'     => sprintf('%s, %s', $oWarrantyModel->last_name, $oWarrantyModel->first_name),
+        return StreakLibrary::createBox($oModel, config('streak.warranty_claim_pipeline_key'), $oModel->email, [
+            'name'     => sprintf('%s, %s', $oModel->last_name, $oModel->first_name),
             'stageKey' => 5001,
             'assignedToSharingEntries' => [
                 [
@@ -168,28 +169,9 @@ class Warranty extends Component
             ],
             'notes' => '',
             'fields' => [
-                1006 => $oWarrantyModel->reference_no,
+                1006 => $oModel->reference_no,
                 1008 => implode(', ', $aNewImages)
             ]
         ]);
-        if(@$aResponse['boxKey'] === null) {
-            Log::info('Unable to save streak box', @$oWarrantyModel->toArray ?? []);
-            return ['error' => 'Unable to save streak box'];
-        }
-        $oWarrantyModel->streak_box_key = $aResponse['boxKey'];
-        $oWarrantyModel->save();
-        $aSearchedContacts = (new StreakFunctions())->search($oWarrantyModel->email);
-        if (empty($aSearchedContacts['results']['contacts'][0]['emailAddresses'][0]) === false && $aSearchedContacts['results']['contacts'][0]['emailAddresses'][0] === $oWarrantyModel->email) {
-            $aResponse = (new StreakFunctions())->updateBox($aResponse['boxKey'], [
-                'contacts' => [
-                    [
-                        'isStarred'   => false,
-                        'isAutoboxed' => false,
-                        'key'         => $aSearchedContacts['results']['contacts'][0]['key']
-                    ]
-                ]
-            ]);
-        }
-        return $aResponse;
     }
 }

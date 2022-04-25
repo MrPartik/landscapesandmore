@@ -15,6 +15,8 @@ class ContactUs extends Migration
     {
         Schema::create('contact_us', function(Blueprint $oTable) {
             $oTable->bigIncrements('contact_us_id');
+            $oTable->text('streak_box_key')->nullable();
+            $oTable->string('reference_no', 100);
             $oTable->string('first_name', 100);
             $oTable->string('last_name', 100);
             $oTable->string('email', 100);

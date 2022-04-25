@@ -25,32 +25,29 @@ class ContactUs extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Name", 'contact_us_id')
-                ->format(function($mValue, $mRow, $oColumn) {
-                    return $mRow->last_name . ', ' . $mRow->first_name;
-                })
-                ->sortable()
-                ->searchable(),
-            Column::make("Email", "email")
-                ->sortable()
-                ->searchable(),
-            Column::make("Phone", "phone")
-                ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
-            Column::make("Home address", "home_address")
-                ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
-            Column::make("City address", "city_address")
-                ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
-            Column::make("Zip code", "zip_code")
-                ->collapseOnMobile()
-                ->sortable()
-                ->searchable(),
+            Column::make("Name", 'first_name')
+                ->format(function ($mValue, $mRow, $oColumn) {
+                    $sPersonalInfo = '';
+                    $sPersonalInfo .= sprintf('<strong>Reference No: </strong>%s<br/>', $mRow->reference_no);
+                    $sPersonalInfo .= sprintf('<strong>Name: </strong>%s<br/>', $mRow->last_name . ', ' . $mRow->first_name);
+                    $sPersonalInfo .= sprintf('<strong>Email: </strong>%s<br/>', $mRow->email);
+                    $sPersonalInfo .= sprintf('<strong>Phone: </strong>%s<br/>', $mRow->phone);
+                    $sPersonalInfo .= sprintf('<span class="%s"><strong>Zip Code: </strong>%s</span><br/>', ((in_array($mRow->zip_code, config('landscaping.allowed_zip_code')) === false ? 'text-danger text' : '')), $mRow->zip_code);
+                    return $sPersonalInfo;
+                })->html()
+                ->searchable(function($oQuery, $sText){
+                    return $oQuery
+                        ->orwhere('reference_no', 'LIKE', '%' . $sText . '%')
+                        ->orwhere('last_name', 'LIKE', '%' . $sText . '%')
+                        ->orwhere('first_name', 'LIKE', '%' . $sText . '%')
+                        ->orwhere('email', 'LIKE', '%' . $sText . '%')
+                        ->orwhere('phone', 'LIKE', '%' . $sText . '%')
+                        ->orwhere('zip_code', 'LIKE', '%' . $sText . '%');
+                }),
             Column::make("Project description", "project_description")
+                ->format(function ($mValue) {
+                    return ($mValue === 'landscape') ? 'Landscape' : 'Maintenance and Turf Care';
+                })
                 ->collapseOnMobile()
                 ->sortable()
                 ->searchable(),
