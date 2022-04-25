@@ -33,13 +33,14 @@ class Warranty extends Component
 
     public function initWarrantyDashboardCounter()
     {
+        $aModel = WarrantyModel::all();
         $this->aCounts = [
-            'serviceable_area' => WarrantyModel::all()->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
-            'contacted'        => WarrantyModel::all()->whereNotNull('was_contacted')->count(),
-            'resolved'         => WarrantyModel::all()->whereNotNull('was_resolved')->count(),
-            'total'            => WarrantyModel::all()->count(),
-            'not_contacted'    => WarrantyModel::all()->whereNull('was_contacted')->count(),
-            'not_resolved'     => WarrantyModel::all()->whereNull('was_resolved')->count(),
+            'serviceable_area' => $aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'contacted'        => $aModel->whereNotNull('was_contacted')->count(),
+            'resolved'         => $aModel->whereNotNull('was_resolved')->count(),
+            'total'            => $aModel->count(),
+            'not_contacted'    => $aModel->whereNull('was_contacted')->count(),
+            'not_resolved'     => $aModel->whereNull('was_resolved')->count(),
         ];
     }
 
