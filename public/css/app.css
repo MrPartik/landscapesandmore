@@ -11671,3 +11671,9 @@ textarea.form-control-lg {
   color: #fff;
   font-size: 15px;
 }
+
+.nav-link.active {
+  background-color: #05683999;
+  color: white;
+  border-radius: 15px;
+}
