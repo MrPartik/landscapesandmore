@@ -12,6 +12,12 @@ class Blog extends Component
 {
     use WithFileUploads;
 
+    public $aCounts = [
+        'total'    => 0,
+        'active'   => 0,
+        'inactive' => 0
+    ];
+
     /**
      * @var bool
      */
@@ -53,9 +59,24 @@ class Blog extends Component
         'blogContent'=> 'required',
     ];
 
+    public $listeners = [
+        'initBlogDashboardCounter'
+    ];
+
     public function render()
     {
+        $this->initBlogDashboardCounter();
         return view('livewire.admin.blog');
+    }
+
+    public function initBlogDashboardCounter()
+    {
+        $aModel = BlogModel::all();
+        $this->aCounts = [
+            'total'    => $aModel->count(),
+            'active'   => $aModel->where('is_active', true)->count(),
+            'inactive' => $aModel->where('is_active', false)->count(),
+        ];
     }
 
     /**
@@ -98,5 +119,6 @@ class Blog extends Component
         $oBlogModel->description = '';
         $this->bShowAddPage = true;
         $this->emit('initializeWysiwyg');
+        redirect('/admin/blog');
     }
 }

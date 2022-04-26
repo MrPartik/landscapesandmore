@@ -63,6 +63,7 @@ class Blog extends DataTableComponent
         $oBlogModel = BlogModel::find($iId);
         $oBlogModel->is_active = !$oBlogModel->is_active;
         $oBlogModel->save();
+        $this->emit('initBlogDashboardCounter');
     }
     /**
      * Query Builder

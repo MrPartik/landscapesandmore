@@ -13,6 +13,12 @@ class Projects extends Component
 {
     use WithFileUploads;
 
+    public $aCounts = [
+        'total'    => 0,
+        'active'   => 0,
+        'inactive' => 0
+    ];
+
     /**
      * Project
      * @var array
@@ -74,6 +80,8 @@ class Projects extends Component
         'sNameOfProject'   => 'required',
     ];
 
+    public $listeners = ['initProjectTypeDashboardCounter'];
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -81,6 +89,7 @@ class Projects extends Component
     {
         $this->aProjects = $this->initProjects();
         $this->aProjectTypes = $this->initProjectTypes();
+        $this->initProjectTypeDashboardCounter();
         return view('livewire.admin.projects');
     }
 
@@ -124,6 +133,16 @@ class Projects extends Component
         $this->sNameOfProject = '';
         $this->iProjectTypeIdForProject = 0;
         $this->aProjectTypes = $this->initProjectTypes();
+    }
+
+    public function initProjectTypeDashboardCounter()
+    {
+        $aModel = ProjectTypesModel::all();
+        $this->aCounts = [
+            'total'    => $aModel->count(),
+            'active'   => $aModel->where('is_active', true)->count(),
+            'inactive' => $aModel->where('is_active', false)->count(),
+        ];
     }
 
     /**

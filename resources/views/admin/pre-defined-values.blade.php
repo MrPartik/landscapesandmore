@@ -4,5 +4,5 @@
             {{ __('Pre Defined Values') }}
         </h2>
     </x-slot>
-
+    @livewire('admin.pre-defined-values')
 </x-app-layout>

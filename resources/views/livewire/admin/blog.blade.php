@@ -7,6 +7,40 @@
                         <div class="col-2">
                             <button wire:click="toggleShowAddPage(false)" class="mb-4 btn btn-primary text-white"><span class="fa fa-plus"></span> Add Blog </button>
                         </div>
+                        <div class="config block">
+                            <div class="col-12 tab-content">
+                                <div class="container bootstrap snippets bootdey">
+                                    <div class="row">
+                                        <div class="col-md-4 col-xs-4">
+                                            <div class="config-one-item animated animation fadeInDown">
+                                                <a href="javascript:"><i class="fa fa-sticky-note blue"></i></a>
+                                                <h2>{{ $aCounts['total'] }}</h2>
+                                                <h4 class="br-blue">Total of Records</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-xs-4">
+                                            <div class="config-one-item animated animation fadeInDown">
+                                                <a href="javascript:"><i class="fa fa-check text-success"></i></a>
+                                                <h2>{{ $aCounts['active'] }}</h2>
+                                                <h4 class="br-green">Active</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-xs-4">
+                                            <div class="config-one-item animated animation fadeInDown">
+                                                <a href="javascript:"><i class="fa fa-times text-danger"></i></a>
+                                                <h2>{{ $aCounts['inactive'] }}</h2>
+                                                <h4 class="br-red">Inactive</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <br/>
+                        <h3>Blog List</h3>
+                        <br/>
+                        <br/>
                         <livewire:admin.datatables.blog id="blog-table" searchable="name, description" exportable />
                     @else
                         <h1>Create Blog</h1>

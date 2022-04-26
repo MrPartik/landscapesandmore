@@ -119,6 +119,6 @@ class BlogEdit extends Component
         $oBlogModel->featured_image = $mFeaturedImagePath;
         $oBlogModel->user_id = Auth::id();
         $oBlogModel->save();
-
+        redirect('/admin/blog');
     }
 }

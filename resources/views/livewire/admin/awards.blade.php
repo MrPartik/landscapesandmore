@@ -1,4 +1,5 @@
-<div class="row my-5">    <style>
+<div class="row my-5 ">
+    <style>
         .image-preview-container {
             position: relative;
             display: inline;
@@ -53,8 +54,35 @@
     </style>
     <div class="col-12">
         <div class="card shadow bg-light">
-            <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
-                <div class="row justify-content-end">
+            <div class="card-body bg-white px-5 py-3 border-bottom rounded-top ">
+                <div class="row justify-content-end config block">
+                    <div class="col-8 tab-content mt-5">
+                        <div class="container bootstrap snippets bootdey">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="config-one-item animated animation fadeInDown">
+                                        <i class="fa fa-sticky-note blue"></i>
+                                        <h2>{{ $aCounts['total'] }}</h2>
+                                        <h4 class="br-blue">Total of Records</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="config-one-item animated animation fadeInDown">
+                                        <i class="fa fa-check text-success"></i>
+                                        <h2>{{ $aCounts['active'] }}</h2>
+                                        <h4 class="br-green">Active</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="config-one-item animated animation fadeInDown">
+                                        <i class="fa fa-times text-danger"></i></a>
+                                        <h2>{{ $aCounts['inactive'] }}</h2>
+                                        <h4 class="br-red">Inactive</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-4">
                         <div class="mt-3" x-data="{}">
                             <strong> {{($iAwardId <= 0) ? __('Add Award') : __('Edit Award') }}</strong><br>
@@ -98,6 +126,9 @@
                     </div>
                 </div>
                 <div class="mt-4">
+                    <hr/>
+                    <h3>Award's List</h3>
+                    <br/>
                     <livewire:admin.datatables.awards id="awards-table" searchable="name, description" exportable />
                 </div>
             </div>

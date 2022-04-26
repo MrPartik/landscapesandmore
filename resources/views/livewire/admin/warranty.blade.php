@@ -7,42 +7,42 @@
                 <div class="row">
                     <div class="col-md-2 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-sticky-note blue"></i></a>
+                            <i class="fa fa-sticky-note blue"></i>
                             <h2>{{ $aCounts['total'] }}</h2>
-                            <h4 class="br-blue">Total of Record</h4>
+                            <h4 class="br-blue">Total of Records</h4>
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-phone green"></i></a>
+                            <i class="fa fa-phone green"></i></a>
                             <h2>{{ $aCounts['contacted'] }}</h2>
                             <h4 class="br-green">Contacted</h4>
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-check green"></i></a>
+                            <i class="fa fa-check green"></i></a>
                             <h2>{{ $aCounts['resolved'] }}</h2>
                             <h4 class="br-green">Resolved</h4>
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-times orange"></i>&nbsp;<i class="fa fa-phone orange"></i></a>
+                            <i class="fa fa-times orange"></i>&nbsp;<i class="fa fa-phone orange"></i></a>
                             <h2>{{ $aCounts['not_contacted'] }}</h2>
                             <h4 class="br-orange">Not yet contacted</h4>
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-times orange"></i>&nbsp;<i class="fa fa-check orange"></i></a>
+                            <i class="fa fa-times orange"></i>&nbsp;<i class="fa fa-check orange"></i></a>
                             <h2>{{ $aCounts['not_resolved'] }}</h2>
                             <h4 class="br-orange">Not yet resolved</h4>
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-times text-danger"></i>&nbsp;<i class="fa fa-map-marker text-danger"></i></a>
+                            <i class="fa fa-times text-danger"></i>&nbsp;<i class="fa fa-map-marker text-danger"></i></a>
                             <h2>{{ $aCounts['serviceable_area'] }}</h2>
                             <h4 class="br-red">Not of serviceable area</h4>
                         </div>

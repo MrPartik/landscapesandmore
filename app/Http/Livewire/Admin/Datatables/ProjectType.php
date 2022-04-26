@@ -90,6 +90,7 @@ class ProjectType extends DataTableComponent
     {
         $oProjectTypeModel = ProjectTypesModel::find($iProjectTypeId);
         $oProjectTypeModel->is_active = !$oProjectTypeModel->is_active;
+        $this->emit('initProjectTypeDashboardCounter');
         $oProjectTypeModel->save();
     }
 
@@ -99,6 +100,7 @@ class ProjectType extends DataTableComponent
     public function deleteProjectType(int $iProjectTypeId)
     {
         $oProjectTypeModel = ProjectTypesModel::find($iProjectTypeId);
+        $this->emit('initProjectTypeDashboardCounter');
         $oProjectTypeModel->delete();
     }
 

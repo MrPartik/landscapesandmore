@@ -75,5 +75,6 @@ class Awards extends DataTableComponent
         $oAwardModel = AwardsModel::find($iId);
         $oAwardModel->is_active = !$oAwardModel->is_active;
         $oAwardModel->save();
+        $this->emit('initAwardsDashboardCounter');
     }
 }

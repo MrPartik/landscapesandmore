@@ -7,28 +7,28 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-sticky-note blue"></i></a>
+                            <i class="fa fa-sticky-note blue"></i>
                             <h2>{{ $aCounts['total'] }}</h2>
-                            <h4 class="br-blue">Total of Record</h4>
+                            <h4 class="br-blue">Total of Records</h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-leaf green"></i></a>
+                            <i class="fa fa-leaf green"></i></a>
                             <h2>{{ $aCounts['landscape_type'] }}</h2>
                             <h4 class="br-green">Landscape</h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-people-carry orange"></i></a>
+                            <i class="fa fa-people-carry orange"></i></a>
                             <h2>{{ $aCounts['maintenance_type'] }}</h2>
                             <h4 class="br-orange">Maintenance and Turf Care</h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="config-one-item animated animation fadeInDown">
-                            <a href="javascript:"><i class="fa fa-times text-danger"></i>&nbsp;<i class="fa fa-map-marker text-danger"></i></a>
+                            <i class="fa fa-times text-danger"></i>&nbsp;<i class="fa fa-map-marker text-danger"></i></a>
                             <h2>{{ $aCounts['serviceable_area'] }}</h2>
                             <h4 class="br-red">Not serviceable area</h4>
                         </div>

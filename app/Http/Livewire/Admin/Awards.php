@@ -12,12 +12,19 @@ class Awards extends Component
     use WithFileUploads;
 
     public $listeners = [
-        'findAward'
+        'findAward',
+        'initAwardsDashboardCounter'
     ];
 
     public $pictureOfAward = '';
     public $description = '';
     public $iAwardId = 0;
+
+    public $aCounts = [
+        'total'    => 0,
+        'active'   => 0,
+        'inactive' => 0
+    ];
 
     private $aAwardRule = [
         'pictureOfAward' => 'required',
@@ -26,12 +33,24 @@ class Awards extends Component
 
     public function render()
     {
+        $this->initAwardsDashboardCounter();
         return view('livewire.admin.awards');
     }
+
 
     public function removePictureOfAward()
     {
         $this->pictureOfAward = '';
+    }
+
+    public function initAwardsDashboardCounter()
+    {
+        $aModel = AwardsModel::all();
+        $this->aCounts = [
+            'total'    => $aModel->count(),
+            'active'   => $aModel->where('is_active', true)->count(),
+            'inactive' => $aModel->where('is_active', false)->count(),
+        ];
     }
 
     /**
