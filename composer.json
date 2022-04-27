@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
+        "asantibanez/livewire-charts": "^2.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
@@ -14,8 +16,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
         "nascent-africa/jetstrap": "^2.5",
-        "rappasoft/laravel-livewire-tables": "^2.0",
-        "ext-json": "*"
+        "rappasoft/laravel-livewire-tables": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
