@@ -4,4 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+        <script src="//cdn.jsdelivr.net/npm/apexcharts"></script>
+        @livewireChartsScripts
+        @livewire('admin.dashboard')
 </x-app-layout>
