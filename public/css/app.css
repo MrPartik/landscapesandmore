@@ -11673,7 +11673,7 @@ textarea.form-control-lg {
 }
 
 .nav-link.active {
-  background-color: #05683999;
-  color: white;
-  border-radius: 15px;
+  background-color: #056839d1;
+  color: white !important;
+  border-radius: 10px;
 }
