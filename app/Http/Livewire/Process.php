@@ -23,7 +23,8 @@ class Process extends Component
     const ALLOWED_STAGE_MAINTENANCE = [
         5002,
         5004,
-        5006
+        5006,
+        5011
     ];
 
     public $typeOfInquiry = self::INQUIRY_TYPE_LANDSCAPE;

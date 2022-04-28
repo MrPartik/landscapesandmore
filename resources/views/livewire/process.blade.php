@@ -211,7 +211,7 @@
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-4">
                                     <li class="active spinner"><strong>Project Status</strong></li>
-                                    <li class="process-5002 consultation"><strong>Consultation</strong></li>
+                                    <li class="process-5002 process-5011 consultation"><strong>Consultation</strong></li>
                                     <li class="process-5004 signing"><strong>Contract Signing</strong></li>
                                     <li class="process-5006 maintenance-service"><strong>Maintenance Service</strong></li>
                                 </ul> <!-- fieldsets -->
@@ -263,6 +263,29 @@
                                 <fieldset class="process-5002">
                                     <div class="form-card">
                                         <h2 class="fs-title">Consultation</h2>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12">
+                                                <strong>We have sent your Zoom link to your email address.
+                                                    Your consultation date is on:
+                                                    {{ $sConsultationDate }}</strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="process-5011">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Opportunity</h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
                                                 <strong>We have sent your Zoom link to your email address.
