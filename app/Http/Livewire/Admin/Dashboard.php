@@ -34,7 +34,7 @@ class Dashboard extends Component
         $oPieChartContactUs = $this->createPieContactUs();
         $oPieChartWarrantyClaim = $this->createPieWarrantyClaim();
         $oLineChartPrevMonth = $this->createLinePrevMonth();
-//        $this->initDashboardCount();
+        $this->initDashboardCount();
         $this->firstRun = false;
         return view('livewire.admin.dashboard')
             ->with([
@@ -46,7 +46,6 @@ class Dashboard extends Component
 
     public function initDashboardCount()
     {
-        dd('asd');
         $this->aCount = [
             'contact_us'     => ContactUsModel::all()->count(),
             'warranty_claim' => WarrantyModel::all()->count(),
