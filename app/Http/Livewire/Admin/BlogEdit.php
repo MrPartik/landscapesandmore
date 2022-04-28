@@ -82,7 +82,6 @@ class BlogEdit extends Component
         $this->blogTags = $mBlogModel->tags;
         $this->blogDescription = $mBlogModel->description;
         $this->blogContentUrl = $mBlogModel->content;
-        $this->blogContent = Storage::disk('public')->get(str_replace('/storage', '', $mBlogModel->content));
 //        $this->emit('initializeWysiwyg');
     }
 
@@ -106,7 +105,6 @@ class BlogEdit extends Component
     {
         $this->validate($this->blogRules);
         $sFileName = str_replace(' ', '-', mb_strtolower(trim($this->blogTitle)));
-        Storage::disk('public')->put(str_replace('/storage', '', $this->blogContentUrl), $this->blogContent);
         $mFeaturedImagePath = $this->featuredImage;
         if (is_object($mFeaturedImagePath)) {
             $mFeaturedImagePath = $this->featuredImage->storeAs('public', 'blog/images/' . $sFileName . '-' . time() . '.' . $this->featuredImage->getClientOriginalExtension());
@@ -115,6 +113,7 @@ class BlogEdit extends Component
         $oBlogModel = BlogModel::find($this->iId);
         $oBlogModel->title = $this->blogTitle;
         $oBlogModel->tags = $this->blogTags;
+        $oBlogModel->content = $this->blogContent;
         $oBlogModel->description = $this->blogDescription;
         $oBlogModel->featured_image = $mFeaturedImagePath;
         $oBlogModel->user_id = Auth::id();

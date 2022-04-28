@@ -26,7 +26,7 @@
                                 <div class="post-text" style="min-width: 200px">
                                     <h3><a href="javscript:">{{ $aBlog->title }}</a></h3>
                                     <div class="kothing-editor-editable">
-                                        {!! @file_get_contents(url($aBlog->content)) ?? '' !!}
+                                        {!! $aBlog->content ?? '' !!}
                                     </div>
                                     <div class="spacer-single"></div>
                                 </div>

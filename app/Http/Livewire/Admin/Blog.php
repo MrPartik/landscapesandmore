@@ -99,14 +99,12 @@ class Blog extends Component
     {
         $this->validate($this->blogRules);
         $sFileName = str_replace(' ', '-', mb_strtolower(trim($this->blogTitle)));
-        $sFilePath = 'blog/files/' . $sFileName;
-        Storage::disk('public')->put($sFilePath, $this->blogContent);
         $sFeaturedImagePath = $this->featuredImage->storeAs('public', 'blog/images/' . $sFileName . '-' . time() . '.' . $this->featuredImage->getClientOriginalExtension());
         $sFeaturedImagePath = '/' . str_replace('public', 'storage', $sFeaturedImagePath);
         $oBlogModel = new BlogModel();
         $oBlogModel->title = $this->blogTitle;
         $oBlogModel->tags = $this->blogTags;
-        $oBlogModel->content = '/storage/' . $sFilePath;
+        $oBlogModel->content = $this->blogContent;
         $oBlogModel->description = $this->blogDescription;
         $oBlogModel->featured_image = $sFeaturedImagePath;
         $oBlogModel->user_id = Auth::id();
