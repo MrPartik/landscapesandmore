@@ -791,9 +791,9 @@ jQuery(document).ready(function () {
 			animateOut: 'fadeOut',
 			animateIn: 'fadeIn',
 			loop:true,
-			dots:true,
-			mouseDrag:false,
-			touchDrag:false,
+			dots:false,
+			mouseDrag:true,
+			touchDrag:true,
 			margin:0,
          });
 

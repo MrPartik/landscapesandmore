@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Library\Utilities;
 use Livewire\Component;
 
 class PreDefinedValues extends Component
@@ -41,24 +42,16 @@ class PreDefinedValues extends Component
 
     public function saveContactUs()
     {
-        $this->setEnv('PRICE_MIN_LANDSCAPE_DESIGN', $this->minLandscape);
-        $this->setEnv('PRICE_MIN_WEEKLY_MAINTENANCE', $this->minMaintenance);
-        $this->setEnv('PRICE_MIN_TURF_CARE', $this->minTurf);
+        Utilities::setEnv('PRICE_MIN_LANDSCAPE_DESIGN', $this->minLandscape);
+        Utilities::setEnv('PRICE_MIN_WEEKLY_MAINTENANCE', $this->minMaintenance);
+        Utilities::setEnv('PRICE_MIN_TURF_CARE', $this->minTurf);
     }
 
     public function saveStreak()
     {
-        $this->setEnv('STREAK_PIPELINE_INSTALLATION', $this->pipelineKeyLandscape);
-        $this->setEnv('STREAK_PIPELINE_MAINTENANCE', $this->pipelineKeyMaintenance);
-        $this->setEnv('STREAK_PIPELINE_WARRANTY', $this->pipelineKeyWarranty);
+        Utilities::setEnv('STREAK_PIPELINE_INSTALLATION', $this->pipelineKeyLandscape);
+        Utilities::setEnv('STREAK_PIPELINE_MAINTENANCE', $this->pipelineKeyMaintenance);
+        Utilities::setEnv('STREAK_PIPELINE_WARRANTY', $this->pipelineKeyWarranty);
     }
 
-    private function setEnv($key, $value)
-    {
-        file_put_contents(app()->environmentFilePath(), str_replace(
-            $key . '=' . env($key),
-            $key . '=' . $value,
-            file_get_contents(app()->environmentFilePath())
-        ));
-    }
 }
