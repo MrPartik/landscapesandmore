@@ -46,7 +46,7 @@ class Dashboard extends Component
     }
     private function createLinePrevMonth()
     {
-        return collect(range(Carbon::now()->daysInMonth, 1))->reduce(function (LineChartModel $oLineChartModel, $iDay) {
+        return collect(range(Carbon::now()->daysInMonth, 0))->reduce(function (LineChartModel $oLineChartModel, $iDay) {
                 $oDateToday = Carbon::now()->subDays($iDay)->format('Y-m-d');
                 $iCountContactUs = ContactUsModel::whereDate('created_at', $oDateToday)->count();
                 $iCountWarrantyClaim = WarrantyModel::whereDate('created_at', $oDateToday)->count();
