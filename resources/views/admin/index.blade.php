@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
         <script src="//cdn.jsdelivr.net/npm/apexcharts"></script>
-        @livewireChartsScripts
+        <script src="{{ url('vendor/livewire-charts/app.js') }}"></script>
         @livewire('admin.dashboard')
 </x-app-layout>
