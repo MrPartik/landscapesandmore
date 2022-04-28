@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\ContactUs as ContactUsModel;
+use App\Models\Awards as AwardsModel;
 use App\Models\Blog as BlogModel;
 use App\Models\Warranty as WarrantyModel;
 use Carbon\Carbon;
@@ -18,24 +19,22 @@ class Dashboard extends Component
         'onPointClick' => 'handleOnPointClick',
         'onSliceClick' => 'handleOnSliceClick',
         'onColumnClick' => 'handleOnColumnClick',
+        'initDashboardCount'
     ];
-    public function handleOnPointClick($point)
-    {
-        dd($point);
-    }
-    public function handleOnSliceClick($slice)
-    {
-        dd($slice);
-    }
-    public function handleOnColumnClick($column)
-    {
-        dd($column);
-    }
+
+    public $aCount = [
+        'contact_us'     => 0,
+        'warranty_claim' => 0,
+        'blog'           => 0,
+        'awards'         => 0,
+    ];
+
     public function render()
     {
         $oPieChartContactUs = $this->createPieContactUs();
         $oPieChartWarrantyClaim = $this->createPieWarrantyClaim();
         $oLineChartPrevMonth = $this->createLinePrevMonth();
+        $this->initDashboardCount();
         $this->firstRun = false;
         return view('livewire.admin.dashboard')
             ->with([
@@ -44,6 +43,17 @@ class Dashboard extends Component
                 'oLineChartPrevMonth' => $oLineChartPrevMonth
             ]);
     }
+
+    public function initDashboardCount()
+    {
+        $this->aCount = [
+            'contact_us'     => ContactUsModel::all()->count(),
+            'warranty_claim' => WarrantyModel::all()->count(),
+            'blog'           => BlogModel::all()->where('is_active', true)->count(),
+            'awards'         => AwardsModel::all()->where('is_active', true)->count(),
+        ];
+    }
+
     private function createLinePrevMonth()
     {
         return collect(range(Carbon::now()->daysInMonth, 0))->reduce(function (LineChartModel $oLineChartModel, $iDay) {
@@ -51,12 +61,14 @@ class Dashboard extends Component
                 $iCountContactUs = ContactUsModel::whereDate('created_at', $oDateToday)->count();
                 $iCountWarrantyClaim = WarrantyModel::whereDate('created_at', $oDateToday)->count();
                 $iCountBlog = BlogModel::whereDate('created_at', $oDateToday)->count();
-                if ($iCountContactUs <= 0 && $iCountWarrantyClaim <= 0 && $iCountBlog <= 0) {
+                $iCountAwards = AwardsModel::whereDate('created_at', $oDateToday)->count();
+                if ($iCountContactUs <= 0 && $iCountWarrantyClaim <= 0 && $iCountBlog <= 0 && $iCountAwards <= 0) {
                     return $oLineChartModel;
                 }
                 $oLineChartModel->addSeriesPoint('Contact Us', Carbon::now()->subDays($iDay)->format('M, d, Y'), $iCountContactUs);
                 $oLineChartModel->addSeriesPoint('Warranty Claim', Carbon::now()->subDays($iDay)->format('M, d, Y'), $iCountWarrantyClaim);
                 $oLineChartModel->addSeriesPoint('Blog Published', Carbon::now()->subDays($iDay)->format('M, d, Y'), $iCountBlog);
+                $oLineChartModel->addSeriesPoint('Added Awards', Carbon::now()->subDays($iDay)->format('M, d, Y'), $iCountBlog);
                 return $oLineChartModel;
             }, (new LineChartModel())
             ->setTitle('Total Count of Activities on Previous Month')
