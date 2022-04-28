@@ -38,11 +38,6 @@ class BlogEdit extends Component
     public $blogContent = '';
 
     /**
-     * @var string
-     */
-    public $blogContentUrl = '';
-
-    /**
      * @var int
      */
     public $iId = 0;
@@ -81,7 +76,7 @@ class BlogEdit extends Component
         $this->blogTitle = $mBlogModel->title;
         $this->blogTags = $mBlogModel->tags;
         $this->blogDescription = $mBlogModel->description;
-        $this->blogContentUrl = $mBlogModel->content;
+        $this->blogContent = $mBlogModel->content;
 //        $this->emit('initializeWysiwyg');
     }
 
