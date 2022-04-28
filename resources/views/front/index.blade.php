@@ -70,54 +70,7 @@
                     </div>
                 </div>
             </section>
-            <!-- section begin -->
-            <section style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/zooming-house.jpg') }}') center fixed" class="text-light"  >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                            <h1>Customer Says</h1>
-                            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-                            <div class="spacer-single"></div>
-                        </div>
-                        <div class="col-md-8 offset-md-2">
-                            <div id="testimonial-carousel-single" class="owl-carousel owl-theme wow fadeInUp">
-                                <blockquote class="testimonial-big s2">
-                                    <span class="title">Excellent services!</span>
-                                    I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
-
-                                    <span class="name">John, Customer</span>
-                                </blockquote>
-
-                                <blockquote class="testimonial-big s2">
-                                    <span class="title">Awesome design!</span>
-                                    I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-
-                                    <span class="name">Sandra, Customer</span>
-                                </blockquote>
-
-                                <blockquote class="testimonial-big s2">
-                                    <span class="title">Superb teamwork!</span>
-                                    I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
-
-                                    <span class="name">Michael, Customer</span>
-                                </blockquote>
-                            </div>
-
-                        </div>
-
-                        <div class="spacer-double"></div>
-
-                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0s">
-                            <div id="logo-carousel" class="owl-carousel owl-theme">
-                                @foreach(\App\Models\Awards::all()->where('is_active', 1) as $oAward)
-                                    <img src="{{ url($oAward->url) }}" class="img-responsive" alt="{{ $oAward->description }}" title="{{ $oAward->description }}">
-                                @endforeach
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
+            @livewire('home')
             <style>
                 .owl-item.active.center {
                     text-align: -webkit-center;

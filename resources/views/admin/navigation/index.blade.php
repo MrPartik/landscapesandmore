@@ -35,6 +35,9 @@
                 <x-jet-nav-link href="{{ route('admin.warranty') }}" :active="request()->routeIs('admin.warranty')">
                     {{ __('Warranty') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('admin.reviews') }}" :active="request()->routeIs('admin.reviews')">
+                    {{ __('Customer Reviews') }}
+                </x-jet-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

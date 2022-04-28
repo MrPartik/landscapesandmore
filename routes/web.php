@@ -60,4 +60,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('/awards', function () {
         return view('admin.awards');
     })->name('admin.awards');
+
+    Route::get('/reviews', function () {
+        return view('admin.reviews');
+    })->name('admin.reviews');
 });

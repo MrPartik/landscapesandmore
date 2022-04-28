@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
  * Class Base
  * @package App\Http\StreakApi
  */
-class Base
+Trait GoogleClient
 {
 
     /**
@@ -40,7 +40,7 @@ class Base
      */
     protected function get(string $sUrl, string $sApiVersion = '')
     {
-        $oRequest = $this->http()->get(config('streak.api_domain') . str_replace('//', '/', (($sApiVersion !== '') ? $sApiVersion : $this->sApiVersion) . $sUrl));
+        $oRequest = $this->http()->get($sUrl);
 
         return $oRequest->json() ?? [];
     }
@@ -52,7 +52,7 @@ class Base
      */
     protected function post(string $sUrl, array $aData = [])
     {
-        $oRequest = $this->http()->post(config('streak.api_domain') . str_replace('//', '/', $this->sApiVersion . $sUrl), [
+        $oRequest = $this->http()->post($sUrl, [
                 'body' => json_encode($aData, true)
         ]);
         return $oRequest->json() ?? [];
