@@ -13,9 +13,10 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div id="testimonial-carousel-single" class="owl-carousel owl-theme wow fadeInUp">
-                    @foreach($aReviews['reviews'] ?? [] as $iKey => $aReview)
+                    @foreach($aReviews ?? [] as $iKey => $aReview)
                         @if(in_array($aReview['time'], explode(',', env('DISPLAYED_REVIEW_KEYS')) ?? []) === true)
                             <blockquote class="testimonial-big s2">
+                                <span class="title">{{ (strlen($aReview['summary']) > 0) ? $aReview['summary'] : $aReview['snippet']  }}</span>
                                 <span style="font-size: 25px;">
                                     <span class="fa fa-star {{ ((intval($aReview['rating']) >= 1) ? 'checked' : '') }}"></span>
                                     <span class="fa fa-star {{ ((intval($aReview['rating']) >= 2) ? 'checked' : '') }}"></span>
@@ -24,8 +25,8 @@
                                     <span class="fa fa-star {{ ((intval($aReview['rating']) >= 5) ? 'checked' : '') }}"></span>
                                 </span>
                                 <br/>
-                                {{ $aReview['text'] }}
-                                <span class="name">{{ $aReview['author_name'] }}</span>
+                                {{ $aReview['description'] }}
+                                <span class="name">{{ $aReview['author'] }}</span>
                             </blockquote>
                         @endif
                     @endforeach
