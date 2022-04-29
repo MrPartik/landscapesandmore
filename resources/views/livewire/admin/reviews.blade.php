@@ -1,26 +1,65 @@
-
-<div class="config block">
-    <div class="loading-page" wire:loading.block wire:target="toggleDisplayReview">Loading&#8230;</div>
-    <div class="tab-content">
-        <!-- 1st Block of tab-content -->
-        <div class="tab-pane active" id="home">
-            <div class="row ">
-                <div class="col-12">
-                    <h3>List of Customer Reviews</h3>
-                    <small>Please select which customer review you want to display in the website</small>
-                    <br/>
-                    <br/>
-                    <div class="list-group">
-                        @foreach($aReviews['reviews'] ?? [] as $aReview)
-                            <button wire:click="toggleDisplayReview({{ $aReview['time'] }})" type="button" class="list-group-item list-group-item-action mb-1 {{ (in_array($aReview['time'], $aDisplayedReviews ?? []) === true) ? 'active' : '' }}">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-2" style="font-weight: bold">{{ $aReview['author_name'] }}</h5>
-                                    <small>{{ $aReview['rating'] }} star{{ intval($aReview['rating']) === 1 ? '' : 's' }}</small>
+<div class="card shadow bg-light">
+    <div class="loading-page" wire:loading.block wire:target="saveRating,clear,toggleEdit,deleteReview">Loading&#8230;</div>
+    <style>
+        .checked {
+            color: green;
+        }
+    </style>
+    <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
+        <div class="tab-content">
+            <!-- 1st Block of tab-content -->
+            <div class="" id="home">
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="m-3" x-data="{}">
+                            <strong> {{ __('' . 'Reviews') }}</strong><br>
+                            {{ __('You can now add reviews.') }}
+                            <div class="row">
+                                <div class="col-2 mb-2">
+                                    <label class="col-form-label" for="rating">
+                                        Rating (1 - 5)
+                                    </label>
+                                    <x-jet-input id=rating wire:model="rating"  type="number" class="form-control" placeholder="{{ __('Rating 1 - 5') }}"/>
                                 </div>
-                                <p class="mb-1" style="padding: 10px">{!! $aReview['text'] !!}</p>
-                                <small>ID: {{ $aReview['time'] }}</small>
-                            </button>
-                        @endforeach
+                                <div class="col-4 mb-2">
+                                    <label class="col-form-label" for="summary">
+                                        Summary
+                                    </label>
+                                    <x-jet-input id=summary wire:model="summary"  type="text" class="form-control" placeholder="{{ __('Summary') }}"/>
+                                </div>
+                                <div class="col-3 mb-2">
+                                    <label class="col-form-label" for="snippet">
+                                        Snippet
+                                    </label>
+                                    <x-jet-input id=snippet wire:model="snippet"  type="text" class="form-control" placeholder="{{ __('Snippet') }}"/>
+                                </div>
+                                <div class="col-3 mb-2">
+                                    <label class="col-form-label" for="author">
+                                        Author
+                                    </label>
+                                    <x-jet-input id=author wire:model="author"  type="text" class="form-control" placeholder="{{ __('Author') }}"/>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="col-form-label" for="description">
+                                        Description
+                                    </label>
+                                    <textarea id="description" wire:model="description"  type="text" class="form-control" placeholder="{{ __('Description') }}"> </textarea>
+                                </div>
+                            </div>
+                            <button wire:click="saveRating()" class="mt-4 btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
+                            <button wire:click="clear()" class="mt-4 btn btn-warning text-black"><span class="fa fa-eraser"></span> Clear </button>
+                        </div>
+                        @if(empty($errors->getMessages()) === false)
+                            <div class='alert mt-3 alert-danger'>
+                                @foreach($errors->getMessages() as $error)
+                                    {!!  '- ' . implode(',', $error) . '<br/>' !!}
+                                @endforeach
+                            </div>
+                        @endif
+                        <hr/>
+                        <h3>List of Customer Reviews</h3>
+                        <br/>
+                        <livewire:admin.datatables.reviews id="reviews-table" searchable="name, description" exportable/>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ class Warranty extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Name", 'last_name')
+            Column::make("Personal Information", 'last_name')
                 ->format(function ($mValue, $mRow, $oColumn) {
                     $sPersonalInfo = '';
                     $sPersonalInfo .= sprintf('<strong>Reference No: </strong>%s<br/>', $mRow->reference_no);

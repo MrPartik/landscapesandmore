@@ -1,5 +1,10 @@
 <!-- section begin -->
 <section style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/zooming-house.jpg') }}') center fixed" class="text-light"  >
+    <style>
+        .checked {
+            color: var(--primary-color-1);
+        }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
@@ -11,7 +16,14 @@
                     @foreach($aReviews['reviews'] ?? [] as $iKey => $aReview)
                         @if(in_array($aReview['time'], explode(',', env('DISPLAYED_REVIEW_KEYS')) ?? []) === true)
                             <blockquote class="testimonial-big s2">
-                                <span class="title">{{ $aReview['rating'] }} star{{ intval($aReview['rating']) === 1 ? '' : 's' }}</span>
+                                <span style="font-size: 25px;">
+                                    <span class="fa fa-star {{ ((intval($aReview['rating']) >= 1) ? 'checked' : '') }}"></span>
+                                    <span class="fa fa-star {{ ((intval($aReview['rating']) >= 2) ? 'checked' : '') }}"></span>
+                                    <span class="fa fa-star {{ ((intval($aReview['rating']) >= 3) ? 'checked' : '') }}"></span>
+                                    <span class="fa fa-star {{ ((intval($aReview['rating']) >= 4) ? 'checked' : '') }}"></span>
+                                    <span class="fa fa-star {{ ((intval($aReview['rating']) >= 5) ? 'checked' : '') }}"></span>
+                                </span>
+                                <br/>
                                 {{ $aReview['text'] }}
                                 <span class="name">{{ $aReview['author_name'] }}</span>
                             </blockquote>
