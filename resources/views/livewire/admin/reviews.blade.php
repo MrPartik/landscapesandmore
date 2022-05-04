@@ -13,7 +13,7 @@
                     <div class="col-12">
                         <div class="m-3" x-data="{}">
                             <strong> {{ __('' . 'Reviews') }}</strong><br>
-                            {{ __('You can now add reviews.') }}
+                            {{ __('You can now manage reviews.') }}
                             <div class="row">
                                 <div class="col-2 mb-2">
                                     <label class="col-form-label" for="rating">
