@@ -795,6 +795,7 @@ jQuery(document).ready(function () {
 			mouseDrag:true,
 			touchDrag:true,
 			margin:0,
+            autoHeight: true
          });
 
     jQuery("#logo-carousel").owlCarousel({
