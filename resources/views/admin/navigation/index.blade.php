@@ -14,6 +14,9 @@
                 <x-jet-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('admin.interactive-maps') }}" :active="request()->routeIs('admin.interactive-maps')">
+                    {{ __('Interactive Maps') }}
+                </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
                     {{ __('Pre Defined Values') }}
                 </x-jet-nav-link>
