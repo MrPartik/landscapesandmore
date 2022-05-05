@@ -18,6 +18,7 @@ class InteractiveMaps extends Migration
             $oTable->string('map_name', 300);
             $oTable->string('map_type', 50);
             $oTable->text('map_description');
+            $oTable->text('map_options');
             $oTable->text('map_images');
             $oTable->boolean('is_active')->default(true);
             $oTable->timestamps();
