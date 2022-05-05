@@ -17,9 +17,6 @@
                 <x-jet-nav-link href="{{ route('admin.interactive-maps') }}" :active="request()->routeIs('admin.interactive-maps')">
                     {{ __('Interactive Maps') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
-                    {{ __('Pre Defined Values') }}
-                </x-jet-nav-link>
                 <x-jet-nav-link style="display: none" href="{{ route('admin.our_process') }}" :active="request()->routeIs('admin.our_process')">
                     {{ __('Our Process') }}
                 </x-jet-nav-link>
@@ -107,7 +104,6 @@
                             <h6 class="dropdown-header small text-muted">
                                 {{ __('Manage Account') }}
                             </h6>
-
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
@@ -117,6 +113,14 @@
                                     {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
                             @endif
+
+                            <hr class="dropdown-divider mt-1">
+                            <h6 class="dropdown-header small text-muted">
+                                {{ __('Website Settings') }}
+                            </h6>
+                            <x-jet-dropdown-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
+                                {{ __('Pre Defined Values') }}
+                            </x-jet-dropdown-link>
 
                             <hr class="dropdown-divider">
 
