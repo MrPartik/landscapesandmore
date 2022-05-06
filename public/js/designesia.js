@@ -311,7 +311,6 @@ jQuery(document).ready(function () {
         }
     }, function () {	//jPreLoader callback function
         clearInterval();
-
         jQuery(function () {
             var v_url = document.URL;
 
@@ -325,8 +324,6 @@ jQuery(document).ready(function () {
                 return false;
             }
         });
-
-
     });
 
     // End of jPreLoader script

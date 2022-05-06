@@ -130,7 +130,7 @@
         </x-slot>
     </x-jet-dialog-modal>
     <script>
-        let sOsmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        let sOsmUrl = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png';
         let sOsmAttrib = '';
         let oOsm = L.tileLayer(sOsmUrl, {
                 maxZoom: 18,

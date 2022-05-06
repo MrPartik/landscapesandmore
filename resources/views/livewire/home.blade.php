@@ -44,4 +44,35 @@
 
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function(){
+
+                let oMap = L.map('map', {
+                    editable: false,
+                    doubleClickZoom: false,
+                    scrollWheelZoom: false,
+                }).setView([32.648325, -83.444534], 7);
+                let oDrawnItems = L.geoJson();
+                L.gridLayer.googleMutant({
+                    maxZoom: 24,
+                    type: 'hybrid'
+                }).addTo(oMap);
+                L.geoJson({!! json_encode($aMapDetails, true) !!}).eachLayer(function (oLayer) {
+                    let oProperties = oLayer.feature.properties;
+                    if (oProperties.radius) {
+                        oLayer = new L.Circle(oLayer.feature.geometry.coordinates.reverse(), oProperties);
+                    }
+                    oDrawnItems.addLayer(oLayer).addTo(oMap);
+                    oLayer.bindPopup("<center>" +
+                        "<strong>" + oProperties.map_name + "</strong><br/>" +
+                        oProperties.map_description + "<br/>" +
+                        ((oProperties.map_images.length > 0) ?
+                            "<hr style='margin: 10px'/> " +
+                            "<a href='" + oProperties.map_images + "' target='_blank'><img style='width: 100%; min-width: 200px' src='" + oProperties.map_images + "'></img></a>" : '') +
+                        "</center>");
+                });
+            }, 1000);
+        });
+    </script>
 </section>

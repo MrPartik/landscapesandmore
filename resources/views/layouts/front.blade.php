@@ -53,7 +53,6 @@
     ================================================== -->
     <script src="{{ url('js/jpreLoader.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('js/jquery.isotope.min.js') }}"></script>
     <script src="{{ url('js/easing.js') }}"></script>
     <script src="{{ url('js/jquery.flexslider-min.js') }}"></script>
@@ -67,7 +66,6 @@
     <script src="{{ url('js/jquery.stellar.min.js') }}"></script>
     <script src="{{ url('js/enquire.min.js') }}"></script>
     <script src="{{ url('js/designesia.js') }}"></script>
-    <script src="{{ url('js/jquery.event.move.js') }}"></script>
     <script src="{{ url('js/jquery.twentytwenty.js') }}"></script>
 
     <!-- RS5.0 Core JS Files -->
