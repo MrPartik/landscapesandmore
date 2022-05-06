@@ -44,7 +44,7 @@
                         <div class="config-one-item animated animation fadeInDown">
                             <i class="fa fa-times text-danger"></i>&nbsp;<i class="fa fa-map-marker text-danger"></i></a>
                             <h2>{{ $aCounts['serviceable_area'] }}</h2>
-                            <h4 class="br-red">Not of serviceable area</h4>
+                            <h4 class="br-red">Not serviceable area</h4>
                         </div>
                     </div>
                 </div>
