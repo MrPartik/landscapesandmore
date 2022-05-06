@@ -162,13 +162,16 @@
         L.geoJson({!! json_encode($aMapDetails, true) !!}).eachLayer(function (oLayer) {
             let oProperties = oLayer.feature.properties;
             if (oProperties.radius) {
-                oLayer = new L.Circle(oLayer.feature.geometry.coordinates.reverse(), oProperties.radius)
+                oLayer = new L.Circle(oLayer.feature.geometry.coordinates.reverse(), oProperties);
             }
+            // else {
+            //     oLayer.options = oProperties;
+            // }
             oDrawnItems.addLayer(oLayer).addTo(oMap);
             oLayer.bindPopup("<center>" +
                 "<strong>" + oProperties.map_name + "</strong><br/>" +
                 oProperties.map_description + "<br/>" +
-                "<a href='" + oProperties.map_images + "' target='_blank'><img style='width: 100%' src='" + oProperties.map_images + "'></img></a>" +
+                "<a href='" + oProperties.map_images + "' target='_blank'><img style='width: 100%; min-width: 200px' src='" + oProperties.map_images + "'></img></a>" +
                 "</center>");
         });
         oMap.on('draw:created', function (oEvent) {
