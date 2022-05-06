@@ -52,7 +52,7 @@
                     editable: false,
                     doubleClickZoom: false,
                     scrollWheelZoom: false,
-                }).setView([32.648325, -83.444534], 7);
+                }).setView([33.648325, -83.444534], 9);
                 let oDrawnItems = L.geoJson();
                 L.gridLayer.googleMutant({
                     maxZoom: 24,
@@ -67,9 +67,6 @@
                         fillOpacity: 0.1,
                     }
                 }).addTo(oMap);
-                oMap.on('click', function() {
-                    oMap.zoomIn();
-                });
                 L.geoJson({!! json_encode($aMapDetails, true) !!}).eachLayer(function (oLayer) {
                     let oProperties = oLayer.feature.properties;
                     if (oProperties.radius) {
