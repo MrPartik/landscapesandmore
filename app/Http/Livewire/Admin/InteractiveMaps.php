@@ -12,6 +12,7 @@ class InteractiveMaps extends Component
 {
     use WithFileUploads;
 
+    public $mapId = 0;
     public $aMapDetails = [];
     public $aToSaveLayerOption = [];
     public $aToSaveGeoJson = [];
@@ -20,7 +21,7 @@ class InteractiveMaps extends Component
     public $mapName = '';
     public $mapDescription = '';
     public $aMapDetailRules = [
-        'pictureOfProject' => 'required|image',
+        'pictureOfProject' => 'sometimes',
         'mapName'          => 'required',
         'mapDescription'   => 'required',
     ];
@@ -37,12 +38,26 @@ class InteractiveMaps extends Component
     }
 
     public function showMapModal() {
+        $this->fetchedMapDetails();
         $this->bShowModal = true;
     }
 
     public function removePictureOfProject()
     {
         $this->pictureOfProject = null;
+    }
+
+    public function fetchedMapDetails() {
+        if (intval($this->mapId) <= 0) {
+            $this->mapName = '';
+            $this->mapDescription = '';
+            $this->pictureOfProject = '';
+            return false;
+        }
+        $oMapModel = InteractiveMapsModel::find($this->mapId);
+        $this->mapName = $oMapModel->map_name;
+        $this->mapDescription = $oMapModel->map_description;
+        $this->pictureOfProject = $oMapModel->map_images;
     }
 
     public function initMapData()
@@ -69,6 +84,7 @@ class InteractiveMaps extends Component
                     'map_name'        => $oMapData->map_name,
                     'map_images'      => $oMapData->map_images,
                     'map_description' => $oMapData->map_description,
+                    'map_id'          => $oMapData->map_id
                 ]),
                 'geometry'   => [
                     'type' => $oMapData->map_type,
@@ -78,38 +94,49 @@ class InteractiveMaps extends Component
         }
     }
 
+    public function deleteMap($iId)
+    {
+        InteractiveMapsModel::with('mapCoordinates')->where('map_id', $iId)->delete();
+        $this->redirect('/admin/interactive-maps');
+    }
+
     public function saveMap()
     {
         $this->validate($this->aMapDetailRules);
         $aMapCoordinates = $this->aToSaveGeoJson;
         $sMapType = $aMapCoordinates['geometry']['type'] ?? '';
-        $oInteractiveMaps = new InteractiveMapsModel();
-        $sFIlePath = $this->pictureOfProject->storeAs('public', ',maps/project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
-        $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
+        $oInteractiveMaps = ((intval($this->mapId) > 0) ? InteractiveMapsModel::find($this->mapId) : new InteractiveMapsModel());
+        if (is_object($this->pictureOfProject) === true) {
+            $sFIlePath = $this->pictureOfProject->storeAs('public', ',maps/project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
+            $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
+        } else {
+            $sFIlePath = $this->pictureOfProject;
+        }
         $oInteractiveMaps->map_name = $this->mapName;
-        $oInteractiveMaps->map_type = $sMapType;
+        ((intval($this->mapId) <= 0)) && $oInteractiveMaps->map_type = $sMapType;
         $oInteractiveMaps->map_description = $this->mapDescription;
         $oInteractiveMaps->map_images = $sFIlePath;
-        $oInteractiveMaps->map_options = json_encode($this->aToSaveLayerOption, true);
+        ((intval($this->mapId) <= 0)) && $oInteractiveMaps->map_options = json_encode($this->aToSaveLayerOption, true);
         $oInteractiveMaps->save();
-
-        $bIsMultiPoint = in_array($sMapType, ['Polygon']);
-        $aGeoMapsCoordinates = $aMapCoordinates['geometry']['coordinates'];
-        $aGeoMapsCoordinates = ($bIsMultiPoint === true) ? $aGeoMapsCoordinates[0] : $aGeoMapsCoordinates;
-        if ($bIsMultiPoint === true) {
-            foreach ($aGeoMapsCoordinates as $aCoordinates) {
+        if (intval($this->mapId) <= 0 && intval($oInteractiveMaps->map_id) > 0) {
+            $bIsMultiPoint = in_array($sMapType, ['Polygon']);
+            $aGeoMapsCoordinates = $aMapCoordinates['geometry']['coordinates'];
+            $aGeoMapsCoordinates = ($bIsMultiPoint === true) ? $aGeoMapsCoordinates[0] : $aGeoMapsCoordinates;
+            if ($bIsMultiPoint === true) {
+                foreach ($aGeoMapsCoordinates as $aCoordinates) {
+                    $oInteractiveMapsCoordinates = new InteractiveMapsCoordinatesModel();
+                    $oInteractiveMapsCoordinates->map_id = $oInteractiveMaps->map_id;
+                    $oInteractiveMapsCoordinates->lat = $aCoordinates[0];
+                    $oInteractiveMapsCoordinates->long = $aCoordinates[1];
+                    $oInteractiveMapsCoordinates->save();
+                }
+            } else {
                 $oInteractiveMapsCoordinates = new InteractiveMapsCoordinatesModel();
                 $oInteractiveMapsCoordinates->map_id = $oInteractiveMaps->map_id;
-                $oInteractiveMapsCoordinates->lat = $aCoordinates[0];
-                $oInteractiveMapsCoordinates->long = $aCoordinates[1];
+                $oInteractiveMapsCoordinates->lat = $aGeoMapsCoordinates[0];
+                $oInteractiveMapsCoordinates->long = $aGeoMapsCoordinates[1];
                 $oInteractiveMapsCoordinates->save();
             }
-        } else {
-            $oInteractiveMapsCoordinates = new InteractiveMapsCoordinatesModel();
-            $oInteractiveMapsCoordinates->map_id = $oInteractiveMaps->map_id;
-            $oInteractiveMapsCoordinates->lat = $aGeoMapsCoordinates[0];
-            $oInteractiveMapsCoordinates->long = $aGeoMapsCoordinates[1];
-            $oInteractiveMapsCoordinates->save();
         }
         $this->aToSaveGeoJson = [];
         $this->aToSaveLayerOption = [];

@@ -65,11 +65,11 @@
 
     <x-jet-dialog-modal wire:model="bShowModal">
         <x-slot name="title">
-            {{ __('Add Map Information') }}
+            {{ __((($mapId === 0 || $mapId === null) ? 'Add' : 'Edit') .' Map Information') }}
         </x-slot>
 
         <x-slot name="content">
-            {{ __('You can now add map information.') }}
+            {{ __('You can now ' . (($mapId === 0 || $mapId === null) ? 'add' : 'edit') . ' map information.') }}
             <div class="mt-2" x-data="{}">
                 <div class="mb-3">
                     <label class="col-form-label" for="name">
@@ -95,7 +95,7 @@
                             @if($pictureOfProject !== null && $pictureOfProject !== '')
                                 <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
                                     <div class="image-preview-container row">
-                                        <div style="background: url('{{ $pictureOfProject->temporaryUrl() ?? '' }}') no-repeat center"
+                                        <div style="background: url('{{ (is_object($pictureOfProject)) ? url($pictureOfProject->temporaryUrl()) : url($pictureOfProject)  }}') no-repeat center"
                                              class="image col-3 m-1"></div>
                                         <div class="overlay col-3">
                                             <a href="javascript:" wire:click="removePictureOfProject()" class="icon" title="Remove">
@@ -136,7 +136,10 @@
                 maxZoom: 18,
                 attribution: sOsmAttrib
             });
-        let oMap = L.map('map').setView([32.648325, -83.444534], 7);
+        let oMap = L.map('map', {
+            editable: true,
+            doubleClickZoom: false
+        }).setView([32.648325, -83.444534], 7);
         let oDrawnItems = L.geoJson();
         let oHybridMutant = L.gridLayer.googleMutant({
             maxZoom: 24,
@@ -156,9 +159,9 @@
                 polyline    : false,
                 dot         : false,
                 circlemarker: false
-            },
-            edit: false
+            }
         }));
+
         L.geoJson({!! json_encode($aMapDetails, true) !!}).eachLayer(function (oLayer) {
             let oProperties = oLayer.feature.properties;
             if (oProperties.radius) {
@@ -169,16 +172,29 @@
             // }
             oDrawnItems.addLayer(oLayer).addTo(oMap);
             oLayer.bindPopup("<center>" +
-                "<strong>" + oProperties.map_name + "</strong><br/>" +
-                oProperties.map_description + "<br/>" +
-                "<a href='" + oProperties.map_images + "' target='_blank'><img style='width: 100%; min-width: 200px' src='" + oProperties.map_images + "'></img></a>" +
+                    "<strong>" + oProperties.map_name + "</strong><br/>" +
+                    oProperties.map_description + "<br/>" +
+                    ((oProperties.map_images.length > 0) ?
+                        "<hr/> " +
+                        "<a href='" + oProperties.map_images + "' target='_blank'><img style='width: 100%; min-width: 200px' src='" + oProperties.map_images + "'></img></a>"  : '') +
+                    "<hr/> " +
+                    "<button onclick='triggerEditMap(" + oProperties.map_id + ")' class='edit-map btn btn-warning'><i class='fa fa-pen'></i></button> " +
+                    "<button onclick='triggerDeleteMap(" + oProperties.map_id + ")' class='delete-map btn btn-danger'><i class='fa fa-trash text-white'></i></button> " +
                 "</center>");
         });
+         function triggerEditMap(iId) {
+            @this.set('mapId', iId);
+            @this.call('showMapModal');
+        }
+         function triggerDeleteMap(iId) {
+            @this.call('deleteMap', iId);
+        }
         oMap.on('draw:created', function (oEvent) {
             let oLayer = oEvent.layer;
             let oFeature = oLayer.feature = oLayer.feature || {};
             let oLayerGeoJson = oLayer.toGeoJSON();
-            oFeature.type = oFeature.type || 'Feature';
+            oFeature.type = oFeature.type || 'Feature'
+            @this.set('mapId', 0);
             @this.call('showMapModal');
             @this.set('aToSaveLayerOption', oLayer.options);
             @this.set('aToSaveGeoJson', oLayerGeoJson);
@@ -217,12 +233,13 @@
         oSearchControl.on("results", function (data) {
             oSearchResults.clearLayers();
             if (data.results.length > 0) {
+                console.log(data);
                 oMap.setView(data.results[0].latlng, 18);
                 let oPopup = L.popup({
                     closeOnClick: true
                 })
                     .setLatLng(data.results[0].latlng)
-                    .setContent(data.results[0].text + data.results[0].latlng)
+                    .setContent(data.results[0].text)
                     .openOn(oMap);
             }
         });
