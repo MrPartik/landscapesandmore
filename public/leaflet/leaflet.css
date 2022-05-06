@@ -471,7 +471,7 @@
 .leaflet-popup-content {
 	margin: 13px 19px;
 	line-height: 1.4;
-    min-width: 300px;
+    min-width: 200px;
     width: auto !important;
 	}
 .leaflet-popup-content p {

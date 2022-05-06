@@ -61,5 +61,6 @@
     <script src="{{ url('leaflet/L.Control.Shapefile.js') }}"></script>
     <script src="{{ url('leaflet/esri-leaflet-debug.js') }}"></script>
     <script src="{{ url('leaflet/deps/shapefile-js-gh-pages/dist/shp.min.js') }}"> </script>
+    <script src="{{ url('leaflet/Leaflet.CountrySelect.js') }}"> </script>
     @livewire('admin.interactive-maps')
 </x-app-layout>
