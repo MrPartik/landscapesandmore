@@ -22,7 +22,7 @@
         <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
             @foreach($aProjects as $aProject)
                 <!-- gallery item -->
-                <div class="item project-type-{{ $aProject['projectType']['project_type_id'] }}" style="width: 250px;height: 300px">
+                <div class="item project-type-{{ $aProject['projectType']['project_type_id'] }}" style="width: 250px;">
                     <div class="picframe">
                         <a class="image-popup-gallery" href="{{ url($aProject['url']) }}">
                                     <span class="overlay">
