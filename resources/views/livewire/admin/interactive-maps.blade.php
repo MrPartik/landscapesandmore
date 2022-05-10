@@ -1,4 +1,4 @@
-<div class="row my-5">
+<div class="row my-3">
     <style>
         .image-preview-container {
             position: relative;

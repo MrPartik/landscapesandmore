@@ -107,7 +107,7 @@ class InteractiveMaps extends Component
         $sMapType = $aMapCoordinates['geometry']['type'] ?? '';
         $oInteractiveMaps = ((intval($this->mapId) > 0) ? InteractiveMapsModel::find($this->mapId) : new InteractiveMapsModel());
         if (is_object($this->pictureOfProject) === true) {
-            $sFIlePath = $this->pictureOfProject->storeAs('public', ',maps/project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
+            $sFIlePath = $this->pictureOfProject->storeAs('public', 'maps/project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
             $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
         } else {
             $sFIlePath = $this->pictureOfProject;

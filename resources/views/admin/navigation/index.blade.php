@@ -121,6 +121,9 @@
                             <x-jet-dropdown-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
                                 {{ __('Pre Defined Values') }}
                             </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('admin.themes') }}" :active="request()->routeIs('admin.themes')">
+                                {{ __('Customize Website') }}
+                            </x-jet-dropdown-link>
 
                             <hr class="dropdown-divider">
 

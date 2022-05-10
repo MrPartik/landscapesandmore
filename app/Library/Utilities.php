@@ -7,7 +7,7 @@ class Utilities
     public static function setEnv($mKey, $mValue)
     {
         if (env($mKey) === null) {
-            return file_put_contents(app()->environmentFilePath(), file_get_contents(app()->environmentFilePath()) . $mKey . '=' . $mValue);
+            return file_put_contents(app()->environmentFilePath(),$mKey . '=' . $mValue . PHP_EOL, FILE_APPEND);
         }
         file_put_contents(app()->environmentFilePath(), str_replace(
             $mKey . '=' . env($mKey),

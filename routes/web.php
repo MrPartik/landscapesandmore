@@ -94,4 +94,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('/interactive-maps', function () {
         return view('admin.interactive-maps');
     })->name('admin.interactive-maps');
+
+    Route::get('/themes', function () {
+        return view('admin.themes');
+    })->name('admin.themes');
 });
