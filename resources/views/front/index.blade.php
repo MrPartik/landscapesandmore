@@ -5,14 +5,14 @@
         <!-- content begin -->
         <div id="content" class="no-bottom no-top">
             <!-- parallax section -->
-            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url('img/landscapes/frontyard.png') }}') center fixed" class="full-height" data-type="background">
+            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url(env('BANNER_IMAGE_URL', 'img/landscapes/frontyard.png')) }}') center fixed" class="full-height" data-type="background">
                 <div class="center-y text-center">
                     <div class="spacer-double"></div>
                     <h1 class="text-white">Creating Masterpieces</h1>
                     <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
-                        <div class="item">Install Landscape and Design</div>
-                        <div class="item">Maintenance Services</div>
-                        <div class="item">Turf Care Services</div>
+                        @foreach(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services')) as $sDescription)
+                            <div class="item">{{ $sDescription }}</div>
+                        @endforeach
                     </div>
                     <div class="spacer-single"></div>
                     <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>

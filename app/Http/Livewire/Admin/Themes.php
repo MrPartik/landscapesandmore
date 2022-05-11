@@ -18,6 +18,14 @@ class Themes extends Component
     public $uploadSmallLogo = '';
     public $uploadLightLogo = '';
     public $uploadDarkLogo = '';
+    public $bannerDescription = 'Install Landscape and Design, Maintenance Services, Turf Care Services';
+    public $bannerImage = '';
+
+    public function __construct($id = null)
+    {
+        $this->bannerDescription = env('BANNER_DESCRIPTION', $this->bannerDescription);
+        parent::__construct($id);
+    }
 
     public function render()
     {
@@ -85,6 +93,23 @@ class Themes extends Component
                 break;
             }
         }
+    }
+
+    public function saveBanner(string $sType)
+    {
+        if ($sType === 'image') {
+            $this->validate(['bannerImage' => 'required|image']);
+            $mFilePath = $this->bannerImage->storeAs('public', 'banner/' . $sType . '/banner-' . $sType . '.' . $this->bannerImage->getClientOriginalExtension());
+            $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
+            Utilities::setEnv('BANNER_IMAGE_URL', $mFilePath);
+            $this->redirect('/admin/themes');
+            return true;
+        }
+        $this->validate(['bannerDescription' => 'required']);
+        Utilities::setEnv('BANNER_DESCRIPTION', $this->bannerDescription);
+        $this->redirect('/admin/themes');
+        return true;
+
     }
 
     public function useLogo(int $iKey, string $sType)
