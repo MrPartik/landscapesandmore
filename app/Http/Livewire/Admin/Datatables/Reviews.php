@@ -35,7 +35,7 @@ class Reviews extends DataTableComponent
                                     </span>';
                     $sReviewDetails = '';
                     $sReviewDetails .= sprintf('<strong>Rating: </strong>%s<br/>', $aRatingHtml);
-                    $sReviewDetails .= sprintf('<strong>Display Status: </strong><button class="btn %s text-white" wire:click="toggleDisplay(%s)">%s</button><br/>', (!$mRow->is_active) ? 'btn-danger ' : 'btn-success', $mRow->review_id, ($mRow->is_active) ? 'Displayed' : 'Don\'t Display');
+                    $sReviewDetails .= sprintf('<strong>Display Status: </strong><button class="btn %s text-white" wire:click="toggleDisplay(%s)">%s</button><br/>', ($mRow->is_active) ? 'btn-danger ' : 'btn-success', $mRow->review_id, (!$mRow->is_active) ? 'Display' : 'Don\'t Display');
                     $sReviewDetails .= sprintf('<strong>Summary: </strong>%s<br/>', $mRow->summary);
                     $sReviewDetails .= sprintf('<strong>Snippet: </strong>%s<br/>', $mRow->snippet);
                     $sReviewDetails .= sprintf('<strong>Description: </strong>%s<br/>', $mRow->description);
