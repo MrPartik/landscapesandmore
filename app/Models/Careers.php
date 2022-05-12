@@ -16,7 +16,9 @@ class Careers extends Model
     protected $fillable = [
         'careers_id',
         'name',
-        'address',
+        'home_address',
+        'city_address',
+        'zip_code',
         'email',
         'phone',
         'position_applying',

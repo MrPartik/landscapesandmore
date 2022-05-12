@@ -24,13 +24,33 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+
                         <div id='home_address_error' class='error'>Please enter your home address.</div>
                         <div>
-                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address' class="form-control" placeholder="Home Address" required></input>
+                            <input wire:model.lazy="homeAddress" type='text' name='home_address' id='home_address' class="form-control" placeholder="Home Address" required>
                         </div>
-                        <div id='driver_license_error' class='error'>Please enter your driver license.</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id='city_address_error' class='error'>Please enter your city address.</div>
+                                <input wire:model.lazy="cityAddress" type='text' name='city_address' id='city_address' class="form-control" placeholder="City Address" required>
+                            </div>
+                            <div class="col-md-6">
+                                <div id='zip_code_error' class='error'>Please enter your zip code</div>
+                                <input oninput="return this.value = '{{ $zipCode }}'" value="{{ $zipCode }}" type='text' name='zip_code' id='zip_code' class="form-control" placeholder="Zip Code">
+                            </div>
+                        </div>
                         <div>
-                            <input wire:model.lazy="driverLicense" type='text' name='driver_license' id='driver_license' class="form-control" placeholder="Driver License"></input>
+                            <strong class="mt-3">Do you have a GA driver’s license?</strong>
+                            <div class="de_form de_radio">
+                            <span class="mb20" style="margin-top: 10px;">
+                                <input wire:model.lazy="driverLicense" id="drivers_license_1" type="radio" value="yes" checked="checked">
+                                    <label for="drivers_license_1">Yes</label>
+                                </span>
+                                <span class="mr20">
+                                <input wire:model.lazy="driverLicense" id="drivers_license_2" type="radio" value="no">
+                                    <label for="drivers_license_2">No</label>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -39,8 +59,8 @@
                         <div class="de_form de_checkbox">
                             @foreach(explode(',', env('CAREERS_AVAILABLE_POSITION', '')) ?? [] as $iKey => $sPosition )
                                 <span class="mb20">
-                                    <input wire:model="careersPosition" name="career_position" id="position_{{ $iKey }}" type="radio" value="{{ $sPosition }}" >
-                                <label for="position_{{ $iKey }}" style="margin-bottom: 10px;">{{ $sPosition }}</label>
+                                    <input wire:model="careersPosition" name="careerPosition" id="position_{{ $iKey }}" type="radio" value="{{ $sPosition }}" >
+                                <label for="position_{{ $iKey }}"  style="margin-bottom: 10px;">{{ $sPosition }}</label>
                             </span>
                             @endforeach
                         </div>
@@ -66,8 +86,72 @@
         </div>
     </div>
     @section('extra-js')
+        <script async src="{{ url('js/google-api/maps.js?callback=initAutocomplete') }}"></script>
         <script>
+            let oAutocomplete;
+            let oAddressField;
 
+            /**
+             * Initialized Auto Complete Places Google API
+             */
+            function initAutocomplete() {
+                oAddressField = document.querySelector('#home_address');
+                oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
+                    componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
+                    fields: ['address_components', 'geometry'],
+                    types: ['address'],
+                });
+
+                oAutocomplete.addListener('place_changed', fillInAddress);
+                oAddressField.addEventListener('input', function (oThis) {
+                    if (oThis.target.value.length <= 10) {
+                    @this.set('zipCode', '');
+                    @this.set('cityAddress', '');
+                    }
+                });
+            }
+
+            /**
+             * Fill in the address
+             */
+            function fillInAddress() {
+                const oPlace = oAutocomplete.getPlace();
+                let sAddress = '';
+                let sCity = '';
+                let sPostalCode = '';
+                for (const oComponent of oPlace.address_components) {
+                    const componentType = oComponent.types[0];
+                    switch (componentType) {
+                        case 'street_number': {
+                            sAddress = `${oComponent.long_name} ${sAddress}`;
+                            break;
+                        }
+                        case 'route': {
+                            sAddress += oComponent.short_name;
+                            break;
+                        }
+                        case 'administrative_area_level_1': {
+                            sAddress += ', ' + oComponent.long_name;
+                            break;
+                        }
+                        case 'country': {
+                            sAddress += ', ' + oComponent.long_name;
+                            break;
+                        }
+                        case 'locality': {
+                            sCity = oComponent.long_name;
+                            break;
+                        }
+                        case 'postal_code': {
+                            sPostalCode = `${oComponent.long_name}${sPostalCode}`;
+                            break;
+                        }
+                    }
+                }
+            @this.set('homeAddress', sAddress);
+            @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
+            @this.set('cityAddress', sCity);
+            }
             function successWarrantySubmission() {
                 Swal.fire({
                     icon: 'success',

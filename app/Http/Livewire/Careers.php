@@ -12,13 +12,17 @@ class Careers extends Component
     public $emailAddress = '';
     public $phoneNo = '';
     public $homeAddress = '';
-    public $driverLicense = '';
+    public $cityAddress = '';
+    public $zipCode = '';
+    public $driverLicense = 'no';
     public $careersPosition = '';
 
     public $aCareersRules = [
         'name'            => 'required',
         'emailAddress'    => 'required|email',
         'homeAddress'     => 'required',
+        'cityAddress'     => 'sometimes',
+        'zipCode'         => 'sometimes',
         'driverLicense'   => 'sometimes',
         'careersPosition' => 'required'
     ];
@@ -37,7 +41,9 @@ class Careers extends Component
         $this->validate($this->aCareersRules);
         $oCareersModel = new CareersModel();
         $oCareersModel->name = $this->name;
-        $oCareersModel->address = $this->homeAddress;
+        $oCareersModel->home_address = $this->homeAddress;
+        $oCareersModel->city_address = $this->homeAddress;
+        $oCareersModel->zip_code = $this->homeAddress;
         $oCareersModel->email = $this->emailAddress;
         $oCareersModel->phone = $this->phoneNo;
         $oCareersModel->position_applying = $this->careersPosition;

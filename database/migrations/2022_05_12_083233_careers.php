@@ -16,7 +16,9 @@ class Careers extends Migration
         Schema::create('careers', function(Blueprint $oTable) {
             $oTable->bigIncrements('careers_id');
             $oTable->string('name', 100);
-            $oTable->string('address', 300);
+            $oTable->string('home_address', 100);
+            $oTable->string('city_address', 100)->nullable();
+            $oTable->string('zip_code', 100)->nullable();
             $oTable->string('email', 50)->nullable();
             $oTable->string('phone', 50)->nullable();
             $oTable->string('position_applying', 300)->nullable();
