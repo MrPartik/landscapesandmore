@@ -99,7 +99,7 @@ class Themes extends Component
     {
         if ($sType === 'image') {
             $this->validate(['bannerImage' => 'required|image']);
-            $mFilePath = $this->bannerImage->storeAs('public', 'banner/' . $sType . '/banner-' . $sType . '.' . $this->bannerImage->getClientOriginalExtension());
+            $mFilePath = $this->bannerImage->storeAs('public', 'banner/banner-' . $sType . '.' . $this->bannerImage->getClientOriginalExtension());
             $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
             Utilities::setEnv('BANNER_IMAGE_URL', $mFilePath);
             $this->redirect('/admin/themes');
@@ -122,7 +122,7 @@ class Themes extends Component
     {
         $aFile = $this->getLogoByType($sType)[$iKey];
         Storage::disk('public')->delete($aFile['original']);
-        Utilities::setEnv($this->getEnvKeyByType($sType), 'null');
+        Utilities::setEnv($this->getEnvKeyByType($sType), 'empty');
         unset($aFile);
         $this->redirect('/admin/themes');
     }

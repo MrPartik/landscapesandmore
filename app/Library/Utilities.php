@@ -11,8 +11,8 @@ class Utilities
             return file_put_contents(app()->environmentFilePath(),$mKey . '="' . $mValue . '"' . PHP_EOL, FILE_APPEND);
         }
         file_put_contents(app()->environmentFilePath(), str_replace(
-            $mKey . '="' . env($mKey) . '"',
-            $mKey . '="' . $mValue . '"',
+            $mKey . sprintf('="%s"', env($mKey) ?? 'null'),
+            $mKey . sprintf('="%s"', $mValue),
             file_get_contents(app()->environmentFilePath())
         ));
     }
