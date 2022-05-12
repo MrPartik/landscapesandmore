@@ -20,7 +20,7 @@ class Careers extends Component
         'emailAddress'    => 'required|email',
         'homeAddress'     => 'required',
         'driverLicense'   => 'sometimes',
-        'careersPosition' => 'sometimes'
+        'careersPosition' => 'required'
     ];
     public function __construct($id = null)
     {

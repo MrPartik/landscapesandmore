@@ -40,7 +40,7 @@
                             @foreach(explode(',', env('CAREERS_AVAILABLE_POSITION', '')) ?? [] as $iKey => $sPosition )
                                 <span class="mb20">
                                     <input wire:model="careersPosition" name="career_position" id="position_{{ $iKey }}" type="radio" value="{{ $sPosition }}" >
-                                <label for="position_{{ $iKey }}">{{ $sPosition }}</label>
+                                <label for="position_{{ $iKey }}" style="margin-bottom: 10px;">{{ $sPosition }}</label>
                             </span>
                             @endforeach
                         </div>

@@ -13,11 +13,14 @@ class PreDefinedValues extends Component
     public $pipelineKeyLandscape = '';
     public $pipelineKeyMaintenance = '';
     public $pipelineKeyWarranty = '';
+    public $pipelineKeyHiring = '';
+    public $careerPosition = '';
 
     public function __construct($id = null)
     {
         $this->initContactUsDefaultValues();
         $this->initPipelineKeysDefaultValues();
+        $this->initCareerPositionValues();
         parent::__construct($id);
     }
 
@@ -38,6 +41,12 @@ class PreDefinedValues extends Component
         $this->pipelineKeyLandscape = config('streak.installation_pipeline_key');
         $this->pipelineKeyMaintenance = config('streak.maintenance_pipeline_key');
         $this->pipelineKeyWarranty = config('streak.warranty_claim_pipeline_key');
+        $this->pipelineKeyHiring = config('streak.careers_pipeline_key');
+    }
+
+    public function initCareerPositionValues()
+    {
+        $this->careerPosition = env('CAREERS_AVAILABLE_POSITION', []);
     }
 
     public function saveContactUs()
@@ -52,6 +61,12 @@ class PreDefinedValues extends Component
         Utilities::setEnv('STREAK_PIPELINE_INSTALLATION', $this->pipelineKeyLandscape);
         Utilities::setEnv('STREAK_PIPELINE_MAINTENANCE', $this->pipelineKeyMaintenance);
         Utilities::setEnv('STREAK_PIPELINE_WARRANTY', $this->pipelineKeyWarranty);
+        Utilities::setEnv('STREAK_PIPELINE_CAREER', $this->pipelineKeyHiring);
+    }
+
+    public function saveCareerPosition()
+    {
+        Utilities::setEnv('CAREERS_AVAILABLE_POSITION', $this->careerPosition);
     }
 
 }
