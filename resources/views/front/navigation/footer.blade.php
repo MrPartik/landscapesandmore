@@ -8,7 +8,7 @@
                 Our Philosophy is to engage the client in the creative process of their landscape design, establish a plan that includes hardscapes and horticulture that fulfill that vision, and enhance the landscape sustainably, with minimal environmental impact.
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h3>Contact Us</h3>
                 <div class="widget widget-address">
                     <address>
@@ -27,6 +27,17 @@
                         <li><a href="javascript:">Install Landscape and Design</a></li>
                         <li><a href="javascript:">Maintenance Services</a></li>
                         <li><a href="javascript:">Turf Care Services</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="widget widget_recent_post">
+                    <h3>Careers </h3>
+                    <ul>
+                        @foreach(explode(',', env('CAREERS_AVAILABLE_POSITION', '')) ?? [] as $sPosition )
+                            <li><a href="/careers">• {{ $sPosition }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

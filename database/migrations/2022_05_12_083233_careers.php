@@ -21,6 +21,7 @@ class Careers extends Migration
             $oTable->string('phone', 50)->nullable();
             $oTable->string('position_applying', 300)->nullable();
             $oTable->string('driver_license', 300)->nullable();
+            $oTable->string('streak_box_key', 300)->nullable();
             $oTable->timestamps();
         });
     }

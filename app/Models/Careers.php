@@ -21,6 +21,7 @@ class Careers extends Model
         'phone',
         'position_applying',
         'driver_license',
+        'streak_box_key',
         'created_at',
         'updated_at',
     ];
