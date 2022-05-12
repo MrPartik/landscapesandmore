@@ -44,6 +44,7 @@
                         <li><a class="{{ $active === 'blog' ? 'active' : '' }}" href="{{ url('/blog') }}">Blog</a></li>
                         <li><a class="{{ $active === 'contact-us' ? 'active' : '' }}" href="{{ url('/contact-us') }}">Contact Us</a></li>
                         <li><a class="{{ $active === 'warranty' ? 'active' : '' }}" href="{{ url('/warranty') }}">Warranty</a></li>
+                        <li><a class="{{ $active === 'careers' ? 'active' : '' }}" href="{{ url('/careers') }}">Careers</a></li>
                     </ul>
                 </nav>
 

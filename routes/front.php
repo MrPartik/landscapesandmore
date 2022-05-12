@@ -45,26 +45,20 @@ Route::get('/warranty', function () {
     return view('front.warranty');
 });
 
+Route::get('/careers', function () {
+    return view('front.careers');
+});
+
 
 Route::get('public/{sFilePath}', function ($sFilePath) {
     $path = storage_path('public/' . $sFilePath);
-
     if (!File::exists($path)) {
         abort(404);
     }
-
     $file = File::get($path);
-
     $type = File::mimeType($path);
-
-
-
     $response = Response::make($file, 200);
-
     $response->header("Content-Type", $type);
-
-
-
     return $response;
 });
 

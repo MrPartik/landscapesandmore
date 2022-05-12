@@ -122,7 +122,7 @@ class Themes extends Component
     {
         $aFile = $this->getLogoByType($sType)[$iKey];
         Storage::disk('public')->delete($aFile['original']);
-        Utilities::setEnv($this->getEnvKeyByType($sType), 'empty');
+        Utilities::setEnv($this->getEnvKeyByType($sType), 'null');
         unset($aFile);
         $this->redirect('/admin/themes');
     }
