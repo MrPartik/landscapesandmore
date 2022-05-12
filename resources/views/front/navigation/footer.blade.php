@@ -35,7 +35,7 @@
                 <div class="widget widget_recent_post">
                     <h3>Careers </h3>
                     <ul>
-                        @foreach(explode(',', env('CAREERS_AVAILABLE_POSITION', '')) ?? [] as $sPosition )
+                        @foreach(array_filter(explode(',', env('CAREERS_AVAILABLE_POSITION', ''))) ?? [] as $sPosition)
                             <li><a href="/careers">• {{ $sPosition }}</a></li>
                         @endforeach
                     </ul>

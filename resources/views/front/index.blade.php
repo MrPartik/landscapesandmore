@@ -10,7 +10,7 @@
                     <div class="spacer-double"></div>
                     <h1 class="text-white">Creating Masterpieces</h1>
                     <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
-                        @foreach(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services')) as $sDescription)
+                        @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
                             <div class="item">{{ $sDescription }}</div>
                         @endforeach
                     </div>

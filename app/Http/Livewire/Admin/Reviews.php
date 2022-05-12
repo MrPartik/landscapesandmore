@@ -44,7 +44,7 @@ class Reviews extends Component
 
     public function initDisplayReviews()
     {
-        $this->aDisplayedReviews = explode(',', env(self::DISPLAYED_REVIEW_KEYS));
+        $this->aDisplayedReviews = array_filter(explode(',', env(self::DISPLAYED_REVIEW_KEYS)));
     }
 
     public function initCustomerReviews()

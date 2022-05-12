@@ -57,7 +57,7 @@
 
                         <strong class="mt-3">Position Applying for</strong>
                         <div class="de_form de_checkbox">
-                            @foreach(explode(',', env('CAREERS_AVAILABLE_POSITION', '')) ?? [] as $iKey => $sPosition )
+                            @foreach(array_filter(explode(',', env('CAREERS_AVAILABLE_POSITION', ''))) ?? [] as $iKey => $sPosition )
                                 <span class="mb20">
                                     <input wire:model="careersPosition" name="careerPosition" id="position_{{ $iKey }}" type="radio" value="{{ $sPosition }}" >
                                 <label for="position_{{ $iKey }}"  style="margin-bottom: 10px;">{{ $sPosition }}</label>
