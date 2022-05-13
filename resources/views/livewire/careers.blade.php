@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-12 mb10">
                         <h3>Send Us Message</h3>
-                        <p></p>
+                        <p>Be part of our growing team! Don't miss out on this opportunity! Send us a message and we’ll reach out to you.</p>
                     </div>
                     <div class="col-md-6">
                         <div id='first_name_error' class='error'>Please enter your first name.</div>
