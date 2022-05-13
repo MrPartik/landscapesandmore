@@ -42,8 +42,8 @@ class Careers extends Component
         $oCareersModel = new CareersModel();
         $oCareersModel->name = $this->name;
         $oCareersModel->home_address = $this->homeAddress;
-        $oCareersModel->city_address = $this->homeAddress;
-        $oCareersModel->zip_code = $this->homeAddress;
+        $oCareersModel->city_address = $this->cityAddress;
+        $oCareersModel->zip_code = $this->zipCode;
         $oCareersModel->email = $this->emailAddress;
         $oCareersModel->phone = $this->phoneNo;
         $oCareersModel->position_applying = $this->careersPosition;

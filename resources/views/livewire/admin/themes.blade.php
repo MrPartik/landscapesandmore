@@ -79,7 +79,7 @@
                                     @foreach($this->aSmallLogo as $iKey => $aFileName)
                                         <div style="border: 1px dashed gray; padding: 10px; border-radius: 10px; margin-bottom: 5px">
                                             <br/>
-                                            <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-width: 100px;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
+                                            <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-width: 100%;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
                                             <br/>
                                             <br/>
                                             @if(env('LOGO_SMALL_URL') !== $aFileName['formatted'])
@@ -114,7 +114,7 @@
                                         @foreach($this->aLightLogo as $iKey => $aFileName)
                                             <div style="border: 1px dashed gray; padding: 10px; border-radius: 10px; margin-bottom: 5px">
                                                 <br/>
-                                                <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-height: 50px;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
+                                                <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-width: 100%;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
                                                 <br/>
                                                 <br/>
                                                 @if(env('LOGO_LIGHT_URL') !== $aFileName['formatted'])
@@ -150,7 +150,7 @@
                                         @foreach($this->aDarkLogo as $iKey => $aFileName)
                                             <div style="border: 1px dashed gray; padding: 10px; border-radius: 10px; margin-bottom: 5px">
                                                 <br/>
-                                                <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-height: 50px;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
+                                                <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-width: 100%;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
                                                 <br/>
                                                 <br/>
                                                 @if(env('LOGO_DARK_URL') !== $aFileName['formatted'])

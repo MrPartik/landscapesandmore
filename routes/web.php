@@ -98,4 +98,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('/themes', function () {
         return view('admin.themes');
     })->name('admin.themes');
+
+    Route::get('/careers', function () {
+        return view('admin.careers');
+    })->name('admin.careers');
 });
