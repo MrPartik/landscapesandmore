@@ -8,6 +8,7 @@
         "php": "^7.3|^8.0",
         "ext-json": "*",
         "asantibanez/livewire-charts": "^2.4",
+        "carlos-meneses/laravel-mpdf": "^2.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
