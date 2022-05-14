@@ -2,15 +2,18 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Livewire\Admin\Themes\Logo;
+use App\Http\Livewire\Admin\Themes\Services;
 use App\Library\Utilities;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use phpDocumentor\Reflection\Types\This;
 
 class Themes extends Component
 {
     use WithFileUploads;
+    use Logo;
+    use Services;
 
     public $aSmallLogo = [];
     public $aDarkLogo = [];
@@ -20,6 +23,12 @@ class Themes extends Component
     public $uploadDarkLogo = '';
     public $bannerDescription = 'Install Landscape and Design, Maintenance Services, Turf Care Services';
     public $bannerImage = '';
+    public $sCurrentTab = 'services';
+
+    protected $listeners = [
+        'findService',
+        'deleteService'
+    ];
 
     public function __construct($id = null)
     {
@@ -27,11 +36,19 @@ class Themes extends Component
         parent::__construct($id);
     }
 
+    public function setCurrentTab($sCurrentTab)
+    {
+        $this->sCurrentTab = $sCurrentTab;
+        session()->put('admin_themes_current_tab', $sCurrentTab);
+    }
+
     public function render()
     {
         $this->initSmallLogo();
         $this->initDarkLogo();
         $this->initLightLogo();
+        $this->initServiceCount();
+        $this->sCurrentTab = session()->get('admin_themes_current_tab') ?? 'services';
         return view('livewire.admin.themes');
     }
 
@@ -125,48 +142,6 @@ class Themes extends Component
         Utilities::setEnv($this->getEnvKeyByType($sType), 'null');
         unset($aFile);
         $this->redirect('/admin/themes');
-    }
-
-
-    private function getEnvKeyByType(string $sType)
-    {
-        $sEnvKey = '';
-        switch ($sType) {
-            case 'small' :
-            {
-                $sEnvKey = 'LOGO_SMALL_URL';
-                break;
-            }
-            case 'light' :
-            {
-                $sEnvKey = 'LOGO_LIGHT_URL';
-                break;
-            }
-            case 'dark' :
-            {
-                $sEnvKey = 'LOGO_DARK_URL';
-                break;
-            }
-        }
-        return $sEnvKey;
-    }
-
-    private function getLogoByType(string $sType)
-    {
-        switch ($sType) {
-            case 'small' :
-            {
-                return $this->aSmallLogo;
-            }
-            case 'light' :
-            {
-                return $this->aLightLogo;
-            }
-            case 'dark' :
-            {
-                return $this->aDarkLogo;
-            }
-        }
     }
 
 }

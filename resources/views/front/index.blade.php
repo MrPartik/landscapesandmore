@@ -87,45 +87,18 @@
                             <div class="separator"><span><i class="fa fa-circle"></i></span></div>
                             <div class="spacer-single"></div>
                         </div>
-
-                        <div class="col-md-4 wow fadeInLeft">
-                            <a class="image-popup-no-margins" href="{{ url('/img/services/landscaping.png') }}">
-                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/img/services/landscaping.png') }}" class="img-responsive" alt="">
-                            </a>
-                            <div class="spacer-single"></div>
-                            <h3><span class="id-color">Install Landscape and </span> Design</h3>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                            <div class="spacer-single"></div>
-                            <a href="javascript:" class="btn-line-black">Get Started Now!</a>
-                        </div>
-
-                        <div class="col-md-4 wow fadeInUp" data-wow-delay=".2s">
-                            <a class="image-popup-no-margins" href="{{ url('/img/services/maintenance.jpg') }}">
-                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/img/services/maintenance.jpg') }}" class="img-responsive" alt="">
-                            </a>
-                            <div class="spacer-single"></div>
-                            <h3><span class="id-color">Maintenance </span>Services</h3>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                            <div class="spacer-single"></div>
-                            <a href="javascript:" class="btn-line-black">Get Started Now!</a>
-                        </div>
-
-                        <div class="col-md-4 wow fadeInRight">
-                            <a class="image-popup-no-margins" href="{{ url('/img/services/turf-care.png') }}">
-                                <img style="min-height: 250px; object-fit: cover;" src="{{ url('/img/services/turf-care.png') }}" class="img-responsive" alt="">
-                            </a>
-                            <div class="spacer-single"></div>
-                            <h3><span class="id-color">Turf Care </span>Services</h3>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                            <div class="spacer-single"></div>
-                            <a href="javascript:" class="btn-line-black">Get Started Now!</a>
-                        </div>
+                        @foreach(\App\Models\Services::all() as $oService)
+                            <div class="col-md-4  mb-4 wow fadeInLeft">
+                                <a class="image-popup-no-margins" href="{{ url($oService->image) }}">
+                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url($oService->image) }}" class="img-responsive" alt="">
+                                </a>
+                                <div class="spacer-single"></div>
+                                <h3><span class="id-color">{{ $oService->title }}</h3>
+                                {{ $oService->description }}
+                                <div class="spacer-single"></div>
+                                <a href="{{ $oService->url }}" class="btn-line-black">Get Started Now!</a>
+                            </div>
+                        @endforeach
 
                     </div>
                 </div>
