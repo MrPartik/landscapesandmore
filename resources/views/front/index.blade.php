@@ -43,23 +43,23 @@
                 </div>
             </section>
 
-            <section class="text-white" id="section-how-it-works" data-bgimage="url(images-interior-landing/bg/2.jpg) fixed center" data-stellar-background-ratio=".2">
+            <section class="text-white" id="section-how-it-works" data-bgimage="url(images/background/bg-2.jpg) fixed center" data-stellar-background-ratio=".2">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-5 wow fadeInRight" data-wow-delay=".2s">
                             <h2 class="style-2"><span class="id-color">Discover</span></h2><br>
-                            <h2 class="text-white">How It Works?</h2>
+                            <h2 class="text-white">Our Process</h2>
                             <p class="lead">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
                             </p>
                             <div class="spacer-half"></div>
-                            <a href="#" class="btn-line-white">Contact Us Now</a>
+                            <a href="{{ url('/contact-us') }}" class="btn-line-white">Contact Us Now</a>
                         </div>
                         <div class="col-md-6 offset-md-1 wow fadeInLeft" data-wow-delay=".4s">
                             <figure class="picframe invert transparent shadow-soft rounded">
 										<span class="v-center">
 											<span>
-												<a id="play-video" class="video-play-button popup-youtube" href="https://www.youtube.com/watch?v=4HwORLPdAXg">
+												<a id="play-video" class="video-play-button popup-youtube" href="{{ \App\Library\Utilities::getDataInJson('homepage_our_process')['video_url'] ?? '' }}">
 													<span></span>
 												</a>
 											</span>

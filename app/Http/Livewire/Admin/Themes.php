@@ -24,6 +24,8 @@ class Themes extends Component
     public $bannerDescription = 'Install Landscape and Design, Maintenance Services, Turf Care Services';
     public $bannerImage = '';
     public $sCurrentTab = 'services';
+    public $ourProcessVideoUrl = '';
+    public $ourProcessDescription = '';
 
     protected $listeners = [
         'findService',
@@ -33,6 +35,7 @@ class Themes extends Component
     public function __construct($id = null)
     {
         $this->bannerDescription = env('BANNER_DESCRIPTION', $this->bannerDescription);
+        $this->initOurProcessData();
         parent::__construct($id);
     }
 
@@ -50,6 +53,13 @@ class Themes extends Component
         $this->initServiceCount();
         $this->sCurrentTab = session()->get('admin_themes_current_tab') ?? 'services';
         return view('livewire.admin.themes');
+    }
+
+    public function initOurProcessData()
+    {
+        $aData = Utilities::getDataInJson('homepage_our_process');
+        $this->ourProcessVideoUrl = $aData['video_url'];
+        $this->ourProcessDescription = $aData['description'];
     }
 
     public function initSmallLogo()
@@ -83,6 +93,16 @@ class Themes extends Component
                 'original' => $sFileName
             ];
         }
+    }
+
+    public function saveOurProcess()
+    {
+        $aData = [
+            "video_url" => $this->ourProcessVideoUrl,
+            "description" => $this->ourProcessDescription
+        ];
+
+        Utilities::insertDataInJson('homepage_our_process', $aData);
     }
 
     public function saveLogo(string $sType)

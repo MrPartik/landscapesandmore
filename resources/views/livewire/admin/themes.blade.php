@@ -72,19 +72,25 @@
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
                 <ul class="mb-2 nav nav-tabs" id="themes_tab" role="tablist">
                     <li class="nav-item " role="presentation">
-                        <button class="nav-link {{ $sCurrentTab === 'services' ? 'active' : '' }}" wire:click="setCurrentTab('services')" id="services-tab" data-bs-toggle="tab" data-bs-target="#services-tab-content" type="button" role="tab" aria-controls="services-tab" aria-selected="false">Services and Process</button>
+                        <button class="nav-link {{ $sCurrentTab === 'services' ? 'active' : '' }}" wire:click="setCurrentTab('services')" id="services-tab" data-bs-toggle="tab" data-bs-target="#services-tab-content" type="button" role="tab" aria-controls="services-tab" aria-selected="false">Homepage Services Offered </button>
+                    </li>
+                    <li class="nav-item " role="presentation">
+                        <button class="nav-link {{ $sCurrentTab === 'our_process' ? 'active' : '' }}" wire:click="setCurrentTab('our_process')" id="our_process-tab" data-bs-toggle="tab" data-bs-target="#our_process-tab-content" type="button" role="tab" aria-controls="our_process-tab" aria-selected="false">Homepage Our Process</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ $sCurrentTab === 'images' ? 'active' : '' }}" wire:click="setCurrentTab('images')" id="images-tab" data-bs-toggle="tab" data-bs-target="#images-tab-content" type="button" role="tab" aria-controls="images-tab" aria-selected="true">Images and Logos</button>
+                        <button class="nav-link {{ $sCurrentTab === 'banner' ? 'active' : '' }}" wire:click="setCurrentTab('banner')" id="banner-tab" data-bs-toggle="tab" data-bs-target="#banner-tab-content" type="button" role="tab" aria-controls="banner-tab" aria-selected="true">Homepage Banner</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {{ $sCurrentTab === 'logo' ? 'active' : '' }}" wire:click="setCurrentTab('logo')" id="logo-tab" data-bs-toggle="tab" data-bs-target="#logo-tab-content" type="button" role="tab" aria-controls="logo-tab" aria-selected="true">Logos</button>
                     </li>
                 </ul>
-
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show {{ $sCurrentTab === 'services' ? 'active' : '' }}" id="services-tab-content" role="tabpanel" aria-labelledby="services-tab">
                         <div class="row justify-content-end">
                             <div class="mt-3 col-12" x-data="{}">
                                 <h2> {{ __('Services we offer')  }}</h2>
                                 <p>{{ __('Manages the list of services that we offer.') }}</p>
+                                <hr/>
                                 <div class="row justify-content-end config block">
                                     <div class="col-8 tab-content mt-5">
                                         <div class="container bootstrap snippets bootdey">
@@ -166,11 +172,38 @@
                             <hr/>
                         </div>
                     </div>
-                    <div class="tab-pane fade show {{ $sCurrentTab === 'images' ? 'active' : '' }}" id="images-tab-content" role="tabpanel" aria-labelledby="images-tab">
+                    <div class="tab-pane fade show {{ $sCurrentTab === 'our_process' ? 'active' : '' }}" id="our_process-tab-content" role="tabpanel" aria-labelledby="our_process-tab">
+                        <div class="row justify-content-end">
+                            <div class="mt-3 col-12" x-data="{}">
+                                <h2> {{ __('Our Process')  }}</h2>
+                                <p>{{ __('Manage the content of our process in homepage.') }}</p>
+                                <hr/>
+                                <div class="mt-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="ourProcessVideo">
+                                            Our Process Video URL
+                                        </label>
+                                        <x-jet-input id="ourProcessVideo" wire:model.lazy="ourProcessVideoUrl"  type="text" class="form-control" placeholder="{{ __('Our Process Video URL') }}"/>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="ourProcessDescription">
+                                            Our Process Description
+                                        </label>
+                                        <textarea id="ourProcessDescription" wire:model.lazy="ourProcessDescription" type="text" class="form-control" rows="10" placeholder="{{ __('Our Process Description') }}"> </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button wire:click="saveOurProcess()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
+                    </div>
+                    <div class="tab-pane fade show {{ $sCurrentTab === 'banner' ? 'active' : '' }}" id="banner-tab-content" role="tabpanel" aria-labelledby="banner-tab">
                         <div class="row justify-content-end">
                             <div class="mt-3 col-12" x-data="{}">
                                 <h2> {{ __('Homepage Banner')  }}</h2>
                                 <p>{{ __('Customize some fields in homepage banner.') }}</p>
+                                <hr/>
                                 <div class="row mb-4">
                                     <div class="col-4">
                                         <label class="font-weight-bold">Banner Description</label>
@@ -201,10 +234,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr/>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show {{ $sCurrentTab === 'logo' ? 'active' : '' }}" id="logo-tab-content" role="tabpanel" aria-labelledby="logo-tab">
+                        <div class="row justify-content-end">
                             <div class="mt-3 col-12" x-data="{}">
                                 <h2> {{ __('Logo')  }}</h2>
                                 <p>{{ __('Customize Logo that are being used in the website.') }}</p>
+                                <hr/>
                                 <div class="row" style="justify-content: center;">
                                     <div class="row-logo-manager mr-1 col-lg-3 col-md-3 col-sm-12">
                                         <div class="mb-2">
