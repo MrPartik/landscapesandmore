@@ -1,7 +1,7 @@
 @extends('layouts.pdf')
 @section('body')
     <div>
-        <h1 style="font-weight: bold; font-size: 20px; margin-bottom: 10px">Warranty Record.</h1>
+        <h1 style="font-weight: bold; font-size: 20px; margin-bottom: 10px">List of Applicants.</h1>
         <p style="font-size: 10px; margin-bottom: 10px">Generated at: {{ now() }}</p>
         <table style="margin-bottom: 10px; border: 1px  solid salmon; float: right !important;">
             <tr>
