@@ -132,7 +132,7 @@ class Reviews extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = PDF::loadView('pdf.review', $this->aCounts, ['aModel' => $this->aReviews], [
+        $oPdf = PDF::loadView('pdf.reviews', $this->aCounts, ['aModel' => $this->aReviews], [
             'orientation' => 'L'
         ]);
         return Utilities::streamDownload($oPdf, 'customer-review-report-' . time() . '.pdf');

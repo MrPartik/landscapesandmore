@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
+use App\Library\Utilities;
 use App\Models\Careers as CareersModel;
+use PDF;
 
 class Careers extends Component
 {
@@ -11,6 +13,7 @@ class Careers extends Component
         'serviceable_area' => 0,
         'total'            => 0,
     ];
+    public $aModel = [];
 
     public function render()
     {
@@ -20,10 +23,18 @@ class Careers extends Component
 
     public function initCareerCounts()
     {
-        $aModel = CareersModel::all();
+        $this->aModel = CareersModel::all();
         $this->aCounts = [
-            'serviceable_area' => $aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
-            'total'            => $aModel->count(),
+            'serviceable_area' => $this->aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'total'            => $this->aModel->count(),
         ];
+    }
+
+    public function generatePdfReport()
+    {
+        $oPdf = PDF::loadView('pdf.careers', $this->aCounts, ['aModel' => $this->aModel], [
+            'orientation' => 'L'
+        ]);
+        return Utilities::streamDownload($oPdf, 'careers-report-' . time() . '.pdf');
     }
 }

@@ -24,8 +24,11 @@
 
             <div class="row ">
                 <div class="col-12">
+                    <div class="col-4">
+                        <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
+                    </div>
                     <hr/>
-                        <h3>Warranty Claim List</h3>
+                        <h3>Applicant List</h3>
                     <br/>
                     <livewire:admin.datatables.careers id="careers-table" searchable="name, description" exportable />
                 </div>
