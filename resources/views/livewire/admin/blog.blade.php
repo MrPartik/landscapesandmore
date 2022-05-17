@@ -5,8 +5,7 @@
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
                 <div class="row">
                     @if($bShowAddPage === false)
-                        <div class="col-2">
-                            <button wire:click="toggleShowAddPage(false)" class="mb-4 btn btn-primary text-white"><span class="fa fa-plus"></span> Add Blog </button>
+                        <div class="row">
                         </div>
                         <div class="config block">
                             <div class="col-12 tab-content">
@@ -36,6 +35,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-4">
+                            <button wire:click="toggleShowAddPage(false)" class="mb-4 btn btn-primary text-white"><span class="fa fa-plus"></span> Add Blog </button>
+                            <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
                         </div>
                         <hr/>
                         <br/>

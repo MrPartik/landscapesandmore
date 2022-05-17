@@ -279,47 +279,11 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    <div class="row-logo-manager mr-1 col-lg-4 col-md-4 col-sm-12" style="background: #474747;color: white;">
+                                    <div class="row-logo-manager mr-1 col-lg-4 col-md-4 col-sm-12">
                                         <div class="mb-2">
                                             <label class="col-form-label" for="">
                                                 <label class="col-form-label font-weight-bold" for="">
                                                     Header Logo
-                                                </label>
-                                                <div>
-                                                    <input id="uploadLightLogo" style="display: none" wire:model="uploadLightLogo" type="file" accept="image/*">
-                                                    <button onclick="$('#uploadLightLogo').click()" class="btn btn-primary text-white">
-                                                        <span class="fa fa-file"> </span> Upload Image
-                                                    </button>
-                                                    <p>Max. file size: 10 MB.</p>
-                                                    @if($uploadLightLogo !== '')
-                                                        <button wire:click="saveLogo('light')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
-                                                    @endif
-                                                </div>
-                                            </label>
-                                            <div>
-                                                <hr/>
-                                                @foreach($this->aLightLogo as $iKey => $aFileName)
-                                                    <div style="border: 1px dashed gray; padding: 10px; border-radius: 10px; margin-bottom: 5px">
-                                                        <br/>
-                                                        <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-width: 100%;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
-                                                        <br/>
-                                                        <br/>
-                                                        @if(env('LOGO_LIGHT_URL') !== $aFileName['formatted'])
-                                                            <button wire:click="useLogo({{ $iKey }}, 'light')" class="btn btn-success text-white"><i class="fa fa-check"></i></button>
-                                                        @else
-                                                            <p class="text-success font-weight-bold"> Current</p>
-                                                        @endif
-                                                        <button wire:click="deleteLogo({{ $iKey }}, 'light')" class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row-logo-manager col-lg-4 col-md-4 col-sm-12">
-                                        <div class="mb-2">
-                                            <label class="col-form-label" for="">
-                                                <label class="col-form-label font-weight-bold" for="">
-                                                    Footer Logo
                                                 </label>
                                                 <div>
                                                     <input id="uploadDarkLogo" style="display: none" wire:model="uploadDarkLogo" type="file" accept="image/*">
@@ -346,6 +310,42 @@
                                                             <p class="text-success font-weight-bold"> Current</p>
                                                         @endif
                                                         <button wire:click="deleteLogo({{ $iKey }}, 'dark')" class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-logo-manager col-lg-4 col-md-4 col-sm-12" style="background: #474747;color: white;">
+                                        <div class="mb-2">
+                                            <label class="col-form-label" for="">
+                                                <label class="col-form-label font-weight-bold" for="">
+                                                    Footer Logo
+                                                </label>
+                                                <div>
+                                                    <input id="uploadLightLogo" style="display: none" wire:model="uploadLightLogo" type="file" accept="image/*">
+                                                    <button onclick="$('#uploadLightLogo').click()" class="btn btn-primary text-white">
+                                                        <span class="fa fa-file"> </span> Upload Image
+                                                    </button>
+                                                    <p>Max. file size: 10 MB.</p>
+                                                    @if($uploadLightLogo !== '')
+                                                        <button wire:click="saveLogo('light')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
+                                                    @endif
+                                                </div>
+                                            </label>
+                                            <div>
+                                                <hr/>
+                                                @foreach($this->aLightLogo as $iKey => $aFileName)
+                                                    <div style="border: 1px dashed gray; padding: 10px; border-radius: 10px; margin-bottom: 5px">
+                                                        <br/>
+                                                        <a href="{{ url($aFileName['formatted']) }}" target="_blank"><img style="max-width: 100%;" class="logo" src="{{ url($aFileName['formatted']) }}" alt=""></a>
+                                                        <br/>
+                                                        <br/>
+                                                        @if(env('LOGO_LIGHT_URL') !== $aFileName['formatted'])
+                                                            <button wire:click="useLogo({{ $iKey }}, 'light')" class="btn btn-success text-white"><i class="fa fa-check"></i></button>
+                                                        @else
+                                                            <p class="text-success font-weight-bold"> Current</p>
+                                                        @endif
+                                                        <button wire:click="deleteLogo({{ $iKey }}, 'light')" class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
                                                     </div>
                                                 @endforeach
                                             </div>

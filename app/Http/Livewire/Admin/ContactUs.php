@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
+use App\Library\Utilities;
 use App\Models\ContactUs as ContactUsModel;
+use PDF;
 
 class ContactUs extends Component
 {
@@ -13,6 +15,7 @@ class ContactUs extends Component
         'maintenance_type' => 0,
         'total'            => 0
     ];
+    public $aModel = [];
 
     public function render()
     {
@@ -22,12 +25,20 @@ class ContactUs extends Component
 
     public function initContactUsDashboardCounter()
     {
-        $aModel = ContactUsModel::all();
+        $this->aModel = ContactUsModel::all();
         $this->aCounts = [
-            'serviceable_area' => $aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
-            'landscape_type'   => $aModel->where('project_description', 'landscape')->count(),
-            'maintenance_type' => $aModel->where('project_description', 'maintenance-and-turf-care')->count(),
-            'total'            => $aModel->count(),
+            'serviceable_area' => $this->aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'landscape_type'   => $this->aModel->where('project_description', 'landscape')->count(),
+            'maintenance_type' => $this->aModel->where('project_description', 'maintenance-and-turf-care')->count(),
+            'total'            => $this->aModel->count(),
         ];
+    }
+
+    public function generatePdfReport()
+    {
+        $oPdf = PDF::loadView('pdf.contact_us', $this->aCounts, ['aModel' => $this->aModel], [
+            'orientation' => 'L'
+        ]);
+        return Utilities::streamDownload($oPdf, 'contact-us-report-' . time() . '.pdf');
     }
 }

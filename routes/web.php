@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use PDF;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('test', function () {
+
+    $pdf = PDF::loadView( 'pdf.blog', [
+        'count' => 10,
+        'active' => 10,
+        'in_active' => 10,
+        'blogs' => \App\Models\Blog::all()
+    ]);
+    return $pdf->stream('document.pdf');
+    return view('pdf.blog', [
+            'count' => 10,
+            'active' => 10,
+            'in_active' => 10
+    ]);
 //    $aResults = [];
 //    $aTopic = [
 //        "/g/120z18l3",

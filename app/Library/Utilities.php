@@ -38,4 +38,11 @@ class Utilities
         $aFileData = file_get_contents($sResourceFilePath) ?? '{}';
         return json_decode($aFileData, true)[$mKey] ?? [];
     }
+
+    public static function streamDownload ($oObject, $sFileName)
+    {
+        return response()->streamDownload(function () use($oObject, $sFileName) {
+            echo  $oObject->stream();
+        }, $sFileName);
+    }
 }

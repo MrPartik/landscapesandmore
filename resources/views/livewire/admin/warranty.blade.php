@@ -51,6 +51,9 @@
             </div>
 
             <div class="row ">
+                <div class="col-4">
+                    <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
+                </div>
                 <div class="col-12">
                     <hr/>
                         <h3>Warranty Claim List</h3>

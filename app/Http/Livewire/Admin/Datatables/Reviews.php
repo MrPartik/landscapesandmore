@@ -26,7 +26,7 @@ class Reviews extends DataTableComponent
         return [
             Column::make("Review Details", "created_at")
                 ->format(function ($mValue, $mRow, $oColumn) {
-                    $aRatingHtml = '<span wire:click="sample" style="font-size: 15px;">
+                    $aRatingHtml = '<span style="font-size: 15px;">
                                         <span class="fa fa-star ' . (($mRow->rating >= 1) ? 'checked' : '') . '"></span>
                                         <span class="fa fa-star ' . (($mRow->rating >= 2) ? 'checked' : '') . '"></span>
                                         <span class="fa fa-star ' . (($mRow->rating >= 3) ? 'checked' : '') . '"></span>

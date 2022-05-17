@@ -10,7 +10,55 @@
             <!-- 1st Block of tab-content -->
             <div class="" id="home">
                 <div class="row ">
-                    <div class="col-12">
+                    <div class="col-3">
+                        <h1>Summary </h1>
+                        <hr/>
+                        <div class="row">
+
+                            <div class="">
+                                <h4 class="">Total Record:  {{ $aCounts['total'] }}</h4>
+                            </div>
+                                <div class="">
+                                    <h4 class="">Rating : </h4>
+                                    <p style="font-size: 15px;">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span> : {{ $aCounts['star5'] }}
+                                    </p>
+                                    <p style="font-size: 15px;">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span> : {{ $aCounts['star4'] }}
+                                    </p>
+                                    <p style="font-size: 15px;">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span> : {{ $aCounts['star3'] }}
+                                    </p>
+                                    <p style="font-size: 15px;">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span> : {{ $aCounts['star2'] }}
+                                    </p>
+                                    <p style="font-size: 15px;">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span> : {{ $aCounts['star1'] }}
+                                    </p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
                         <div class="m-3" x-data="{}">
                             <strong> {{ __('' . 'Reviews') }}</strong><br>
                             {{ __('You can now manage reviews.') }}
@@ -48,6 +96,11 @@
                             </div>
                             <button wire:click="saveRating()" class="mt-4 btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                             <button wire:click="clear()" class="mt-4 btn btn-warning text-black"><span class="fa fa-eraser"></span> Clear </button>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="col-4">
+                            <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
                         </div>
                         @if(empty($errors->getMessages()) === false)
                             <div class='alert mt-3 alert-danger'>

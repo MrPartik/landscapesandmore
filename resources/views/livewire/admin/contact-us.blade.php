@@ -38,6 +38,9 @@
 
             <div class="row ">
                 <div class="col-12">
+                    <div class="col-4">
+                        <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
+                    </div>
                     <hr/>
                     <h3>Contact Us List</h3>
                     <br/>

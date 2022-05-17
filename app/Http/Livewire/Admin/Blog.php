@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Library\Utilities;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Blog as BlogModel;
+use PDF;
 
 class Blog extends Component
 {
@@ -15,7 +17,7 @@ class Blog extends Component
     public $aCounts = [
         'total'    => 0,
         'active'   => 0,
-        'inactive' => 0
+        'inactive' => 0,
     ];
 
     /**
@@ -52,15 +54,17 @@ class Blog extends Component
      * @var array
      */
     private $blogRules = [
-        'featuredImage' => 'required',
-        'blogTitle' => 'required|unique:blog,title',
-        'blogTags'=> 'sometimes',
-        'blogDescription'=> 'required',
-        'blogContent'=> 'required',
+        'featuredImage'   => 'required',
+        'blogTitle'       => 'required|unique:blog,title',
+        'blogTags'        => 'sometimes',
+        'blogDescription' => 'required',
+        'blogContent'     => 'required',
     ];
 
+    public $aModel = [];
+
     public $listeners = [
-        'initBlogDashboardCounter'
+        'initBlogDashboardCounter',
     ];
 
     public function render()
@@ -71,11 +75,11 @@ class Blog extends Component
 
     public function initBlogDashboardCounter()
     {
-        $aModel = BlogModel::all();
+        $this->aModel = BlogModel::all();
         $this->aCounts = [
-            'total'    => $aModel->count(),
-            'active'   => $aModel->where('is_active', true)->count(),
-            'inactive' => $aModel->where('is_active', false)->count(),
+            'total'    => $this->aModel->count(),
+            'active'   => $this->aModel->where('is_active', true)->count(),
+            'inactive' => $this->aModel->where('is_active', false)->count(),
         ];
     }
 
@@ -118,5 +122,13 @@ class Blog extends Component
         $this->bShowAddPage = true;
         $this->emit('initializeWysiwyg');
         redirect('/admin/blog');
+    }
+
+    public function generatePdfReport()
+    {
+        $oPdf = PDF::loadView('pdf.blog', array_merge($this->aCounts, [
+            'aModel' => $this->aModel,
+        ]));
+        return Utilities::streamDownload($oPdf, 'blog-report-' . time() . '.pdf');
     }
 }
