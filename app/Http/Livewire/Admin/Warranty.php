@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Library\Utilities;
 use App\Models\Warranty as WarrantyModel;
-use PDF;
+use MPdf;
 
 class Warranty extends Component
 {
@@ -76,7 +76,7 @@ class Warranty extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = PDF::loadView('pdf.warranty', $this->aCounts, ['aModel' => $this->aModel], [
+        $oPdf = MPdf::loadView('pdf.warranty', $this->aCounts, ['aModel' => $this->aModel], [
             'orientation' => 'L'
         ]);
         return Utilities::streamDownload($oPdf, 'warranty-report-' . time() . '.pdf');

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Library\Utilities;
 use App\Models\ContactUs as ContactUsModel;
-use PDF;
+use MPdf;
 
 class ContactUs extends Component
 {
@@ -36,7 +36,7 @@ class ContactUs extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = PDF::loadView('pdf.contact_us', $this->aCounts, ['aModel' => $this->aModel], [
+        $oPdf = MPdf::loadView('pdf.contact_us', $this->aCounts, ['aModel' => $this->aModel], [
             'orientation' => 'L'
         ]);
         return Utilities::streamDownload($oPdf, 'contact-us-report-' . time() . '.pdf');
