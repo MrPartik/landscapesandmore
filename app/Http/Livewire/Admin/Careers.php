@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Library\Utilities;
 use App\Models\Careers as CareersModel;
-use PDF;
+use MPdf;
 
 class Careers extends Component
 {
@@ -32,7 +32,7 @@ class Careers extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = PDF::loadView('pdf.careers', $this->aCounts, ['aModel' => $this->aModel], [
+        $oPdf = MPdf::loadView('pdf.careers', $this->aCounts, ['aModel' => $this->aModel], [
             'orientation' => 'L'
         ]);
         return Utilities::streamDownload($oPdf, 'careers-report-' . time() . '.pdf');

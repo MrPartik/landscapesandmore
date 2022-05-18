@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Blog as BlogModel;
-use PDF;
+use MPdf;
 
 class Blog extends Component
 {
@@ -126,7 +126,7 @@ class Blog extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = PDF::loadView('pdf.blog', array_merge($this->aCounts, [
+        $oPdf = MPdf::loadView('pdf.blog', array_merge($this->aCounts, [
             'aModel' => $this->aModel,
         ]));
         return Utilities::streamDownload($oPdf, 'blog-report-' . time() . '.pdf');

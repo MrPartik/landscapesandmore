@@ -6,7 +6,7 @@ use App\Http\GoogleApi\GoogleClient;
 use App\Library\Utilities;
 use Livewire\Component;
 use App\Models\Reviews as ReviewModel;
-use PDF;
+use MPdf;
 
 class Reviews extends Component
 {
@@ -132,7 +132,7 @@ class Reviews extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = PDF::loadView('pdf.reviews', $this->aCounts, ['aModel' => $this->aReviews], [
+        $oPdf = MPdf::loadView('pdf.reviews', $this->aCounts, ['aModel' => $this->aReviews], [
             'orientation' => 'L'
         ]);
         return Utilities::streamDownload($oPdf, 'customer-review-report-' . time() . '.pdf');
