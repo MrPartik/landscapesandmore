@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
 use App\Library\Utilities;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -67,6 +68,9 @@ class Blog extends Component
         'initBlogDashboardCounter',
     ];
 
+    public $startDate;
+    public $endDate;
+
     public function render()
     {
         $this->initBlogDashboardCounter();
@@ -127,7 +131,9 @@ class Blog extends Component
     public function generatePdfReport()
     {
         $oPdf = MPdf::loadView('pdf.blog', array_merge($this->aCounts, [
-            'aModel' => $this->aModel,
+            'aModel'    => $this->aModel->whereBetween('created_at', [$this->startDate, $this->endDate]),
+            'startDate' => Carbon::createFromDate($this->startDate),
+            'endDate'   => Carbon::createFromDate($this->endDate),
         ]));
         return Utilities::streamDownload($oPdf, 'blog-report-' . time() . '.pdf');
     }

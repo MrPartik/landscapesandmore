@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Library\Utilities;
 use App\Models\ContactUs as ContactUsModel;
@@ -13,9 +14,11 @@ class ContactUs extends Component
         'serviceable_area' => 0,
         'landscape_type'   => 0,
         'maintenance_type' => 0,
-        'total'            => 0
+        'total'            => 0,
     ];
     public $aModel = [];
+    public $startDate;
+    public $endDate;
 
     public function render()
     {
@@ -36,8 +39,15 @@ class ContactUs extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = MPdf::loadView('pdf.contact_us', $this->aCounts, ['aModel' => $this->aModel], [
-            'orientation' => 'L'
+        $oPdf = MPdf::loadView('pdf.contact_us', $this->aCounts, [
+            'aModel'    => $this->aModel->whereBetween('created_at', [
+                $this->startDate,
+                $this->endDate,
+            ]),
+            'startDate' => Carbon::createFromDate($this->startDate),
+            'endDate'   => Carbon::createFromDate($this->endDate),
+        ], [
+            'orientation' => 'L',
         ]);
         return Utilities::streamDownload($oPdf, 'contact-us-report-' . time() . '.pdf');
     }

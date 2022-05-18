@@ -16,7 +16,7 @@
                     <div class="col-md-12">
                         <div class="blog-read">
                             <div class="post-content">
-                                <div class="post-image" style="background: url('{{ url($aBlog->featured_image) }}'); height: 40vh; background-size: cover">
+                                <div class="post-image" style="background: url('{{ url($aBlog->featured_image) }}'); height: 500px; background-size: cover">
                                 </div>
                                 <div class="date-box">
                                     <div class="day">{{ \Carbon\Carbon::createFromDate($aBlog->updated_at)->format('d') }}</div>

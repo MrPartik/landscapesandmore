@@ -3,6 +3,7 @@
     <div>
         <h1 style="font-weight: bold; font-size: 20px; margin-bottom: 10px">Contact Us Record.</h1>
         <p style="font-size: 10px; margin-bottom: 10px">Generated at: {{ now() }}</p>
+        <p style="font-size: 10px; margin-bottom: 10px">Date Rage: {{ $startDate . ' - ' . $endDate }}</p>
         <table style="margin-bottom: 10px; border: 1px  solid salmon; float: right !important;">
             <tr>
                 <th>Summary</th>

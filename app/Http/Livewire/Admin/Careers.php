@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Library\Utilities;
 use App\Models\Careers as CareersModel;
@@ -14,6 +15,8 @@ class Careers extends Component
         'total'            => 0,
     ];
     public $aModel = [];
+    public $startDate;
+    public $endDate;
 
     public function render()
     {
@@ -32,8 +35,15 @@ class Careers extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = MPdf::loadView('pdf.careers', $this->aCounts, ['aModel' => $this->aModel], [
-            'orientation' => 'L'
+        $oPdf = MPdf::loadView('pdf.careers', $this->aCounts, [
+            'aModel'    => $this->aModel->whereBetween('created_at', [
+                $this->startDate,
+                $this->endDate,
+            ]),
+            'startDate' => Carbon::createFromDate($this->startDate),
+            'endDate'   => Carbon::createFromDate($this->endDate),
+        ], [
+            'orientation' => 'L',
         ]);
         return Utilities::streamDownload($oPdf, 'careers-report-' . time() . '.pdf');
     }

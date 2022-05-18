@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
 use App\Http\GoogleApi\GoogleClient;
 use App\Library\Utilities;
 use Livewire\Component;
@@ -39,6 +40,8 @@ class Reviews extends Component
         'description' => 'required',
     ];
 
+    public $startDate;
+    public $endDate;
 
     public function render()
     {
@@ -115,8 +118,7 @@ class Reviews extends Component
     {
         $this->validate($this->aReviewRule);
         $oReviewModel = new ReviewModel();
-        if ($this->iId > 0)
-        {
+        if ($this->iId > 0) {
             $oReviewModel = ReviewModel::find($this->iId);
         }
         $oReviewModel->author = $this->author;
@@ -132,8 +134,15 @@ class Reviews extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = MPdf::loadView('pdf.reviews', $this->aCounts, ['aModel' => $this->aReviews], [
-            'orientation' => 'L'
+        $oPdf = MPdf::loadView('pdf.reviews', $this->aCounts, [
+            'aModel'    => $this->aReviews->whereBetween('created_at', [
+                $this->startDate,
+                $this->endDate,
+            ]),
+            'startDate' => Carbon::createFromDate($this->startDate),
+            'endDate'   => Carbon::createFromDate($this->endDate),
+        ], [
+            'orientation' => 'L',
         ]);
         return Utilities::streamDownload($oPdf, 'customer-review-report-' . time() . '.pdf');
     }

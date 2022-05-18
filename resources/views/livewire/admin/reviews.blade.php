@@ -100,7 +100,14 @@
                     </div>
                     <div class="col-12 mt-3">
                         <div class="col-4">
-                            <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" name="daterange" value="" />
+                                </div>
+                                <div class="col-6">
+                                    <button wire:click="generatePdfReport" class="mb-4 btn btn-success text-white"><span class="fa fa-download"></span> Generate Report </button>
+                                </div>
+                            </div>
                         </div>
                         @if(empty($errors->getMessages()) === false)
                             <div class='alert mt-3 alert-danger'>
@@ -118,4 +125,20 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+            let startDate = moment().subtract(30, 'days');
+            let endDate = moment();
+        @this.set('startDate', startDate);
+        @this.set('endDate', endDate);
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left',
+                startDate: startDate,
+                endDate: endDate
+            }, function(start, end, label) {
+            @this.set('startDate', start);
+            @this.set('endDate', end);
+            });
+        });
+    </script>
 </div>

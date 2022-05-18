@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Library\Utilities;
 use App\Models\Warranty as WarrantyModel;
@@ -25,6 +26,8 @@ class Warranty extends Component
         'not_resolved'     => 0,
     ];
     public $aModel = [];
+    public $startDate;
+    public $endDate;
 
     protected $listeners = ['initWarrantDetails', 'showRemarksModal', 'initWarrantyDashboardCounter'];
 
@@ -76,8 +79,15 @@ class Warranty extends Component
 
     public function generatePdfReport()
     {
-        $oPdf = MPdf::loadView('pdf.warranty', $this->aCounts, ['aModel' => $this->aModel], [
-            'orientation' => 'L'
+        $oPdf = MPdf::loadView('pdf.warranty', $this->aCounts, [
+            'aModel'    => $this->aModel->whereBetween('created_at', [
+                $this->startDate,
+                $this->endDate,
+            ]),
+            'startDate' => Carbon::createFromDate($this->startDate),
+            'endDate'   => Carbon::createFromDate($this->endDate),
+        ], [
+            'orientation' => 'L',
         ]);
         return Utilities::streamDownload($oPdf, 'warranty-report-' . time() . '.pdf');
     }
