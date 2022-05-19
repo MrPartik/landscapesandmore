@@ -60,9 +60,7 @@
                 <div class="row">
                     <div class="col-md-12 mb10">
                         <h3>Warranty Review</h3>
-                        <p>Per our agreements, we have a “One-year limited warranty on all plants and sod (with one replacement) and proper irrigation.
-                            Plants and sod not properly cared for will void the warranty. Perennials are not covered under any warranty.”
-                            If you believe you are under warranty please fill out the form below for our team to review.</p>
+                        <p>{{ config('pre-defined.warranty_paragraph') }}</p>
                     </div>
                     <div class="col-md-6">
                         <div id='first_name_error' class='error'>Please enter your first name.</div>

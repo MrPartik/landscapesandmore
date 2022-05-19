@@ -15,12 +15,14 @@ class PreDefinedValues extends Component
     public $pipelineKeyWarranty = '';
     public $pipelineKeyHiring = '';
     public $careerPosition = '';
+    public $warrantyParagraph = '';
 
     public function __construct($id = null)
     {
         $this->initContactUsDefaultValues();
         $this->initPipelineKeysDefaultValues();
         $this->initCareerPositionValues();
+        $this->initWarrantyDefaultValues();
         parent::__construct($id);
     }
 
@@ -42,6 +44,11 @@ class PreDefinedValues extends Component
         $this->pipelineKeyMaintenance = config('streak.maintenance_pipeline_key');
         $this->pipelineKeyWarranty = config('streak.warranty_claim_pipeline_key');
         $this->pipelineKeyHiring = config('streak.careers_pipeline_key');
+    }
+
+    public function initWarrantyDefaultValues()
+    {
+        $this->warrantyParagraph = config('pre-defined.warranty_paragraph');
     }
 
     public function initCareerPositionValues()
@@ -67,6 +74,11 @@ class PreDefinedValues extends Component
     public function saveCareerPosition()
     {
         Utilities::setEnv('CAREERS_AVAILABLE_POSITION', $this->careerPosition);
+    }
+
+    public function saveWarranty()
+    {
+        Utilities::setEnv('WARRANTY_PARAGRAPH', $this->warrantyParagraph);
     }
 
 }

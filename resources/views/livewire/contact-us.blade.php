@@ -102,6 +102,17 @@
     @section('extra-js')
         <script async src="{{ url('js/google-api/maps.js?callback=initAutocomplete') }}"></script>
         <script>
+
+            Swal.fire({
+                icon: 'warning',
+                html: 'Use the form below to schedule a landscape design consultation and for other inquiries.\n' +
+                    '                            If we do not contact you in 24 hours from the time you submit this form, please email us at\n' +
+                    '                            info@landscapesandmore.com or call us at (770) 209-2344.',
+                showCancelButton: false,
+                showConfirmButton: false,
+                showCloseButton: true,
+                allowOutsideClick: false,
+            });
                 let oAutocomplete;
                 let oAddressField;
 

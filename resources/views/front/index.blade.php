@@ -96,7 +96,7 @@
                                 <h3><span class="id-color">{{ $oService->title }}</h3>
                                 {{ $oService->description }}
                                 <div class="spacer-single"></div>
-                                <a href="{{ $oService->url }}" class="btn-line-black">Get Started Now!</a>
+                                <a href="{{ $oService->url }}" class="btn-line-black">Learn more</a>
                             </div>
                         @endforeach
 

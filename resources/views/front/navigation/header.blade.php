@@ -39,7 +39,7 @@
                 <nav>
                     <ul id="mainmenu">
                         <li><a class="{{ $active === 'home' ? 'active' : '' }}" href="{{ url('/') }}">Home<span></span></a></li>
-                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Our Process</a></li>
+                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Track Status</a></li>
                         <li><a class="{{ $active === 'projects' ? 'active' : '' }}" href="{{ url('/projects') }}">Projects</a></li>
                         <li><a class="{{ $active === 'blog' ? 'active' : '' }}" href="{{ url('/blog') }}">Blog</a></li>
                         <li><a class="{{ $active === 'contact-us' ? 'active' : '' }}" href="{{ url('/contact-us') }}">Contact Us</a></li>
