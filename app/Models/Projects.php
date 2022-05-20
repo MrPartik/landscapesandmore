@@ -19,6 +19,8 @@ class Projects extends Model
         'project_type_id',
         'user_id',
         'url',
+        'type',
+        'thumbnail_url',
         'description',
         'created_at',
         'updated_at',

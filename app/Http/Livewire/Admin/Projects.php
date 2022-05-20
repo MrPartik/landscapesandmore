@@ -16,7 +16,7 @@ class Projects extends Component
     public $aCounts = [
         'total'    => 0,
         'active'   => 0,
-        'inactive' => 0
+        'inactive' => 0,
     ];
 
     /**
@@ -48,7 +48,7 @@ class Projects extends Component
      * Picture of Project
      * @var string
      */
-    public $pictureOfProject = '';
+    public $pictureOfProject = null;
     /**
      * @var string
      */
@@ -72,14 +72,17 @@ class Projects extends Component
         'sNameProjectType'        => 'required',
         'sDescriptionProjectType' => 'required',
     ];
+    public $thumbnailVideo = null;
     /**
      * @var array
      */
     public $aProjectRule = [
-        'pictureOfProject' => 'required|image',
+        'pictureOfProject' => 'nullable|image',
+        'thumbnailVideo'   => 'nullable|image',
         'sNameOfProject'   => 'required',
     ];
-
+    public $mediaType = 'image';
+    public $sUrlMedia = '';
     public $listeners = ['initProjectTypeDashboardCounter'];
 
     /**
@@ -130,6 +133,8 @@ class Projects extends Component
     public function clearAddProjectForm()
     {
         $this->pictureOfProject = null;
+        $this->thumbnailVideo = null;
+        $this->sUrlMedia = null;
         $this->sNameOfProject = '';
         $this->iProjectTypeIdForProject = 0;
         $this->aProjectTypes = $this->initProjectTypes();
@@ -167,6 +172,7 @@ class Projects extends Component
     {
         $this->sNameProjectType = '';
         $this->sDescriptionProjectType = '';
+        $this->sUrlMedia = '';
     }
 
     /**
@@ -183,6 +189,14 @@ class Projects extends Component
     public function removePictureOfProject()
     {
         $this->pictureOfProject = null;
+    }
+
+    /**
+     *
+     */
+    public function removeThumbnailOfVideo()
+    {
+        $this->thumbnailVideo = null;
     }
 
 
@@ -202,12 +216,24 @@ class Projects extends Component
     public function saveProject()
     {
         $this->validate($this->aProjectRule);
-        $sFIlePath = $this->pictureOfProject->storeAs('public', 'project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
-        $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
+        $sFilePath = '';
+        $sThumbnailPath = '';
+        if ($this->mediaType === 'image') {
+            $sFilePath = $this->pictureOfProject->storeAs('public', 'project/' . time() . '.' . $this->pictureOfProject->getClientOriginalExtension());
+            $sFilePath = '/' . str_replace('public', 'storage', $sFilePath);
+        } else if ($this->mediaType === 'video-external') {
+            $sThumbnailPath = $this->thumbnailVideo->storeAs('public', 'project/thumbnails/' . time() . '.' . $this->thumbnailVideo->getClientOriginalExtension());
+            $sThumbnailPath = '/' . str_replace('public', 'storage', $sThumbnailPath);
+            $sFilePath = $this->sUrlMedia;
+        } else {
+            $sFilePath = $this->sUrlMedia;
+        }
         $oProject = new ProjectsModel();
         $oProject->project_type_id = $this->iProjectTypeIdForProject;
         $oProject->user_id = Auth::id();
-        $oProject->url = $sFIlePath;
+        $oProject->url = $sFilePath;
+        $oProject->thumbnail_url = $sThumbnailPath;
+        $oProject->type = $this->mediaType;
         $oProject->description = $this->sNameOfProject;
         $oProject->save();
         $this->emit('initProjects');
