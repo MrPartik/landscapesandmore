@@ -18,11 +18,7 @@ class Process extends Component
         5003,
         5004,
         5005,
-        5010,
-        5021,
-        5017,
-        5018,
-        5019,
+        5010
     ];
     const ALLOWED_STAGE_MAINTENANCE = [
         5002,

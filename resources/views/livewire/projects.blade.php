@@ -21,22 +21,6 @@
         <!-- portfolio filter close -->
         <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
             @foreach($aProjects as $aProject)
-                @if($aProject['type'] === 'video-external')
-                    <div class="item project-type-{{ $aProject['projectType']['project_type_id'] }}"
-                         style="width: 250px;">
-                        <figure class="picframe invert transparent shadow-soft rounded">
-										<span class="v-center">
-											<span>
-												<a id="play-video" class="video-play-button popup-youtube"
-                                                   href="{{ url($aProject['url']) }}">
-													<span></span>
-												</a>
-											</span>
-										</span>
-                            <img src="{{ url($aProject['thumbnail_url'] ) }}" class="img-fullwidth" alt="">
-                        </figure>
-                    </div>
-                @else
                 <!-- gallery item -->
                 <div class="item project-type-{{ $aProject['projectType']['project_type_id'] }}" style="width: 250px;">
                     <div class="picframe">
@@ -51,7 +35,6 @@
                     </div>
                 </div>
                 <!-- close gallery item -->
-                @endif
             @endforeach
         </div>
     </div>

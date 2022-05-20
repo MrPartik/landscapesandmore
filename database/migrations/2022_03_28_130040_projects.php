@@ -18,8 +18,6 @@ class Projects extends Migration
             $oTable->unsignedBigInteger('project_type_id');
             $oTable->unsignedBigInteger('user_id');
             $oTable->string('url');
-            $oTable->string('type');
-            $oTable->string('thumbnail_url');
             $oTable->string('description');
             $oTable->tinyInteger('is_active')->default(1);
             $oTable->timestamps();

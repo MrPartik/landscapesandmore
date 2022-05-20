@@ -30,26 +30,8 @@
             background-color: salmon;
         }
 
-        /* The overlay effect (full height and width) - lays on top of the container and over the image */
-        .image-preview-container .video-overlay {
-            position: absolute;
-            top: -95px;
-            bottom: 0;
-            right: 40px;
-            height: 25px;
-            width: 10px;
-            border-radius: 100px;
-            opacity: 0;
-            transition: .3s ease;
-            background-color: green;
-        }
-
         /* When you mouse over the container, fade in the overlay icon*/
         .image-preview-container:hover .overlay {
-            opacity: 1;
-        }
-        /* When you mouse over the container, fade in the overlay icon*/
-        .image-preview-container:hover .video-overlay {
             opacity: 1;
         }
 
@@ -67,10 +49,6 @@
 
         /* When you move the mouse over the icon, change color */
         .image-preview-container .fa-close:hover {
-            color: #eee;
-        }
-        /* When you move the mouse over the icon, change color */
-        .image-preview-container .fa-video:hover {
             color: #eee;
         }
     </style>
@@ -108,20 +86,13 @@
                             @foreach($aProjects as $iKey => $aProject)
                                 <div class="image-preview-container row"
                                      title="{{ $aProject->description . '(' . $aProject->projectType->name . ')'}}">
-                                    <div style="background: url('{{ ($aProject->type === 'video-external') ? $aProject->thumbnail_url : $aProject->url }}') no-repeat center"
+                                    <div style="background: url('{{ $aProject->url }}') no-repeat center"
                                          class="image col-3 m-1"></div>
                                     <div class="overlay col-3">
                                         <a href="javascript:" wire:click="deleteProject({{ $aProject->project_id }})" class="icon" title="Remove">
                                             <i class="fa fa-close"></i>
                                         </a>
                                     </div>
-                                    @if($aProject->type === 'video-external')
-                                        <div class="video-overlay col-3">
-                                            <a href="{{ url($aProject->url) }}" target="_blank" class="icon" title="Redirect">
-                                                <i class="fa fa-video"></i>
-                                            </a>
-                                        </div>
-                                    @endif
                                 </div>
                             @endforeach
                         </div>
@@ -211,79 +182,32 @@
                             <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
                         @endforeach
                     </select>
-                </div><div class="mb-3">
-                    <label class="col-form-label" for="project_type">
-                        Media Type
-                    </label>
-                    <select id=media_type wire:model.lazy="mediaType"  type="text" class="form-control" placeholder="{{ __('Media Type') }}">
-                        <option selected value="image"> Upload Image </option>
-                        <option value="image-external"> External Image </option>
-                        <option value="video-external"> External Video </option>
-
-                    </select>
                 </div>
-                @if($mediaType === 'image')
-                    <div class="mb-3">
-                        <div class="de_form">
-                            <label class="de_form" for="input_7_9">Please Provide Pictures Of Your Project</label>
-                            <div>
-                                <input id="uploadPicturesOfLandscapes" style="display: none" wire:model="pictureOfProject" type="file" accept="image/*">
-                                <button onclick="$('#uploadPicturesOfLandscapes').click()" class="btn btn-primary text-white">
-                                    <span class="fa fa-file"> </span> Upload Image
-                                </button>
-                                <span>Max. file size: 10 MB.</span>
-                                @if($pictureOfProject !== null && $pictureOfProject !== '')
-                                    <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
-                                        <div class="image-preview-container row">
-                                            <div style="background: url('{{ $pictureOfProject->temporaryUrl() ?? '' }}') no-repeat center"
-                                                 class="image col-3 m-1"></div>
-                                            <div class="overlay col-3">
-                                                <a href="javascript:" wire:click="removePictureOfProject()" class="icon" title="Remove">
-                                                    <i class="fa fa-close"></i>
-                                                </a>
-                                            </div>
+                <div class="mb-3">
+                    <div class="de_form">
+                        <label class="de_form" for="input_7_9">Please Provide Pictures Of Your Project</label>
+                        <div>
+                            <input id="uploadPicturesOfLandscapes" style="display: none" wire:model="pictureOfProject" type="file" accept="image/*">
+                            <button onclick="$('#uploadPicturesOfLandscapes').click()" class="btn btn-primary text-white">
+                                <span class="fa fa-file"> </span> Upload Image
+                            </button>
+                            <span>Max. file size: 10 MB.</span>
+                            @if($pictureOfProject !== null && $pictureOfProject !== '')
+                                <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                    <div class="image-preview-container row">
+                                        <div style="background: url('{{ $pictureOfProject->temporaryUrl() ?? '' }}') no-repeat center"
+                                             class="image col-3 m-1"></div>
+                                        <div class="overlay col-3">
+                                            <a href="javascript:" wire:click="removePictureOfProject()" class="icon" title="Remove">
+                                                <i class="fa fa-close"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
-                @else
-                    <div class="mb-3">
-                        <label class="col-form-label" for="name">
-                            External Media
-                        </label>
-                        <x-jet-input id=name wire:model.lazy="sUrlMedia"  type="text" class="form-control" placeholder="{{ __('External Media') }}"/>
-                    </div>
-                @endif
-                @if($mediaType === 'video-external')
-                    <div class="mb-3">
-                        <div class="de_form">
-                            <label class="de_form" for="input_7_9">Please Provide Thumbnail</label>
-                            <div>
-                                <input id="uploadThumbnail" style="display: none" wire:model="thumbnailVideo" type="file" accept="image/*">
-                                <button onclick="$('#uploadThumbnail').click()" class="btn btn-primary text-white">
-                                    <span class="fa fa-file"> </span> Upload Image
-                                </button>
-                                <span>Max. file size: 10 MB.</span>
-                                @if($thumbnailVideo !== null && $thumbnailVideo !== '')
-                                    <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
-                                        <div class="image-preview-container row">
-                                            <div style="background: url('{{ $thumbnailVideo->temporaryUrl() ?? '' }}') no-repeat center"
-                                                 class="image col-3 m-1"></div>
-                                            <div class="overlay col-3">
-                                                <a href="javascript:" wire:click="removeThumbnailOfVideo()" class="icon" title="Remove">
-                                                    <i class="fa fa-close"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
+                </div>
             </div>
         </x-slot>
 
