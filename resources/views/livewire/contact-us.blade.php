@@ -21,7 +21,7 @@
 
                         <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                         <div>
-                            <input wire:model.lazy="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required>
+                            <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required>
                         </div>
 
                         <div id='phone_error' class='error'>Please enter your phone number.</div>

@@ -75,7 +75,7 @@ class ContactUs extends Component
         'zipCode'            => 'sometimes',
         'message'            => 'sometimes',
         'reference'          => 'sometimes',
-        'projectDescription' => 'required| in:landscape,maintenance-and-turf-care'
+        'projectDescription' => 'required| in:landscape,maintenance-and-turf-care',
     ];
     /**
      * Landscape stage key
@@ -85,6 +85,12 @@ class ContactUs extends Component
      * Maintenance stage key
      */
     const MAINTENANCE_STAGE_KEY = 5002;
+
+    public function __construct($id = null)
+    {
+        $this->emailAddress = request()->get('email');
+        parent::__construct($id);
+    }
 
     public function render()
     {
@@ -141,15 +147,23 @@ class ContactUs extends Component
      */
     private function createBox(ContactUsModel $oModel, string $sPipeline, int $iStageKey)
     {
-        return StreakLibrary::createBox($oModel, $sPipeline, $oModel->email, [
-            'name'     => sprintf('%s, %s', $oModel->last_name, $oModel->first_name),
-            'stageKey' => $iStageKey,
+        $aFields = [];
+        if (strlen(request()->get('email')) <= 0) {
+            $aFields = [
+                'fields' => [
+                    "1038" => "9010",
+                ],
+            ];
+        }
+        return StreakLibrary::createBox($oModel, $sPipeline, $oModel->email, array_merge([
+            'name'                     => sprintf('%s, %s', $oModel->last_name, $oModel->first_name),
+            'stageKey'                 => $iStageKey,
             'assignedToSharingEntries' => [
                 [
-                    'email' => 'csr@landscapesandmore.com'
-                ]
+                    'email' => 'csr@landscapesandmore.com',
+                ],
             ],
-            'notes' => '',
-        ]);
+            'notes'                    => '',
+        ], $aFields));
     }
 }
