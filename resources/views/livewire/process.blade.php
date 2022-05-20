@@ -25,8 +25,8 @@
                                 <!-- progressbar -->
                                 <ul class="progress-bar-line l-5">
                                     <li class="active spinner"><strong>Project Status</strong></li>
-                                    <li class="process-5002 process-5004 consultation"><strong>Consultation</strong></li>
-                                    <li class="process-5003 design"><strong>Design</strong></li>
+                                    <li class="process-5002 process-5004 process-5018 consultation"><strong>Consultation</strong></li>
+                                    <li class="process-5003 process-5019 process-5021 design"><strong>Design</strong></li>
                                     <li class="process-5005 signing"><strong>Contract Signing</strong></li>
                                     <li class="process-5010 sold"><strong>Sold Project</strong></li>
                                 </ul> <!-- fieldsets -->
@@ -41,9 +41,20 @@
                                                     <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
                                                 </div>
                                                 <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
-                                                @if(($streakApiResult['status'] ?? 500) === 200 && intval($streakApiResult['stage']['current_progress_id'], 0) === 5001 && $isProcessed === true)
+                                                @if(($streakApiResult['status'] ?? 500) === 200 && intval($currentStage) === 5001 && $isProcessed === true)
                                                     <div>
                                                         <strong>Thank you for reaching out to us, one of our representatives will reach out to you within 24-48 hours, please keep your lines open.</strong>
+                                                    </div>
+                                                @elseif($isProcessed === true && intval($currentStage) === 5017)
+                                                    <div>
+                                                        <strong>Hi, We noticed that you haven’t responded to us since {{ $sDateContacted }}. </strong>
+                                                        <br/>
+                                                        <strong>To resume your process, please contact us.</strong>
+                                                        <br/>
+                                                        <br/>
+                                                        <a href="/contact-us?email={{ $emailAddress }}" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
+                                                        <br/>
+                                                        <br/>
                                                     </div>
                                                 @elseif(($streakApiResult['status'] ?? 500) === 200 && $isProcessed === true)
                                                     <div>
@@ -79,14 +90,22 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                <fieldset class="process-5002">
+                                <fieldset class="process-5002 process-5018">
                                     <div class="form-card">
                                         <h2 class="fs-title">Consultation</h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
-                                                <strong>We have sent your Zoom link to your email address.
-                                                    Your consultation date is on:
-                                                     {{ $sConsultationDate }}</strong>
+                                                @if($currentStage === 5002)
+                                                    <strong>
+                                                        We have sent your Zoom link to your email address.
+                                                        Your consultation date is on:
+                                                        {{ $sConsultationDate }}
+                                                    </strong>
+                                                @else
+                                                    <strong>
+                                                        Hi, We noticed that you haven’t responded to us since {{ $sConsultationDate }} . To resume your process, <a onclick="Tawk_API.toggle()" class="form-control">please contact us</a>.
+                                                    </strong>
+                                                @endif
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
@@ -104,13 +123,20 @@
 {{--                                    <a href="javascript:;" class="previous btn-line-black">Previous Step</a>--}}
 {{--                                    <a href="javascript:;" class="next btn-line-black">Next Step</a>--}}
                                 </fieldset>
-                                <fieldset class="process-5003">
+                                <fieldset class="process-5003 process-5019 process-5021">
                                     <div class="form-card">
                                         <h2 class="fs-title">Design</h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
-                                                <strong>Your architect will contact you for your design appointment date on {{ $sDesignAppointmentDate }}. <br/>We will also send updates for your design appointment.
-                                                </strong>
+                                                @if($currentStage === 5003)
+                                                    <strong>
+                                                        Your architect will contact you for your design appointment date on {{ $sDesignAppointmentDate }}. <br/>We will also send updates for your design appointment.
+                                                    </strong>
+                                                @else
+                                                    <strong>
+                                                        Hi, We noticed that you haven’t responded to us since {{ $sDesignAppointmentDate }} . To resume your process, <a onclick="Tawk_API.toggle()" class="form-control">please contact us</a>.
+                                                    </strong>
+                                                @endif
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">

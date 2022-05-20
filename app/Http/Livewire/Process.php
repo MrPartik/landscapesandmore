@@ -41,11 +41,13 @@ class Process extends Component
 
     public $sConsultationDate = '';
     public $sDesignPresentationDate = '';
+    public $sDateContacted = '';
     public $sDesignAppointmentDate = '';
-
     public $streakApiResult = '';
-
     public $isProcessed = false;
+    public $currentStage = 0;
+    public $noOfDays = 0;
+
 
     public function render()
     {
@@ -67,17 +69,20 @@ class Process extends Component
         $this->streakApiResult = (new VerifyContactStreak(new StreakFunctions()))->searchEmailData($this->emailAddress, $this->typeOfInquiry, (($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? self::ALLOWED_STAGE_LANDSCAPE: self::ALLOWED_STAGE_MAINTENANCE));
         $sConsultation = @$this->streakApiResult['fields'][1009] ?? 'Not Set';
         $sDesignAppointmentDate = @$this->streakApiResult['fields'][1012] ?? 'Not Set';
+        $sDateContacted = @$this->streakApiResult['fields'][1065] ?? 'Not Set';
+        $this->currentStage = $this->streakApiResult['stage']['current_progress_id'] ?? 0;
         $sDesignPresentationDate = @$this->streakApiResult['fields'][(($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? 1026 : 1019)] ?? 'Not Set';
         $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sConsultation)->format('M d, Y h:i a') : 'Not Set';
         $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignPresentationDate)->format('M d, Y h:i a') : 'Not Set';
         $this->sDesignAppointmentDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignAppointmentDate)->format('M d, Y h:i a') : 'Not Set';
+        $this->sDateContacted = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDateContacted)->format('M d, Y h:i a') : 'Not Set';
         $this->isProcessed = true;
     }
 
     public function processValidation()
     {
         if ((@$this->streakApiResult['status'] ?? 500) === 200) {
-            $this->emit('processCurrentStage', '.process-' . $this->streakApiResult['stage']['current_progress_id'], '#' . $this->typeOfInquiry . '-form');
+            $this->emit('processCurrentStage', '.process-' . $this->currentStage, '#' . $this->typeOfInquiry . '-form');
         }
     }
 }
