@@ -1,5 +1,10 @@
 @extends('layouts.front', ['title' => 'Landscaping | Home'])
 @section('body')
+    <style>
+        .swal2-container.swal2-center>.swal2-popup {
+            width: 80vw;
+        }
+    </style>
     <div id="wrapper">
         @include('front.navigation.header', ['active' => 'home'])
         <!-- content begin -->
@@ -105,14 +110,12 @@
             </section>
             <!-- section close -->
 
-            <!-- section begin -->
             <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-8 col-md-7">
                             <h3 class="size-2 no-margin">Get In Touch With Us Today</h3>
                         </div>
-
                         <div class="col-lg-4 col-md-5 text-right">
                             <a href="/contact-us" class="btn-line-white">Contact Us Now</a>
                         </div>
@@ -126,12 +129,28 @@
                 </div>
             </section>
 
+
+            <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 col-md-7">
+                            <h3 class="size-2 no-margin">Make Payments</h3>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 text-right">
+                            <a onclick="visitPayment()" href="javascript:;" class="btn-line-white">Financing</a>
+                            <a target="_blank" href="https://portal.icheckgateway.com/landscapesandmore/" class="btn-line-white">Credit Card</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
         @include('front.navigation.footer')
     </div>
+
 @endsection
 @section('extra-css')
-
     <link rel="stylesheet" href="{{ url('leaflet/leaflet.css') }}" />
     <script src="{{ url('leaflet/leaflet-src.js') }}"></script>
     <script src="{{ url('leaflet/esri-leaflet.js') }}"></script>
@@ -142,4 +161,18 @@
 
     <script src="{{ url('leaflet/leaflet-draw/Toolbar.js') }}"></script>
     <script src="{{ url('leaflet/leaflet-draw/Tooltip.js') }}"></script>
+    <script>
+        function visitPayment() {
+            Swal.fire({
+                html: '<iframe width="100%" frameborder="0" scrolling="no" src="/payments" onload="resizeIframe(this)"></iframe>',
+                showCancelButton: false,
+                showConfirmButton: false,
+                showCloseButton: true,
+                allowOutsideClick: false,
+            });
+        }
+        function resizeIframe(obj) {
+            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
+    </script>
 @endsection

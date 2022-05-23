@@ -17,7 +17,7 @@ class Utilities
         ));
     }
 
-    public static function insertDataInJson($mKey, $mValue, $sFileName = 'customize_website.json')
+    public static function insertDataInJson($mKey, $mValue, $bIsSingle = false, $sFileName = 'customize_website.json')
     {
         $sResourceFilePath = app()->resourcePath('files/' . $sFileName);
         if (file_exists($sResourceFilePath) === false) {
@@ -25,7 +25,11 @@ class Utilities
         }
         $aFileData = file_get_contents($sResourceFilePath) ?? '{}';
         $aFileData = json_decode($aFileData, true);
-        $aFileData[$mKey] = $mValue;
+        if ($bIsSingle === true) {
+            $aFileData[$mKey] = $mValue;
+        } else {
+            $aFileData[$mKey][] = $mValue;
+        }
         file_put_contents($sResourceFilePath, json_encode($aFileData));
     }
 
@@ -39,10 +43,10 @@ class Utilities
         return json_decode($aFileData, true)[$mKey] ?? [];
     }
 
-    public static function streamDownload ($oObject, $sFileName)
+    public static function streamDownload($oObject, $sFileName)
     {
-        return response()->streamDownload(function () use($oObject, $sFileName) {
-            echo  $oObject->stream();
+        return response()->streamDownload(function () use ($oObject, $sFileName) {
+            echo $oObject->stream();
         }, $sFileName);
     }
 }

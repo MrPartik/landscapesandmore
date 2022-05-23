@@ -62,3 +62,7 @@ Route::get('public/{sFilePath}', function ($sFilePath) {
     return $response;
 });
 
+
+Route::get('payments', function () {
+    return view('front.payments');
+});

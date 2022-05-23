@@ -102,7 +102,7 @@ class Themes extends Component
             "description" => $this->ourProcessDescription
         ];
 
-        Utilities::insertDataInJson('homepage_our_process', $aData);
+        Utilities::insertDataInJson('homepage_our_process', $aData, true);
     }
 
     public function saveLogo(string $sType)
