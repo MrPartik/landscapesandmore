@@ -148,7 +148,7 @@ class ContactUs extends Component
     private function createBox(ContactUsModel $oModel, string $sPipeline, int $iStageKey)
     {
         $aFields = [];
-        if (strlen(request()->get('email')) <= 0 && $this->projectDescription === 'landscape') {
+        if (strlen(request()->get('email')) > 3 && $this->projectDescription === 'landscape') {
             $aFields = [
                 'fields' => [
                     "1038" => "9010",

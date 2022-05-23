@@ -7,11 +7,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>Track Status</h1>
+                            <h1>Project Tracker</h1>
                             <ul class="crumb">
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li class="sep">/</li>
-                                <li>Track Status</li>
+                                <li>Project Tracker</li>
                             </ul>
                         </div>
                     </div>
