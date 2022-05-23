@@ -72,10 +72,10 @@ class Process extends Component
         $sDateContacted = @$this->streakApiResult['fields'][1065] ?? 'Not Set';
         $this->currentStage = $this->streakApiResult['stage']['current_progress_id'] ?? 0;
         $sDesignPresentationDate = @$this->streakApiResult['fields'][(($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? 1026 : 1019)] ?? 'Not Set';
-        $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sConsultation)->format('M d, Y h:i a') : 'Not Set';
-        $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignPresentationDate)->format('M d, Y h:i a') : 'Not Set';
-        $this->sDesignAppointmentDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignAppointmentDate)->format('M d, Y h:i a') : 'Not Set';
-        $this->sDateContacted = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDateContacted)->format('M d, Y h:i a') : 'Not Set';
+        $this->sConsultationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sConsultation)->format('M d, Y') : 'Not Set';
+        $this->sDesignPresentationDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignPresentationDate)->format('M d, Y') : 'Not Set';
+        $this->sDesignAppointmentDate = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDesignAppointmentDate)->format('M d, Y') : 'Not Set';
+        $this->sDateContacted = ($this->typeOfInquiry === self::INQUIRY_TYPE_LANDSCAPE) ? Carbon::createFromTimestampMs($sDateContacted)->format('M d, Y') : 'Not Set';
         $this->isProcessed = true;
     }
 
