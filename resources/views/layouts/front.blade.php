@@ -85,6 +85,13 @@
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
+        Tawk_API.onLoad = function() {
+            setTimeout(function() {
+                if(Tawk_API.isChatMaximized() === true) {
+                    Tawk_API.toggle();
+                }
+            }, 300)
+        };
     </script>
     <!--End of Tawk.to Script-->
 </html>

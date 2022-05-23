@@ -103,7 +103,7 @@
                                                     </strong>
                                                 @else
                                                     <strong>
-                                                        Hi, We noticed that you haven’t responded to us since {{ $sConsultationDate }} . To resume your process, <a onclick="Tawk_API.toggle()" class="form-control">please contact us</a>.
+                                                        Hi, We noticed that you haven’t responded to us since {{ $sConsultationDate }} . To resume your process, <a style="cursor: pointer" onclick="Tawk_API.toggle()" class="">please contact us</a>.
                                                     </strong>
                                                 @endif
                                             </div>
@@ -134,7 +134,7 @@
                                                     </strong>
                                                 @else
                                                     <strong>
-                                                        Hi, We noticed that you haven’t responded to us since {{ $sDesignAppointmentDate }} . To resume your process, <a onclick="Tawk_API.toggle()" class="form-control">please contact us</a>.
+                                                        Hi, We noticed that you haven’t responded to us since {{ $sDesignAppointmentDate }} . To resume your process, <a style="cursor: pointer" onclick="Tawk_API.toggle()" class="">please contact us</a>.
                                                     </strong>
                                                 @endif
                                             </div>
