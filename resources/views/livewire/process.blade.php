@@ -95,7 +95,7 @@
                                         <h2 class="fs-title">Consultation</h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
-                                                @if($currentStage === 5002)
+                                                @if(intval($currentStage) === 5002)
                                                     <strong>
                                                         We have sent your Zoom link to your email address.
                                                         Your consultation date is on:
@@ -128,7 +128,7 @@
                                         <h2 class="fs-title">Design</h2>
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
-                                                @if($currentStage === 5003)
+                                                @if(intval($currentStage) === 5003)
                                                     <strong>
                                                         Your architect will contact you for your design appointment date on {{ $sDesignAppointmentDate }}. <br/>We will also send updates for your design appointment.
                                                     </strong>
