@@ -6,7 +6,7 @@
                 <div class="mt-3">
                     <strong>Select Type Process</strong>
                     <div class="de_form de_radio">
-                        <span class="mr20"> <input wire:model="typeOfInquiry" id="landscaping-label" name="typeOfInquiry" type="radio" value="landscape" checked="checked"> <label wire:click="clearProcessForm" for="landscaping-label">Landscape</label></span>
+                        <span class="mr20"> <input wire:model="typeOfInquiry" id="landscaping-label" name="typeOfInquiry" type="radio" value="landscape" checked="checked"> <label wire:click="clearProcessForm" for="landscaping-label">Landscape and Design Project</label></span>
                         <span class="mr20"><input wire:model="typeOfInquiry" id="turf-label" name="typeOfInquiry" type="radio" value="maintenance-and-turf-care"> <label wire:click="clearProcessForm" for="turf-label">Maintenance and Turf Care</label> </span>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                 <div class="progress-steps mt-3">
                     <div class="row">
                         <div style="text-align-last: center">
-                            <h2><strong>Install Landscape and Design</strong></h2>
+                            <h2><strong>Landscape and Design Project</strong></h2>
                             <p>
                                 To check the status of your existing application, please enter the email address you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us Form</a>.
                             </p>
@@ -81,7 +81,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -112,7 +112,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -143,7 +143,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -167,7 +167,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -187,7 +187,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -210,7 +210,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -277,7 +277,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -300,7 +300,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -323,7 +323,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -344,7 +344,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>
@@ -367,7 +367,7 @@
                                                     <h3>Contact Info</h3>
                                                     <address>
                                                         <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                                                        <span><strong>Phone:</strong>(770) 209-2344</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                                                         <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                                                         <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                                                     </address>

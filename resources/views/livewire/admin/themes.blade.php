@@ -175,6 +175,29 @@
                     <div class="tab-pane fade show {{ $sCurrentTab === 'our_process' ? 'active' : '' }}" id="our_process-tab-content" role="tabpanel" aria-labelledby="our_process-tab">
                         <div class="row justify-content-end">
                             <div class="mt-3 col-12" x-data="{}">
+                                <h2> {{ __('Home Video')  }}</h2>
+                                <p>{{ __('Video after counter text in welcome section.') }}</p>
+                                <hr/>
+                                <div class="mt-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="rightVideoAfterCounter">
+                                            Video URL
+                                        </label>
+                                        <x-jet-input id="rightVideoAfterCounter" wire:model.lazy="rightVideoAfterCounter"  type="text" class="form-control" placeholder="{{ __('Video URL') }}"/>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="rightVideoAfterCounterThumbnail">
+                                            Video Thumbnail URL
+                                        </label>
+                                        <x-jet-input id="rightVideoAfterCounterThumbnail" wire:model.lazy="rightVideoAfterCounterThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                    </div>
+                                </div>
+                                <button wire:click="saveVideoAfterCounterTheme()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
+                            </div>
+                            <hr style="margin-top: 10px" />
+                            <div class="mt-3 col-12" x-data="{}">
                                 <h2> {{ __('Our Process')  }}</h2>
                                 <p>{{ __('Manage the content of our process in homepage.') }}</p>
                                 <hr/>
@@ -188,15 +211,21 @@
                                         <x-jet-input id="ourProcessVideo" wire:model.lazy="ourProcessVideoUrl"  type="text" class="form-control" placeholder="{{ __('Our Process Video URL') }}"/>
                                     </div>
                                     <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="ourProcessVideoThumbnail">
+                                            Video Thumbnail URL
+                                        </label>
+                                        <x-jet-input id="ourProcessVideoThumbnail" wire:model.lazy="ourProcessVideoThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                    </div>
+                                    <div class="col-12 mb-2">
                                         <label class="col-form-label" for="ourProcessDescription">
                                             Our Process Description
                                         </label>
                                         <textarea id="ourProcessDescription" wire:model.lazy="ourProcessDescription" type="text" class="form-control" rows="10" placeholder="{{ __('Our Process Description') }}"> </textarea>
                                     </div>
                                 </div>
+                                <button wire:click="saveOurProcess()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                             </div>
                         </div>
-                        <button wire:click="saveOurProcess()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                     </div>
                     <div class="tab-pane fade show {{ $sCurrentTab === 'banner' ? 'active' : '' }}" id="banner-tab-content" role="tabpanel" aria-labelledby="banner-tab">
                         <div class="row justify-content-end">

@@ -56,7 +56,7 @@
                         <select id=reference-contactus wire:model="reference"  type="text" class="form-control" placeholder="{{ __('Reference') }}">
                             <option selected disabled value=""> Select reference </option>
                             <option value="Angi's List"> Angi's List </option>
-                            <option value="Bruce Referral"> Bruce Referral </option>
+                            <option value="Bruce Holiday Referral"> Bruce Holiday Referral - Landscape Architect</option>
                             <option value="Client Referral"> Client Referral </option>
                             <option value="Designing Spaces Show"> Designing Spaces Show </option>
                             <option value="Existing Customer"> Existing Customer </option>
@@ -65,6 +65,7 @@
                             <option value="M360"> M360 </option>
                             <option value="Neighbor"> Neighbor </option>
                             <option value="Facebook"> Facebook </option>
+                            <option value="Michaelangelo’s Truck"> Michaelangelo’s Truck </option>
                         </select>
 
                         <strong class="mt-3">Project Description</strong>
@@ -92,7 +93,7 @@
                 <h3>Contact Info</h3>
                 <address>
                     <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                    <span><strong>Phone:</strong>(770) 209-2344</span>
+                    <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
                     <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                     <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                 </address>
@@ -105,9 +106,10 @@
 
             Swal.fire({
                 icon: 'warning',
-                html: 'Use the form below to schedule a landscape design consultation and for other inquiries.\n' +
-                    '                            If we do not contact you in 24 hours from the time you submit this form, please email us at\n' +
-                    '                            info@landscapesandmore.com or call us at (770) 209-2344.',
+                html: 'Use the form below to schedule a landscape design consultation and for other inquiries.' +
+                    ' If we do not contact you within 24-48 business hours (Monday - Friday 8:00 am -5:00 pm)' +
+                    ' from the time you submit this form, please email us at info@landscapesandmore.com or' +
+                    ' call us at {{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}.',
                 showCancelButton: false,
                 showConfirmButton: false,
                 showCloseButton: true,
@@ -182,7 +184,7 @@
                         Swal.fire({
                             icon: 'success',
                             html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
-                                'Please allow us 24-48hrs to review your information. <br/>' +
+                                'Please allow us 24-48 business hours (Monday - Friday 8:00 am -5:00 pm) from the time you submit this form to review your information. <br/>' +
                                 'You may check the status of your application status here: <a target="_blank" class="btn-link" href="{{ url('/process') }}"> Application Status.</a>',
                             showCancelButton: false,
                             showConfirmButton: false,

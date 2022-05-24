@@ -16,6 +16,7 @@ class PreDefinedValues extends Component
     public $pipelineKeyHiring = '';
     public $careerPosition = '';
     public $warrantyParagraph = '';
+    public $websiteContactNo = '';
 
     public function __construct($id = null)
     {
@@ -23,6 +24,7 @@ class PreDefinedValues extends Component
         $this->initPipelineKeysDefaultValues();
         $this->initCareerPositionValues();
         $this->initWarrantyDefaultValues();
+        $this->initAboutUsValues();
         parent::__construct($id);
     }
 
@@ -46,6 +48,11 @@ class PreDefinedValues extends Component
         $this->pipelineKeyHiring = config('streak.careers_pipeline_key');
     }
 
+    public function initAboutUsValues()
+    {
+        $this->websiteContactNo = env('WEBSITE_PHONE_NO', '(770) 209-2344');
+    }
+
     public function initWarrantyDefaultValues()
     {
         $this->warrantyParagraph = config('pre-defined.warranty_paragraph');
@@ -54,6 +61,11 @@ class PreDefinedValues extends Component
     public function initCareerPositionValues()
     {
         $this->careerPosition = env('CAREERS_AVAILABLE_POSITION', []);
+    }
+
+    public function saveAboutUs()
+    {
+        Utilities::setEnv('WEBSITE_PHONE_NO', $this->websiteContactNo);
     }
 
     public function saveContactUs()

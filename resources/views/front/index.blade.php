@@ -40,28 +40,26 @@
                         </div>
 
                         <div class="col-lg-4 wow fadeInRight" data-wow-delay=".6s">
-                            <p>
-                                Sustainability is the key to year ’round landscaping, and the experts of Michaelangelo’s Sustainable Landscape and Design Group are proud to deliver innovative, cost-effective, and environmentally responsible landscape solutions to every project. Whether you’re looking for an irrigation system installation, or wanting to get rid of crab grass, you can rest assured that your landscape will maintain its sophistication over time with our professional landscaping services, lawn care, turf care, and management and maintenance services.
-                            </p>
-                        </div>
+                                <figure class="picframe invert transparent shadow-soft rounded">
+										<span class="v-center">
+											<span>
+												<a id="play-video" class="video-play-button popup-youtube" href="{{ \App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_url'] ?? '' }}">
+													<span></span>
+												</a>
+											</span>
+										</span>
+                                    <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                </figure>
+                            </div>
                     </div>
                 </div>
             </section>
 
             <section class="text-white" id="section-how-it-works" data-bgimage="url(images/background/bg-2.jpg) fixed center" data-stellar-background-ratio=".2">
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5 wow fadeInRight" data-wow-delay=".2s">
-                            <h2 class="style-2"><span class="id-color">Discover</span></h2><br>
-                            <h2 class="text-white">Our Process</h2>
-                            <p class="lead">
-                                {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
-                            </p>
-                            <div class="spacer-half"></div>
-                            <a href="{{ url('/contact-us') }}" class="btn-line-white">Contact Us Now</a>
-                        </div>
-                        <div class="col-md-6 offset-md-1 wow fadeInLeft" data-wow-delay=".4s">
-                            <figure class="picframe invert transparent shadow-soft rounded">
+                    <div class="row align-items-center" style="place-content: center">
+                        <div class="col-md-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
+                            <figure class="picframe invert transparent shadow-soft rounded" >
 										<span class="v-center">
 											<span>
 												<a id="play-video" class="video-play-button popup-youtube" href="{{ \App\Library\Utilities::getDataInJson('homepage_our_process')['video_url'] ?? '' }}">
@@ -69,8 +67,14 @@
 												</a>
 											</span>
 										</span>
-                                <img src="{{ url('images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
                             </figure>
+                        </div>
+                        <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
+                            <p class="lead" style="text-align: center">
+                                {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
+                            </p>
+                            <div class="spacer-half"></div>
                         </div>
                     </div>
                 </div>

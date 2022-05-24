@@ -26,6 +26,9 @@ class Themes extends Component
     public $sCurrentTab = 'services';
     public $ourProcessVideoUrl = '';
     public $ourProcessDescription = '';
+    public $ourProcessVideoThumbnail = '';
+    public $rightVideoAfterCounter = '';
+    public $rightVideoAfterCounterThumbnail = '';
 
     protected $listeners = [
         'findService',
@@ -36,6 +39,7 @@ class Themes extends Component
     {
         $this->bannerDescription = env('BANNER_DESCRIPTION', $this->bannerDescription);
         $this->initOurProcessData();
+        $this->initVideoAfterCounterTheme();
         parent::__construct($id);
     }
 
@@ -58,8 +62,16 @@ class Themes extends Component
     public function initOurProcessData()
     {
         $aData = Utilities::getDataInJson('homepage_our_process');
-        $this->ourProcessVideoUrl = $aData['video_url'];
-        $this->ourProcessDescription = $aData['description'];
+        $this->ourProcessVideoUrl = $aData['video_url'] ?? '';
+        $this->ourProcessVideoThumbnail = $aData['video_thumbnail_url'] ?? '';
+        $this->ourProcessDescription = $aData['description'] ?? '';
+    }
+
+    public function initVideoAfterCounterTheme()
+    {
+        $aData = Utilities::getDataInJson('homepage_video_after_counter');
+        $this->rightVideoAfterCounter = $aData['video_url'] ?? '';
+        $this->rightVideoAfterCounterThumbnail = $aData['video_thumbnail_url'] ?? '';
     }
 
     public function initSmallLogo()
@@ -99,10 +111,21 @@ class Themes extends Component
     {
         $aData = [
             "video_url" => $this->ourProcessVideoUrl,
-            "description" => $this->ourProcessDescription
+            "description" => $this->ourProcessDescription,
+            "video_thumbnail_url" => $this->ourProcessVideoThumbnail
         ];
 
         Utilities::insertDataInJson('homepage_our_process', $aData, true);
+    }
+
+    public function saveVideoAfterCounterTheme()
+    {
+        $aData = [
+            "video_url" => $this->rightVideoAfterCounter,
+            "video_thumbnail_url" => $this->rightVideoAfterCounterThumbnail
+        ];
+
+        Utilities::insertDataInJson('homepage_video_after_counter', $aData, true);
     }
 
     public function saveLogo(string $sType)

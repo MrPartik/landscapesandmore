@@ -1,18 +1,30 @@
 <div class="row my-3">
-    <div class="loading-page" wire:loading.block wire:target="saveStreak, saveWarranty, saveContactUs, saveCareerPosition">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="saveStreak, saveWarranty, saveContactUs, saveCareerPosition, saveAboutUs">Loading&#8230;</div>
     <div class="col-12">
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
                 <div class="row justify-content-end">
+                    <div class="mt-3 col-12" x-data="{}">
+                        <h2> {{ __('About us ')  }}</h2>
+                        <p>{{ __('Modify default values in about us') }}</p>
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="col-form-label" for="websiteContactNo">
+                                    Website Contact No.
+                                </label>
+                                <x-jet-input id="websiteContactNo" wire:model="websiteContactNo" type="text" class="form-control" placeholder="{{ __('Website Contact No. ') }}"/>
+
+                            </div>
+                        </div>
+                        <button wire:click="saveAboutUs()" class="mt-4 btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
+                    </div>
+                    <hr style="margin-top: 10px;"/>
                     <div class="mt-3 col-12" x-data="{}">
                         <h2> {{ __('Warranty ')  }}</h2>
                         <p>{{ __('Modify default paragraph in warranty page') }}</p>
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-2">
-{{--                                    <label class="col-form-label" for="warranty_paragraph">--}}
-{{--                                        Warranty Paragraph--}}
-{{--                                    </label>--}}
                                     <textarea id="warranty_paragraph" wire:model="warrantyParagraph" type="text" class="form-control" rows="5" placeholder="{{ __('Warranty Paragraph ') }}"> </textarea>
                                 </div>
                             </div>
