@@ -170,7 +170,7 @@
                 <h3>Contact Info</h3>
                 <address>
                     <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
-                    <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}   </span>
+                    <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344') }}   </span>
                     <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
                     <span><strong>Web:</strong><a href="https://landscapesandmore.com/">https://landscapesandmore.com</a></span>
                 </address>
@@ -251,7 +251,7 @@
                         html: 'Thank you for submitting your warranty claim.' +
                             ' We will reach out to you within 72 business hours (Monday-Friday 8:00am - 5:00pm).' +
                             ' If you haven’t heard from us after the time frame provided, please email us at info@landscapesandmore.com or' +
-                            ' call us at {{ env('WEBSITE_PHONE_NO', '(770) 209-2344)') }}.',
+                            ' call us at {{ env('WEBSITE_PHONE_NO', '(770) 209-2344') }}.',
                         showCancelButton: false,
                         showConfirmButton: false,
                         showCloseButton: true,
