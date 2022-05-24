@@ -93,6 +93,12 @@
                                 </label>
                                 <x-jet-input id="description" wire:model.lazy="description"  type="text" class="form-control" placeholder="{{ __('Description') }}"/>
                             </div>
+                            <div class="mb-2">
+                                <label class="col-form-label" for="redirectUrl">
+                                    Redirect To
+                                </label>
+                                <x-jet-input id="redirectUrl" wire:model.lazy="redirectUrl"  type="text" class="form-control" placeholder="{{ __('Redirect To') }}"/>
+                            </div>
                             <div class="mb-3">
                                 <div class="de_form">
                                     <label class="de_form" for="input_7_9">Please Provide Pictures Of Your Award</label>

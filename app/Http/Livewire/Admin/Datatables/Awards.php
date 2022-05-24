@@ -37,6 +37,8 @@ class Awards extends DataTableComponent
             Column::make("Description", "description")
                 ->sortable()
                 ->searchable(),
+            Column::make("Redirect Url", "redirect_url")
+                ->sortable(),
             Column::make("URL", "url")
                 ->sortable(),
             Column::make("Is Active", "is_active")

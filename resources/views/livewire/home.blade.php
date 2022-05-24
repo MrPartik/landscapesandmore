@@ -36,7 +36,9 @@
             <div class="col-md-12 wow fadeInUp" data-wow-delay="0s">
                 <div id="logo-carousel" class="owl-carousel owl-theme">
                     @foreach(\App\Models\Awards::all()->where('is_active', 1) as $oAward)
-                        <img src="{{ url($oAward->url) }}" class="img-responsive" alt="{{ $oAward->description }}" title="{{ $oAward->description }}">
+                        <a target="_blank" href="{{ url($oAward->redirect_url) }}">
+                            <img src="{{ url($oAward->url) }}" class="img-responsive" alt="{{ $oAward->description }}" title="{{ $oAward->description }}">
+                        </a>
                     @endforeach
                 </div>
             </div>

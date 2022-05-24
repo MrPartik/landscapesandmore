@@ -19,6 +19,7 @@ class Awards extends Model
         'user_id',
         'url',
         'description',
+        'redirect_url',
         'is_active',
         'created_at',
         'updated_at',

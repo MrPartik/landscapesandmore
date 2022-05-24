@@ -17,6 +17,7 @@ class Awards extends Migration
             $oTable->bigIncrements('awards_id');
             $oTable->unsignedBigInteger('user_id');
             $oTable->string('url');
+            $oTable->string('redirect_url');
             $oTable->string('description');
             $oTable->tinyInteger('is_active')->default(1);
             $oTable->timestamps();

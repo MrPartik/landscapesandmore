@@ -18,6 +18,7 @@ class Awards extends Component
 
     public $pictureOfAward = '';
     public $description = '';
+    public $redirectUrl = '';
     public $iAwardId = 0;
 
     public $aCounts = [
@@ -29,6 +30,7 @@ class Awards extends Component
     private $aAwardRule = [
         'pictureOfAward' => 'required',
         'description' => 'required',
+        'redirectUrl' => 'required',
     ];
 
     public function render()
@@ -61,6 +63,7 @@ class Awards extends Component
         $oAwardModel = AwardsModel::find($iId);
         $this->description = $oAwardModel->description;
         $this->pictureOfAward = $oAwardModel->url;
+        $this->redirectUrl = $oAwardModel->redirect_url;
         $this->iAwardId = $iId;
     }
 
@@ -82,6 +85,7 @@ class Awards extends Component
         $oAward = ($this->iAwardId <= 0) ? new AwardsModel() : AwardsModel::find($this->iAwardId);
         $oAward->description = $this->description;
         $oAward->url = $mFilePath;
+        $oAward->redirect_url = $this->redirectUrl;
         $oAward->user_id = Auth::id();
         $oAward->save();
         $this->emit('refreshDatatable');
