@@ -29,10 +29,14 @@ class Themes extends Component
     public $ourProcessVideoThumbnail = '';
     public $rightVideoAfterCounter = '';
     public $rightVideoAfterCounterThumbnail = '';
+    public $projectTrackerLandscapeVideo = '';
+    public $projectTrackerLandscapeThumbnail = '';
+    public $projectTrackerTurfVideo = '';
+    public $projectTrackerTurfThumbnail = '';
 
     protected $listeners = [
         'findService',
-        'deleteService'
+        'deleteService',
     ];
 
     public function __construct($id = null)
@@ -40,6 +44,7 @@ class Themes extends Component
         $this->bannerDescription = env('BANNER_DESCRIPTION', $this->bannerDescription);
         $this->initOurProcessData();
         $this->initVideoAfterCounterTheme();
+        $this->initProjectTrackerData();
         parent::__construct($id);
     }
 
@@ -57,6 +62,15 @@ class Themes extends Component
         $this->initServiceCount();
         $this->sCurrentTab = session()->get('admin_themes_current_tab') ?? 'services';
         return view('livewire.admin.themes');
+    }
+
+    public function initProjectTrackerData()
+    {
+        $aData = Utilities::getDataInJson('homepage_project_tracker');
+        $this->projectTrackerLandscapeVideo = $aData['landscape']['video_url'] ?? '';
+        $this->projectTrackerLandscapeThumbnail = $aData['landscape']['video_thumbnail_url'] ?? '';
+        $this->projectTrackerTurfVideo = $aData['turf']['video_url'] ?? '';
+        $this->projectTrackerTurfThumbnail = $aData['turf']['video_thumbnail_url'] ?? '';
     }
 
     public function initOurProcessData()
@@ -80,7 +94,7 @@ class Themes extends Component
         foreach (Storage::disk('public')->allFiles('logo/small') as $sFileName) {
             $this->aSmallLogo[] = [
                 'formatted' => '/storage/' . $sFileName,
-                'original' => $sFileName
+                'original'  => $sFileName,
             ];
         }
     }
@@ -91,7 +105,7 @@ class Themes extends Component
         foreach (Storage::disk('public')->allFiles('logo/dark') as $sFileName) {
             $this->aDarkLogo[] = [
                 'formatted' => '/storage/' . $sFileName,
-                'original' => $sFileName
+                'original'  => $sFileName,
             ];
         }
     }
@@ -102,7 +116,7 @@ class Themes extends Component
         foreach (Storage::disk('public')->allFiles('logo/light') as $sFileName) {
             $this->aLightLogo[] = [
                 'formatted' => '/storage/' . $sFileName,
-                'original' => $sFileName
+                'original'  => $sFileName,
             ];
         }
     }
@@ -110,19 +124,35 @@ class Themes extends Component
     public function saveOurProcess()
     {
         $aData = [
-            "video_url" => $this->ourProcessVideoUrl,
-            "description" => $this->ourProcessDescription,
-            "video_thumbnail_url" => $this->ourProcessVideoThumbnail
+            "video_url"           => $this->ourProcessVideoUrl,
+            "description"         => $this->ourProcessDescription,
+            "video_thumbnail_url" => $this->ourProcessVideoThumbnail,
         ];
 
         Utilities::insertDataInJson('homepage_our_process', $aData, true);
     }
 
+    public function saveProjectTracker()
+    {
+        $aData = [
+            'landscape' => [
+                "video_url"           => $this->projectTrackerLandscapeVideo,
+                "video_thumbnail_url" => $this->projectTrackerLandscapeThumbnail,
+            ],
+            'turf'      => [
+                "video_url"           => $this->projectTrackerTurfVideo,
+                "video_thumbnail_url" => $this->projectTrackerTurfThumbnail,
+            ],
+        ];
+
+        Utilities::insertDataInJson('homepage_project_tracker', $aData, true);
+    }
+
     public function saveVideoAfterCounterTheme()
     {
         $aData = [
-            "video_url" => $this->rightVideoAfterCounter,
-            "video_thumbnail_url" => $this->rightVideoAfterCounterThumbnail
+            "video_url"           => $this->rightVideoAfterCounter,
+            "video_thumbnail_url" => $this->rightVideoAfterCounterThumbnail,
         ];
 
         Utilities::insertDataInJson('homepage_video_after_counter', $aData, true);

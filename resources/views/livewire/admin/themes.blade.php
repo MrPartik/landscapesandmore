@@ -66,7 +66,7 @@
             text-align-last: center;
         }
     </style>
-    <div class="loading-page" wire:loading.block wire:target="deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
     <div class="col-12">
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
@@ -75,7 +75,7 @@
                         <button class="nav-link {{ $sCurrentTab === 'services' ? 'active' : '' }}" wire:click="setCurrentTab('services')" id="services-tab" data-bs-toggle="tab" data-bs-target="#services-tab-content" type="button" role="tab" aria-controls="services-tab" aria-selected="false">Homepage Services Offered </button>
                     </li>
                     <li class="nav-item " role="presentation">
-                        <button class="nav-link {{ $sCurrentTab === 'our_process' ? 'active' : '' }}" wire:click="setCurrentTab('our_process')" id="our_process-tab" data-bs-toggle="tab" data-bs-target="#our_process-tab-content" type="button" role="tab" aria-controls="our_process-tab" aria-selected="false">Homepage Our Process</button>
+                        <button class="nav-link {{ $sCurrentTab === 'our_process' ? 'active' : '' }}" wire:click="setCurrentTab('our_process')" id="our_process-tab" data-bs-toggle="tab" data-bs-target="#our_process-tab-content" type="button" role="tab" aria-controls="our_process-tab" aria-selected="false">Homepage</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link {{ $sCurrentTab === 'banner' ? 'active' : '' }}" wire:click="setCurrentTab('banner')" id="banner-tab" data-bs-toggle="tab" data-bs-target="#banner-tab-content" type="button" role="tab" aria-controls="banner-tab" aria-selected="true">Homepage Banner</button>
@@ -114,20 +114,20 @@
                                                     <label class="col-form-label" for="title">
                                                         Title
                                                     </label>
-                                                    <x-jet-input id="title" wire:model.lazy="serviceTitle"  type="text" class="form-control" placeholder="{{ __('Title') }}"/>
+                                                    <x-jet-input id="title" wire:model="serviceTitle"  type="text" class="form-control" placeholder="{{ __('Title') }}"/>
                                                 </div>
                                                 <div class="col-4 mb-2">
                                                     <label class="col-form-label" for="title">
                                                         Redirect URL
                                                     </label>
-                                                    <x-jet-input id="title" wire:model.lazy="serviceRedirectUrl"  type="text" class="form-control" placeholder="{{ __('Redirect URL') }}"/>
+                                                    <x-jet-input id="title" wire:model="serviceRedirectUrl"  type="text" class="form-control" placeholder="{{ __('Redirect URL') }}"/>
                                                 </div>
                                             </div>
                                             <div class="mb-2">
                                                 <label class="col-form-label" for="description">
                                                     Description
                                                 </label>
-                                                <textarea rows="5" id="description" wire:model.lazy="serviceDescription"  type="text" class="form-control" placeholder="{{ __('Description') }}"> </textarea>
+                                                <textarea rows="5" id="description" wire:model="serviceDescription"  type="text" class="form-control" placeholder="{{ __('Description') }}"> </textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <div class="de_form">
@@ -185,16 +185,57 @@
                                         <label class="col-form-label" for="rightVideoAfterCounter">
                                             Video URL
                                         </label>
-                                        <x-jet-input id="rightVideoAfterCounter" wire:model.lazy="rightVideoAfterCounter"  type="text" class="form-control" placeholder="{{ __('Video URL') }}"/>
+                                        <x-jet-input id="rightVideoAfterCounter" wire:model="rightVideoAfterCounter"  type="text" class="form-control" placeholder="{{ __('Video URL') }}"/>
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label class="col-form-label" for="rightVideoAfterCounterThumbnail">
                                             Video Thumbnail URL
                                         </label>
-                                        <x-jet-input id="rightVideoAfterCounterThumbnail" wire:model.lazy="rightVideoAfterCounterThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                        <x-jet-input id="rightVideoAfterCounterThumbnail" wire:model="rightVideoAfterCounterThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
                                     </div>
                                 </div>
                                 <button wire:click="saveVideoAfterCounterTheme()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
+                            </div>
+                            <hr style="margin-top: 10px" />
+                            <div class="mt-3 col-12" x-data="{}">
+                                <h2> {{ __('Project Tracker')  }}</h2>
+                                <p>{{ __('Videos describing project tracker.') }}</p>
+                                <hr/>
+                                <div class="mt-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5>Landscape and Design Project</h5>
+                                        <div class="col-12 mb-2">
+                                            <label class="col-form-label" for="projectTrackerLandscapeVideo">
+                                                Video URL
+                                            </label>
+                                            <x-jet-input id="projectTrackerLandscapeVideo" wire:model="projectTrackerLandscapeVideo"  type="text" class="form-control" placeholder="{{ __('Video URL') }}"/>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <label class="col-form-label" for="projectTrackerLandscapeThumbnail">
+                                                Video Thumbnail URL
+                                            </label>
+                                            <x-jet-input id="projectTrackerLandscapeThumbnail" wire:model="projectTrackerLandscapeThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5>Maintenance and Turf Care</h5>
+                                        <div class="col-12 mb-2">
+                                            <label class="col-form-label" for="projectTrackerTurfVideo">
+                                                Video URL
+                                            </label>
+                                            <x-jet-input id="projectTrackerTurfVideo" wire:model="projectTrackerTurfVideo"  type="text" class="form-control" placeholder="{{ __('Video URL') }}"/>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <label class="col-form-label" for="projectTrackerTurfThumbnail">
+                                                Video Thumbnail URL
+                                            </label>
+                                            <x-jet-input id="projectTrackerTurfThumbnail" wire:model="projectTrackerTurfThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button wire:click="saveProjectTracker()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                             </div>
                             <hr style="margin-top: 10px" />
                             <div class="mt-3 col-12" x-data="{}">
@@ -208,19 +249,19 @@
                                         <label class="col-form-label" for="ourProcessVideo">
                                             Our Process Video URL
                                         </label>
-                                        <x-jet-input id="ourProcessVideo" wire:model.lazy="ourProcessVideoUrl"  type="text" class="form-control" placeholder="{{ __('Our Process Video URL') }}"/>
+                                        <x-jet-input id="ourProcessVideo" wire:model="ourProcessVideoUrl"  type="text" class="form-control" placeholder="{{ __('Our Process Video URL') }}"/>
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label class="col-form-label" for="ourProcessVideoThumbnail">
                                             Video Thumbnail URL
                                         </label>
-                                        <x-jet-input id="ourProcessVideoThumbnail" wire:model.lazy="ourProcessVideoThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                        <x-jet-input id="ourProcessVideoThumbnail" wire:model="ourProcessVideoThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label class="col-form-label" for="ourProcessDescription">
                                             Our Process Description
                                         </label>
-                                        <textarea id="ourProcessDescription" wire:model.lazy="ourProcessDescription" type="text" class="form-control" rows="10" placeholder="{{ __('Our Process Description') }}"> </textarea>
+                                        <textarea id="ourProcessDescription" wire:model="ourProcessDescription" type="text" class="form-control" rows="10" placeholder="{{ __('Our Process Description') }}"> </textarea>
                                     </div>
                                 </div>
                                 <button wire:click="saveOurProcess()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>

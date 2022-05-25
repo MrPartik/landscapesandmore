@@ -55,9 +55,15 @@
                 </div>
             </section>
 
-            <section class="text-white" id="section-how-it-works" data-bgimage="url(images/background/bg-2.jpg) fixed center" data-stellar-background-ratio=".2">
+            <section class="text-white" id="section-how-it-works" data-bgimage="url(images/background/bg-2.jpg) fixed center" data-stellar-background-ratio=".2" style="padding-bottom: 10px">
                 <div class="container">
                     <div class="row align-items-center" style="place-content: center">
+                        <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
+                            <h1 style="text-align: center" class="text-white">
+                                {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
+                            </h1>
+                        </div>
+                        <div class="spacer-half"></div>
                         <div class="col-md-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
                             <figure class="picframe invert transparent shadow-soft rounded" >
 										<span class="v-center">
@@ -70,11 +76,47 @@
                                 <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
                             </figure>
                         </div>
-                        <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
-                            <p class="lead" style="text-align: center">
-                                {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
-                            </p>
+                    </div>
+                </div>
+            </section>
+            <section class="text-white"   data-stellar-background-ratio=".2" style="padding-bottom: 10px">
+                <div class="container">
+                    <h1 style="text-align: center">
+                        Project Tracker
+                    </h1>>
+                    <div class="spacer-half"></div>
+                    <div class="row align-items-center" style="place-content: center">
+                        <div class="col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
+                            <figure class="picframe invert transparent shadow-soft rounded" >
+										<span class="v-center">
+											<span>
+												<a id="play-video" class="video-play-button popup-youtube" href="{{ @\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_url'] ?? '' }}">
+													<span></span>
+												</a>
+											</span>
+										</span>
+                                <img src="{{ url((strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                            </figure>
                             <div class="spacer-half"></div>
+                            <h1 style="text-align: center">
+                                Landscape and Design Project
+                            </h1>>
+                        </div>
+                        <div class="col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
+                            <figure class="picframe invert transparent shadow-soft rounded" >
+										<span class="v-center">
+											<span>
+												<a id="play-video" class="video-play-button popup-youtube" href="{{ @\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_url'] ?? '' }}">
+													<span></span>
+												</a>
+											</span>
+										</span>
+                                <img src="{{ url((strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] ?? '') > 0) ? @\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                            </figure>
+                            <div class="spacer-half"></div>
+                            <h1 style="text-align: center">
+                                Maintenance and Turf Care
+                            </h1>>
                         </div>
                     </div>
                 </div>
