@@ -125,7 +125,7 @@ class Themes extends Component
     {
         $sTrackerFilePath = $this->ourProcessVideoThumbnail;
         if(is_object($sTrackerFilePath)) {
-            $sTrackerFilePath = $this->ourProcessVideoThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->ourProcessVideoThumbnail->getClientOriginalExtension());
+            $sTrackerFilePath = $this->ourProcessVideoThumbnail->storeAs('public', 'website/customized/thumbnail/oupt-' . time() . '.' . $this->ourProcessVideoThumbnail->getClientOriginalExtension());
             $sTrackerFilePath = '/' . str_replace('public', 'storage', $sTrackerFilePath);
         }
         $aData = [
@@ -135,15 +135,14 @@ class Themes extends Component
         ];
 
         Utilities::insertDataInJson('homepage_our_process', $aData, true);
-
         $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail;
         $sTurfFilePath = $this->projectTrackerTurfThumbnail;
         if(is_object($sLandscapeFilePath)) {
-            $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->projectTrackerLandscapeThumbnail->getClientOriginalExtension());
+            $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail->storeAs('public', 'website/customized/thumbnail/loupt-' . time() . '.' . $this->projectTrackerLandscapeThumbnail->getClientOriginalExtension());
             $sLandscapeFilePath = '/' . str_replace('public', 'storage', $sLandscapeFilePath);
         }
         if(is_object($sTurfFilePath)) {
-            $sTurfFilePath = $this->projectTrackerTurfThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->projectTrackerTurfThumbnail->getClientOriginalExtension());
+            $sTurfFilePath = $this->projectTrackerTurfThumbnail->storeAs('public', 'website/customized/thumbnail/toupt-' . time() . '.' . $this->projectTrackerTurfThumbnail->getClientOriginalExtension());
             $sTurfFilePath = '/' . str_replace('public', 'storage', $sTurfFilePath);
         }
         $aData = [
