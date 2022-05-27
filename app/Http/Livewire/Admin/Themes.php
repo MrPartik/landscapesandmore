@@ -123,7 +123,7 @@ class Themes extends Component
 
     public function saveProjectTracker()
     {
-        $sTrackerFilePath = $this->projectTrackerTurfThumbnail;
+        $sTrackerFilePath = $this->ourProcessVideoThumbnail;
         if(is_object($sTrackerFilePath)) {
             $sTrackerFilePath = $this->ourProcessVideoThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->ourProcessVideoThumbnail->getClientOriginalExtension());
             $sTrackerFilePath = '/' . str_replace('public', 'storage', $sTrackerFilePath);
