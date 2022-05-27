@@ -2,7 +2,6 @@
     <style>
         .image-preview-container {
             position: relative;
-            display: inline;
             width: 100%;
         }
 
@@ -66,7 +65,7 @@
             text-align-last: center;
         }
     </style>
-    <div class="loading-page" wire:loading.block wire:target="saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
     <div class="col-12">
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
@@ -191,7 +190,28 @@
                                         <label class="col-form-label" for="rightVideoAfterCounterThumbnail">
                                             Video Thumbnail URL
                                         </label>
-                                        <x-jet-input id="rightVideoAfterCounterThumbnail" wire:model="rightVideoAfterCounterThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                            <div class="">
+                                                <x-jet-input class="col-6" id="rightVideoAfterCounterThumbnail" wire:model="rightVideoAfterCounterThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                                <br/>
+                                                <input id="uploadThumbnailrightVideoAfterCounterThumbnail" style="display: none" wire:model="rightVideoAfterCounterThumbnail" type="file" accept="image/*">
+                                                <button onclick="$('#uploadThumbnailrightVideoAfterCounterThumbnail').click()" class="btn btn-primary text-white">
+                                                    <span class="fa fa-file"> </span> Upload Image
+                                                </button>
+                                                <span>Max. file size: 10 MB.</span>
+                                                @if($rightVideoAfterCounterThumbnail !== null && $rightVideoAfterCounterThumbnail !== '')
+                                                    <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                                        <div class="image-preview-container row">
+                                                            <div style="background: url('{{ (is_object($rightVideoAfterCounterThumbnail)) ? url($rightVideoAfterCounterThumbnail->temporaryUrl()) : url($rightVideoAfterCounterThumbnail) }}') no-repeat center"
+                                                                 class="image col-3 m-1"></div>
+                                                            <div class="overlay-not col-3">
+                                                                <a href="javascript:" wire:click="" class="icon" title="Remove">
+                                                                    <i class="fa fa-close"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                     </div>
                                 </div>
                                 <button wire:click="saveVideoAfterCounterTheme()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
@@ -217,6 +237,26 @@
                                                 Video Thumbnail URL
                                             </label>
                                             <x-jet-input id="projectTrackerLandscapeThumbnail" wire:model="projectTrackerLandscapeThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                            <div class=""> <br/>
+                                                <input id="uploadThumbnailprojectTrackerLandscapeThumbnail" style="display: none" wire:model="projectTrackerLandscapeThumbnail" type="file" accept="image/*">
+                                                <button onclick="$('#uploadThumbnailprojectTrackerLandscapeThumbnail').click()" class="btn btn-primary text-white">
+                                                    <span class="fa fa-file"> </span> Upload Image
+                                                </button>
+                                                <span>Max. file size: 10 MB.</span>
+                                                @if($projectTrackerLandscapeThumbnail !== null && $projectTrackerLandscapeThumbnail !== '')
+                                                    <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                                        <div class="image-preview-container row">
+                                                            <div style="background: url('{{ (is_object($projectTrackerLandscapeThumbnail)) ? url($projectTrackerLandscapeThumbnail->temporaryUrl()) : url($projectTrackerLandscapeThumbnail) }}') no-repeat center"
+                                                                 class="image col-3 m-1"></div>
+                                                            <div class="overlay-not col-3">
+                                                                <a href="javascript:" wire:click="" class="icon" title="Remove">
+                                                                    <i class="fa fa-close"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -232,6 +272,26 @@
                                                 Video Thumbnail URL
                                             </label>
                                             <x-jet-input id="projectTrackerTurfThumbnail" wire:model="projectTrackerTurfThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                            <div class=""> <br/>
+                                                <input id="uploadThumbnailprojectTrackerTurfThumbnail" style="display: none" wire:model="projectTrackerTurfThumbnail" type="file" accept="image/*">
+                                                <button onclick="$('#uploadThumbnailprojectTrackerTurfThumbnail').click()" class="btn btn-primary text-white">
+                                                    <span class="fa fa-file"> </span> Upload Image
+                                                </button>
+                                                <span>Max. file size: 10 MB.</span>
+                                                @if($projectTrackerTurfThumbnail !== null && $projectTrackerTurfThumbnail !== '')
+                                                    <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                                        <div class="image-preview-container row">
+                                                            <div style="background: url('{{ (is_object($projectTrackerTurfThumbnail)) ? url($projectTrackerTurfThumbnail->temporaryUrl()) : url($projectTrackerTurfThumbnail) }}') no-repeat center"
+                                                                 class="image col-3 m-1"></div>
+                                                            <div class="overlay-not col-3">
+                                                                <a href="javascript:" wire:click="" class="icon" title="Remove">
+                                                                    <i class="fa fa-close"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -256,6 +316,26 @@
                                             Video Thumbnail URL
                                         </label>
                                         <x-jet-input id="ourProcessVideoThumbnail" wire:model="ourProcessVideoThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                        <div class=""> <br/>
+                                            <input id="uploadThumbnailourProcessVideoThumbnail" style="display: none" wire:model="ourProcessVideoThumbnail" type="file" accept="image/*">
+                                            <button onclick="$('#uploadThumbnailourProcessVideoThumbnail').click()" class="btn btn-primary text-white">
+                                                <span class="fa fa-file"> </span> Upload Image
+                                            </button>
+                                            <span>Max. file size: 10 MB.</span>
+                                            @if($ourProcessVideoThumbnail !== null && $ourProcessVideoThumbnail !== '')
+                                                <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                                    <div class="image-preview-container row">
+                                                        <div style="background: url('{{ (is_object($ourProcessVideoThumbnail)) ? url($ourProcessVideoThumbnail->temporaryUrl()) : url($ourProcessVideoThumbnail) }}') no-repeat center"
+                                                             class="image col-3 m-1"></div>
+                                                        <div class="overlay-not col-3">
+                                                            <a href="javascript:" wire:click="" class="icon" title="Remove">
+                                                                <i class="fa fa-close"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label class="col-form-label" for="ourProcessDescription">

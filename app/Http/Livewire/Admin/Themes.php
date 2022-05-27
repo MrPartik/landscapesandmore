@@ -134,14 +134,25 @@ class Themes extends Component
 
     public function saveProjectTracker()
     {
+
+        $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail;
+        $sTurfFilePath = $this->projectTrackerTurfThumbnail;
+        if(is_object($sLandscapeFilePath)) {
+            $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->projectTrackerLandscapeThumbnail->getClientOriginalExtension());
+            $sLandscapeFilePath = '/' . str_replace('public', 'storage', $sLandscapeFilePath);
+        }
+        if(is_object($sTurfFilePath)) {
+            $sTurfFilePath = $this->projectTrackerTurfThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->projectTrackerTurfThumbnail->getClientOriginalExtension());
+            $sTurfFilePath = '/' . str_replace('public', 'storage', $sTurfFilePath);
+        }
         $aData = [
             'landscape' => [
                 "video_url"           => $this->projectTrackerLandscapeVideo,
-                "video_thumbnail_url" => $this->projectTrackerLandscapeThumbnail,
+                "video_thumbnail_url" => $sLandscapeFilePath,
             ],
             'turf'      => [
                 "video_url"           => $this->projectTrackerTurfVideo,
-                "video_thumbnail_url" => $this->projectTrackerTurfThumbnail,
+                "video_thumbnail_url" => $sTurfFilePath,
             ],
         ];
 
@@ -150,9 +161,14 @@ class Themes extends Component
 
     public function saveVideoAfterCounterTheme()
     {
+        $sFilePath = $this->rightVideoAfterCounterThumbnail;
+        if(is_object($sFilePath)) {
+            $sFilePath = $this->rightVideoAfterCounterThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->rightVideoAfterCounterThumbnail->getClientOriginalExtension());
+            $sFilePath = '/' . str_replace('public', 'storage', $sFilePath);
+        }
         $aData = [
             "video_url"           => $this->rightVideoAfterCounter,
-            "video_thumbnail_url" => $this->rightVideoAfterCounterThumbnail,
+            "video_thumbnail_url" => $sFilePath,
         ];
 
         Utilities::insertDataInJson('homepage_video_after_counter', $aData, true);
