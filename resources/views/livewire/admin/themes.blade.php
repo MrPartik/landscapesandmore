@@ -224,6 +224,47 @@
                                 <div class="mt-4">
                                 </div>
                                 <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="ourProcessVideo">
+                                            Our Process Video URL
+                                        </label>
+                                        <x-jet-input id="ourProcessVideo" wire:model="ourProcessVideoUrl"  type="text" class="form-control" placeholder="{{ __('Our Process Video URL') }}"/>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="ourProcessVideoThumbnail">
+                                            Video Thumbnail URL
+                                        </label>
+                                        <x-jet-input id="ourProcessVideoThumbnail" wire:model="ourProcessVideoThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
+                                        <div class=""> <br/>
+                                            <input id="uploadThumbnailourProcessVideoThumbnail" style="display: none" wire:model="ourProcessVideoThumbnail" type="file" accept="image/*">
+                                            <button onclick="$('#uploadThumbnailourProcessVideoThumbnail').click()" class="btn btn-primary text-white">
+                                                <span class="fa fa-file"> </span> Upload Image
+                                            </button>
+                                            <span>Max. file size: 10 MB.</span>
+                                            @if($ourProcessVideoThumbnail !== null && $ourProcessVideoThumbnail !== '')
+                                                <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
+                                                    <div class="image-preview-container row">
+                                                        <div style="background: url('{{ (is_object($ourProcessVideoThumbnail)) ? url($ourProcessVideoThumbnail->temporaryUrl()) : url($ourProcessVideoThumbnail) }}') no-repeat center"
+                                                             class="image col-3 m-1"></div>
+                                                        <div class="overlay-not col-3">
+                                                            <a href="javascript:" wire:click="" class="icon" title="Remove">
+                                                                <i class="fa fa-close"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label class="col-form-label" for="ourProcessDescription">
+                                            Our Process Description
+                                        </label>
+                                        <textarea id="ourProcessDescription" wire:model="ourProcessDescription" type="text" class="form-control" rows="10" placeholder="{{ __('Our Process Description') }}"> </textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
                                     <div class="col-6">
                                         <h5>Landscape and Design Project</h5>
                                         <div class="col-12 mb-2">
@@ -296,55 +337,6 @@
                                     </div>
                                 </div>
                                 <button wire:click="saveProjectTracker()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
-                            </div>
-                            <hr style="margin-top: 10px" />
-                            <div class="mt-3 col-12" x-data="{}">
-                                <h2> {{ __('Our Process')  }}</h2>
-                                <p>{{ __('Manage the content of our process in homepage.') }}</p>
-                                <hr/>
-                                <div class="mt-4">
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 mb-2">
-                                        <label class="col-form-label" for="ourProcessVideo">
-                                            Our Process Video URL
-                                        </label>
-                                        <x-jet-input id="ourProcessVideo" wire:model="ourProcessVideoUrl"  type="text" class="form-control" placeholder="{{ __('Our Process Video URL') }}"/>
-                                    </div>
-                                    <div class="col-12 mb-2">
-                                        <label class="col-form-label" for="ourProcessVideoThumbnail">
-                                            Video Thumbnail URL
-                                        </label>
-                                        <x-jet-input id="ourProcessVideoThumbnail" wire:model="ourProcessVideoThumbnail"  type="text" class="form-control" placeholder="{{ __('Video ThumbnailURL') }}"/>
-                                        <div class=""> <br/>
-                                            <input id="uploadThumbnailourProcessVideoThumbnail" style="display: none" wire:model="ourProcessVideoThumbnail" type="file" accept="image/*">
-                                            <button onclick="$('#uploadThumbnailourProcessVideoThumbnail').click()" class="btn btn-primary text-white">
-                                                <span class="fa fa-file"> </span> Upload Image
-                                            </button>
-                                            <span>Max. file size: 10 MB.</span>
-                                            @if($ourProcessVideoThumbnail !== null && $ourProcessVideoThumbnail !== '')
-                                                <div class=" mt-3 row" style="text-align:center; display:flow-root; padding: 10px; ">
-                                                    <div class="image-preview-container row">
-                                                        <div style="background: url('{{ (is_object($ourProcessVideoThumbnail)) ? url($ourProcessVideoThumbnail->temporaryUrl()) : url($ourProcessVideoThumbnail) }}') no-repeat center"
-                                                             class="image col-3 m-1"></div>
-                                                        <div class="overlay-not col-3">
-                                                            <a href="javascript:" wire:click="" class="icon" title="Remove">
-                                                                <i class="fa fa-close"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-2">
-                                        <label class="col-form-label" for="ourProcessDescription">
-                                            Our Process Description
-                                        </label>
-                                        <textarea id="ourProcessDescription" wire:model="ourProcessDescription" type="text" class="form-control" rows="10" placeholder="{{ __('Our Process Description') }}"> </textarea>
-                                    </div>
-                                </div>
-                                <button wire:click="saveOurProcess()" class=" btn btn-success text-white"><span class="fa fa-save"></span> Save </button>
                             </div>
                         </div>
                     </div>

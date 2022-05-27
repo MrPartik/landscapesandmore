@@ -121,19 +121,20 @@ class Themes extends Component
         }
     }
 
-    public function saveOurProcess()
+    public function saveProjectTracker()
     {
+        $sTrackerFilePath = $this->projectTrackerTurfThumbnail;
+        if(is_object($sTrackerFilePath)) {
+            $sTrackerFilePath = $this->ourProcessVideoThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->ourProcessVideoThumbnail->getClientOriginalExtension());
+            $sTrackerFilePath = '/' . str_replace('public', 'storage', $sTrackerFilePath);
+        }
         $aData = [
             "video_url"           => $this->ourProcessVideoUrl,
             "description"         => $this->ourProcessDescription,
-            "video_thumbnail_url" => $this->ourProcessVideoThumbnail,
+            "video_thumbnail_url" => $sTrackerFilePath,
         ];
 
         Utilities::insertDataInJson('homepage_our_process', $aData, true);
-    }
-
-    public function saveProjectTracker()
-    {
 
         $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail;
         $sTurfFilePath = $this->projectTrackerTurfThumbnail;
