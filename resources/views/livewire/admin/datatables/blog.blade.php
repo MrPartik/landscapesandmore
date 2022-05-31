@@ -5,13 +5,16 @@
     <a href="{{ url('/admin/blog/edit/' . $iId) }}" title="Edit" class="btn btn-warning">
         <span class="fa fa-pencil"></span>
     </a>
-    @if($bIsActive === true)
-        <button title="Deactivate" class="btn btn-danger" wire:click="toggleActiveStatus({{ $iId }})">
-            <span class="fa fa-ban text-white"></span>
-        </button>
-    @else
-        <button title="Activate" class="btn btn-success" wire:click="toggleActiveStatus({{ $iId }})">
-            <span class="fa fa-check text-white"></span>
-        </button>
+
+    @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
+        @if($bIsActive === true)
+            <button title="Deactivate" class="btn btn-danger" wire:click="toggleActiveStatus({{ $iId }})">
+                <span class="fa fa-ban text-white"></span>
+            </button>
+        @else
+            <button title="Activate" class="btn btn-success" wire:click="toggleActiveStatus({{ $iId }})">
+                <span class="fa fa-check text-white"></span>
+            </button>
+        @endif
     @endif
 </div>

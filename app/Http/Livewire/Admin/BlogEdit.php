@@ -72,6 +72,7 @@ class BlogEdit extends Component
     {
         $this->iId = request()->route()->parameters['id'];
         $mBlogModel = BlogModel::find($this->iId);
+        if ($mBlogModel === null) abort(404);
         $this->featuredImage = $mBlogModel->featured_image;
         $this->blogTitle = $mBlogModel->title;
         $this->blogTags = $mBlogModel->tags;

@@ -67,9 +67,6 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         return view('admin.index');
     })->name('admin.dashboard');
 
-    Route::get('/our-process', function () {
-        return view('admin.our-process');
-    })->name('admin.our_process');
 
     Route::get('/blog', function () {
         return view('admin.blog');
@@ -114,4 +111,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('/careers', function () {
         return view('admin.careers');
     })->name('admin.careers');
+
+    Route::get('/users', function () {
+        return view('admin.users');
+    })->name('admin.users');
 });

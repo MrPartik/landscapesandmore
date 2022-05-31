@@ -14,15 +14,13 @@
                 <x-jet-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('admin.interactive-maps') }}" :active="request()->routeIs('admin.interactive-maps')">
-                    {{ __('Interactive Maps') }}
-                </x-jet-nav-link>
-                <x-jet-nav-link style="display: none" href="{{ route('admin.our_process') }}" :active="request()->routeIs('admin.our_process')">
-                    {{ __('Our Process') }}
-                </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.blog') }}" :active="request()->routeIs('admin.blog') || request()->routeIs('admin.blog-edit')">
                     {{ __('Blog') }}
                 </x-jet-nav-link>
+                @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
+                    <x-jet-nav-link href="{{ route('admin.interactive-maps') }}" :active="request()->routeIs('admin.interactive-maps')">
+                        {{ __('Interactive Maps') }}
+                    </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.projects') }}" :active="request()->routeIs('admin.projects')">
                     {{ __('Projects') }}
                 </x-jet-nav-link>
@@ -41,6 +39,7 @@
                 <x-jet-nav-link href="{{ route('admin.reviews') }}" :active="request()->routeIs('admin.reviews')">
                     {{ __('Customer Reviews') }}
                 </x-jet-nav-link>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -121,13 +120,17 @@
                             <h6 class="dropdown-header small text-muted">
                                 {{ __('Website Settings') }}
                             </h6>
+                            @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
                             <x-jet-dropdown-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
                                 {{ __('Pre Defined Values') }}
                             </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')">
+                                {{ __('Manage Users') }}
+                            </x-jet-dropdown-link>
+                            @endif
                             <x-jet-dropdown-link href="{{ route('admin.themes') }}" :active="request()->routeIs('admin.themes')">
                                 {{ __('Customize Website') }}
                             </x-jet-dropdown-link>
-
                             <hr class="dropdown-divider">
 
                             <!-- Authentication -->
