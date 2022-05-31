@@ -21,7 +21,7 @@ class verifyUserRoles
 
         if(Auth::check() === true) {
             if(\Illuminate\Support\Facades\Auth::user()->role !== 'admin') {
-                if(preg_match('/blog|admin$|admin\/themes|user/', \request()->path()) === 0) {
+                if(preg_match('/blog|admin$|admin\/themes|user|livewire/', \request()->path()) === 0) {
                     echo "<script>alert('Forbidden access'); window.location.href = '/admin';</script>";
                 }
             }
