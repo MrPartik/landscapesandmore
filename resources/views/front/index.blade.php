@@ -55,7 +55,7 @@
                 </div>
             </section>
 
-            <section class="text-white" id="section-how-it-works" data-bgimage="url(images/background/bg-2.jpg) fixed center" data-stellar-background-ratio=".2" style="padding-bottom: 10px">
+            <section class="text-white" id="section-how-it-works" data-bgimage="url(img/landscapes/grass.jpg) fixed center" data-stellar-background-ratio=".2" style="padding-bottom: 10px">
                 <div class="container">
                     <div class="row align-items-center" style="place-content: center">
                         <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
