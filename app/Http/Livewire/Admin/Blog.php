@@ -116,6 +116,7 @@ class Blog extends Component
         $oBlogModel->description = $this->blogDescription;
         $oBlogModel->featured_image = $sFeaturedImagePath;
         $oBlogModel->user_id = Auth::id();
+        $oBlogModel->is_active = false;
         $oBlogModel->save();
 
         $this->blogTitle = '';
