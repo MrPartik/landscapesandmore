@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\ResponseMail;
 use App\Library\StreakLibrary;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 use App\Models\ContactUs as ContactUsModel;
@@ -121,6 +123,7 @@ class ContactUs extends Component
         $iStageKey = ($oContactUsModel->project_description === 'landscape') ? self::LANDSCAPE_STAGE_KEY : self::MAINTENANCE_STAGE_KEY;
         $this->createBox($oContactUsModel, $sPipelineKey, $iStageKey);
         $this->emit('contact-us-success');
+        Mail::to($this->emailAddress)->send(new ResponseMail(sprintf('%s, %s', $this->lastName, $this->firstName), 'Thank you for contacting us. One of our representatives will call you to discuss your project further. Please allow us 24-48 business hours (Monday-Friday) to review your information. You may also check the status of your application status here: Application Status.'));
         $this->clear();
     }
 

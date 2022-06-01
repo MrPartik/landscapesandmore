@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\ResponseMail;
 use App\Library\StreakLibrary;
 use Livewire\Component;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Careers as CareersModel;
 
 class Careers extends Component
@@ -52,6 +54,9 @@ class Careers extends Component
 
         $this->createBox($oCareersModel, config('streak.careers_pipeline_key'), 5001);
         $this->emit('careers-success');
+
+        Mail::to($this->emailAddress)->send(new ResponseMail($this->name, 'Thank you for your interest in becoming part of our team. One of our representatives will call you to get your job application started. Please allow us 24-48 business hours (Monday-Friday) to review your application. '));
+
         $this->name = '';
         $this->homeAddress = '';
         $this->emailAddress = '';
