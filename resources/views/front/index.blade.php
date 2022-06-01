@@ -54,41 +54,8 @@
                     </div>
                 </div>
             </section>
-
-            <section class="text-white" id="section-how-it-works" data-bgimage="url(img/landscapes/grass.jpg) fixed center" data-stellar-background-ratio=".2" style="padding-bottom: 10px">
-                <div class="container">
-                    <div class="row align-items-center" style="place-content: center">
-                        <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
-                            <h1 style="text-align: center" class="text-white">
-                                Introducing: Michaelangelo's Project Tracker
-                            </h1>
-                        </div>
-                        <div class="spacer-half"></div>
-                        <div class="col-md-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
-                            @if(strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_url'] ?? '') > 0)
-                            <figure class="picframe invert transparent shadow-soft rounded" >
-										<span class="v-center">
-											<span>
-												<a id="play-video" class="video-play-button popup-youtube" href="{{ \App\Library\Utilities::getDataInJson('homepage_our_process')['video_url'] ?? '' }}">
-													<span></span>
-												</a>
-											</span>
-										</span>
-                                <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
-                            </figure>
-                            @else
-                                <a class="image-popup-no-margins" href="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}">
-                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="">
-                                </a>
-                            @endif
-                        </div>
-                        <p style="text-align: center" class="text-white">
-                            {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section class="text-white"   data-stellar-background-ratio=".2" style="padding-bottom: 10px">
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <section class="text-white"   data-stellar-background-ratio=".2" style="padding-bottom: 0px">
                 <div class="container">
                     <div class="row align-items-center" style="place-content: center">
                         <div class="col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
@@ -135,6 +102,40 @@
                                 Maintenance and Turf Care
                             </h1>>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <section class="text-black" id="section-how-it-works" style="margin-top: 0px; padding-top: 0px">
+                <div class="container">
+                    <div class="row align-items-center" style="place-content: center">
+                        <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
+                            <h1 style="text-align: center" class="">
+                                Introducing: Michaelangelo's Project Tracker
+                            </h1>
+                        </div>
+                        <div class="spacer-half"></div>
+                        <div class="col-md-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
+                            @if(strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_url'] ?? '') > 0)
+                                <figure class="picframe invert transparent shadow-soft rounded" >
+										<span class="v-center">
+											<span>
+												<a id="play-video" class="video-play-button popup-youtube" href="{{ \App\Library\Utilities::getDataInJson('homepage_our_process')['video_url'] ?? '' }}">
+													<span></span>
+												</a>
+											</span>
+										</span>
+                                    <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                </figure>
+                            @else
+                                <a class="image-popup-no-margins" href="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}">
+                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="">
+                                </a>
+                            @endif
+                        </div>
+                        <p style="text-align: center; margin-top: 10px; color: black" class="text-black">
+                            {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
+                        </p>
                     </div>
                 </div>
             </section>
