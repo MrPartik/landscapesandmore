@@ -73,7 +73,7 @@ class Careers extends Component
     {
         return StreakLibrary::createBox($oModel, $sPipeline, $oModel->email, [
             'name'     => sprintf('%s', $oModel->name),
-            'stageKey' => $iStageKey,Your Trusted Local Landscaping Company
+            'stageKey' => $iStageKey,
             'assignedToSharingEntries' => [
                 [
                     'email' => 'csr@landscapesandmore.com'

@@ -1,5 +1,5 @@
 <!-- section begin -->
-<section style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/zooming-house.jpg') }}') center fixed" class="text-light"  >
+<section  class="text-black no-bottom" >
     <style>
         .checked {
             color: var(--primary-color-1);
