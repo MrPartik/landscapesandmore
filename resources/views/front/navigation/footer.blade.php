@@ -58,12 +58,10 @@
 
                 <div class="col-md-3 text-right">
                     <div class="social-icons">
-                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-rss fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-skype fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-dribbble fa-lg"></i></a>
+                        <a href="https://www.facebook.com/increaseyourlivingspace/"><i class="fa fa-facebook fa-lg"></i></a>
+                        <a href="https://www.instagram.com/michaelangeloslandscape/"><i class="fa fa-instagram fa-lg"></i></a>
+                        <a href="https://www.houzz.com/pro/mlores"><i class="fa fa-houzz fa-lg"></i></a>
+                        <a href="https://www.youtube.com/channel/UC4CydLMJETuBbt4AC9JaHaA"><i class="fa fa-youtube fa-lg"></i></a>
                     </div>
                 </div>
             </div>

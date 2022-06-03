@@ -11745,3 +11745,11 @@ nav .nav-link.active {
     transform: rotate(360deg);
   }
 }
+nav ul#mainmenu li ul a, nav ul#mainmenu li ul {
+  background: white;
+  color: black;
+}
+
+a img.logo {
+  max-height: 70px;
+}

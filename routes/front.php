@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/process', function () {
     return view('front.process');
 });
-Route::get('/projects', function () {
+Route::get('/portfolio', function () {
     return view('front.projects');
 });
 

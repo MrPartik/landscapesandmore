@@ -39,12 +39,18 @@
                 <nav>
                     <ul id="mainmenu">
                         <li><a class="{{ $active === 'home' ? 'active' : '' }}" href="{{ url('/') }}">Home<span></span></a></li>
-                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Project Tracker</a></li>
-                        <li><a class="{{ $active === 'projects' ? 'active' : '' }}" href="{{ url('/projects') }}">Projects</a></li>
+                        <li><a href="{{ url('/') }}#section-services" onclick='document.location.href = "{{ url('/') }}#section-services"'>Services<span></span></a></li>
+                        <li><a href="{{ url('/') }}#our-process" onclick='document.location.href = "{{ url('/') }}#our-process"'>Process<span></span></a></li>
+                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Project Tracker<span></span></a></li>
+                        <li><a class="{{ in_array($active, ['contact-us', 'warranty', 'careers']) === true ? 'active' : '' }}" href="javascript:;">Contact Us<span></span></a>
+                            <ul>
+                                <li><a href="{{ url('/contact-us') }}">Contact Us</a> </li>
+                                <li><a href="{{ url('/warranty') }}">Warranty</a> </li>
+                                <li><a href="{{ url('/careers') }}">Careers</a> </li>
+                            </ul>
+                        </li>
+                        <li><a class="{{ $active === 'portfolio' ? 'active' : '' }}" href="{{ url('/portfolio') }}">Portfolio</a></li>
                         <li><a class="{{ $active === 'blog' ? 'active' : '' }}" href="{{ url('/blog') }}">Blog</a></li>
-                        <li><a class="{{ $active === 'contact-us' ? 'active' : '' }}" href="{{ url('/contact-us') }}">Contact Us</a></li>
-                        <li><a class="{{ $active === 'warranty' ? 'active' : '' }}" href="{{ url('/warranty') }}">Warranty</a></li>
-                        <li><a class="{{ $active === 'careers' ? 'active' : '' }}" href="{{ url('/careers') }}">Careers</a></li>
                     </ul>
                 </nav>
 

@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="{{ url('css/bg.css') }}" type="text/css">
 
         <!-- color scheme -->
-        <link rel="stylesheet" href="{{ url('css/colors/brown.css') }}" type="text/css" id="colors">
+        <link rel="stylesheet" href="{{ url('css/colors/green.css') }}" type="text/css" id="colors">
         <link rel="stylesheet" href="{{ url('css/color.css') }}" type="text/css">
 
         <!-- load fonts -->

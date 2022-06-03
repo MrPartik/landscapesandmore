@@ -25,7 +25,7 @@
             </section>
             <!-- parallax section close -->
 
-            <section id="section-text">
+            <section id="section-text" class="no-bottom">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-12 wow fadeInRight" data-wow-delay=".2s">
@@ -34,12 +34,7 @@
                                 <span class="text-black">Years of Experience</span>
                             </div>
                         </div>
-                        <div class="col-lg-4 p-lg-5  mb-sm-30 wow fadeInRight" data-wow-delay=".4s">
-                            <h2 class="style-2 id-color">Welcome</h2>
-                            <h2>Your Trusted Local Landscaping Company</h2>
-                        </div>
-
-                        <div class="col-lg-4 wow fadeInRight" data-wow-delay=".6s">
+                        <div class="col-lg-8 wow fadeInRight" data-wow-delay=".6s">
                                 <figure class="picframe invert transparent shadow-soft rounded">
 										<span class="v-center">
 											<span>
@@ -54,9 +49,36 @@
                     </div>
                 </div>
             </section>
-            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-            <section class="text-white"   data-stellar-background-ratio=".2" style="padding-bottom: 0px">
+            <!-- section begin -->
+            <section id="section-services" aria-label="section-services" style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/colorful-house.jpg') }}') center fixed" >
+                <div class="container text-white">
+                    <div class="row">
+                        <div class="text-white col-md-6 offset-md-3 text-center wow fadeInUp">
+                            <h1 class="text-white">Services we offer</h1>
+                            <div class="spacer-single"></div>
+                        </div>
+                        @foreach(\App\Models\Services::all() as $oService)
+                            <div class="col-lg-4 no-top text-middle text-light wow fadeInRight" data-wow-delay="0">
+                                <div class="shadow-soft" data-bgimage="url({{ url($oService->image) }})">
+                                    <div class="padding40 overlay60">
+                                        <h3>{{ $oService->title }}</h3>
+                                        <p>{{ $oService->description }}</p>
+                                        <a href="{{ $oService->url }}" class="btn-line-white btn-fullwidth">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+            <!-- section close -->
+            <section id="our-process" aria-label="our-process"  class="text-white no-bottom"  data-stellar-background-ratio=".2">
                 <div class="container">
+                    <div class="text-center wow fadeInUp">
+                        <h1>Design and Install Process, Maintenance and Turf Care Process</h1>
+                        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+                        <div class="spacer-single"></div>
+                    </div>
                     <div class="row align-items-center" style="place-content: center">
                         <div class="col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
                             @if(strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_url'] ?? '') > 0)
@@ -76,9 +98,9 @@
                                 </a>
                             @endif
                             <div class="spacer-half"></div>
-                            <h1 style="text-align: center">
+                            <h3 style="text-align: center">
                                 Landscape and Design Project
-                            </h1>>
+                            </h3>>
                         </div>
                         <div class="col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay=".4s" style="max-width: 850px;">
                             @if(strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_url'] ?? '') > 0)
@@ -98,20 +120,20 @@
                                 </a>
                             @endif
                             <div class="spacer-half"></div>
-                            <h1 style="text-align: center">
+                            <h3 style="text-align: center">
                                 Maintenance and Turf Care
-                            </h1>>
+                            </h3>>
                         </div>
                     </div>
                 </div>
             </section>
-            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-            <section class="text-black" id="section-how-it-works" style="margin-top: 0px; padding-top: 0px">
+            <section class="text-black no-bottom" id="section-how-it-works" style="margin-top: 0px; padding-top: 0px">
                 <div class="container">
                     <div class="row align-items-center" style="place-content: center">
                         <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
                             <h1 style="text-align: center" class="">
-                                Introducing: Michaelangelo's Project Tracker
+                                Introducing: Michaelangelo's Project Tracker>
+                                <div class="separator no-bottom"><span><i class="fa fa-circle"></i></span></div>
                             </h1>
                         </div>
                         <div class="spacer-half"></div>
@@ -133,9 +155,9 @@
                                 </a>
                             @endif
                         </div>
-                        <p style="text-align: center; margin-top: 10px; color: black" class="text-black">
+                        <h3 style="text-align: center; margin-top: 10px; color: black" class="text-black">
                             {{ \App\Library\Utilities::getDataInJson('homepage_our_process')['description'] ?? '' }}
-                        </p>
+                        </h3>
                     </div>
                 </div>
             </section>
@@ -145,33 +167,6 @@
                     text-align: -webkit-center;
                 }
             </style>
-            <!-- section close -->
-
-            <!-- section begin -->
-            <section id="section-services" aria-label="section-services">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                            <h1>Services we offer</h1>
-                            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-                            <div class="spacer-single"></div>
-                        </div>
-                        @foreach(\App\Models\Services::all() as $oService)
-                            <div class="col-md-4  mb-4 wow fadeInLeft">
-                                <a class="image-popup-no-margins" href="{{ url($oService->image) }}">
-                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url($oService->image) }}" class="img-responsive" alt="">
-                                </a>
-                                <div class="spacer-single"></div>
-                                <h3><span class="id-color">{{ $oService->title }}</h3>
-                                {{ $oService->description }}
-                                <div class="spacer-single"></div>
-                                <a href="{{ $oService->url }}" class="btn-line-black">Learn more</a>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </section>
             <!-- section close -->
 
             <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
