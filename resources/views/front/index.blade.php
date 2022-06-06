@@ -50,7 +50,7 @@
                 </div>
             </section>
             <!-- section begin -->
-            <section id="section-services" aria-label="section-services" style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/colorful-house.jpg') }}') center fixed" >
+            <section id="section-services" aria-label="section-services" style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/bg.jpeg') }}') center fixed" >
                 <div class="container text-white">
                     <div class="row">
                         <div class="text-white col-md-6 offset-md-3 text-center wow fadeInUp">
@@ -127,12 +127,12 @@
                     </div>
                 </div>
             </section>
-            <section class="text-white no-bottom" id="section-how-it-works" style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/landscapes/zooming-house.jpg') }}') center fixed" >
+            <section class="text-white no-bottom" id="section-how-it-works" style="background: linear-gradient(rgba(0,0,0,0.77), rgba(0,0,0,0.77)), url('{{ url('img/bg.jpeg') }}') center fixed" >
                 <div class="container">
                     <div class="row align-items-center" style="place-content: center">
                         <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
                             <h1 style="text-align: center" class="text-white">
-                                Introducing: Michaelangelo's Project Tracker>
+                                Introducing: Michaelangelo's Project Tracker
                                 <div class="separator no-bottom"><span><i class="fa fa-circle"></i></span></div>
                             </h1>
                         </div>

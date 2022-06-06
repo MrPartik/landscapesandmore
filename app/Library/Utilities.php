@@ -2,6 +2,8 @@
 
 namespace App\Library;
 
+use Snowfire\Beautymail\Beautymail;
+
 class Utilities
 {
     public static function setEnv($mKey, $mValue)
@@ -48,5 +50,9 @@ class Utilities
         return response()->streamDownload(function () use ($oObject, $sFileName) {
             echo $oObject->stream();
         }, $sFileName);
+    }
+
+    public static function Mail() {
+        return app()->make(Beautymail::class);
     }
 }

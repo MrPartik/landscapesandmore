@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Mail\ResponseMail;
+use App\Library\Utilities;
 use Illuminate\Support\Facades\Mail;
 use App\Http\StreakApi\StreakFunctions;
 use App\Library\StreakLibrary;
@@ -132,7 +133,16 @@ class Warranty extends Component
         $oWarrantyModel->save();
         $this->createBox($oWarrantyModel);
         $this->emit('warranty-success');
-        Mail::to($this->emailAddress)->send(new ResponseMail(sprintf('%s, %s', $this->lastName, $this->firstName), 'Thank you for submitting your warranty claim, please allow us 48-72 business hours (Monday-Friday) to review your warranty claim. We will reach out to you after review.'));
+
+        Utilities::Mail()->send('mail.response-mail', [
+            'name' => $oWarrantyModel->first_name,
+            'body' => 'Thank you for submitting your warranty claim, please allow us 48-72 business hours (Monday-Friday) to review your warranty claim. We will reach out to you after review.',
+            'title' => 'Warranty Claim',
+        ], function ($oMessage) use ($oWarrantyModel) {
+            $oMessage
+                ->to($this->emailAddress, $oWarrantyModel->first_name)
+                ->subject('Warranty Claim');
+        });
         $this->clear();
     }
 

@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
         "nascent-africa/jetstrap": "^2.5",
-        "rappasoft/laravel-livewire-tables": "^2.0"
+        "rappasoft/laravel-livewire-tables": "^2.0",
+        "snowfire/beautymail": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

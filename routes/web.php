@@ -1,5 +1,8 @@
 <?php
 
+use App\Mail\ResponseMail;
+use App\Library\Utilities;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -11,49 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('test', function () {
-
-//    $pdf = MPdf::loadView( 'pdf.blog', [
-//        'count' => 10,
-//        'active' => 10,
-//        'in_active' => 10,
-//        'blogs' => \App\Models\Blog::all()
-//    ]);
-//    return $pdf->stream('document.pdf');
-//    return view('pdf.blog', [
-//            'count' => 10,
-//            'active' => 10,
-//            'in_active' => 10
-//    ]);
-//    $aResults = [];
-//    $aTopic = [
-//        "/g/120z18l3",
-//        "/m/011l78",
-//        "/m/0156dy",
-//        "/m/04115t2",
-//        "/m/0hrcj2p",
-//        "/m/01zpz",
-//        "/m/018jrr",
-//        "/m/058w5",
-//        "/m/01v327",
-//        "/m/0687b1"
-//    ];
-//
-//    foreach($aTopic as $sTopic)
-//    {
-//        $query = [
-//            "engine" => "google_maps_reviews",
-//            "data_id" => "0x88f59dbaba18333d:0x318d05aa93a05dbc",
-//            "hl" => "en",
-//            "topic_id" => $sTopic,
-//        ];
-//        $search = new GoogleSearch('4983c7966d07a78a1aab588dfb51de4cf629de469bb8f8c8c1387d289164d4d2');
-//        $aResults = array_merge($aResults, ($search->get_json($query)->reviews));
-//    }
-//
-//    return $aResults;
-});
 
 Route::get('js/google-api/maps.js', function () {
     $aParameters = request()->all();
