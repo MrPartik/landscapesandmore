@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Livewire\Component;
+use App\Library\Utilities;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Livewire\Admin\Themes\Logo;
 use App\Http\Livewire\Admin\Themes\Services;
-use App\Library\Utilities;
-use Illuminate\Support\Facades\Storage;
-use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class Themes extends Component
 {
@@ -23,7 +23,7 @@ class Themes extends Component
     public $uploadDarkLogo = '';
     public $bannerDescription = 'Install Landscape and Design, Maintenance Services, Turf Care Services';
     public $bannerImage = '';
-    public $sCurrentTab = 'services';
+    public $sCurrentTab = 'announcement';
     public $ourProcessVideoUrl = '';
     public $ourProcessDescription = '';
     public $ourProcessVideoThumbnail = '';
@@ -33,6 +33,7 @@ class Themes extends Component
     public $projectTrackerLandscapeThumbnail = '';
     public $projectTrackerTurfVideo = '';
     public $projectTrackerTurfThumbnail = '';
+    public $announcements = '';
 
     protected $listeners = [
         'findService',
@@ -45,6 +46,8 @@ class Themes extends Component
         $this->initOurProcessData();
         $this->initVideoAfterCounterTheme();
         $this->initProjectTrackerData();
+        $this->initProjectTrackerData();
+        $this->iniAnnouncements();
         parent::__construct($id);
     }
 
@@ -60,7 +63,7 @@ class Themes extends Component
         $this->initDarkLogo();
         $this->initLightLogo();
         $this->initServiceCount();
-        $this->sCurrentTab = session()->get('admin_themes_current_tab') ?? 'services';
+        $this->sCurrentTab = session()->get('admin_themes_current_tab') ?? 'announcement';
         return view('livewire.admin.themes');
     }
 
@@ -71,6 +74,12 @@ class Themes extends Component
         $this->projectTrackerLandscapeThumbnail = $aData['landscape']['video_thumbnail_url'] ?? '';
         $this->projectTrackerTurfVideo = $aData['turf']['video_url'] ?? '';
         $this->projectTrackerTurfThumbnail = $aData['turf']['video_thumbnail_url'] ?? '';
+    }
+
+    public function iniAnnouncements()
+    {
+        $aData = Utilities::getDataInJson('homepage_announcements');
+        $this->announcements = $aData['raw'] ?? '';
     }
 
     public function initOurProcessData()
@@ -124,7 +133,7 @@ class Themes extends Component
     public function saveProjectTracker()
     {
         $sTrackerFilePath = $this->ourProcessVideoThumbnail;
-        if(is_object($sTrackerFilePath)) {
+        if (is_object($sTrackerFilePath)) {
             $sTrackerFilePath = $this->ourProcessVideoThumbnail->storeAs('public', 'website/customized/thumbnail/oupt-' . time() . '.' . $this->ourProcessVideoThumbnail->getClientOriginalExtension());
             $sTrackerFilePath = '/' . str_replace('public', 'storage', $sTrackerFilePath);
         }
@@ -137,11 +146,11 @@ class Themes extends Component
         Utilities::insertDataInJson('homepage_our_process', $aData, true);
         $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail;
         $sTurfFilePath = $this->projectTrackerTurfThumbnail;
-        if(is_object($sLandscapeFilePath)) {
+        if (is_object($sLandscapeFilePath)) {
             $sLandscapeFilePath = $this->projectTrackerLandscapeThumbnail->storeAs('public', 'website/customized/thumbnail/loupt-' . time() . '.' . $this->projectTrackerLandscapeThumbnail->getClientOriginalExtension());
             $sLandscapeFilePath = '/' . str_replace('public', 'storage', $sLandscapeFilePath);
         }
-        if(is_object($sTurfFilePath)) {
+        if (is_object($sTurfFilePath)) {
             $sTurfFilePath = $this->projectTrackerTurfThumbnail->storeAs('public', 'website/customized/thumbnail/toupt-' . time() . '.' . $this->projectTrackerTurfThumbnail->getClientOriginalExtension());
             $sTurfFilePath = '/' . str_replace('public', 'storage', $sTurfFilePath);
         }
@@ -159,10 +168,21 @@ class Themes extends Component
         Utilities::insertDataInJson('homepage_project_tracker', $aData, true);
     }
 
+
+    public function saveAnnouncements()
+    {
+        $aData = [
+            'formatted' => array_filter(explode(PHP_EOL, trim($this->announcements))),
+            'raw'       => trim($this->announcements)
+        ];
+        Utilities::insertDataInJson('homepage_announcements', $aData, true);
+    }
+
+
     public function saveVideoAfterCounterTheme()
     {
         $sFilePath = $this->rightVideoAfterCounterThumbnail;
-        if(is_object($sFilePath)) {
+        if (is_object($sFilePath)) {
             $sFilePath = $this->rightVideoAfterCounterThumbnail->storeAs('public', 'website/customized/thumbnail/' . time() . '.' . $this->rightVideoAfterCounterThumbnail->getClientOriginalExtension());
             $sFilePath = '/' . str_replace('public', 'storage', $sFilePath);
         }

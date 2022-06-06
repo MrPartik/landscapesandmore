@@ -65,11 +65,14 @@
             text-align-last: center;
         }
     </style>
-    <div class="loading-page" wire:loading.block wire:target="saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="saveAnnouncements, saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
     <div class="col-12">
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
                 <ul class="mb-2 nav nav-tabs" id="themes_tab" role="tablist">
+                    <li class="nav-item " role="presentation">
+                        <button class="nav-link {{ $sCurrentTab === 'announcement' ? 'active' : '' }}" wire:click="setCurrentTab('announcement')" id="announcement-tab" data-bs-toggle="tab" data-bs-target="#announcement-tab-content" type="button" role="tab" aria-controls="announcement-tab" aria-selected="false">Announcements </button>
+                    </li>
                     <li class="nav-item " role="presentation">
                         <button class="nav-link {{ $sCurrentTab === 'services' ? 'active' : '' }}" wire:click="setCurrentTab('services')" id="services-tab" data-bs-toggle="tab" data-bs-target="#services-tab-content" type="button" role="tab" aria-controls="services-tab" aria-selected="false">Homepage Services Offered </button>
                     </li>
@@ -84,6 +87,24 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show {{ $sCurrentTab === 'announcement' ? 'active' : '' }}" id="announcement-tab-content" role="tabpanel" aria-labelledby="announcement-tab">
+                        <div class="row justify-content-end">
+                            <div class="mt-3 col-12" x-data="{}">
+                                <h2> {{ __('Announcements')  }}</h2>
+                                <p>{{ __('Manages announcements.') }}</p>
+                                <hr/>
+                                <div class="col-12">
+                                    <label class="font-weight-bold">Announcements</label>
+                                    <br/>
+                                    <span>Annoucement items are separated by new lines.</span>
+                                    <br/>
+                                    <br/>
+                                    <textarea class="form-control mb-2" rows="10" wire:model="announcements"></textarea>
+                                    <button wire:click="saveAnnouncements" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-pane fade show {{ $sCurrentTab === 'services' ? 'active' : '' }}" id="services-tab-content" role="tabpanel" aria-labelledby="services-tab">
                         <div class="row justify-content-end">
                             <div class="mt-3 col-12" x-data="{}">

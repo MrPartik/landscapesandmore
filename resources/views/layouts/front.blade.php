@@ -51,19 +51,9 @@
     <body class="@yield('body-class') de_light" id="homepage">
         @yield('body')
         <ul id="ticker">
-            <li>
-                Lorem ipsum dolor sit amet.
-                <br />
-                <strong>Ut enim ad:</strong> Minim veniam, quis nostrud exercitation ullamco.
-                <br /> Duis aute irure dolor <a href="http://devs.forumvi.com" target="_blank">DEVs forumvi</a>.
-            </li>
-            <li>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </li>
-            <li>
-                jQuery plugin announcement
-                <br /> By <a href="http://baivong.github.io" target="_blank">Zzbaivong</a>
-            </li>
+            @foreach(\App\Library\Utilities::getDataInJson('homepage_announcements')['formatted'] ?? [] as $sItem)
+                <li> {{ $sItem }} </li>
+            @endforeach
         </ul>
     </body>
     <!-- Javascript Files
@@ -94,31 +84,18 @@
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         $(document).ready(function() {
-
             $('#ticker').announcement({
-
-                title: 'Announcement', // String
-
+                title: 'Announcement',
                 showToggle: true, // Boolean
-                showClose: true, // Boolean
-
-                autoHide: 'auto', // Number [s] (0: disable, 'auto': when finished slideshow)
-                autoClose: 0, // Number [s] (0: disable, 'auto': when finished slideshow)
-
+                showClose: false, // Boolean
+                autoHide: 'auto',
+                autoClose: 0,
                 position: 'bottom-left', // 'bottom-right' | 'bottom-left'
-
-                width: 300, // 'auto' | Number [px]
-                height: 'auto', // 'auto' | Number [px]
-                zIndex: 99999, // Number
-
-                speed: 10, // Number [s] (0: disable autorun)
-
-                effect: 'fading' // 'fading'
-                // 'zoom-in' | 'zoom-out'
-                // 'rotate-left' | 'rotate-right'
-                // 'move-top' | 'move-right' | 'move-bottom' | 'move-left'
-                // 'skew-top' | 'skew-right' | 'skew-bottom' | 'skew-left'
-                // 'random' | 'shuffle'
+                width: '300',
+                height: 'auto',
+                zIndex: 99999,
+                speed: 10,
+                effect: 'fading'
             });
         });
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
