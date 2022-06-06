@@ -41,6 +41,8 @@
 
         @livewireStyles
         <script src="{{ url('js/jquery.min.js') }}"></script>
+        <link href="{{ url('css/jquery.announcement.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ url('js/jquery.announcement.min.js') }}" type="text/javascript"></script>
         <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
         @yield('extra-css')
 
@@ -48,6 +50,21 @@
     </head>
     <body class="@yield('body-class') de_light" id="homepage">
         @yield('body')
+        <ul id="ticker">
+            <li>
+                Lorem ipsum dolor sit amet.
+                <br />
+                <strong>Ut enim ad:</strong> Minim veniam, quis nostrud exercitation ullamco.
+                <br /> Duis aute irure dolor <a href="http://devs.forumvi.com" target="_blank">DEVs forumvi</a>.
+            </li>
+            <li>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </li>
+            <li>
+                jQuery plugin announcement
+                <br /> By <a href="http://baivong.github.io" target="_blank">Zzbaivong</a>
+            </li>
+        </ul>
     </body>
     <!-- Javascript Files
     ================================================== -->
@@ -76,22 +93,50 @@
     @yield('extra-js')
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/61bb3e93c82c976b71c1c1b0/1fn1mos74';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-        Tawk_API.onLoad = function() {
-            setTimeout(function() {
-                if(Tawk_API.isChatMaximized() === true) {
-                    Tawk_API.toggle();
-                }
-            }, 300)
-        };
+        $(document).ready(function() {
+
+            $('#ticker').announcement({
+
+                title: 'Announcement', // String
+
+                showToggle: true, // Boolean
+                showClose: true, // Boolean
+
+                autoHide: 'auto', // Number [s] (0: disable, 'auto': when finished slideshow)
+                autoClose: 0, // Number [s] (0: disable, 'auto': when finished slideshow)
+
+                position: 'bottom-left', // 'bottom-right' | 'bottom-left'
+
+                width: 300, // 'auto' | Number [px]
+                height: 'auto', // 'auto' | Number [px]
+                zIndex: 99999, // Number
+
+                speed: 10, // Number [s] (0: disable autorun)
+
+                effect: 'fading' // 'fading'
+                // 'zoom-in' | 'zoom-out'
+                // 'rotate-left' | 'rotate-right'
+                // 'move-top' | 'move-right' | 'move-bottom' | 'move-left'
+                // 'skew-top' | 'skew-right' | 'skew-bottom' | 'skew-left'
+                // 'random' | 'shuffle'
+            });
+        });
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function() {
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/61bb3e93c82c976b71c1c1b0/1fn1mos74';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+            Tawk_API.onLoad = function() {
+                setTimeout(function() {
+                    if(Tawk_API.isChatMaximized() === true) {
+                        Tawk_API.toggle();
+                    }
+                }, 300)
+            };
     </script>
     <!--End of Tawk.to Script-->
 </html>
