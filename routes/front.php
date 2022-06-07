@@ -42,7 +42,7 @@ Route::get('/contact-us', function () {
 });
 
 Route::get('/warranty', function () {
-    return view('front.warranty');
+    return view('front.warranty-claim');
 });
 
 Route::get('/careers', function () {

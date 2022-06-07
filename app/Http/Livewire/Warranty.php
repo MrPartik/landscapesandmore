@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Mail\ResponseMail;
 use App\Library\Utilities;
 use Illuminate\Support\Facades\Mail;
 use App\Http\StreakApi\StreakFunctions;
@@ -92,7 +91,7 @@ class Warranty extends Component
 
     public function render()
     {
-        return view('livewire.warranty');
+        return view('livewire.warranty-claim');
     }
 
 

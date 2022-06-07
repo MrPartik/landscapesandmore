@@ -181,100 +181,100 @@
     @section('extra-js')
         <script async src="{{ url('js/google-api/maps.js?callback=initAutocomplete') }}"></script>
         <script>
-                let oAutocomplete;
-                let oAddressField;
+            let oAutocomplete;
+            let oAddressField;
 
-                /**
-                 * Initialized Auto Complete Places Google API
-                 */
-                function initAutocomplete() {
-                    oAddressField = document.querySelector('#home_address');
-                    oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
-                        componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
-                        fields: ['address_components', 'geometry'],
-                        types: ['address'],
-                    });
+            /**
+             * Initialized Auto Complete Places Google API
+             */
+            function initAutocomplete() {
+                oAddressField = document.querySelector('#home_address');
+                oAutocomplete = new google.maps.places.Autocomplete(oAddressField, {
+                    componentRestrictions: {country: ['us', 'ca', 'ga', 'ph']},
+                    fields: ['address_components', 'geometry'],
+                    types: ['address'],
+                });
 
-                    oAutocomplete.addListener('place_changed', fillInAddress);
-                    oAddressField.addEventListener('input', function (oThis) {
-                        if (oThis.target.value.length <= 10) {
-                        @this.set('zipCode', '');
-                        @this.set('cityAddress', '');
+                oAutocomplete.addListener('place_changed', fillInAddress);
+                oAddressField.addEventListener('input', function (oThis) {
+                    if (oThis.target.value.length <= 10) {
+                    @this.set('zipCode', '');
+                    @this.set('cityAddress', '');
+                    }
+                });
+            }
+
+            /**
+             * Fill in the address
+             */
+            function fillInAddress() {
+                const oPlace = oAutocomplete.getPlace();
+                let sAddress = '';
+                let sCity = '';
+                let sPostalCode = '';
+                for (const oComponent of oPlace.address_components) {
+                    const componentType = oComponent.types[0];
+                    switch (componentType) {
+                        case 'street_number': {
+                            sAddress = `${oComponent.long_name} ${sAddress}`;
+                            break;
                         }
-                    });
-                }
-
-                /**
-                 * Fill in the address
-                 */
-                function fillInAddress() {
-                    const oPlace = oAutocomplete.getPlace();
-                    let sAddress = '';
-                    let sCity = '';
-                    let sPostalCode = '';
-                    for (const oComponent of oPlace.address_components) {
-                        const componentType = oComponent.types[0];
-                        switch (componentType) {
-                            case 'street_number': {
-                                sAddress = `${oComponent.long_name} ${sAddress}`;
-                                break;
-                            }
-                            case 'route': {
-                                sAddress += oComponent.short_name;
-                                break;
-                            }
-                            case 'administrative_area_level_1': {
-                                sAddress += ', ' + oComponent.long_name;
-                                break;
-                            }
-                            case 'country': {
-                                sAddress += ', ' + oComponent.long_name;
-                                break;
-                            }
-                            case 'locality': {
-                                sCity = oComponent.long_name;
-                                break;
-                            }
-                            case 'postal_code': {
-                                sPostalCode = `${oComponent.long_name}${sPostalCode}`;
-                                break;
-                            }
+                        case 'route': {
+                            sAddress += oComponent.short_name;
+                            break;
+                        }
+                        case 'administrative_area_level_1': {
+                            sAddress += ', ' + oComponent.long_name;
+                            break;
+                        }
+                        case 'country': {
+                            sAddress += ', ' + oComponent.long_name;
+                            break;
+                        }
+                        case 'locality': {
+                            sCity = oComponent.long_name;
+                            break;
+                        }
+                        case 'postal_code': {
+                            sPostalCode = `${oComponent.long_name}${sPostalCode}`;
+                            break;
                         }
                     }
-                @this.set('homeAddress', sAddress);
-                @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
-                @this.set('cityAddress', sCity);
                 }
+            @this.set('homeAddress', sAddress);
+            @this.set('zipCode', (sPostalCode.length <= 0) ? '-' : sPostalCode);
+            @this.set('cityAddress', sCity);
+            }
 
-                function successWarrantySubmission() {
-                    Swal.fire({
-                        icon: 'success',
-                        html: 'Thank you for submitting your warranty claim.' +
-                            ' We will reach out to you within 72 business hours (Monday-Friday 8:00am - 5:00pm).' +
-                            ' If you haven’t heard from us after the time frame provided, please email us at info@landscapesandmore.com or' +
-                            ' call us at {{ env('WEBSITE_PHONE_NO', '(770) 209-2344') }}.',
-                        showCancelButton: false,
-                        showConfirmButton: false,
-                        showCloseButton: true,
-                        allowOutsideClick: false,
-                    });
-                }
-
-                function errorNotServiceableArea() {
-                    Swal.fire({
-                        icon: 'error',
-                        html: 'You have entered a non-serviceable area. If you believe there is an error, you may check this page (map) for the area we service',
-                        showCancelButton: false,
-                        showConfirmButton: false,
-                        showCloseButton: true,
-                        allowOutsideClick: false,
-                    });
-                }
-
-                window.livewire.on('warranty-success', function (oResult) {
-                    successWarrantySubmission();
-                    $('#contact_form').find('input, textarea').not('[type=submit],#uploadPictureDummyButton').val('');
+            function successWarrantySubmission() {
+                Swal.fire({
+                    icon: 'success',
+                    html: 'Thank you for submitting your warranty claim.' +
+                        ' We will reach out to you within 72 business hours (Monday-Friday 8:00am - 5:00pm).' +
+                        ' If you haven’t heard from us after the time frame provided, please email us at info@landscapesandmore.com or' +
+                        ' call us at {{ env('WEBSITE_PHONE_NO', '(770) 209-2344') }}.',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    allowOutsideClick: false,
                 });
+            }
+
+            function errorNotServiceableArea() {
+                Swal.fire({
+                    icon: 'error',
+                    html: 'You have entered a non-serviceable area. If you believe there is an error, you may check this page (map) for the area we service',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    allowOutsideClick: false,
+                });
+            }
+
+            window.livewire.on('warranty-success', function (oResult) {
+                successWarrantySubmission();
+                $('#contact_form').find('input, textarea').not('[type=submit],#uploadPictureDummyButton').val('');
+            });
         </script>
     @endsection
 </div>

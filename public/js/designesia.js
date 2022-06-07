@@ -1500,18 +1500,6 @@ jQuery(document).ready(function () {
                 target.css('opacity', scrollPercent);
             }
 
-			 if (location.hash!=="") {
-				jQuery('#homepage nav li a').each(function () {
-					if (this.href.indexOf('#') != -1) {
-						var href = jQuery(this).attr('href');
-						if (jQuery(window).scrollTop() > jQuery(href).offset().top - 140) {
-							jQuery('nav li a').removeClass('active');
-							jQuery(this).addClass('active');
-						}
-					}
-				});
-			}
-
 			de_count();
 
 			jQuery('.animated').each(function () {

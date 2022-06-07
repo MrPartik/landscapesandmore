@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Mail\ResponseMail;
 use App\Library\Utilities;
 use App\Library\StreakLibrary;
 use Livewire\Component;

@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{ url('css/magnific-popup.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ url('css/style.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ url('css/twentytwenty.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url('css/jquery-ui.css') }}" type="text/css">
 
         <!-- custom background -->
         <link rel="stylesheet" href="{{ url('css/bg.css') }}" type="text/css">
@@ -41,8 +42,6 @@
 
         @livewireStyles
         <script src="{{ url('js/jquery.min.js') }}"></script>
-        <link href="{{ url('css/jquery.announcement.css') }}" rel="stylesheet" type="text/css">
-        <script src="{{ url('js/jquery.announcement.min.js') }}" type="text/javascript"></script>
         <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
         @yield('extra-css')
 
@@ -50,11 +49,40 @@
     </head>
     <body class="@yield('body-class') de_light" id="homepage">
         @yield('body')
-        <ul id="ticker">
-            @foreach(\App\Library\Utilities::getDataInJson('homepage_announcements')['formatted'] ?? [] as $sItem)
-                <li> {{ $sItem }} </li>
-            @endforeach
-        </ul>
+        @php
+            $aAnnouncements = \App\Library\Utilities::getDataInJson('homepage_announcements')['formatted'] ?? [];
+        @endphp
+        @if(count($aAnnouncements) > 0)
+            <div id="announcement-icon" title="announcement">
+                <div style="position: absolute;background-size: cover;right: 0;width: 20px;height: 25px;font-size: 20px;color: white;border-radius: 10px;background: salmon;"> {{ count($aAnnouncements) }} </div>
+                <i class="fa fa-bullhorn text-white" style="margin-top: 21px;font-size: 25px;"></i>
+            </div>
+            <div id="sidebar-announcements">
+                <i id="announcement-close" class="fa fa-times text-danger" title="close"></i>
+                <section id="announcements" style="height: 100%; padding-top: 20px;">
+                    <div class="item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="pricing-s1 light mb30" style="background-size: cover;min-height: 93vh;background: #eeeeee;">
+                                        <div class="top">
+                                            <h2>Announcements <i class="fa fa-bullhorn" style="font-size: 25px"></i></h2>
+                                        </div>
+                                        <div class="bottom">
+                                            <ul>
+                                                @foreach($aAnnouncements as $sItem)
+                                                    <li><i class="icon_check"></i> {{ $sItem }} </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        @endif
     </body>
     <!-- Javascript Files
     ================================================== -->
@@ -74,6 +102,7 @@
     <script src="{{ url('js/enquire.min.js') }}"></script>
     <script src="{{ url('js/designesia.js') }}"></script>
     <script src="{{ url('js/jquery.twentytwenty.js') }}"></script>
+    <script src="{{ url('js/jquery-ui.js') }}"></script>
 
     <!-- RS5.0 Core JS Files -->
     <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
@@ -84,20 +113,12 @@
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#ticker').announcement({
-                title: 'Announcement',
-                showToggle: true, // Boolean
-                showClose: false, // Boolean
-                autoHide: 'auto',
-                autoClose: 0,
-                position: 'bottom-left', // 'bottom-right' | 'bottom-left'
-                width: '300',
-                height: 'auto',
-                zIndex: 99999,
-                speed: 10,
-                effect: 'fading'
+            $('#announcement-icon').click(function() {
+                $('#sidebar-announcements').show("slide", {direction: 'left'}, 500);
             });
-        });
+            $('#announcement-close').click(function() {
+                $('#sidebar-announcements').hide("slide", {direction: 'left'}, 500);
+            });
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
             (function() {
                 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -114,6 +135,7 @@
                     }
                 }, 300)
             };
+        });
     </script>
     <!--End of Tawk.to Script-->
 </html>

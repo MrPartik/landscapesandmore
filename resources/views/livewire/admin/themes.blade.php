@@ -96,7 +96,7 @@
                                 <div class="col-12">
                                     <label class="font-weight-bold">Announcements</label>
                                     <br/>
-                                    <span>Annoucement items are separated by new lines.</span>
+                                    <span>Announcement items are separated by new lines.</span>
                                     <br/>
                                     <br/>
                                     <textarea class="form-control mb-2" rows="10" wire:model="announcements"></textarea>

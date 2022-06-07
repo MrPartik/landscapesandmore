@@ -10079,6 +10079,9 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
         margin-bottom: 30px;
     }
 
+    #sidebar-announcements {
+        width: 80vw !important;
+    }
 }
 
 
@@ -10524,4 +10527,40 @@ a img.logo {
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+#sidebar-announcements {
+    position: fixed;
+    width: 50vw;
+    height: 100vh;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background: white;
+    display: none;
+    overflow-y:auto;
+    overflow-x:hidden
+}
+
+#announcement-close {
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0px 5px 0px 10px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+#announcement-icon  {
+    position:fixed;
+    width:70px;
+    height:70px;
+    bottom:15px;
+    left:20px;
+    background-color: #03A44C;
+    border-radius:50px;
+    text-align:center;
+    cursor: pointer;
 }

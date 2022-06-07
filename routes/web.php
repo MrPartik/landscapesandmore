@@ -1,6 +1,5 @@
 <?php
 
-use App\Mail\ResponseMail;
 use App\Library\Utilities;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
