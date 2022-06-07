@@ -96,7 +96,8 @@
                                 <div class="col-12">
                                     <label class="font-weight-bold">Announcements</label>
                                     <br/>
-                                    <span>Announcement items are separated by new lines.</span>
+                                    <span>Announcement items are separated by new lines. </span>
+                                    <br/><span style="color: blue">Format: [Link text Here](https://link-url-here.org)</span>
                                     <br/>
                                     <br/>
                                     <textarea class="form-control mb-2" rows="10" wire:model="announcements"></textarea>

@@ -55,23 +55,22 @@
         @if(count($aAnnouncements) > 0)
             <div id="announcement-icon" title="announcement">
                 <div style="position: absolute;background-size: cover;right: 0;width: 20px;height: 25px;font-size: 20px;color: white;border-radius: 10px;background: salmon;"> {{ count($aAnnouncements) }} </div>
-                <i class="fa fa-bullhorn text-white" style="margin-top: 21px;font-size: 25px;"></i>
+                <i class="fa fa-bullhorn text-white" style="margin-top: 22px;font-size: 25px;"></i>
             </div>
             <div id="sidebar-announcements">
-                <i id="announcement-close" class="fa fa-times text-danger" title="close"></i>
                 <section id="announcements" style="height: 100%; padding-top: 20px;">
                     <div class="item">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="pricing-s1 light mb30" style="background-size: cover;min-height: 93vh;background: #eeeeee;">
+                                    <div class="pricing-s1 light mb30" style="background-size: cover;min-height: 80%;background: #eeeeee; border-radius: 15px">
                                         <div class="top">
-                                            <h2>Announcements <i class="fa fa-bullhorn" style="font-size: 25px"></i></h2>
+                                            <h2>Announcements <i class="fa fa-bullhorn " style="font-size: 25px"></i></h2>
                                         </div>
                                         <div class="bottom">
                                             <ul>
                                                 @foreach($aAnnouncements as $sItem)
-                                                    <li><i class="icon_check"></i> {{ $sItem }} </li>
+                                                    <li title="{{ preg_replace('/\[(.*?)\]\s*\((.*?)\)/', '$1', $sItem) }}"><i class="icon_check"></i> {!! preg_replace('/\[(.*?)\]\s*\((.*?)\)/', '<a target="_blank" href="$2">$1</a>', $sItem) !!} </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -114,10 +113,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#announcement-icon').click(function() {
-                $('#sidebar-announcements').show("slide", {direction: 'left'}, 500);
-            });
-            $('#announcement-close').click(function() {
-                $('#sidebar-announcements').hide("slide", {direction: 'left'}, 500);
+                if ($('#sidebar-announcements').is(':visible') === false) {
+                    $('#sidebar-announcements').show("slide", {direction: 'down'}, 500);
+                    $('#announcement-icon i').addClass('fa-times');
+                } else {
+                    $('#sidebar-announcements').hide("slide", {direction: 'down'}, 500);
+                    $('#announcement-icon i').removeClass('fa-times');
+                }
             });
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
             (function() {

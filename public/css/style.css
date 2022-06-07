@@ -10082,6 +10082,10 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     #sidebar-announcements {
         width: 80vw !important;
     }
+
+    #sidebar-announcements ul {
+        height: 150px !important;
+    }
 }
 
 
@@ -10531,26 +10535,20 @@ a img.logo {
 
 #sidebar-announcements {
     position: fixed;
-    width: 50vw;
-    height: 100vh;
+    width: 30vw;
+    height: 50vh;
     z-index: 9999;
-    top: 0;
-    left: 0;
+    left: 20px;
+    bottom: 100px;
     background-size: cover;
     background: white;
     display: none;
-    overflow-y:auto;
-    overflow-x:hidden
 }
 
-#announcement-close {
-    font-size: 30px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0px 5px 0px 10px;
-    z-index: 9999;
-    cursor: pointer;
+#sidebar-announcements ul {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 185px;
 }
 
 #announcement-icon  {
@@ -10563,4 +10561,33 @@ a img.logo {
     border-radius:50px;
     text-align:center;
     cursor: pointer;
+    z-index: 999999;
+}
+
+#sidebar-announcements ul::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#sidebar-announcements ul::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#sidebar-announcements ul::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: var(--primary-color-1);
+}
+
+.pricing-s1 .bottom ul li {
+    line-height: 45px;
+    padding: 0px 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
