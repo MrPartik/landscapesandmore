@@ -1,4 +1,7 @@
-@extends('layouts.front', ['title' => 'Landscaping | Home'])
+@extends('layouts.front', [
+    'title' => 'Landscaping | Home',
+    'description' => ''
+    ])
 @section('body')
     <style>
         .swal2-container.swal2-center>.swal2-popup {

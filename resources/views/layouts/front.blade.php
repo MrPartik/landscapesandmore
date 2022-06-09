@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="{{ $description ?? '' }}">
+        <meta name="robots" content="index, follow" />
 
         <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
@@ -55,10 +57,10 @@
         @if(count($aAnnouncements) > 0)
             <div id="announcement-icon" title="announcement">
                 <div style="position: absolute;background-size: cover;right: 0;width: 20px;height: 20px;font-size: 15px;color: white;border-radius: 10px;background: salmon;"> <span>{{ count($aAnnouncements) }}</span> </div>
-                <i class="fa fa-bullhorn text-white" style="margin-top: 22px;font-size: 25px;"></i>
+                <i class="fa fa-bullhorn text-white" style="margin-top: 19px;font-size: 25px;"></i>
             </div>
-            <div id="sidebar-announcements">
-                <section id="announcements" style="height: 100%; padding-top: 20px;">
+            <div id="sidebar-announcements" style="background-color: transparent">
+                <section id="announcements" style="height: 100%; padding-top: 20px; background-color: transparent">
                     <div class="item">
                         <div class="container">
                             <div class="row">
@@ -116,10 +118,10 @@
             let sAnnouncementSideBar = '#sidebar-announcements';
             $(sAnnouncementIcon).click(function() {
                 if ($(sAnnouncementSideBar).is(':visible') === false) {
-                    $(sAnnouncementSideBar).show("slide", {direction: 'down'}, 500);
+                    $(sAnnouncementSideBar).show("slide", {direction: 'down'}, 100);
                     $(sAnnouncementIcon + ' i').addClass('fa-times');
                 } else {
-                    $(sAnnouncementSideBar).hide("slide", {direction: 'down'}, 500);
+                    $(sAnnouncementSideBar).hide("slide", {direction: 'down'}, 50);
                     $(sAnnouncementIcon + ' i').removeClass('fa-times');
                 }
             });

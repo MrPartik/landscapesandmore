@@ -1,4 +1,7 @@
-@extends('layouts.front', ['title' => 'Landscaping | Projects'])
+@extends('layouts.front', [
+    'title' => 'Landscaping | Projects',
+    'description' => ''
+    ])
 @section('body')
     <div id="wrapper">
         @include('front.navigation.header', ['active' => 'portfolio', 'auto_show' => false])

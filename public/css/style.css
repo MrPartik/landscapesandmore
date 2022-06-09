@@ -10084,7 +10084,7 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     }
 
     #sidebar-announcements ul {
-        height: 150px !important;
+        height: 185px !important;
     }
 }
 
@@ -10539,7 +10539,7 @@ a img.logo {
     height: 50vh;
     z-index: 9999;
     left: 20px;
-    bottom: 100px;
+    bottom: 120px;
     background-size: cover;
     background: white;
     display: none;
@@ -10548,7 +10548,7 @@ a img.logo {
 #sidebar-announcements ul {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 185px;
+    height: 245px;
 }
 
 #announcement-icon  {
@@ -10592,4 +10592,25 @@ a img.logo {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+@media only screen and (min-width: 1230px) and (max-width: 1510px) {
+    #mainmenu > li {
+        font-size: 9px;
+    }
+}
+
+@media only screen and (max-width: 1088px) {
+    #mainmenu > li {
+        font-size: 6px;
+    }
+}
+
+#announcements a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-color-1);
+}
+#announcements a:hover {
+    color: var(--primary-color-1) !important;
 }

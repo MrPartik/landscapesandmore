@@ -1,4 +1,7 @@
-@extends('layouts.front', ['title' => 'Landscaping | ' .  ucwords($sTitle)])
+@extends('layouts.front', [
+    'title' => 'Landscaping | ' .  ucwords($sTitle),
+    'description' => ucwords($sTitle) . '|' . $aBlog->tags
+    ])
 @php
     $aBlog = \App\Models\Blog::with('user')->where('blog_id', $iId)->where('is_active', 1)->first();
     if(empty($aBlog) === true) abort(404);
