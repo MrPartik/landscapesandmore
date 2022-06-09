@@ -10552,14 +10552,16 @@ a img.logo {
 }
 
 #announcement-icon  {
-    position:fixed;
-    width:70px;
-    height:70px;
-    bottom:15px;
+    position:
+        fixed;
+    width: 65px;
+    height: 65px;
+    bottom: 16px;
     left:20px;
     background-color: #03A44C;
     border-radius:50px;
-    text-align:center;
+    text-align:
+        center;
     cursor: pointer;
     z-index: 999999;
 }

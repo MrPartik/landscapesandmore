@@ -54,7 +54,7 @@
         @endphp
         @if(count($aAnnouncements) > 0)
             <div id="announcement-icon" title="announcement">
-                <div style="position: absolute;background-size: cover;right: 0;width: 20px;height: 25px;font-size: 20px;color: white;border-radius: 10px;background: salmon;"> {{ count($aAnnouncements) }} </div>
+                <div style="position: absolute;background-size: cover;right: 0;width: 20px;height: 20px;font-size: 15px;color: white;border-radius: 10px;background: salmon;"> <span>{{ count($aAnnouncements) }}</span> </div>
                 <i class="fa fa-bullhorn text-white" style="margin-top: 22px;font-size: 25px;"></i>
             </div>
             <div id="sidebar-announcements">
@@ -112,13 +112,15 @@
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#announcement-icon').click(function() {
-                if ($('#sidebar-announcements').is(':visible') === false) {
-                    $('#sidebar-announcements').show("slide", {direction: 'down'}, 500);
-                    $('#announcement-icon i').addClass('fa-times');
+            let sAnnouncementIcon = '#announcement-icon';
+            let sAnnouncementSideBar = '#sidebar-announcements';
+            $(sAnnouncementIcon).click(function() {
+                if ($(sAnnouncementSideBar).is(':visible') === false) {
+                    $(sAnnouncementSideBar).show("slide", {direction: 'down'}, 500);
+                    $(sAnnouncementIcon + ' i').addClass('fa-times');
                 } else {
-                    $('#sidebar-announcements').hide("slide", {direction: 'down'}, 500);
-                    $('#announcement-icon i').removeClass('fa-times');
+                    $(sAnnouncementSideBar).hide("slide", {direction: 'down'}, 500);
+                    $(sAnnouncementIcon + ' i').removeClass('fa-times');
                 }
             });
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

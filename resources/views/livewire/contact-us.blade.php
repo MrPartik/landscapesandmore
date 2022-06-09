@@ -18,6 +18,7 @@
                         <div id='last_name_error' class='error'>Please enter your last name.</div>
                         <div>
                             <input wire:model.lazy="lastName" type='text' name='last_name' id='last_name' class="form-control" placeholder="Last Name" required>
+                            <input wire:model.lazy="lastName" type='text' name='last_name' id='last_name' class="form-control" placeholder="Last Name" required>
                         </div>
 
                         <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>

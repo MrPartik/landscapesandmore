@@ -2,7 +2,7 @@
 @section('body')
     <style>
         .swal2-container.swal2-center>.swal2-popup {
-            width: 80vw;
+            width: 40vw;
         }
     </style>
     <div id="wrapper">
@@ -237,17 +237,33 @@
     <script src="{{ url('leaflet/leaflet-draw/Toolbar.js') }}"></script>
     <script src="{{ url('leaflet/leaflet-draw/Tooltip.js') }}"></script>
     <script>
-        function visitPayment() {
-            Swal.fire({
-                html: '<iframe width="100%" frameborder="0" scrolling="no" src="/payments" onload="resizeIframe(this)"></iframe>',
-                showCancelButton: false,
-                showConfirmButton: false,
-                showCloseButton: true,
-                allowOutsideClick: false,
-            });
-        }
-        function resizeIframe(obj) {
-            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        }
+        $(document).ready(function() {
+            function visitPayment() {
+                Swal.fire({
+                    html: '<iframe width="100%" frameborder="0" scrolling="no" src="/payments" onload="resizeIframe(this)"></iframe>',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    allowOutsideClick: false,
+                });
+            }
+            function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            };
+            if (localStorage.getItem('dontshowagain') === false || localStorage.getItem('dontshowagain') === null) {
+                Swal.fire({
+                    html: '<img style="width:100%" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" /> ' +
+                        '<br/><center style="font-weight: bolder;font-size: 15px;margin-top: 12px;"><label for=dontshowagain> <input id="dontshowagain" type=checkbox /> Don\'t show again? </label></center>',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    allowOutsideClick: false,
+                }).then(function() {
+                    if($('#dontshowagain').is(':checked') === true) {
+                        localStorage.setItem('dontshowagain', true);
+                    }
+                });
+            }
+        });
     </script>
 @endsection
