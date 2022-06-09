@@ -1,6 +1,6 @@
 @extends('layouts.front', [
     'title' => 'Landscaping | Home',
-    'description' => ''
+    'description' => 'Michaelangelo’s provides one of the highest-quality landscapes and design services in Atlanta. We offer landscaping and design, maintenance, and turf care services.'
     ])
 @section('body')
     <style>

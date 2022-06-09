@@ -1,6 +1,6 @@
 @extends('layouts.front', [
     'title' => 'Landscaping | Warranty',
-    'description' => ''
+    'description' => 'Michaelangelo is a reputable business that offers a one-time warranty to its customers and design solutions for residential and commercial properties.'
     ])
 @section('body')
     <div id="wrapper">

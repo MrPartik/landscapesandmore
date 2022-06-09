@@ -1,6 +1,6 @@
 @extends('layouts.front', [
-    'title' => 'Landscaping | Projects',
-    'description' => ''
+    'title' => 'Landscaping | Portfolio',
+    'description' => 'Our design services are professionally done, we also offer 3D designs for your project. Check our existing and future projects.'
     ])
 @section('body')
     <div id="wrapper">

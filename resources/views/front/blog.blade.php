@@ -1,6 +1,6 @@
 @extends('layouts.front', [
     'title' => 'Landscaping | Blog',
-    'description' => ''
+    'description' => 'Check our blog page to have a better idea about us and what we can do for you! We give constant information about your lawn and anything project-related ideas.'
     ])
 @section('body')
     <div id="wrapper">

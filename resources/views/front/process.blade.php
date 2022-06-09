@@ -1,6 +1,6 @@
 @extends('layouts.front', [
-    'title' => 'Landscaping | Our Process',
-    'description' => ''
+    'title' => 'Landscaping | Project Tracker',
+    'description' => 'Our project tracker is a free service for our customers. It keeps you informed about the progress of your project status updates by simply entering your valid email address.'
     ])
 @section('body')
     <div id="wrapper">
