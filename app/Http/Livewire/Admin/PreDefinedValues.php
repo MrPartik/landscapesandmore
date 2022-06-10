@@ -17,6 +17,7 @@ class PreDefinedValues extends Component
     public $careerPosition = '';
     public $warrantyParagraph = '';
     public $websiteContactNo = '';
+    public $budgetRangeDropdown = '';
 
     public function __construct($id = null)
     {
@@ -35,6 +36,7 @@ class PreDefinedValues extends Component
 
     public function initContactUsDefaultValues()
     {
+        $this->budgetRangeDropdown = Utilities::getDataInJson('budget_range_dropdown')['raw'] ?? '';
         $this->minLandscape = config('pre-defined.price.min_landscape_design');
         $this->minMaintenance = config('pre-defined.price.min_weekly_maintenance');
         $this->minTurf = config('pre-defined.price.min_turf_care');
@@ -70,6 +72,11 @@ class PreDefinedValues extends Component
 
     public function saveContactUs()
     {
+        $aData = [
+            'formatted' => array_filter(explode(PHP_EOL, trim($this->budgetRangeDropdown))),
+            'raw'       => trim($this->budgetRangeDropdown)
+        ];
+        Utilities::insertDataInJson('budget_range_dropdown', $aData, true);
         Utilities::setEnv('PRICE_MIN_LANDSCAPE_DESIGN', $this->minLandscape);
         Utilities::setEnv('PRICE_MIN_WEEKLY_MAINTENANCE', $this->minMaintenance);
         Utilities::setEnv('PRICE_MIN_TURF_CARE', $this->minTurf);

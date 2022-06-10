@@ -18,17 +18,28 @@
                         <div id='last_name_error' class='error'>Please enter your last name.</div>
                         <div>
                             <input wire:model.lazy="lastName" type='text' name='last_name' id='last_name' class="form-control" placeholder="Last Name" required>
-                            <input wire:model.lazy="lastName" type='text' name='last_name' id='last_name' class="form-control" placeholder="Last Name" required>
                         </div>
-
-                        <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
-                        <div>
-                            <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
+                                <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <div id='phone_error' class='error'>Please enter your phone number.</div>
+                                <input wire:model.lazy="phoneNo" type='text' name='phone' id='phone' class="form-control" placeholder="Phone" required>
+                            </div>
                         </div>
-
-                        <div id='phone_error' class='error'>Please enter your phone number.</div>
                         <div>
-                            <input wire:model.lazy="phoneNo" type='text' name='phone' id='phone' class="form-control" placeholder="Phone" required>
+                            <div id='budget_range_error' class='error'>Please enter your budget range</div>
+                            <strong for="budget_range">
+                                Reference
+                            </strong>
+                            <select id=budget_range wire:model="budgetRange"  type="text" class="form-control" placeholder="{{ __('Budget Range') }}">
+                                <option selected disabled value=""> Select Budget Range </option>
+                                @foreach(\App\Library\Utilities::getDataInJson('budget_range_dropdown')['formatted'] ?? [] as $sItem)
+                                    <option value="{{ $sItem }}"> {{ $sItem }} </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -48,7 +59,7 @@
                         </div>
                         <div id='message_error' class='error'>Please enter your message.</div>
                         <div>
-                            <textarea wire:model.lazy="message" style="height: 110px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
+                            <textarea wire:model.lazy="message" style="height: 140px" name='message' id='message' class="form-control" placeholder="Tell us something about your project"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">

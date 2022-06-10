@@ -26,6 +26,7 @@ class ContactUs extends Migration
             $oTable->string('zip_code', 50);
             $oTable->text('project_description');
             $oTable->string('reference', 100);
+            $oTable->string('budget_range', 100)->default('N/A');
             $oTable->text('message');
             $oTable->timestamps();
         });

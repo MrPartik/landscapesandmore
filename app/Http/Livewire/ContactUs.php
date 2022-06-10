@@ -61,6 +61,11 @@ class ContactUs extends Component
      * @var string
      */
     public $reference = '';
+    /**
+     * Budget Range
+     * @var string
+     */
+    public $budgetRange = '';
 
     /**
      * Validation Rules
@@ -77,6 +82,7 @@ class ContactUs extends Component
         'zipCode'            => 'sometimes',
         'message'            => 'sometimes',
         'reference'          => 'sometimes',
+        'budgetRange'        => 'sometimes',
         'projectDescription' => 'required| in:landscape,maintenance-and-turf-care',
     ];
     /**
@@ -117,6 +123,7 @@ class ContactUs extends Component
         $oContactUsModel->zip_code = $aValidated['zipCode'] ?? '-';
         $oContactUsModel->project_description = $aValidated['projectDescription'] ?? '-';
         $oContactUsModel->message = $aValidated['message'] ?? '-';
+        $oContactUsModel->budget_range = $aValidated['budgetRange'] ?? '-';
         $oContactUsModel->reference = $aValidated['reference'] ?? '-';
         $oContactUsModel->save();
         $sPipelineKey = ($oContactUsModel->project_description === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');

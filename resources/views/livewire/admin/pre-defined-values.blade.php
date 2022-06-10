@@ -35,6 +35,15 @@
                         <h2> {{ __('Contact Us')  }}</h2>
                         <p>{{ __('Modify default prices in contact us page') }}</p>
                         <div class="row">
+                            <div class="col-12">
+                                <div class="mb-2">
+                                    <label class="col-form-label" for="dropdown-budget-range">
+                                       Customize Budget Range in Dropdown Menu in Contact Us (separated by new lines).
+                                    </label>
+                                    <textarea rows="4" id="dropdown-budget-range" wire:model="budgetRangeDropdown" type="text" class="form-control" placeholder="{{ __('Customize Budget Range in Dropdown Menu in Contact Us ') }}"> </textarea>
+                                </div>
+                            </div>
+
                             <div class="col-4">
                                 <div class="mb-2">
                                     <label class="col-form-label" for="min-price-landscape">

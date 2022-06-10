@@ -26,6 +26,7 @@ class ContactUs extends Model
         'project_description',
         'message',
         'reference',
+        'budget_range',
         'created_at',
         'updated_at',
     ];

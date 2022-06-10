@@ -32,6 +32,7 @@ class ContactUs extends DataTableComponent
                     $sPersonalInfo .= sprintf('<strong>Name: </strong>%s<br/>', $mRow->last_name . ', ' . $mRow->first_name);
                     $sPersonalInfo .= sprintf('<strong>Email: </strong>%s<br/>', $mRow->email);
                     $sPersonalInfo .= sprintf('<strong>Phone: </strong>%s<br/>', $mRow->phone);
+                    $sPersonalInfo .= sprintf('<strong>Budget Range: </strong>%s<br/>', $mRow->budget_range);
                     $sPersonalInfo .= sprintf('<span class="%s"><strong>Zip Code: </strong>%s</span><br/>', ((in_array($mRow->zip_code, config('landscaping.allowed_zip_code')) === false ? 'text-danger text' : '')), $mRow->zip_code);
                     return $sPersonalInfo;
                 })->html()
@@ -40,6 +41,7 @@ class ContactUs extends DataTableComponent
                         ->orwhere('reference_no', 'LIKE', '%' . $sText . '%')
                         ->orwhere('last_name', 'LIKE', '%' . $sText . '%')
                         ->orwhere('first_name', 'LIKE', '%' . $sText . '%')
+                        ->orwhere('budget_range', 'LIKE', '%' . $sText . '%')
                         ->orwhere('email', 'LIKE', '%' . $sText . '%')
                         ->orwhere('phone', 'LIKE', '%' . $sText . '%')
                         ->orwhere('zip_code', 'LIKE', '%' . $sText . '%');
