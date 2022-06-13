@@ -10535,11 +10535,10 @@ a img.logo {
 
 #sidebar-announcements {
     position: fixed;
-    width: 30vw;
-    height: 50vh;
     z-index: 9999;
     left: 20px;
-    bottom: 120px;
+    bottom: 20px;
+    width: 35vw;
     background-size: cover;
     background: white;
     display: none;
