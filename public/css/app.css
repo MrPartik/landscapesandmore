@@ -11501,13 +11501,13 @@ textarea.form-control-lg {
   background: #5eb26c !important;
 }
 
-.config ul {
+.config .bootdey ul {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 30px;
 }
 
-.config ul li {
+.config .bootdey ul li {
   margin: 10px 20px;
   display: inline-block;
   padding: 10px 40px 10px 40px;
@@ -11519,7 +11519,7 @@ textarea.form-control-lg {
   border-radius: 5px;
 }
 
-.config ul li.active:after, .config ul li.active:before {
+.config .bootdey ul li.active:after, .config ul li.active:before {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -11530,35 +11530,35 @@ textarea.form-control-lg {
   pointer-events: none;
 }
 
-.config ul li.active:after {
+.config .bootdey ul li.active:after {
   border-color: rgba(136, 183, 213, 0);
   border-top-color: #fff;
   border-width: 15px;
   margin-left: -15px;
 }
 
-.config ul li.active:before {
+.config .bootdey ul li.active:before {
   border-color: rgba(194, 225, 245, 0);
   border-top-color: #ccc;
   border-width: 17px;
   margin-left: -17px;
 }
 
-.config ul li h5, .config ul li .h5 {
+.config .bootdey ul li h5, .config .bootdey ul li .h5 {
   font-size: 18px;
 }
 
-.config ul li p {
+.config .bootdey ul li p {
   line-height: 21px;
   font-size: 12px;
 }
 
-.config ul li:hover {
+.config .bootdey ul li:hover {
   background: #fff;
   border: 1px solid #ccc;
 }
 
-.config ul li a {
+.config .bootdey ul li a {
   color: #777;
   text-decoration: none !important;
 }
