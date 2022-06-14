@@ -10069,7 +10069,7 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
 /* --------------------------------------------------
 	design for 480px
 	/* -------------------------------------------------- */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (min-width: 450px) and (max-width: 767px) {
     .container {
         padding-left: 30px;
         padding-right: 30px;
@@ -10085,6 +10085,14 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
 
     #sidebar-announcements ul {
         height: 185px !important;
+    }
+
+    .swal2-container.swal2-center>.swal2-popup {
+        width: 70vw !important;
+    }
+
+    .text-slider {
+        font-size: 35px !important;
     }
 }
 
@@ -10408,7 +10416,8 @@ nav ul#mainmenu li ul a, nav ul#mainmenu li ul {
     color: black;
 }
 a img.logo {
-    max-height: 70px;
+    max-height: 60px;
+    max-width: 270px;
 }
 
 /* Absolute Center Spinner */
@@ -10595,14 +10604,14 @@ a img.logo {
 
 
 @media only screen and (min-width: 1230px) and (max-width: 1510px) {
-    #mainmenu > li {
-        font-size: 9px;
+    #mainmenu > li, #mainmenu > li > ul > li > a {
+        font-size: 9px !important;
     }
 }
 
-@media only screen and (max-width: 1088px) {
-    #mainmenu > li {
-        font-size: 6px;
+@media only screen and (min-width: 990px) and (max-width: 1088px) {
+    #mainmenu > li,  #mainmenu > li > ul > li > a {
+        font-size: 6px !important;
     }
 }
 
