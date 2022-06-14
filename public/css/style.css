@@ -10069,7 +10069,7 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
 /* --------------------------------------------------
 	design for 480px
 	/* -------------------------------------------------- */
-@media only screen and (min-width: 450px) and (max-width: 767px) {
+@media only screen and (min-width: 300px) and (max-width: 767px) {
     .container {
         padding-left: 30px;
         padding-right: 30px;
