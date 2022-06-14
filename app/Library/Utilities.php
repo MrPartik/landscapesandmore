@@ -31,7 +31,7 @@ class Utilities
             $aFileData[$mKey] = $mValue;
         } else {
             $aFileData[$mKey][] = $mValue;
-        }
+        } 
         file_put_contents($sResourceFilePath, json_encode($aFileData));
     }
 
