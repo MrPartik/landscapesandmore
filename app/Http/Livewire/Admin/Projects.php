@@ -48,7 +48,7 @@ class Projects extends Component
      * Picture of Project
      * @var string
      */
-    public $pictureOfProject = null;
+    public $pictureOfProject = '';
     /**
      * @var string
      */
@@ -72,7 +72,7 @@ class Projects extends Component
         'sNameProjectType'        => 'required',
         'sDescriptionProjectType' => 'required',
     ];
-    public $thumbnailVideo = null;
+    public $thumbnailVideo = '';
     /**
      * @var array
      */
@@ -188,7 +188,7 @@ class Projects extends Component
      */
     public function removePictureOfProject()
     {
-        $this->pictureOfProject = null;
+        $this->pictureOfProject = '';
     }
 
     /**
@@ -196,7 +196,7 @@ class Projects extends Component
      */
     public function removeThumbnailOfVideo()
     {
-        $this->thumbnailVideo = null;
+        $this->thumbnailVideo = '';
     }
 
 
@@ -206,7 +206,7 @@ class Projects extends Component
     public function deleteProject(int $iProjectId)
     {
         $oProjectModel = ProjectsModel::find($iProjectId);
-        $oProjectModel->delete();
+        ($oProjectModel !== null) && $oProjectModel->delete();
         $this->emit('refreshDatatable');
     }
 

@@ -22,7 +22,7 @@
                         {{ __('Interactive Maps') }}
                     </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.projects') }}" :active="request()->routeIs('admin.projects')">
-                    {{ __('Projects') }}
+                    {{ __('Portfolio') }}
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('admin.awards') }}" :active="request()->routeIs('admin.awards')">
                     {{ __('Awards') }}
