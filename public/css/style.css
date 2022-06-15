@@ -10094,6 +10094,19 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     .text-slider {
         font-size: 25px !important;
     }
+
+    .progress-steps-form fieldset {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    .progress-steps {
+        border: unset !important;
+        padding: 0 !important;
+    }
+    fieldset div#sidebar {
+        display: none !important;
+    }
 }
 
 
@@ -10245,7 +10258,9 @@ select.list-dt:focus {
 .progress-bar-line {
     margin-bottom: 30px;
     overflow: hidden;
-    color: lightgrey
+    color: lightgrey;
+    margin-left: 0 !important;
+    padding: 0 !important;
 }
 
 .progress-bar-line .active {
