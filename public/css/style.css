@@ -10084,7 +10084,7 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     }
 
     #sidebar-announcements ul {
-        height: 185px !important;
+        height: 50vh !important;
     }
 
     .swal2-container.swal2-center>.swal2-popup {
