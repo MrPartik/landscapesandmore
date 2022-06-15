@@ -5,7 +5,13 @@
 @section('body')
     <style>
         .swal2-container.swal2-center>.swal2-popup {
-            width: 40vw;
+            width: 50vw;
+        }
+
+        @media only screen and (min-width: 300px) and (max-width: 767px) {
+            .swal2-container.swal2-center>.swal2-popup {
+                width: 100vw !important;
+            }
         }
     </style>
     <div id="wrapper">
@@ -251,21 +257,24 @@
         }
         function resizeIframe(obj) {
             obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            obj.style.width = obj.contentWindow.document.documentElement.scrollWidth + 'px';
         };
+        $(document).ready(function() {
+            if (localStorage.getItem('dontshowagain') == 'false' || localStorage.getItem('dontshowagain') == null || localStorage.getItem('dontshowagain') == 'null') {
+                Swal.fire({
+                    html: '<img style="width:100%" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" /> ' +
+                        '<br/><center style="font-weight: bolder;font-size: 15px;margin-top: 12px;"><label for=dontshowagain> <input id="dontshowagain" type=checkbox /> Don\'t show again? </label></center>',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    allowOutsideClick: false,
+                }).then(function() {
+                    if($('#dontshowagain').is(':checked') === true) {
+                        localStorage.setItem('dontshowagain', true);
+                    }
+                });
+            }
 
-        if (localStorage.getItem('dontshowagain') === false || localStorage.getItem('dontshowagain') === null) {
-            Swal.fire({
-                html: '<img style="width:100%" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" /> ' +
-                    '<br/><center style="font-weight: bolder;font-size: 15px;margin-top: 12px;"><label for=dontshowagain> <input id="dontshowagain" type=checkbox /> Don\'t show again? </label></center>',
-                showCancelButton: false,
-                showConfirmButton: false,
-                showCloseButton: true,
-                allowOutsideClick: false,
-            }).then(function() {
-                if($('#dontshowagain').is(':checked') === true) {
-                    localStorage.setItem('dontshowagain', true);
-                }
-            });
-        }
+        });
     </script>
 @endsection
