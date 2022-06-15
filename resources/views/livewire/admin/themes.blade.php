@@ -65,7 +65,7 @@
             text-align-last: center;
         }
     </style>
-    <div class="loading-page" wire:loading.block wire:target="saveAnnouncements, saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="pictureOfService, rightVideoAfterCounterThumbnail, ourProcessVideoThumbnail, projectTrackerLandscapeThumbnail, projectTrackerTurfThumbnail, bannerImage, uploadSmallLogo, uploadDarkLogo, uploadLightLogo, saveAnnouncements, saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
     <div class="col-12">
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
