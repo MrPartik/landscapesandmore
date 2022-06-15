@@ -28,7 +28,8 @@ class Process extends Component
         5002,
         5004,
         5006,
-        5011
+        5011,
+        5012,
     ];
 
     public $typeOfInquiry = self::INQUIRY_TYPE_LANDSCAPE;

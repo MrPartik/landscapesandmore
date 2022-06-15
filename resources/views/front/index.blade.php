@@ -215,7 +215,7 @@
                             <h3 class="size-2 no-margin">Make Payments</h3>
                         </div>
 
-                        <div class="col-lg-4 col-md-5 text-right">
+                        <div class="col-lg-4 col-md-5 col-sm-6 text-right">
                             <a onclick="visitPayment()" href="javascript:;" class="btn-line-white">Financing</a>
                             <a target="_blank" href="https://portal.icheckgateway.com/landscapesandmore/" class="btn-line-white">Credit Card</a>
                         </div>
