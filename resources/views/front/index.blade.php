@@ -240,16 +240,16 @@
     <script src="{{ url('leaflet/leaflet-draw/Toolbar.js') }}"></script>
     <script src="{{ url('leaflet/leaflet-draw/Tooltip.js') }}"></script>
     <script>
+        function visitPayment() {
+            Swal.fire({
+                html: '<iframe width="100%" frameborder="0" scrolling="no" src="/payments" onload="resizeIframe(this)"></iframe>',
+                showCancelButton: false,
+                showConfirmButton: false,
+                showCloseButton: true,
+                allowOutsideClick: false,
+            });
+        }
         $(document).ready(function() {
-            function visitPayment() {
-                Swal.fire({
-                    html: '<iframe width="100%" frameborder="0" scrolling="no" src="/payments" onload="resizeIframe(this)"></iframe>',
-                    showCancelButton: false,
-                    showConfirmButton: false,
-                    showCloseButton: true,
-                    allowOutsideClick: false,
-                });
-            }
             function resizeIframe(obj) {
                 obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
             };
