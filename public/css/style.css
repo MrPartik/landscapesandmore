@@ -10076,7 +10076,7 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     }
 
     .feature-box-image, .pricing-box {
-        margin-bottom: 30px;
+        margin-bottom: 30px !important;
     }
 
     #sidebar-announcements {
@@ -10092,7 +10092,7 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     }
 
     .text-slider {
-        font-size: 35px !important;
+        font-size: 25px !important;
     }
 }
 
