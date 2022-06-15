@@ -52,7 +52,7 @@
                                                         <strong>To resume your process, please contact us.</strong>
                                                         <br/>
                                                         <br/>
-                                                        <a href="/contact-us?email={{ $emailAddress }}" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
+                                                        <a id="redirecttocontactus" href="/contact-us?email={{ $emailAddress }}" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
                                                         <br/>
                                                         <br/>
                                                     </div>
@@ -67,10 +67,10 @@
                                                     </div>
                                                 @elseif($isProcessed === true)
                                                     <div>
-                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us">Contact Us Form</a></strong>
+                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us?email={{ $emailAddress }}">Contact Us Form</a></strong>
                                                         <br/>
                                                         <br/>
-                                                        <a href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
+                                                        <a id="redirecttocontactus" href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
                                                         <br/>
                                                         <br/>
                                                     </div>
@@ -262,10 +262,10 @@
                                                     </div>
                                                 @elseif($isProcessed === true)
                                                     <div>
-                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us">Contact Us Form</a></strong>
+                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us?email={{ $emailAddress }}">Contact Us Form</a></strong>
                                                         <br/>
                                                         <br/>
-                                                        <a href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
+                                                        <a id="redirecttocontactus" href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
                                                         <br/>
                                                         <br/>
                                                     </div>

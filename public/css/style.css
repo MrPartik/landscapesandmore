@@ -10107,6 +10107,10 @@ header.force-header-mobile #mainmenu li ul.mega li ul {
     fieldset div#sidebar {
         display: none !important;
     }
+
+    #redirecttocontactus {
+        display: none !important;
+    }
 }
 
 
