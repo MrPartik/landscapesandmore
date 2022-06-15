@@ -14,3 +14,5 @@ yarn-error.log
 /.idea
 /.vscode
 /resources/files/
+storage/files/customize_website.json
+storage/files/website_interaction.json
