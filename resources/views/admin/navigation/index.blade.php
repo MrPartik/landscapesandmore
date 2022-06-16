@@ -27,6 +27,10 @@
                 <x-jet-nav-link href="{{ route('admin.awards') }}" :active="request()->routeIs('admin.awards')">
                     {{ __('Awards') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('admin.reviews') }}" :active="request()->routeIs('admin.reviews')">
+                    {{ __('Customer Reviews') }}
+                </x-jet-nav-link>
+                @endif
                 <x-jet-nav-link href="{{ route('admin.contact_us') }}" :active="request()->routeIs('admin.contact_us')">
                     {{ __('Contact Us') }}
                 </x-jet-nav-link>
@@ -36,10 +40,6 @@
                 <x-jet-nav-link href="{{ route('admin.careers') }}" :active="request()->routeIs('admin.careers')">
                     {{ __('Careers') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('admin.reviews') }}" :active="request()->routeIs('admin.reviews')">
-                    {{ __('Customer Reviews') }}
-                </x-jet-nav-link>
-                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
