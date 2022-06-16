@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => env('APP_TITLE') ?? 'Michaelangelo\'s' . ' | Home',
+    'title' => (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) . ' | Home',
     'description' => 'Michaelangelo’s provides one of the highest-quality landscapes and design services in Atlanta. We offer landscaping and design, maintenance, and turf care services.'
     ])
 @section('body')

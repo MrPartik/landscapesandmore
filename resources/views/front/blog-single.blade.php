@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => env('APP_TITLE') ?? 'Michaelangelo\'s' . ' | ' .  ucwords($sTitle),
+    'title' => (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) . ' | ' .  ucwords($sTitle),
     'description' => ucwords($sTitle) . '|' . $aBlog->tags
     ])
 @php

@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => env('APP_TITLE') ?? 'Michaelangelo\'s' . ' | Project Tracker',
+    'title' => (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) . ' | Project Tracker',
     'description' => 'Our project tracker is a free service for our customers. It keeps you informed about the progress of your project status updates by simply entering your valid email address.'
     ])
 @section('body')
