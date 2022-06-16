@@ -66,13 +66,13 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="pricing-s1 light mb30" style="background-size: cover;min-height: 80%;background: #eeeeee; border-radius: 15px">
-                                        <div class="top">
-                                            <h2 style="margin-bottom: unset">Announcements <i class="fa fa-bullhorn " style="font-size: 25px"></i></h2>
+                                        <div style="background-color: var(--primary-color-1) !important;" class="top">
+                                            <h2 style="margin-bottom: unset; color: white">Announcements <i class="fa fa-bullhorn " style="color:white; font-size: 25px"></i></h2>
                                         </div>
                                         <div class="bottom">
                                             <ul>
                                                 @foreach($aAnnouncements as $sItem)
-                                                    <li title="{{ preg_replace('/\[(.*?)\]\s*\((.*?)\)/', '$1', $sItem) }}"><i class="icon_check"></i> {!! preg_replace('/\[(.*?)\]\s*\((.*?)\)/', '<a target="_blank" href="$2">$1</a>', $sItem) !!} </li>
+                                                    <li style="color: #5a5a5a; font-weight: bolder;" title="{{ preg_replace('/\[(.*?)\]\s*\((.*?)\)/', '$1', $sItem) }}"><i class="icon_check"></i> {!! preg_replace('/\[(.*?)\]\s*\((.*?)\)/', '<a target="_blank" href="$2">$1</a>', $sItem) !!} </li>
                                                 @endforeach
                                             </ul>
                                         </div>

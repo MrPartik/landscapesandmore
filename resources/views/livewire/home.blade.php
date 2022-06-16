@@ -37,7 +37,7 @@
                 <div id="logo-carousel" class="owl-carousel owl-theme">
                     @foreach(\App\Models\Awards::all()->where('is_active', 1) as $oAward)
                         <a target="_blank" href="{{ url($oAward->redirect_url) }}">
-                            <img src="{{ url($oAward->url) }}" class="img-responsive" alt="{{ $oAward->description }}" title="{{ $oAward->description }}">
+                            <img src="{{ url($oAward->url) }}" class="img-responsive" alt="{{ $oAward->description }}" title="{{ $oAward->description }}" />
                         </a>
                     @endforeach
                 </div>
