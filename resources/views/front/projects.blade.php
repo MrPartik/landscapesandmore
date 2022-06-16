@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => 'Landscaping | Portfolio',
+    'title' => env('APP_TITLE') ?? 'Michaelangelo\'s' . ' | Portfolio',
     'description' => 'Our design services are professionally done, we also offer 3D designs for your project. Check our existing and future projects.'
     ])
 @section('body')

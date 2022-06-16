@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => 'Landscaping | Careers',
+    'title' => env('APP_TITLE') ?? 'Michaelangelo\'s' . ' | Careers',
     'description' => 'We all want to work in a place where opportunities are endless and the culture is full of like-minded people. With us, you\'ll never be bored.'
     ])
 @section('body')
