@@ -31,6 +31,8 @@
                     {{ __('Customer Reviews') }}
                 </x-jet-nav-link>
                 @endif
+
+                @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin' || \Illuminate\Support\Facades\Auth::user()->role === 'user')
                 <x-jet-nav-link href="{{ route('admin.contact_us') }}" :active="request()->routeIs('admin.contact_us')">
                     {{ __('Contact Us') }}
                 </x-jet-nav-link>
@@ -40,6 +42,7 @@
                 <x-jet-nav-link href="{{ route('admin.careers') }}" :active="request()->routeIs('admin.careers')">
                     {{ __('Careers') }}
                 </x-jet-nav-link>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -116,21 +119,21 @@
                                 </x-jet-dropdown-link>
                             @endif
 
+                            @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
                             <hr class="dropdown-divider mt-1">
                             <h6 class="dropdown-header small text-muted">
                                 {{ __('Website Settings') }}
                             </h6>
-                            @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
                             <x-jet-dropdown-link href="{{ route('admin.pre-defined-values') }}" :active="request()->routeIs('admin.pre-defined-values')">
                                 {{ __('Pre Defined Values') }}
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')">
                                 {{ __('Manage Users') }}
                             </x-jet-dropdown-link>
-                            @endif
                             <x-jet-dropdown-link href="{{ route('admin.themes') }}" :active="request()->routeIs('admin.themes')">
                                 {{ __('Customize Website') }}
                             </x-jet-dropdown-link>
+                            @endif
                             <hr class="dropdown-divider">
 
                             <!-- Authentication -->
