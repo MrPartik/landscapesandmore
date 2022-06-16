@@ -66,3 +66,7 @@ Route::get('public/{sFilePath}', function ($sFilePath) {
 Route::get('payments', function () {
     return view('front.payments');
 });
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
