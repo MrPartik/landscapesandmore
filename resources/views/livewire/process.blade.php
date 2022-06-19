@@ -262,7 +262,7 @@
                                                     </div>
                                                 @elseif($isProcessed === true)
                                                     <div>
-                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us?email={{ $emailAddress }}">Contact Us Form</a></strong>
+                                                        <strong>Thank you for reaching out to us, to start your process, please fill out <a href="/contact-us?email={{ $emailAddress }}">Contact Us </a> Form</strong>
                                                         <br/>
                                                         <br/>
                                                         <a id="redirecttocontactus" href="/contact-us" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
@@ -292,7 +292,7 @@
                                         <div class="row" style="color: var(--primary-color-1)">
                                             <div class="col-lg-6 col-md-12">
                                                 <strong>
-                                                    You are scheduled for a site meeting{!! ($sConsultationDate === 'Not Set' ? '.' : (' ' . $sConsultationDate) . '.') !!}
+                                                    Thank you for reaching out to us, one of our representatives will reach out to you within 24-48 hours, please keep your lines open.
                                                 </strong>
                                             </div>
                                             <div id="sidebar" class="col-md-6">

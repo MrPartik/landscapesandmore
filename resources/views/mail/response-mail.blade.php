@@ -8,8 +8,8 @@
     ])
     @include('beautymail::templates.ark.contentStart')
 
-    <h4 class="secondary"><strong> {{'Hello ' . $name }},</strong></h4>
-    <p style="margin-top: 10px; margin-bottom: 15px">{{ $body }}</p>
+    <h4 class="secondary"><strong> {!! 'Hello ' . $name !!} ,</strong></h4>
+    <p style="margin-top: 10px; margin-bottom: 15px"> {!! $body !!} </p>
 
 
     @include('beautymail::templates.widgets.newfeatureStart')

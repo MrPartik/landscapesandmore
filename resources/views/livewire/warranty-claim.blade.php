@@ -54,7 +54,7 @@
     </style>
 @endsection
 <div class="container">
-    <div class="loading-page" wire:loading.block wire:target="submitWarrantyForm">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="picturesOfLandscapes, submitWarrantyForm">Loading&#8230;</div>
     <div class="row">
         <div class="col-md-8">
             <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off">

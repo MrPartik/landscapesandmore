@@ -19,7 +19,6 @@ Route::get('js/google-api/maps.js', function () {
     return file_get_contents('https://maps.googleapis.com/maps/api/js?key=' . config('google.api_key') . '&libraries=places&v=weekly&' . http_build_query($aParameters));
 });
 
-
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function() {
 
     Route::get('/', function () {

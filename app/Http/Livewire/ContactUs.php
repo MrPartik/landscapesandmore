@@ -123,7 +123,7 @@ class ContactUs extends Component
         $oContactUsModel->zip_code = $aValidated['zipCode'] ?? '-';
         $oContactUsModel->project_description = $aValidated['projectDescription'] ?? '-';
         $oContactUsModel->message = $aValidated['message'] ?? '-';
-        $oContactUsModel->budget_range = $aValidated['budgetRange'] ?? '-';
+        $oContactUsModel->budget_range = $aValidated['budgetRange'] ?? 'N/A';
         $oContactUsModel->reference = $aValidated['reference'] ?? '-';
         $oContactUsModel->save();
         $sPipelineKey = ($oContactUsModel->project_description === 'landscape') ? config('streak.installation_pipeline_key') : config('streak.maintenance_pipeline_key');
@@ -133,7 +133,7 @@ class ContactUs extends Component
 
         Utilities::Mail()->send('mail.response-mail', [
             'name' => $oContactUsModel->first_name,
-            'body' => 'Thank you for contacting us. One of our representatives will call you to discuss your project further. Please allow us 24-48 business hours (Monday-Friday) to review your information. You may also check the status of your application status here: Application Status.',
+            'body' => 'Thank you for contacting us. One of our representatives will call you to discuss your project further. Please allow us 24-48 business hours (Monday-Friday) to review your information. You may also check the status of your application status here: <a target="_blank" href="' . url('/process') . '">Application Status.</a>',
             'title' => 'Thank you for contacting us!',
         ], function ($oMessage) use ($oContactUsModel) {
             $oMessage

@@ -30,16 +30,24 @@
                             </div>
                         </div>
                         <div>
-                            <div id='budget_range_error' class='error'>Please enter your budget range</div>
-                            <strong for="budget_range">
+                            <strong for="reference-contactus">
                                 Reference
                             </strong>
-                            <select id=budget_range wire:model="budgetRange"  type="text" class="form-control" placeholder="{{ __('Budget Range') }}">
-                                <option selected disabled value=""> Select Budget Range </option>
-                                @foreach(\App\Library\Utilities::getDataInJson('budget_range_dropdown')['formatted'] ?? [] as $sItem)
-                                    <option value="{{ $sItem }}"> {{ $sItem }} </option>
-                                @endforeach
+                            <select id=reference-contactus wire:model="reference"  type="text" class="form-control" placeholder="{{ __('Reference') }}">
+                                <option selected disabled value=""> Select reference </option>
+                                <option value="Angi's List"> Angi's List </option>
+                                <option value="Bruce Holiday Referral"> Bruce Holiday Referral - Landscape Architect</option>
+                                <option value="Client Referral"> Client Referral </option>
+                                <option value="Designing Spaces Show"> Designing Spaces Show </option>
+                                <option value="Existing Customer"> Existing Customer </option>
+                                <option value="Google"> Google </option>
+                                <option value="Houzz"> Houzz </option>
+                                <option value="M360"> M360 </option>
+                                <option value="Neighbor"> Neighbor </option>
+                                <option value="Facebook"> Facebook </option>
+                                <option value="Michaelangelo’s Truck"> Michaelangelo’s Truck </option>
                             </select>
+
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -63,24 +71,6 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <strong for="reference-contactus">
-                            Reference
-                        </strong>
-                        <select id=reference-contactus wire:model="reference"  type="text" class="form-control" placeholder="{{ __('Reference') }}">
-                            <option selected disabled value=""> Select reference </option>
-                            <option value="Angi's List"> Angi's List </option>
-                            <option value="Bruce Holiday Referral"> Bruce Holiday Referral - Landscape Architect</option>
-                            <option value="Client Referral"> Client Referral </option>
-                            <option value="Designing Spaces Show"> Designing Spaces Show </option>
-                            <option value="Existing Customer"> Existing Customer </option>
-                            <option value="Google"> Google </option>
-                            <option value="Houzz"> Houzz </option>
-                            <option value="M360"> M360 </option>
-                            <option value="Neighbor"> Neighbor </option>
-                            <option value="Facebook"> Facebook </option>
-                            <option value="Michaelangelo’s Truck"> Michaelangelo’s Truck </option>
-                        </select>
-
                         <strong class="mt-3">Project Description</strong>
                         <div class="de_form de_radio">
                             <span class="mr20">
@@ -92,6 +82,20 @@
                                     <label for="project_description_2">Maintenance and Turf Care</label>
                                 </span>
                         </div>
+                        @if($projectDescription === 'landscape')
+                            <div class="mt20">
+                                <div id='budget_range_error' class='error'>Please enter your budget range</div>
+                                <strong for="budget_range">
+                                    Budget Range
+                                </strong>
+                                <select id=budget_range wire:model="budgetRange"  type="text" class="form-control" placeholder="{{ __('Budget Range') }}">
+                                    <option selected disabled value=""> Select Budget Range </option>
+                                    @foreach(\App\Library\Utilities::getDataInJson('budget_range_dropdown')['formatted'] ?? [] as $sItem)
+                                        <option value="{{ $sItem }}"> {{ $sItem }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
                         <p id='submit' class="mt20">
                             <input wire:click="submitContactUs" type='submit' value='Submit Form' class="btn btn-line">
                         </p>

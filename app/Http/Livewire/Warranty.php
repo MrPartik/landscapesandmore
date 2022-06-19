@@ -135,7 +135,20 @@ class Warranty extends Component
 
         Utilities::Mail()->send('mail.response-mail', [
             'name' => $oWarrantyModel->first_name,
-            'body' => 'Thank you for submitting your warranty claim, please allow us 48-72 business hours (Monday-Friday) to review your warranty claim. We will reach out to you after review.',
+            'body' => 'Thank you for submitting your warranty claim, please allow us 48-72 business hours (Monday-Friday) to review your warranty claim. We will reach out to you after review.
+                       <br/>
+                       <br/>
+                       <strong style="font-size: 20px"> Form Information:</strong><br/>
+                       <strong>First Name: </strong>' . $oWarrantyModel->first_name . '<br/>
+                       <strong>Last Name: </strong>' . $oWarrantyModel->last_name . '<br/>
+                       <strong>Home Address: </strong>' . $oWarrantyModel->home_address . '<br/>
+                       <strong>City Address: </strong>' . $oWarrantyModel->city_address . '<br/>
+                       <strong>Zip Code: </strong>' . $oWarrantyModel->zip_code . '<br/>
+                       <strong>How often do you water?: </strong>' . $oWarrantyModel->often_water . '<br/>
+                       <strong>Do you know the name of the plant/tree/bush in question?: </strong>' . $oWarrantyModel->knowledge_in_plant . '<br/>
+                       <strong>Have you been following the watering guide that has been given to you?: </strong>' . $oWarrantyModel->following_watering_guide . '<br/>
+                       <strong>Images: </strong> ' . $this->generatedImagesUrl(json_decode($oWarrantyModel->images ?? "{}", true)) . '
+            ',
             'title' => 'Warranty Claim',
         ], function ($oMessage) use ($oWarrantyModel) {
             $oMessage
@@ -143,6 +156,14 @@ class Warranty extends Component
                 ->subject('Warranty Claim');
         });
         $this->clear();
+    }
+
+    private function generatedImagesUrl($aImagesUrl) {
+        $aGeneratedImages = [];
+        foreach ($aImagesUrl as $mItem) {
+            $aGeneratedImages[] = sprintf('<a target="_blank" href="%s">%s</a>', url($mItem), $mItem);
+        }
+        return implode(', ', array_values($aGeneratedImages));
     }
 
     private function clear()
