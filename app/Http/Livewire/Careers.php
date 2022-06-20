@@ -57,6 +57,15 @@ class Careers extends Component
 
         Utilities::Mail()->send('mail.response-mail', [
             'name' => $oCareersModel->name,
+            'body' => 'Thank you for your interest in becoming part of our team. One of our representatives will call you to get your job application started. Please allow us 24-48 business hours (Monday-Friday) to review your application.',
+            'title' => 'Careers at Michaelangelo\'s Sustainable Landscape and Design Group',
+        ], function ($oMessage) use ($oCareersModel) {
+            $oMessage
+                ->to($this->emailAddress, $oCareersModel->name)
+                ->subject('Careers at Michaelangelo\'s Sustainable Landscape and Design Group');
+        });
+        Utilities::Mail()->send('mail.response-mail', [
+            'name' => $oCareersModel->name,
             'body' => 'Thank you for your interest in becoming part of our team. One of our representatives will call you to get your job application started. Please allow us 24-48 business hours (Monday-Friday) to review your application.
                     <br/>
                     <br/>
@@ -69,11 +78,11 @@ class Careers extends Component
                                <strong>Position Applying for: </strong>' . $oCareersModel->position_applying . '<br/>
 
             ',
-            'title' => 'Careers at Michaelangelo\'s Sustainable Landscape and Design Group',
+            'title' => '[Copy] Careers at Michaelangelo\'s Sustainable Landscape and Design Group',
         ], function ($oMessage) use ($oCareersModel) {
             $oMessage
-                ->to($this->emailAddress, $oCareersModel->name)
-                ->subject('Careers at Michaelangelo\'s Sustainable Landscape and Design Group');
+                ->to('info@landscapesandmore.com', $oCareersModel->name)
+                ->subject('[Copy] Careers at Michaelangelo\'s Sustainable Landscape and Design Group');
         });
 
         $this->name = '';

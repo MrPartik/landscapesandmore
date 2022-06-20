@@ -30,7 +30,7 @@ class ContactUs extends Component
     {
         $this->aModel = ContactUsModel::all();
         $this->aCounts = [
-            'serviceable_area' => $this->aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'serviceable_area' => $this->aModel->whereIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
             'landscape_type'   => $this->aModel->where('project_description', 'landscape')->count(),
             'maintenance_type' => $this->aModel->where('project_description', 'maintenance-and-turf-care')->count(),
             'total'            => $this->aModel->count(),

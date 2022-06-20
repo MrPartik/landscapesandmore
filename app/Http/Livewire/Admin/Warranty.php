@@ -41,7 +41,7 @@ class Warranty extends Component
     {
         $this->aModel = WarrantyModel::all();
         $this->aCounts = [
-            'serviceable_area' => $this->aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'serviceable_area' => $this->aModel->whereIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
             'contacted'        => $this->aModel->whereNotNull('was_contacted')->count(),
             'resolved'         => $this->aModel->whereNotNull('was_resolved')->count(),
             'total'            => $this->aModel->count(),

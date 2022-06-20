@@ -28,7 +28,7 @@ class Careers extends Component
     {
         $this->aModel = CareersModel::all();
         $this->aCounts = [
-            'serviceable_area' => $this->aModel->whereNotIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
+            'serviceable_area' => $this->aModel->whereIn('zip_code', config('landscaping.allowed_zip_code'))->count(),
             'total'            => $this->aModel->count(),
         ];
     }

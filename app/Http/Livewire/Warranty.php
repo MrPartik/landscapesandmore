@@ -135,6 +135,15 @@ class Warranty extends Component
 
         Utilities::Mail()->send('mail.response-mail', [
             'name' => $oWarrantyModel->first_name,
+            'body' => 'Thank you for submitting your warranty claim, please allow us 48-72 business hours (Monday-Friday) to review your warranty claim. We will reach out to you after review.',
+            'title' => 'Warranty Claim',
+        ], function ($oMessage) use ($oWarrantyModel) {
+            $oMessage
+                ->to($this->emailAddress, $oWarrantyModel->first_name)
+                ->subject('Warranty Claim');
+        });
+        Utilities::Mail()->send('mail.response-mail', [
+            'name' => $oWarrantyModel->first_name,
             'body' => 'Thank you for submitting your warranty claim, please allow us 48-72 business hours (Monday-Friday) to review your warranty claim. We will reach out to you after review.
                        <br/>
                        <br/>
@@ -149,11 +158,11 @@ class Warranty extends Component
                        <strong>Have you been following the watering guide that has been given to you?: </strong>' . $oWarrantyModel->following_watering_guide . '<br/>
                        <strong>Images: </strong> ' . $this->generatedImagesUrl(json_decode($oWarrantyModel->images ?? "{}", true)) . '
             ',
-            'title' => 'Warranty Claim',
+            'title' => '[Copy] Warranty Claim',
         ], function ($oMessage) use ($oWarrantyModel) {
             $oMessage
-                ->to($this->emailAddress, $oWarrantyModel->first_name)
-                ->subject('Warranty Claim');
+                ->to('info@landscapesandmore.com', $oWarrantyModel->first_name)
+                ->subject('[Copy] Warranty Claim');
         });
         $this->clear();
     }
