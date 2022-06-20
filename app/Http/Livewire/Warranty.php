@@ -150,6 +150,7 @@ class Warranty extends Component
                        <strong style="font-size: 20px"> Form Information:</strong><br/>
                        <strong>First Name: </strong>' . $oWarrantyModel->first_name . '<br/>
                        <strong>Last Name: </strong>' . $oWarrantyModel->last_name . '<br/>
+                       <strong>Email Address: </strong>' . $oWarrantyModel->email . '<br/>
                        <strong>Home Address: </strong>' . $oWarrantyModel->home_address . '<br/>
                        <strong>City Address: </strong>' . $oWarrantyModel->city_address . '<br/>
                        <strong>Zip Code: </strong>' . $oWarrantyModel->zip_code . '<br/>

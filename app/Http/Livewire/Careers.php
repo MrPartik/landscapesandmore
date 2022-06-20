@@ -70,7 +70,8 @@ class Careers extends Component
                     <br/>
                     <br/>
                                <strong style="font-size: 20px"> Form Information:</strong><br/>
-                               <strong>First Name: </strong>' . $oCareersModel->name . '<br/>
+                               <strong>Name: </strong>' . $oCareersModel->name . '<br/>
+                               <strong>Email Address: </strong>' . $oCareersModel->email . '<br/>
                                <strong>Home Address: </strong>' . $oCareersModel->home_address . '<br/>
                                <strong>City Address: </strong>' . $oCareersModel->city_address . '<br/>
                                <strong>Zip Code: </strong>' . $oCareersModel->zip_code . '<br/>
