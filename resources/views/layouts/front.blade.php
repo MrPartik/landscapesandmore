@@ -73,72 +73,73 @@
                 </section>
             </div>
         @endif
-    </body>
-    <!-- Javascript Files
+
+        <!-- Javascript Files
     ================================================== -->
-    <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="https://kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
-    <script src="{{ url('js/jpreLoader.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/jquery.isotope.min.js') }}"></script>
-    <script src="{{ url('js/easing.js') }}"></script>
-    <script src="{{ url('js/jquery.flexslider-min.js') }}"></script>
-    <script src="{{ url('js/jquery.scrollto.min.js') }}"></script>
-    <script src="{{ url('js/owl.carousel.js') }}"></script>
-    <script src="{{ url('js/jquery.countTo.min.js') }}"></script>
-    <script src="{{ url('js/classie.min.js') }}"></script>
-    <script src="{{ url('js/video.resize.min.js') }}"></script>
-    <script src="{{ url('js/wow.min.js') }}"></script>
-    <script src="{{ url('js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ url('js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ url('js/enquire.min.js') }}"></script>
-    <script src="{{ url('js/designesia.js') }}"></script>
-    <script src="{{ url('js/jquery.twentytwenty.min.js') }}"></script>
-    <script src="{{ url('js/jquery-ui.js') }}"></script>
+        <script src="{{ url('js/jquery.min.js') }}"></script>
+        <script src="https://kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
+        <script src="{{ url('js/jpreLoader.min.js') }}"></script>
+        <script src="{{ url('js/bootstrap.min.js') }}"></script>
+        <script src="{{ url('js/jquery.isotope.min.js') }}"></script>
+        <script src="{{ url('js/easing.js') }}"></script>
+        <script src="{{ url('js/jquery.flexslider-min.js') }}"></script>
+        <script src="{{ url('js/jquery.scrollto.min.js') }}"></script>
+        <script src="{{ url('js/owl.carousel.js') }}"></script>
+        <script src="{{ url('js/jquery.countTo.min.js') }}"></script>
+        <script src="{{ url('js/classie.min.js') }}"></script>
+        <script src="{{ url('js/video.resize.min.js') }}"></script>
+        <script src="{{ url('js/wow.min.js') }}"></script>
+        <script src="{{ url('js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ url('js/jquery.stellar.min.js') }}"></script>
+        <script src="{{ url('js/enquire.min.js') }}"></script>
+        <script src="{{ url('js/designesia.js') }}"></script>
+        <script src="{{ url('js/jquery.twentytwenty.min.js') }}"></script>
+        <script src="{{ url('js/jquery-ui.js') }}"></script>
 
-    <!-- RS5.0 Core JS Files -->
-    <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
-    <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js?rev=5.0') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-    @livewireScripts
+        <!-- RS5.0 Core JS Files -->
+        <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
+        <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js?rev=5.0') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <![endif]-->
+        @livewireScripts
 
 
-    @yield('extra-js-first')
-    @yield('extra-js')
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            let sAnnouncementIcon = '#announcement-icon';
-            let sAnnouncementSideBar = '#sidebar-announcements';
-            $(sAnnouncementIcon).click(function() {
-                if ($(sAnnouncementSideBar).is(':visible') === false) {
-                    $(sAnnouncementSideBar).show("slide", {direction: 'down'}, 100);
-                    $(sAnnouncementIcon + ' i').addClass('fa-times');
-                } else {
-                    $(sAnnouncementSideBar).hide("slide", {direction: 'down'}, 50);
-                    $(sAnnouncementIcon + ' i').removeClass('fa-times');
-                }
-            });
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-            (function() {
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/61bb3e93c82c976b71c1c1b0/1fn1mos74';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
-            })();
-            Tawk_API.onLoad = function() {
-                setTimeout(function() {
-                    if(Tawk_API.isChatMaximized() === true) {
-                        Tawk_API.toggle();
+        @yield('extra-js-first')
+        @yield('extra-js')
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                let sAnnouncementIcon = '#announcement-icon';
+                let sAnnouncementSideBar = '#sidebar-announcements';
+                $(sAnnouncementIcon).click(function() {
+                    if ($(sAnnouncementSideBar).is(':visible') === false) {
+                        $(sAnnouncementSideBar).show("slide", {direction: 'down'}, 100);
+                        $(sAnnouncementIcon + ' i').addClass('fa-times');
+                    } else {
+                        $(sAnnouncementSideBar).hide("slide", {direction: 'down'}, 50);
+                        $(sAnnouncementIcon + ' i').removeClass('fa-times');
                     }
-                }, 300)
-            };
-        });
-    </script>
-    <!--End of Tawk.to Script-->
+                });
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function() {
+                    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                    s1.async=true;
+                    s1.src='https://embed.tawk.to/61bb3e93c82c976b71c1c1b0/1fn1mos74';
+                    s1.charset='UTF-8';
+                    s1.setAttribute('crossorigin','*');
+                    s0.parentNode.insertBefore(s1,s0);
+                })();
+                Tawk_API.onLoad = function() {
+                    setTimeout(function() {
+                        if(Tawk_API.isChatMaximized() === true) {
+                            Tawk_API.toggle();
+                        }
+                    }, 300)
+                };
+            });
+        </script>
+        <!--End of Tawk.to Script-->
+    </body>
 </html>
