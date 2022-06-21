@@ -95,6 +95,7 @@
         <script src="{{ url('js/designesia.js') }}"></script>
         <script src="{{ url('js/jquery.twentytwenty.min.js') }}"></script>
         <script src="{{ url('js/jquery-ui.js') }}"></script>
+        <script src="{{ url('js/cookit.js') }}"></script>
 
         <!-- RS5.0 Core JS Files -->
         <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
@@ -138,6 +139,16 @@
                         }
                     }, 300)
                 };
+            });
+            $.cookit({
+                backgroundColor: '#1c1c1c',
+                messageColor: '#fff',
+                linkColor: '#03A44C',
+                buttonColor: '#03A44C',
+                messageText: "This website uses <b>cookies</b> to ensure you get the best experience on our website.",
+                linkText: "Learn more",
+                linkUrl: "/",
+                buttonText: "I accept",
             });
         </script>
         <!--End of Tawk.to Script-->

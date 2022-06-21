@@ -39,7 +39,12 @@
                 <nav>
                     <ul id="mainmenu">
                         <li><a class="{{ $active === 'home' ? 'active' : '' }}" href="{{ url('/') }}">Home<span></span></a></li>
-                        <li><a href="{{ url('/') }}#section-services" onclick='document.location.href = "{{ url('/') }}#section-services"'>Services<span></span></a></li>
+                        <li><a class="{{ in_array($active, ['commercial', 'residential']) === true ? 'active' : '' }}" href="javascript:;">Services<span></span></a>
+                            <ul>
+                                <li><a href="{{ url('/service/commercial-landscaping') }}">Commercial</a> </li>
+                                <li><a href="{{ url('/service/residential-landscaping') }}">Residential</a> </li>
+                            </ul>
+                        </li>
                         <li><a href="{{ url('/') }}#our-process" onclick='document.location.href = "{{ url('/') }}#our-process"'>Process<span></span></a></li>
                         <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Project Tracker<span></span></a></li>
                         <li><a class="{{ in_array($active, ['contact-us', 'warranty', 'careers']) === true ? 'active' : '' }}" href="javascript:;">Contact Us<span></span></a>

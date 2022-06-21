@@ -36,6 +36,15 @@ Route::prefix('blog')->group(function() {
     });
 });
 
+Route::prefix('service')->group(function() {
+    Route::get('/commercial-landscaping', function () {
+        return view('front.services.commercial');
+    });
+    Route::get('/residential-landscaping', function () {
+        return view('front.services.residential');
+    });
+});
+
 
 Route::get('/contact-us', function () {
     return view('front.contact-us');
