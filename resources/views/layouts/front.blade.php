@@ -7,10 +7,6 @@
         <meta name="description" content="{{ $description ?? '' }}">
         <meta name="robots" content="index, follow" />
 
-        <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
         <!-- CSS Files
         ================================================== -->
         <link id="bootstrap" href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -43,8 +39,6 @@
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
 
         @livewireStyles
-        <script src="{{ url('js/jquery.min.js') }}"></script>
-        <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
         @yield('extra-css')
 
         <title>{{ $title ?? '' }}</title>
@@ -87,29 +81,37 @@
     </body>
     <!-- Javascript Files
     ================================================== -->
-    <script src="{{ url('js/jpreLoader.js') }}"></script>
+    <script src="{{ url('js/jquery.min.js') }}"></script>
+    <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
+    <script src="{{ url('js/jpreLoader.min.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
     <script src="{{ url('js/jquery.isotope.min.js') }}"></script>
     <script src="{{ url('js/easing.js') }}"></script>
     <script src="{{ url('js/jquery.flexslider-min.js') }}"></script>
-    <script src="{{ url('js/jquery.scrollto.js') }}"></script>
+    <script src="{{ url('js/jquery.scrollto.min.js') }}"></script>
     <script src="{{ url('js/owl.carousel.js') }}"></script>
-    <script src="{{ url('js/jquery.countTo.js') }}"></script>
-    <script src="{{ url('js/classie.js') }}"></script>
-    <script src="{{ url('js/video.resize.js') }}"></script>
+    <script src="{{ url('js/jquery.countTo.min.js') }}"></script>
+    <script src="{{ url('js/classie.min.js') }}"></script>
+    <script src="{{ url('js/video.resize.min.js') }}"></script>
     <script src="{{ url('js/wow.min.js') }}"></script>
     <script src="{{ url('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ url('js/jquery.stellar.min.js') }}"></script>
     <script src="{{ url('js/enquire.min.js') }}"></script>
     <script src="{{ url('js/designesia.js') }}"></script>
-    <script src="{{ url('js/jquery.twentytwenty.js') }}"></script>
+    <script src="{{ url('js/jquery.twentytwenty.min.js') }}"></script>
     <script src="{{ url('js/jquery-ui.js') }}"></script>
 
     <!-- RS5.0 Core JS Files -->
     <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
     <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js?rev=5.0') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
     @livewireScripts
+
+
+    @yield('extra-js-first')
     @yield('extra-js')
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">

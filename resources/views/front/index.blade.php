@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) . ' | Home',
+    'title' => 'Home' . ' | ' . (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) ,
     'description' => 'Michaelangelo’s provides one of the highest-quality landscapes and design services in Atlanta. We offer landscaping and design, maintenance, and turf care services.'
     ])
 @section('body')
@@ -75,11 +75,12 @@
                 </div>
             </section>
             <!-- section begin -->
-            <section id="section-services" aria-label="section-services" style="background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url('{{ url('images/background/bg-paper.png') }}') center fixed" >
-                <div class="container text-white">
+            <section id="section-services" aria-label="section-services" style="background: #f0f0f1;" >
+                <div class="container text-black">
                     <div class="row">
-                        <div class="text-white col-md-6 offset-md-3 text-center wow fadeInUp">
-                            <h1 class="text-white">Services we offer</h1>
+                        <div class="text-black col-md-6 offset-md-3 text-center wow fadeInUp">
+                            <h1 class="text-black">Services we offer</h1>
+                            <div class="separator no-bottom"><span><i class="fa fa-circle"></i></span></div>
                             <div class="spacer-single"></div>
                         </div>
                         @foreach(\App\Models\Services::all() as $oService)
@@ -152,11 +153,11 @@
                     </div>
                 </div>
             </section>
-            <section class="text-white no-bottom" id="section-how-it-works" style="background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url('{{ url('images/background/bg-paper.png') }}') center fixed" >
+            <section class="text-black no-bottom" id="section-how-it-works" style="background: #f0f0f1;" >
                 <div class="container">
                     <div class="row align-items-center" style="place-content: center">
                         <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
-                            <h1 style="text-align: center" class="text-white">
+                            <h1 style="text-align: center" class="text-black">
                                 Introducing: Michaelangelo's Project Tracker
                                 <div class="separator no-bottom"><span><i class="fa fa-circle"></i></span></div>
                             </h1>
@@ -193,27 +194,6 @@
                 }
             </style>
             <!-- section close -->
-
-            <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-8 col-md-7">
-                            <h3 class="size-2 no-margin">Get In Touch With Us Today</h3>
-                        </div>
-                        <div class="col-lg-4 col-md-5 text-right">
-                            <a href="/contact-us" class="btn-line-white">Contact Us Now</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="de-map" class="no-top no-bottom" aria-label="map-container">
-                <div class="map-container map-fullwidth">
-                    <div wire:ignore id="map"></div>
-                </div>
-            </section>
-
-
             <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
                 <div class="container">
                     <div class="row align-items-center">
@@ -229,6 +209,24 @@
                 </div>
             </section>
 
+            <section id="de-map" class="no-top no-bottom" aria-label="map-container">
+                <div class="map-container map-fullwidth">
+                    <div wire:ignore id="map"></div>
+                </div>
+            </section>
+
+            <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 col-md-7">
+                            <h3 class="size-2 no-margin">Get In Touch With Us Today</h3>
+                        </div>
+                        <div class="col-lg-4 col-md-5 text-right">
+                            <a href="/contact-us" class="btn-line-white">Contact Us Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
         @include('front.navigation.footer')
     </div>
@@ -236,6 +234,9 @@
 @endsection
 @section('extra-css')
     <link rel="stylesheet" href="{{ url('leaflet/leaflet.css') }}" />
+@endsection
+
+@section('extra-js-first')
     <script src="{{ url('leaflet/leaflet-src.js') }}"></script>
     <script src="{{ url('leaflet/esri-leaflet.js') }}"></script>
     <script src="{{ url('leaflet/esri-leaflet-geocoder.js') }}"></script>

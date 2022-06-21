@@ -10641,3 +10641,7 @@ a img.logo {
 #announcements a:hover {
     color: var(--primary-color-1) !important;
 }
+
+body {
+    padding: unset !important;
+}
