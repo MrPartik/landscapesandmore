@@ -78,10 +78,10 @@
     ================================================== -->
         <script src="{{ url('js/jquery.min.js') }}"></script>
         <script src="https://kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
-        <script src="{{ url('js/jpreLoader.min.js') }}"></script>
+        <script src="{{ url('js/jpreLoader.js') }}"></script>
         <script src="{{ url('js/bootstrap.min.js') }}"></script>
         <script src="{{ url('js/jquery.isotope.min.js') }}"></script>
-        <script src="{{ url('js/easing.js') }}"></script>
+        <script src="{{ url('js/easing.min.js') }}"></script>
         <script src="{{ url('js/jquery.flexslider-min.js') }}"></script>
         <script src="{{ url('js/jquery.scrollto.min.js') }}"></script>
         <script src="{{ url('js/owl.carousel.js') }}"></script>
