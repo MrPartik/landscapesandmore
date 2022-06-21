@@ -82,7 +82,7 @@
     <!-- Javascript Files
     ================================================== -->
     <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="//kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/304ef5f8a1.js" crossorigin="anonymous"></script>
     <script src="{{ url('js/jpreLoader.min.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
     <script src="{{ url('js/jquery.isotope.min.js') }}"></script>
@@ -104,7 +104,7 @@
     <!-- RS5.0 Core JS Files -->
     <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js?rev=5.0') }}"></script>
     <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js?rev=5.0') }}"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
