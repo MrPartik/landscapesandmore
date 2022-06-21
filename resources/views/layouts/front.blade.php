@@ -30,11 +30,6 @@
         <link rel="stylesheet" href="{{ url('css/colors/green.css') }}" type="text/css" id="colors">
         <link rel="stylesheet" href="{{ url('css/color.css') }}" type="text/css">
 
-        <!-- load fonts -->
-        <link rel="stylesheet" href="{{ url('fonts/font-awesome/css/font-awesome.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url('fonts/elegant_font/HTML_CSS/style.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url('fonts/et-line-font/style.css') }}" type="text/css">
-
         <!-- custom font -->
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
 

@@ -238,13 +238,9 @@
 
 @section('extra-js-first')
     <script src="{{ url('leaflet/leaflet-src.js') }}"></script>
-    <script src="{{ url('leaflet/esri-leaflet.js') }}"></script>
-    <script src="{{ url('leaflet/esri-leaflet-geocoder.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
-    {{--    <script async src="{{ url('js/google-api/maps.js') }}" ></script>--}}
+{{--    <script src="https://maps.googleapis.com/maps/api/js" async defer></script>--}}
+    <script async src="{{ url('js/google-api/maps.js') }}" ></script>
     <script type="text/javascript" src="{{ url('leaflet/googlemapMutant.js') }}"></script>
-
-    <script src="{{ url('leaflet/leaflet-draw/Toolbar.js') }}"></script>
     <script src="{{ url('leaflet/leaflet-draw/Tooltip.js') }}"></script>
     <script>
         function visitPayment() {
