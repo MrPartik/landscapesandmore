@@ -10645,3 +10645,7 @@ a img.logo {
 body {
     padding: unset !important;
 }
+
+#cookit {
+    z-index: 99999999999 !important;
+}

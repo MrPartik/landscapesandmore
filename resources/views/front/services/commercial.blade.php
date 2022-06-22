@@ -140,7 +140,7 @@
             </div>
         </section>
         <!-- section close -->
-            
+
         @include('front.navigation.footer')
     </div>
 @endsection
