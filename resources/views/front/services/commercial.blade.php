@@ -75,32 +75,32 @@
                         <div class="de_tab tab_steps tab_6">
                             <ul class="de_nav">
                                 <li class="active wow fadeIn" data-wow-delay="0s">
-                                    <span title="Contact Us">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-phone"></i>
+                                    <span title="Contact Us" style="font-size: 25px;">
+                                        01
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".4s">
-                                    <span title="Consultation">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-sticky-note"></i>
+                                    <span title="Consultation" style="font-size: 25px;">
+                                        02
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".8s">
-                                    <span title="Design">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-pen-nib"></i>
+                                    <span title="Design" style="font-size: 25px;">
+                                        03
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay="1.2s">
-                                    <span title="Design Presentation">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-person-chalkboard"></i>
+                                    <span title="Design Presentation" style="font-size: 25px;">
+                                        04
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay="1.6s">
-                                    <span title="Installation">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-person-digging"></i>
+                                    <span title="Installation" style="font-size: 25px;">
+                                       05
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
@@ -151,26 +151,26 @@
                         <div class="de_tab tab_steps tab_6">
                             <ul class="de_nav text-dark">
                                 <li class="active wow fadeIn" data-wow-delay="0s">
-                                    <span title="Contact Us">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-phone"></i>
+                                    <span title="Contact Us" style="font-size: 25px;">
+                                        01
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".4s">
-                                    <span title="Consultation">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-sticky-note"></i>
+                                    <span title="Consultation" style="font-size: 25px;">
+                                        02
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".8s">
-                                    <span title="Contract Signing">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-file-signature"></i>
+                                    <span title="Contract Signing" style="font-size: 25px;">
+                                        03
                                     </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay="1.2s">
-                                    <span title="Maintenance Service ">
-                                        <i style="font-size: 33px; line-height: unset;" class="fa fa-people-carry-box"></i>
+                                    <span title="Maintenance Service " style="font-size: 25px;">
+                                        04
                                     </span>
                                     <div class="v-border"></div>
                                 </li>

@@ -74,32 +74,32 @@
                         <div class="de_tab tab_steps tab_6">
                             <ul class="de_nav">
                                 <li class="active wow fadeIn" data-wow-delay="0s">
-                                <span title="Contact Us">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-phone"></i>
+                                <span title="Contact Us" style="font-size: 25px;">
+                                    01
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".4s">
-                                <span title="Consultation">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-sticky-note"></i>
+                                <span title="Consultation" style="font-size: 25px;">
+                                    02
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".8s">
-                                <span title="Design">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-pen-nib"></i>
+                                <span title="Design" style="font-size: 25px;">
+                                    03
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay="1.2s">
-                                <span title="Design Presentation">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-person-chalkboard"></i>
+                                <span title="Design Presentation" style="font-size: 25px;">
+                                    04
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay="1.6s">
-                                <span title="Installation">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-person-digging"></i>
+                                <span title="Installation" style="font-size: 25px;">
+                                   05
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
@@ -150,26 +150,26 @@
                         <div class="de_tab tab_steps tab_6">
                             <ul class="de_nav text-dark">
                                 <li class="active wow fadeIn" data-wow-delay="0s">
-                                <span title="Contact Us">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-phone"></i>
+                                <span title="Contact Us" style="font-size: 25px;">
+                                    01
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".4s">
-                                <span title="Consultation">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-sticky-note"></i>
+                                <span title="Consultation" style="font-size: 25px;">
+                                    02
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay=".8s">
-                                <span title="Contract Signing">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-file-signature"></i>
+                                <span title="Contract Signing" style="font-size: 25px;">
+                                    03
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
                                 <li class="wow fadeIn" data-wow-delay="1.2s">
-                                <span title="Maintenance Service ">
-                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-people-carry-box"></i>
+                                <span title="Maintenance Service " style="font-size: 25px;">
+                                    04
                                 </span>
                                     <div class="v-border"></div>
                                 </li>
@@ -201,6 +201,159 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="section-portfolio" class="no-top no-bottom" aria-label="section-portfolio">
+                <div class="container">
+                    <div class="spacer-single"></div>
+                    <!-- portfolio filter begin -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <ul id="filters" class="wow fadeInUp" data-wow-delay="0s">
+                                <li><a href="javascript:" data-filter="*" class="selected">All Services</a></li>
+                                <li><a href="javascript:" data-filter=".project-type-landscape">Landscaping Install & Design Services</a></li>
+                                <li><a href="javascript:" data-filter=".project-type-maintenance">Maintenance Service </a></li>
+                                <li><a href="javascript:" data-filter=".project-type-turf">Turf Care  </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- portfolio filter close -->
+                    <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
+                        <!-- gallery item -->
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/hardscapes.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Hardscape and Retaining Wall</span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/hardscapes.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/sawd-installation.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Sod Installation</span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/sawd-installation.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/outdoor living 2.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Outdoor Living</span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/outdoor living 2.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/grading.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Grading</span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/grading.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/softscape.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Softscape</span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/softscape.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/lighting.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Lighting and Irrigation </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/lighting.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-landscape" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/design.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Design Services  </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/design.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-maintenance" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/pruning.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Weekly Full Service   </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/pruning.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-maintenance" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/fertilizer.png') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Weed Control </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/fertilizer.png') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-maintenance" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/seasonal flower.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Seasonal Flower Displays </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/seasonal flower.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="item project-type-maintenance" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/mowing.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">General Lawn/Property Clean-up  </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/mowing.jpg') }}" alt="" />
+                            </div>
+                        </div>
+                        <!-- close gallery item -->
+                    </div>
+                </div>
         </section>
         @include('front.navigation.footer')
     </div>
