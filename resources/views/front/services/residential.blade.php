@@ -6,7 +6,7 @@
     <div id="wrapper">
         @include('front.navigation.header', ['active' => 'residential', 'auto_show' => false])
         <!-- subheader -->
-            <section id="subheader" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(43,31,21,0.4)), url('{{ url('img/leaves.jpeg') }}') bottom fixed" data-type="background">
+            <section id="subheader" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(43,31,21,0.4)), url('{{ url('img/leaves.jpeg') }}') bottom no-repeat" data-type="background">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -62,73 +62,73 @@
             </div>
         </section>
         <!-- section close -->
-
-        <!-- section begin -->
-        <section id="section-steps" class="text-light">
+        <section data-bgcolor="#202124" class="text-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                        <h1>Our Process</h1>
+                        <h1> Process: Landscaping Install & Design Services</h1>
                         <div class="separator"><span><i class="fa fa-circle"></i></span></div>
                         <div class="spacer-single"></div>
                     </div>
                     <div class="col-md-12">
-                        <div class="de_tab tab_steps">
+                        <div class="de_tab tab_steps tab_6">
                             <ul class="de_nav">
-                                <li class="active wow fadeIn" data-wow-delay="0s"><span>Meet &amp; Agree</span>
+                                <li class="active wow fadeIn" data-wow-delay="0s">
+                                <span title="Contact Us">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-phone"></i>
+                                </span>
                                     <div class="v-border"></div>
                                 </li>
-                                <li class="wow fadeIn" data-wow-delay=".4s"><span>Idea &amp; Concept</span>
+                                <li class="wow fadeIn" data-wow-delay=".4s">
+                                <span title="Consultation">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-sticky-note"></i>
+                                </span>
                                     <div class="v-border"></div>
                                 </li>
-                                <li class="wow fadeIn" data-wow-delay=".8s"><span>Design &amp; Create</span>
+                                <li class="wow fadeIn" data-wow-delay=".8s">
+                                <span title="Design">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-pen-nib"></i>
+                                </span>
                                     <div class="v-border"></div>
                                 </li>
-                                <li class="wow fadeIn" data-wow-delay="1.2s"><span>Build &amp; Install</span>
+                                <li class="wow fadeIn" data-wow-delay="1.2s">
+                                <span title="Design Presentation">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-person-chalkboard"></i>
+                                </span>
+                                    <div class="v-border"></div>
+                                </li>
+                                <li class="wow fadeIn" data-wow-delay="1.6s">
+                                <span title="Installation">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-person-digging"></i>
+                                </span>
                                     <div class="v-border"></div>
                                 </li>
                             </ul>
 
                             <div class="de_tab_content">
-
                                 <div id="tab1">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                    ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                    explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-                                    aliquam quaerat voluptatem. Ut enim ad minima veniam.
+                                    <center style="font-weight: bold"><h3>Contact Us</h3></center>
+                                    Your project starts with a phone call. We will have an initial discussion about your upcoming project and listen to your needs, requirements, and budget for your installation project.
                                 </div>
 
                                 <div id="tab2">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                    ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                    explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-                                    aliquam quaerat voluptatem. Ut enim ad minima veniam.
+                                    <center style="font-weight: bold"><h3>Consultation</h3></center>
+                                    Upon receiving your request for a landscape project, our receptionist will book you a Zoom appointment with our knowledgeable salesperson to help you with your project. Brief us of your ideas and your vision to make sure that both parties are aligned. It is crucial that you provide us with all the details you need to ensure that we meet your expectations.
                                 </div>
 
                                 <div id="tab3">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                    ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                    explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-                                    aliquam quaerat voluptatem. Ut enim ad minima veniam.
+                                    <center style="font-weight: bold"><h3>Design</h3></center>
+                                    We have expert landscape architects who have been working in the landscaping industry for more than 20 years. After your consultation, we will then turn you over to our landscape architect. He will then visit your property on your set date for the appointment. He will have a site walk on your property and will sketch out the design shortly after. To set expectations, please wait for a week or two weeks at the most to get your design. We make sure that the design we will be giving you is at par with your vision.
                                 </div>
 
                                 <div id="tab4">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                    ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                    explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-                                    aliquam quaerat voluptatem. Ut enim ad minima veniam.
+                                    <center style="font-weight: bold"><h3>Design Presentation</h3></center>
+                                    Our design presentation comprises two things: your design and the projected cost for your project. This is also done via Zoom meeting. Should there be a need to revise the quote presented, we are very much happy to adjust for your needs. If you’re satisfied with the quote, we can send you a contract to seal the deal!
+                                </div>
+
+                                <div id="tab5">
+                                    <center style="font-weight: bold"><h3>Installation</h3></center>
+                                    Should you sign-up for our services after the presentation, the scheduling and purchasing of materials will be done as soon as possible. We do this to make sure we have the right materials you want for your landscape project. Construction can be done for a minimum of one week or more depending on the complexity of your project. After our installation, you get to relax and enjoy your new outdoor space.
                                 </div>
 
                             </div>
@@ -138,8 +138,70 @@
                 </div>
             </div>
         </section>
-        <!-- section close -->
+        <section data-bgcolor="#383838" class="text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
+                        <h1> Process: Maintenance & Turf Care</h1>
+                        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+                        <div class="spacer-single"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="de_tab tab_steps tab_6">
+                            <ul class="de_nav text-dark">
+                                <li class="active wow fadeIn" data-wow-delay="0s">
+                                <span title="Contact Us">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-phone"></i>
+                                </span>
+                                    <div class="v-border"></div>
+                                </li>
+                                <li class="wow fadeIn" data-wow-delay=".4s">
+                                <span title="Consultation">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-sticky-note"></i>
+                                </span>
+                                    <div class="v-border"></div>
+                                </li>
+                                <li class="wow fadeIn" data-wow-delay=".8s">
+                                <span title="Contract Signing">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-file-signature"></i>
+                                </span>
+                                    <div class="v-border"></div>
+                                </li>
+                                <li class="wow fadeIn" data-wow-delay="1.2s">
+                                <span title="Maintenance Service ">
+                                    <i style="font-size: 33px; line-height: unset;" class="fa fa-people-carry-box"></i>
+                                </span>
+                                    <div class="v-border"></div>
+                                </li>
+                            </ul>
 
+                            <div class="de_tab_content">
+                                <div id="tab1">
+                                    <center style="font-weight: bold"><h3>Contact Us</h3></center>
+                                    Your maintenance service starts with a phone call. Let us know of the service that you need. Our maintenance includes: mowing, edging, and blowing. Bed maintenance is also included by spraying and hand weeding when necessary. Complete leaf removal from all turf areas and ornamental beds is also included. However, the most important service included in the maintenance program is hand pruning of your ornamental shrubs
+                                </div>
+
+                                <div id="tab2">
+                                    <center style="font-weight: bold"><h3>Consultation</h3></center>
+                                    We will schedule an in-person consultation with one of our salesperson. They will have to check your yard, this is to help us prepare your quotation
+                                </div>
+
+                                <div id="tab3">
+                                    <center style="font-weight: bold"><h3>Contract Signing </h3></center>
+                                    Once you have agreed and signed the quotation estimate that has been sent to your email address, we’ll add your information to our calendar.  </div>
+
+                                <div id="tab4">
+                                    <center style="font-weight: bold"><h3>Maintenance Service </h3></center>
+                                    Your maintenance service will begin on the next cycle of routes. This information will be given to you beforehand. You will also receive receipts as a confirmation that we have visited your yard for maintenance.
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         @include('front.navigation.footer')
     </div>
 @endsection
