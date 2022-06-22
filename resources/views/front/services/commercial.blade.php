@@ -67,7 +67,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                        <h1> Process: Landscaping Install & Design Services</h1>
+                        <h1 style="width:max-content"> Landscaping Install & Design Servicess Process</h1>
                         <div class="separator"><span><i class="fa fa-circle"></i></span></div>
                         <div class="spacer-single"></div>
                     </div>
@@ -143,7 +143,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                        <h1> Process: Maintenance & Turf Care</h1>
+                        <h1 style="width: max-content"> Maintenance & Turf Care Services Process</h1>
                         <div class="separator"><span><i class="fa fa-circle"></i></span></div>
                         <div class="spacer-single"></div>
                     </div>
