@@ -72,7 +72,7 @@
                                     <div class="padding40 overlay60">
                                         <h3>{{ $oService->title }}</h3>
                                         <p>{{ $oService->description }}</p>
-                                        <a href="{{ $oService->url }}" class="btn-line-white btn-fullwidth">Read More</a>
+{{--                                        <a href="{{ $oService->url }}" class="btn-line-white btn-fullwidth">Read More</a>--}}
                                     </div>
                                 </div>
                             </div>
