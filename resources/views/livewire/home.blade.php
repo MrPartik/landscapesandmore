@@ -66,7 +66,7 @@
                         editable: false,
                         doubleClickZoom: false,
                         scrollWheelZoom: false,
-                    }).setView([33.718325, -83.444534], 9);
+                    }).setView([33.718325, -84.344534], 10);
                     let oDrawnItems = L.geoJson();
                     L.gridLayer.googleMutant({
                         maxZoom: 24,
