@@ -37,7 +37,6 @@ trait Services
 
     public function saveService()
     {
-
         $this->validate($this->aServiceRule);
         $mFilePath = $this->pictureOfService;
         if (is_object($mFilePath)) {
@@ -65,7 +64,7 @@ trait Services
         $this->serviceTitle = $oServiceModel->title;
         $this->serviceDescription = $oServiceModel->description;
         $this->pictureOfService = $oServiceModel->image;
-        $this->serviceType = $oServiceModel->serviceType;
+        $this->serviceType = $oServiceModel->type;
         $this->serviceRedirectUrl = $oServiceModel->url;
         $this->iServicesId = $iId;
         $this->emit('refreshDatatable');
