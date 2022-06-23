@@ -18,6 +18,7 @@ class Services extends Model
         'description',
         'image',
         'url',
+        'type',
         'created_at',
         'updated_at',
     ];

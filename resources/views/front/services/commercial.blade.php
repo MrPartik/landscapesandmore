@@ -22,6 +22,14 @@
             </section>
         <!-- subheader close -->
         <!-- section begin -->
+        <style>
+            a.btn.btn-line:hover {
+                color: black;
+            }
+            a.btn.btn-line {
+                border-color: black;
+            }
+        </style>
         <section id="section-about">
             <div class="container">
                 <div class="row">
@@ -30,35 +38,19 @@
                         <div class="separator"><span><i class="fa fa-circle"></i></span></div>
                         <div class="spacer-single"></div>
                     </div>
-
-
-                    <div class="col-md-4 wow fadeInLeft">
-                        <a class="image-popup-no-margins" href="{{ url('img/services/commercial/install.jpg') }}">
-                            <img src="{{ url('img/services/commercial/install.jpg') }}" class="img-responsive" alt="">
-                        </a>
-                        <div class="spacer-single"></div>
-                        <h3><span class="id-color">Landscaping Install & </span> Design Services</h3>
-                        Let our local professional landscapers make your business inviting, unique and beautiful. Commercial landscaping gives you the opportunity to personalize the outside of your business to reflect your taste. More so, clients consider businesses that have beautiful landscaping to be more detail-oriented than those who don’t. Your landscaping is one of the ways you present your Atlanta business to the world — let us help you make it stunning, functional, and unique.
-                    </div>
-
-                    <div class="col-md-4 wow fadeInUp" data-wow-delay=".2s">
-                        <a class="image-popup-no-margins" href="{{ url('img/services/commercial/maintenance.jpg') }}">
-                            <img src="{{ url('img/services/commercial/maintenance.jpg') }}" class="img-responsive" alt="">
-                        </a>
-                        <div class="spacer-single"></div>
-                        <h3><span class="id-color">Maintenance </span> Services</h3>
-                        Along with the initial design and installation, we’re also happy to provide monthly or seasonal maintenance services such as weeding, mowing, trimming, pruning, and plant replacement. We’re a full-service landscape company, which means we don’t stop caring for your landscape after we finish planting!
-                    </div>
-
-                    <div class="col-md-4 wow fadeInRight">
-                        <a class="image-popup-no-margins" href="{{ url('img/services/commercial/turf care.jpg') }}">
-                            <img src="{{ url('img/services/commercial/turf care.jpg') }}" class="img-responsive" alt="">
-                        </a>
-                        <div class="spacer-single"></div>
-                        <h3><span class="id-color">Turf Care</span> Services </h3>
-                        Michaelangelo's understands that the success of any commercial property begins with a first impression, and that’s why we believe commercial landscape services are an investment. Our team of lawn care specialists provide exceptional services at a reasonable price, and our on-staff horticulturist ensures proper irrigation repairs and services of lawns and plantings, as well as appropriate fertilization, weed control, aeration, thicker and lusher turf.
-                    </div>
-
+                    @foreach(\App\Models\Services::all()->where('type', 'commercial') as $oService)
+                        <div class="col-md-4 wow fadeInLeft">
+                            <a class="image-popup-no-margins" href="{{ url($oService->image) }}">
+                                <img src="{{ url($oService->image) }}" class="img-responsive" alt="">
+                            </a>
+                            <div class="spacer-single"></div>
+                            <h3><span class="id-color">{{ $oService->title }}</h3>
+                            {{ $oService->description }}
+                            <br/>
+                            <br/>
+                            <a type="button" href="{{ url($oService->url) }}" class="btn btn-line">Read more </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>

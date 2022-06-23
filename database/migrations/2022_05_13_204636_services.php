@@ -17,6 +17,7 @@ class Services extends Migration
             $oTable->bigIncrements('services_id');
             $oTable->string('title', 300);
             $oTable->text('description');
+            $oTable->string('type', 50)->default('commercial');
             $oTable->string('image', 300);
             $oTable->string('url', 300);
             $oTable->timestamps();

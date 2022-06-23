@@ -146,6 +146,16 @@
                                             </div>
                                             <div class="mb-2">
                                                 <label class="col-form-label" for="description">
+                                                    Type
+                                                </label>
+                                                <select id=select_service_type wire:model.lazy="serviceType"  type="text" class="form-control" placeholder="{{ __('Service Type') }}">
+                                                    <option selected disabled value=""> Select Service Type </option>
+                                                    <option value="commercial"> Commercial Landscaping Service</option>
+                                                    <option value="residential"> Residential Landscaping Service </option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-2">
+                                                <label class="col-form-label" for="description">
                                                     Description
                                                 </label>
                                                 <textarea rows="5" id="description" wire:model="serviceDescription"  type="text" class="form-control" placeholder="{{ __('Description') }}"> </textarea>

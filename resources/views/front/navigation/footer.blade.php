@@ -24,7 +24,7 @@
                 <div class="widget widget_recent_post">
                     <h3>Our Services</h3>
                     <ul>
-                        @foreach(\App\Models\Services::all() as $oService)
+                        @foreach(\App\Models\Services::all()->where('type', 'commercial') as $oService)
                             <li><a target="_blank" href="{{ $oService->url }}">{{ $oService->title }}</a></li>
                         @endforeach
                     </ul>

@@ -32,6 +32,11 @@ class Services extends DataTableComponent
                 ->sortable(),
             Column::make("Description", "description")
                 ->sortable(),
+            Column::make("Type", "type")
+                ->format(function ($mValue, $oRow, $oColumn)  {
+                    return ucwords($mValue);
+                })
+                ->sortable(),
             Column::make("Redirect Url", "url")
                 ->sortable(),
             Column::make("Updated at", "updated_at")
