@@ -17,7 +17,7 @@
                         <div style="text-align-last: center">
                             <h2><strong>Landscape and Design Project</strong></h2>
                             <p>
-                                To check the status of your existing application, please enter the email address you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us Form</a>.
+                                To check the status of your existing application, <strong>please enter the email address</strong> you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us Form</a>.
                             </p>
                         </div>
                         <div class="col-md-12 mx-0">
@@ -229,7 +229,7 @@
                         <div style="text-align-last: center">
                             <h2><strong>Maintenance and Turf Care</strong></h2>
                             <p>
-                                To check the status of your existing application, please enter the email address you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us form</a>.
+                                To check the status of your existing application, <strong>please enter the email address</strong> you used to create and verify your application. If you want to start your process with Michaelangelo's, submit your inquiry to our <a href="/contact-us">Contact Us form</a>.
                             </p>
                         </div>
                         <div class="col-md-12 mx-0">

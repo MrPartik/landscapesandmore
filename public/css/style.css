@@ -10657,3 +10657,7 @@ body {
 .de_tab.tab_steps .de_tab_content {
     font-size: 20px;
 }
+
+.progress-steps p {
+    font-size: 20px;
+}
