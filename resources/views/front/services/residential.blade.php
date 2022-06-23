@@ -22,6 +22,14 @@
             </section>
         <!-- subheader close -->
         <!-- section begin -->
+            <style>
+                a.btn.btn-line:hover {
+                    color: black;
+                }
+                a.btn.btn-line {
+                    border-color: black;
+                }
+            </style>
         <section id="section-about">
             <div class="container">
                 <div class="row">
