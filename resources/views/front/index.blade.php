@@ -33,23 +33,6 @@
                 </div>
             </section>
             <!-- parallax section close -->
-
-{{--            <div id="info-box" class="no-padding mt-90 absolute z-index500 text-light">--}}
-{{--                <div class="container">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-12">--}}
-{{--                            <div class="overlay10">--}}
-{{--                                <div class="row padding40 center">--}}
-{{--                                    <marquee style="font-size: 20px">This text will scroll from right to left</marquee>--}}
-{{--                                    <div class="clearfix"></div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            --}}
             <section id="section-text" class="no-bottom">
                 <div class="container">
                     <div class="row align-items-center">

@@ -24,9 +24,9 @@
                 <div class="widget widget_recent_post">
                     <h3>Our Services</h3>
                     <ul>
-                        <li><a href="javascript:">Install Landscape and Design</a></li>
-                        <li><a href="javascript:">Maintenance Services</a></li>
-                        <li><a href="javascript:">Turf Care Services</a></li>
+                        @foreach(\App\Models\Services::all() as $oService)
+                            <li><a target="_blank" href="{{ $oService->url }}">{{ $oService->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
