@@ -66,11 +66,11 @@
                         editable: false,
                         doubleClickZoom: false,
                         scrollWheelZoom: false,
-                    }).setView([33.718325, -84.344534], 11);
+                    }).setView([33.88, -84.344534], 10);
                     let oDrawnItems = L.geoJson();
                     L.gridLayer.googleMutant({
                         maxZoom: 24,
-                        type: 'hybrid'
+                        type: 'roadmap',
                     }).addTo(oMap);
                     L.geoJson(oGeorgia, {
                         style: {
