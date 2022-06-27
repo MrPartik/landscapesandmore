@@ -26,7 +26,7 @@
                 <!-- logo begin -->
                 <div id="logo">
                     <a href="{{ url('/') }}">
-                        <img class="logo" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" alt="">
+                        <img class="logo" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" alt="{{ env('APP_NAME') }}">
                     </a>
                 </div>
                 <!-- logo close -->

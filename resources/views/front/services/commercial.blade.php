@@ -222,7 +222,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/hardscapes.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/hardscapes.jpg') }}" alt="Hardscape and Retaining Wall" />
                         </div>
                     </div>
                     <div class="item project-type-landscape" style="width: 250px;">
@@ -234,7 +234,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/sawd-installation.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/sawd-installation.jpg') }}" alt="Sod Installation" />
                         </div>
                     </div>
                     <div class="item project-type-landscape" style="width: 250px;">
@@ -246,7 +246,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/outdoor living 2.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/outdoor living 2.jpg') }}" alt="Outdoor Living" />
                         </div>
                     </div>
                     <div class="item project-type-landscape" style="width: 250px;">
@@ -258,7 +258,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/grading.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/grading.jpg') }}" alt="Grading" />
                         </div>
                     </div>
                     <div class="item project-type-landscape" style="width: 250px;">
@@ -270,7 +270,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/softscape.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/softscape.jpg') }}" alt="Softscape" />
                         </div>
                     </div>
                     <div class="item project-type-landscape" style="width: 250px;">
@@ -282,7 +282,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/lighting.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/lighting.jpg') }}" alt="Lighting and Irrigation" />
                         </div>
                     </div>
                     <div class="item project-type-landscape" style="width: 250px;">
@@ -294,7 +294,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/design.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/design.jpg') }}" alt="Design Services" />
                         </div>
                     </div>
                     <div class="item project-type-maintenance" style="width: 250px;">
@@ -306,7 +306,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/pruning.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/pruning.jpg') }}" alt="Weekly Full Service" />
                         </div>
                     </div>
                     <div class="item project-type-maintenance" style="width: 250px;">
@@ -318,7 +318,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/fertilizer.png') }}" alt="" />
+                            <img src="{{ url('/img/services/fertilizer.png') }}" alt="Weed Control" />
                         </div>
                     </div>
                     <div class="item project-type-maintenance" style="width: 250px;">
@@ -330,7 +330,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/seasonal flower.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/seasonal flower.jpg') }}" alt="Seasonal Flower Displays" />
                         </div>
                     </div>
                     <div class="item project-type-maintenance" style="width: 250px;">
@@ -342,7 +342,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <img src="{{ url('/img/services/mowing.jpg') }}" alt="" />
+                            <img src="{{ url('/img/services/mowing.jpg') }}" alt="General Lawn/Property Clean-up" />
                         </div>
                     </div>
                     <!-- close gallery item -->

@@ -41,7 +41,7 @@
     <htmlpageheader name="page-header">
         <!-- logo begin -->
         <div id="logo" style="text-align: center;">
-            <img style="width: 200px; margin-bottom: 10px" class="logo" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png')  }}" alt="">  <br/> <h1> Michaelangelo's Sustainable Landscape & Design Group</h1>
+            <img style="width: 200px; margin-bottom: 10px" class="logo" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png')  }}" alt="{{ env('APP_NAME') }}">  <br/> <h1> Michaelangelo's Sustainable Landscape & Design Group</h1>
         </div>
         <hr/>
     </htmlpageheader>

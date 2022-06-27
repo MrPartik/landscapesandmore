@@ -49,7 +49,7 @@
             <div class="row align-items-middle">
                 <div class="col-md-3">
                     <a href="{{ url('/') }}">
-                        <img class="logo" src="{{ url(env('LOGO_LIGHT_URL') ?? '/img/logo/logo-wide-white.png') }}" alt="">
+                        <img class="logo" src="{{ url(env('LOGO_LIGHT_URL') ?? '/img/logo/logo-wide-white.png') }}" alt="{{ env('APP_NAME') }}">
                     </a>
                 </div>
 

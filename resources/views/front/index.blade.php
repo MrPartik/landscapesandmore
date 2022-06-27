@@ -51,7 +51,7 @@
 												</a>
 											</span>
 										</span>
-                                    <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                    <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_video_after_counter')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="Homepage Video">
                                 </figure>
                             </div>
                     </div>
@@ -113,11 +113,11 @@
 												</a>
 											</span>
 										</span>
-                                <img src="{{ url((strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                <img src="{{ url((strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="Project Tracker">
                             </figure>
                             @else
                                 <a class="image-popup-no-margins" href="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}">
-                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="">
+                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['landscape']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="Project Tracker">
                                 </a>
                             @endif
                             <div class="spacer-half"></div>
@@ -135,11 +135,11 @@
 												</a>
 											</span>
 										</span>
-                                <img src="{{ url((strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] ?? '') > 0) ? @\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                <img src="{{ url((strlen(@\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] ?? '') > 0) ? @\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="Project Tracker Thumbnail">
                             </figure>
                             @else
                                 <a class="image-popup-no-margins" href="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}">
-                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="">
+                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_project_tracker')['turf']['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="Project Tracker Thumbnail">
                                 </a>
                             @endif
                             <div class="spacer-half"></div>
@@ -170,11 +170,11 @@
 												</a>
 											</span>
 										</span>
-                                    <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="">
+                                    <img src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-fullwidth" alt="Project Tracker Thumbnail">
                                 </figure>
                             @else
                                 <a class="image-popup-no-margins" href="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}">
-                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="">
+                                    <img style="min-height: 250px; object-fit: cover;" src="{{ url((strlen(\App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] ?? '') > 0) ? \App\Library\Utilities::getDataInJson('homepage_our_process')['video_thumbnail_url'] : 'images/background/bg-9.jpg') }}" class="img-responsive" alt="Project Tracker Thumbnail">
                                 </a>
                             @endif
                         </div>
@@ -256,7 +256,7 @@
         $(document).ready(function() {
             if (localStorage.getItem('dontshowagain') == 'false' || localStorage.getItem('dontshowagain') == null || localStorage.getItem('dontshowagain') == 'null') {
                 Swal.fire({
-                    html: '<img style="width:100%" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" /> ' +
+                    html: '<img alt="{{ env('APP_NAME') }}" style="width:100%" src="{{ url(env('LOGO_DARK_URL') ?? '/img/logo/logo-wide-green.png') }}" /> ' +
                         '<br/><center style="font-weight: bolder;font-size: 15px;margin-top: 12px;"><label for=dontshowagain> <input id="dontshowagain" type=checkbox /> Don\'t show again? </label></center>',
                     showCancelButton: false,
                     showConfirmButton: false,
