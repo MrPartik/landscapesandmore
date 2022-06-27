@@ -33,7 +33,7 @@
 												</a>
 											</span>
 										</span>
-                            <img src="{{ url($aProject['thumbnail_url'] ) }}" class="img-fullwidth" alt="">
+                            <img src="{{ url($aProject['thumbnail_url'] ) }}" class="img-fullwidth" alt="{{ $aProject['description'] }}">
                         </figure>
                     </div>
                 @else
@@ -47,7 +47,7 @@
                                         </span>
                                     </span>
                         </a>
-                        <img src="{{ url($aProject['url']) }}" alt="" />
+                        <img src="{{ url($aProject['url']) }}" alt="{{ $aProject['description'] }}" />
                     </div>
                 </div>
                 <!-- close gallery item -->
