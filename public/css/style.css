@@ -10809,7 +10809,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-color-1);
+    background-color: #11b555d1;
 }
 .service-container-:hover > .show-service-hovering {
     visibility: visible;
