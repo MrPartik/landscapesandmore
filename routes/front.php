@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front.index');
 });
-Route::get('/process', function () {
+Route::get('/project-tracker', function () {
     return view('front.process');
 });
 Route::get('/portfolio', function () {

@@ -10696,6 +10696,7 @@ body {
     border-radius: 50%;
     opacity: 1;
     animation: wheel 2s infinite;
+    animation: wheel 2s infinite;
     -webkit-animation: wheel 2s infinite;
 }
 
@@ -10797,4 +10798,20 @@ body {
     60% {
         height: 40px;
     }
+}
+.service-container- {
+    cursor: pointer;
+}
+.show-service-hovering {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color-1);
+}
+.service-container-:hover > .show-service-hovering {
+    visibility: visible;
+    opacity: 1;
 }

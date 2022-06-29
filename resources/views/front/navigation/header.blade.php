@@ -46,7 +46,7 @@
                             </ul>
                         </li>
                         <li><a href="{{ url('/') }}#our-process" onclick='document.location.href = "{{ url('/') }}#our-process"'>Process<span></span></a></li>
-                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/process') }}">Project Tracker<span></span></a></li>
+                        <li><a class="{{ $active === 'process' ? 'active' : '' }}" href="{{ url('/project-tracker') }}">Project Tracker<span></span></a></li>
                         <li><a class="{{ in_array($active, ['contact-us', 'warranty', 'careers']) === true ? 'active' : '' }}" href="javascript:;">Contact Us<span></span></a>
                             <ul>
                                 <li><a href="{{ url('/contact-us') }}">Contact Us</a> </li>

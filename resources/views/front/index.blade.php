@@ -66,8 +66,24 @@
                             <div class="separator no-bottom"><span><i class="fa fa-circle"></i></span></div>
                             <div class="spacer-single"></div>
                         </div>
+                        <style>
+                            a.btn.btn-line:hover {
+                                color: black;
+                            }
+                            a.btn.btn-line {
+                                border-color: black;
+                            }
+                        </style>
                         @foreach(\App\Models\Services::all()->where('type', 'commercial') as $oService)
-                            <div class="col-lg-4 no-top text-middle text-light wow fadeInRight" data-wow-delay="0">
+                            <div class="service-container- col-lg-4 no-top text-middle text-light wow fadeInRight" data-wow-delay="0">
+                                <div class="row align-items-center show-service-hovering">
+                                    <p id='submit' class="mt20" style="text-align-last: center;">
+                                        <a type="button" href="{{ url('service/commercial-landscaping') }}" class="btn btn-line">Commercial Landscaping Service</a>
+                                        <br/>
+                                        <br/>
+                                        <a type="button" href="{{ url('service/residential-landscaping') }}" class="btn btn-line">Residential Landscaping Service</a>
+                                    </p>
+                                </div>
                                 <div class="shadow-soft" data-bgimage="url({{ url($oService->image) }})">
                                     <div class="padding40 overlay60">
                                         <h3>{{ $oService->title }}</h3>
@@ -77,20 +93,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        <style>
-                            a.btn.btn-line:hover {
-                                color: black;
-                            }
-                            a.btn.btn-line {
-                                border-color: black;
-                            }
-                        </style>
-                        <div class="row align-items-center">
-                            <p id='submit' class="mt20" style="text-align-last: center;">
-                                <a type="button" href="{{ url('service/commercial-landscaping') }}" class="btn btn-line">Commercial Landscaping Service</a>
-                                <a type="button" href="{{ url('service/residential-landscaping') }}" class="btn btn-line">Residential Landscaping Service</a>
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
