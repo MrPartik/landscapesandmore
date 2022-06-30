@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\Projects as ProjectsModel;
 use App\Models\ProjectTypes as ProjectTypesModel;
 
-class Rendered3D extends Component
+class RenderedThreeD extends Component
 {
     /**
      * Project Types
@@ -34,7 +34,7 @@ class Rendered3D extends Component
     {
         $this->aProjectTypes = $this->initProjectTypes();
         $this->aProjects = $this->initProjects();
-        return view('livewire.rendered3d');
+        return view('livewire.rendered-three-d');
     }
 
     /**

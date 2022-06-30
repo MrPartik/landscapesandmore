@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </section>
-        @livewire('rendered3d')
+        @livewire('rendered-three-d')
         <!-- subheader close -->
         @include('front.navigation.footer')
     </div>

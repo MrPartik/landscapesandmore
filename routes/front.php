@@ -23,7 +23,7 @@ Route::get('/project-tracker', function () {
 //    return view('front.projects');
 //});
 Route::get('portfolio/3d-video', function () {
-    return view('front.rendered3d');
+    return view('front.rendered-three-d');
 });
 
 Route::prefix('blog')->group(function() {
