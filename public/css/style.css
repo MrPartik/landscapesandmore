@@ -10813,4 +10813,5 @@ body {
 .service-container-:hover > .show-service-hovering {
     visibility: visible;
     opacity: 1;
+    width: 100%;
 }
