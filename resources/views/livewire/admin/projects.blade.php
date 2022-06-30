@@ -211,7 +211,8 @@
                             <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
                         @endforeach
                     </select>
-                </div><div class="mb-3">
+                </div>
+                <div class="mb-3">
                     <label class="col-form-label" for="project_type">
                         Media Type
                     </label>
@@ -219,7 +220,6 @@
                         <option selected value="image"> Upload Image </option>
                         <option value="image-external"> External Image </option>
                         <option value="video-external"> External Video </option>
-
                     </select>
                 </div>
                 @if($mediaType === 'image')

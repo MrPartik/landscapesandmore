@@ -23,6 +23,7 @@ class Themes extends Component
     public $uploadDarkLogo = '';
     public $bannerDescription = 'Install Landscape and Design, Maintenance Services, Turf Care Services';
     public $bannerImage = '';
+    public $bannerMediaType = 'image';
     public $sCurrentTab = 'announcement';
     public $ourProcessVideoUrl = '';
     public $ourProcessDescription = '';
@@ -43,6 +44,8 @@ class Themes extends Component
     public function __construct($id = null)
     {
         $this->bannerDescription = env('BANNER_DESCRIPTION', $this->bannerDescription);
+        $this->bannerMediaType = env('BANNER_MEDIA_TYPE', $this->bannerMediaType);
+        $this->bannerImage = env('BANNER_IMAGE_URL', $this->bannerImage);
         $this->initOurProcessData();
         $this->initVideoAfterCounterTheme();
         $this->initProjectTrackerData();
@@ -223,11 +226,14 @@ class Themes extends Component
 
     public function saveBanner(string $sType)
     {
-        if ($sType === 'image') {
-            $this->validate(['bannerImage' => 'required|image']);
-            $mFilePath = $this->bannerImage->storeAs('public', 'banner/banner-' . $sType . '.' . $this->bannerImage->getClientOriginalExtension());
-            $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
+        if ($sType === 'media') {
+            $mFilePath = $this->bannerImage;
+            if($this->bannerMediaType === 'image' && is_object($mFilePath)) {
+                $mFilePath = $this->bannerImage->storeAs('public', 'banner/banner-' . $this->bannerMediaType . '.' . $this->bannerImage->getClientOriginalExtension());
+                $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
+            }
             Utilities::setEnv('BANNER_IMAGE_URL', $mFilePath);
+            Utilities::setEnv('BANNER_MEDIA_TYPE', $this->bannerMediaType);
             $this->redirect('/admin/themes');
             return true;
         }

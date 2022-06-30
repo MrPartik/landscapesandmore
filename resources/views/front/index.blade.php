@@ -19,19 +19,79 @@
         <!-- content begin -->
         <div id="content" class="no-bottom no-top">
             <!-- parallax section -->
-            <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url(env('BANNER_IMAGE_URL', 'img/landscapes/frontyard.png')) }}') center fixed" class="full-height" data-type="background">
-                <div class="center-y text-center">
-                    <div class="spacer-double"></div>
-                    <h1 class="text-white">Creating Masterpieces</h1>
-                    <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
-                        @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
-                            <div class="item">{{ $sDescription }}</div>
-                        @endforeach
+            @if(env('BANNER_MEDIA_TYPE', 'image') === 'video-external')
+                <section class="full-height no-padding" data-speed="5" data-type="background">
+                    <div class="de-video-container">
+                        <div class="de-video-content center-y text-center">
+                                <h1 class="text-white">Creating Masterpieces</h1>
+                                <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
+                                    @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
+                                        <div class="item">{{ $sDescription }}</div>
+                                    @endforeach
+                                </div>
+                                <div class="spacer-single"></div>
+                                <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
+                        </div>
+                        <div class="de-video-overlay"></div>
+                        <!-- load your video here -->
+                        <video autoplay="" loop="" muted="" poster="{{ url('/img/landscapes/zooming-house.jpg') }}">
+                            <source src="{{ env('BANNER_IMAGE_URL') }}" type="" />
+                        </video>
+
                     </div>
-                    <div class="spacer-single"></div>
-                    <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
-                </div>
-            </section>
+                    <a href="#section-text" class="scroll-to">
+                    <span class="mouse">
+						 <span class="scroll"></span>
+                    </span>
+                    </a>
+                </section>
+            @elseif(env('BANNER_MEDIA_TYPE', 'image') === 'video-youtube')
+                <section id="section-video-bg" class="full-height no-padding" data-speed="5" data-type="background">
+                    <div class="de-video-container">
+                        <div class="de-video-content center-y text-center">
+                            <h1 class="text-white">Creating Masterpieces</h1>
+                            <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
+                                @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
+                                    <div class="item">{{ $sDescription }}</div>
+                                @endforeach
+                            </div>
+                            <div class="spacer-single"></div>
+                            <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
+                        </div>
+                        <div class="de-video-overlay"></div>
+                        <!-- load your video here -->
+                        <div class="mk-video-mask"></div>
+
+                        <!-- Video Background - Here you need to replace the videoURL with your youtube video URL -->
+                        <a id="bgndVideo" class="player" data-property="{videoURL:'{{ env('BANNER_IMAGE_URL', 'Pn1zipY-sqk') }}',containment:'#section-video-bg',autoPlay:true, mute:false, startAt:5, opacity:1}">youtube</a>
+
+                        <a href="#section-text" class="scroll-to">
+                        <span class="mouse">
+                             <span class="scroll"></span>
+                        </span>
+                        </a>
+                    </div>
+                </section>
+            @else
+                <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url(env('BANNER_IMAGE_URL', 'img/landscapes/frontyard.png')) }}') center fixed" class="full-height" data-type="background">
+                    <div class="center-y text-center">
+                        <div class="spacer-double"></div>
+                        <h1 class="text-white">Creating Masterpieces</h1>
+                        <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
+                            @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
+                                <div class="item">{{ $sDescription }}</div>
+                            @endforeach
+                        </div>
+                        <div class="spacer-single"></div>
+                        <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
+                    </div>
+                    <a href="#section-text" class="scroll-to">
+                        <span class="mouse">
+                             <span class="scroll"></span>
+                        </span>
+                    </a>
+                </section>
+            @endif
             <!-- parallax section close -->
             <section id="section-text" class="no-bottom">
                 <div class="container">

@@ -1,6 +1,6 @@
 @extends('layouts.front', [
     'title' => '3D Video | ' . (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ),
-    'description' => 'Our design services are professionally done, we also offer 3D designs for your project. Check our existing and future projects.'
+    'description' => 'Landscaping is a very important part of your home. The more complex an area of land, the more landscaping it requires. If  you’re planning your outdoor living but did not know how to start, we’ve got everything that you need to create the perfect outdoor space for you and your family.'
     ])
 @section('body')
     <div id="wrapper">

@@ -65,7 +65,7 @@
             text-align-last: center;
         }
     </style>
-    <div class="loading-page" wire:loading.block wire:target="pictureOfService, rightVideoAfterCounterThumbnail, ourProcessVideoThumbnail, projectTrackerLandscapeThumbnail, projectTrackerTurfThumbnail, bannerImage, uploadSmallLogo, uploadDarkLogo, uploadLightLogo, saveAnnouncements, saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
+    <div class="loading-page" wire:loading.block wire:target="bannerMediaType, pictureOfService, rightVideoAfterCounterThumbnail, ourProcessVideoThumbnail, projectTrackerLandscapeThumbnail, projectTrackerTurfThumbnail, bannerImage, uploadSmallLogo, uploadDarkLogo, uploadLightLogo, saveAnnouncements, saveVideoAfterCounterTheme, saveProjectTracker, deleteService, setCurrentTab, uploadSmallLogo, uploadLightLogo, saveService, pictureOfService, saveLogo, deleteLogo, uploadDarkLogo, bannerImage, saveBanner">Loading&#8230;</div>
     <div class="col-12">
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
@@ -389,21 +389,40 @@
                                         <button wire:click="saveBanner('description')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
                                     </div>
                                     <div class="col-8"  >
-                                        <label class="font-weight-bold">Banner Image</label>
+                                        <label class="font-weight-bold">Banner</label>
                                         <br/>
-                                        <span>Change the homepage banner image</span>
+                                        <span>Change the homepage banner</span>
                                         <br/>
                                         <br/>
                                         <br/>
-                                        <img  class="mb-2" style="border-radius: 10px;border: 1px dashed; max-width: 100%;" src="{{ url((is_object($bannerImage) ? $bannerImage->temporaryUrl() : env('BANNER_IMAGE_URL', '/img/landscapes/frontyard.png'))) }}"/>
+                                        <label class="col-form-label" for="project_type">
+                                            Media Type
+                                        </label>
+                                        <select id=media_type wire:model.lazy="bannerMediaType"  type="text" class="form-control" placeholder="{{ __('Media Type') }}">
+                                            <option selected value="image"> Upload Image </option>
+                                            <option value="image-external"> External Image </option>
+                                            <option value="video-external"> External Video </option>
+                                            <option value="video-youtube"> Youtube Video </option>
+                                        </select>
                                         <br/>
-                                        <input id="uploadBannerImage" style="display: none" wire:model="bannerImage" type="file" accept="image/*"/>
-                                        <button onclick="$('#uploadBannerImage').click()" class="btn btn-primary text-white">
-                                            <span class="fa fa-file"> </span> Upload Image
-                                        </button>
-                                        <p>Max. file size: 10 MB.</p>
+                                        @if($bannerMediaType === 'image')
+                                            <img  class="mb-2" style="border-radius: 10px;border: 1px dashed; max-width: 100%;" src="{{ url((is_object($bannerImage) ? $bannerImage->temporaryUrl() : env('BANNER_IMAGE_URL', '/img/landscapes/frontyard.png'))) }}"/>
+                                            <br/>
+                                            <input id="uploadBannerImage" style="display: none" wire:model="bannerImage" type="file" accept="image/*"/>
+                                            <button onclick="$('#uploadBannerImage').click()" class="btn btn-primary text-white">
+                                                <span class="fa fa-file"> </span> Upload Image
+                                            </button>
+                                            <p>Max. file size: 10 MB.</p>
+                                        @else
+                                            <div class="col-12 mb-2">
+                                                <label class="col-form-label" for="bannerImage">
+                                                    External Media
+                                                </label>
+                                                <x-jet-input id="bannerImage" wire:model.debounce.500ms="bannerImage"  type="text" class="form-control" placeholder="{{ __('External Media') }}"/>
+                                            </div>
+                                        @endif
                                         @if($bannerImage !== '')
-                                            <button wire:click="saveBanner('image')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
+                                            <button wire:click="saveBanner('media')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
                                         @endif
                                     </div>
                                 </div>

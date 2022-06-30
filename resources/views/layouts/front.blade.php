@@ -32,6 +32,7 @@
 
         <!-- custom font -->
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url('css/jquery.mb.YTPlayer.min.css') }}" type="text/css">
 
         @livewireStyles
         @yield('extra-css')
@@ -102,8 +103,15 @@
         <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js?rev=5.0') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
+        <script src="{{ url('js/html5shiv.min.js') }}"></script>
         <![endif]-->
+        <script src="{{ url('js/jquery.mb.YTPlayer.min.js') }}"></script>
+        <script type="text/javascript">
+            (function ($) {
+                "use strict";
+                jQuery(".player").mb_YTPlayer();
+            })(jQuery);
+        </script>
         @livewireScripts
 
 
