@@ -63,7 +63,7 @@
                         <div class="mk-video-mask"></div>
 
                         <!-- Video Background - Here you need to replace the videoURL with your youtube video URL -->
-                        <a id="bgndVideo" class="player" data-property="{videoURL:'{{ env('BANNER_IMAGE_URL', 'Pn1zipY-sqk') }}',containment:'#section-video-bg',autoPlay:true, mute:false, startAt:5, opacity:1}">youtube</a>
+                        <a id="bgndVideo" class="player" data-property="{videoURL:'{{ env('BANNER_IMAGE_URL', 'Pn1zipY-sqk') }}',containment:'#section-video-bg',autoPlay:true, mute:true, startAt:5, opacity:1}">youtube</a>
 
                         <a href="#section-text" class="scroll-to">
                         <span class="mouse">
