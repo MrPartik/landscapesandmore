@@ -10626,11 +10626,17 @@ a img.logo {
     #mainmenu > li, #mainmenu > li > ul > li > a {
         font-size: 9px !important;
     }
+    header a.btn-on-header.btn-line {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 990px) and (max-width: 1088px) {
     #mainmenu > li,  #mainmenu > li > ul > li > a {
         font-size: 6px !important;
+    }
+    header a.btn-on-header.btn-line {
+        display: none;
     }
 }
 

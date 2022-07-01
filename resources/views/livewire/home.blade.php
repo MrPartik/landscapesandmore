@@ -68,9 +68,14 @@
                         scrollWheelZoom: false,
                     }).setView([33.99, -84.344534], 10);
                     let oDrawnItems = L.geoJson();
-                    L.gridLayer.googleMutant({
-                        maxZoom: 24,
+                    // L.gridLayer.googleMutant({
+                    //     maxZoom: 24,
+                    //     type: 'roadmap',
+                    // }).addTo(oMap);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
                         type: 'roadmap',
+                        attribution: '© OpenStreetMap'
                     }).addTo(oMap);
                     L.geoJson(oGeorgia, {
                         style: {
