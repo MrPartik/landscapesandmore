@@ -158,6 +158,13 @@ class Projects extends Component
         $this->pictureOfProject = null;
         $this->thumbnailVideo = null;
         $this->sUrlMedia = null;
+        $this->projectModalTitle = '';
+        $this->projectModalDate = '';
+        $this->projectModalLocation = '';
+        $this->projectModalValue = '';
+        $this->projectModalCategory = '';
+        $this->projectModalDescription = '';
+        $this->uploadProjectModalImages = [];
         $this->sNameOfProject = '';
         $this->iProjectTypeIdForProject = 0;
         $this->aProjectTypes = $this->initProjectTypes();
