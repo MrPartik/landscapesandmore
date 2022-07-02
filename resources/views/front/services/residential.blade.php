@@ -196,7 +196,7 @@
                 </div>
             </div>
         </section>
-        <section id="section-portfolio" class="no-top no-bottom" aria-label="section-portfolio">
+            <section id="section-portfolio" class="no-top no-bottom" aria-label="section-portfolio">
                 <div class="container">
                     <div class="spacer-single"></div>
                     <!-- portfolio filter begin -->
@@ -342,13 +342,37 @@
                                     </span>
                                 </span>
                                 </a>
+                                <img src="{{ url('/img/services/maintenance (3).jpg') }}" alt="Maintenance" />
+                            </div>
+                        </div>
+                        <div class="item project-type-maintenance" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/mowing.jpg') }}  alt="Maintenance" ">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">General Lawn/Property Clean-up  </span>
+                                    </span>
+                                </span>
+                                </a>
+                                <img src="{{ url('/img/services/general cleanup.jpg') }}" alt="Maintenance"  alt="Turf" />
+                            </div>
+                        </div>
+                        <div class="item project-type-turf" style="width: 250px;">
+                            <div class="picframe">
+                                <a class="image-popup-gallery" href="{{ url('/img/services/mowing.jpg') }}">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">Overseeding and Aeration</span>
+                                    </span>
+                                </span>
+                                </a>
                                 <img src="{{ url('/img/services/mowing.jpg') }}" alt="General Lawn/Property Clean-up" />
                             </div>
                         </div>
                         <!-- close gallery item -->
                     </div>
                 </div>
-        </section>
+            </section>
         <section id="call-to-action" class="text-dark call-to-action padding40 text-light bg-color"aria-label="cta">
             <div class="container">
                 <div class="row align-items-center">

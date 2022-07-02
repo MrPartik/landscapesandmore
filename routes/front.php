@@ -26,6 +26,19 @@ Route::get('portfolio/3d-video', function () {
     return view('front.rendered-three-d');
 });
 
+Route::get('portfolio/featured-project', function () {
+    return view('front.featured-project');
+});
+
+Route::get('portfolio/gallery', function () {
+    return view('front.projects');
+});
+Route::get('portfolio/gallery/details/{id}', function ($id) {
+    return view('front.project-details', [
+        'id' => $id
+    ]);
+});
+
 Route::prefix('blog')->group(function() {
     Route::get('/', function () {
         return view('front.blog');

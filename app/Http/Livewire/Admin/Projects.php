@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Http\Livewire\Admin\Datatables\ProjectType;
-use App\Models\Projects as ProjectsModel;
-use App\Models\ProjectTypes as ProjectTypesModel;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Projects as ProjectsModel;
+use App\Models\ProjectTypes as ProjectTypesModel;
+use App\Models\ProjectDetails as ProjectDetailsModel;
 
 class Projects extends Component
 {
@@ -44,6 +44,12 @@ class Projects extends Component
      * @var bool
      */
     public $sDescriptionProjectType = '';
+    /**
+     * Project Type Purpose Type
+     * gallery|3D video
+     * @var bool
+     */
+    public $purposeType = 'gallery';
     /**
      * Picture of Project
      * @var string
@@ -85,6 +91,15 @@ class Projects extends Component
     public $sUrlMedia = '';
     public $listeners = ['initProjectTypeDashboardCounter'];
 
+    public $isGallery = true;
+    public $uploadProjectModalImages = [];
+    public $projectModalDescription = '';
+    public $projectModalTitle = '';
+    public $projectModalDate = '';
+    public $projectModalLocation = '';
+    public $projectModalValue = '';
+    public $projectModalCategory = '';
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -94,6 +109,14 @@ class Projects extends Component
         $this->aProjectTypes = $this->initProjectTypes();
         $this->initProjectTypeDashboardCounter();
         return view('livewire.admin.projects');
+    }
+
+    /**
+     * @param int $iKey
+     */
+    public function unsetUploadImage(int $iKey)
+    {
+        unset($this->uploadProjectModalImages[$iKey]);
     }
 
     /**
@@ -140,6 +163,14 @@ class Projects extends Component
         $this->aProjectTypes = $this->initProjectTypes();
     }
 
+    public function setIsGallery()
+    {
+        $this->isGallery = (ProjectTypesModel::find($this->iProjectTypeIdForProject)->type === 'gallery');
+        if ($this->isGallery === true) {
+            $this->mediaType = 'image';
+        }
+    }
+
     public function initProjectTypeDashboardCounter()
     {
         $aModel = ProjectTypesModel::all();
@@ -158,6 +189,7 @@ class Projects extends Component
         $this->validate($this->aProjectTypeRule);
         $oProjectTypeModel = new ProjectTypesModel();
         $oProjectTypeModel->name = $this->sNameProjectType;
+        $oProjectTypeModel->type = $this->purposeType;
         $oProjectTypeModel->description = $this->sDescriptionProjectType;
         $oProjectTypeModel->is_active = true;
         $oProjectTypeModel->save();
@@ -172,6 +204,7 @@ class Projects extends Component
     {
         $this->sNameProjectType = '';
         $this->sDescriptionProjectType = '';
+        $this->purposeType = 'gallery';
         $this->sUrlMedia = '';
     }
 
@@ -236,6 +269,26 @@ class Projects extends Component
         $oProject->type = $this->mediaType;
         $oProject->description = $this->sNameOfProject;
         $oProject->save();
+
+        if ($this->isGallery) {
+            $aFilePaths = [];
+            foreach ($this->uploadProjectModalImages as $iIndex => $oImage) {
+                $sFIlePath = $oImage->storeAs('public', 'project/details/' . time() . '-' . $iIndex . '.' . $oImage->getClientOriginalExtension());
+                $sFIlePath = '/' . str_replace('public', 'storage', $sFIlePath);
+                $aFilePaths[] = $sFIlePath;
+            }
+            ProjectDetailsModel::updateOrCreate(['project_id' => $oProject->project_id], [
+                'project_id'  => $oProject->project_id,
+                'title'       => $this->projectModalTitle,
+                'date'        => $this->projectModalDate,
+                'location'    => $this->projectModalLocation,
+                'value'       => $this->projectModalValue,
+                'category'    => $this->projectModalCategory,
+                'description' => $this->projectModalDescription,
+                'images'      => implode(',', $aFilePaths),
+            ]);
+        }
+
         $this->emit('initProjects');
         $this->emit('refreshDatatable');
         $this->clearAddProjectForm();

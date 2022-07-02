@@ -99,7 +99,7 @@
                                 <select id=project_type wire:model.lazy="iProjectTypeIdForProjectSelection"  type="text" class="form-control" placeholder="{{ __('Project Type') }}">
                                     <option selected value=""> All Projects </option>
                                     @foreach($aProjectTypes as $aProjectType)
-                                        <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
+                                        <option value="{{ $aProjectType['project_type_id'] }}">{{ ucfirst($aProjectType['type']) }} - {{ $aProjectType['name'] }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -166,6 +166,15 @@
                                         <x-jet-input id=name wire:model.lazy="sNameProjectType"  type="text" class="form-control" placeholder="{{ __('Name') }}"/>
                                     </div>
                                     <div class="mb-2">
+                                        <label class="col-form-label" for="purpose_type">
+                                            Purpose Type
+                                        </label>
+                                        <select id=purpose_type wire:model.lazy="purposeType"  type="text" class="form-control" placeholder="{{ __('Purpose Type') }}">
+                                            <option selected value="gallery"> Gallery </option>
+                                            <option value="3D video"> 3D Videos </option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
                                         <label class="col-form-label" for="description">
                                             Description
                                         </label>
@@ -205,10 +214,10 @@
                     <label class="col-form-label" for="project_type">
                         Project Type
                     </label>
-                    <select id=project_type wire:model.lazy="iProjectTypeIdForProject"  type="text" class="form-control" placeholder="{{ __('Project Type') }}">
+                    <select id=project_type wire:model.lazy="iProjectTypeIdForProject" wire:change="setIsGallery"  type="text" class="form-control" placeholder="{{ __('Project Type') }}">
                         <option selected value="0" disabled> Select Project Type </option>
                         @foreach($aProjectTypes as $aProjectType)
-                            <option value="{{ $aProjectType['project_type_id'] }}"> {{ $aProjectType['name'] }} </option>
+                            <option value="{{ $aProjectType['project_type_id'] }}"> {{ ucfirst($aProjectType['type']) }} - {{ $aProjectType['name'] }} </option>
                         @endforeach
                     </select>
                 </div>
@@ -216,10 +225,12 @@
                     <label class="col-form-label" for="project_type">
                         Media Type
                     </label>
-                    <select id=media_type wire:model.lazy="mediaType"  type="text" class="form-control" placeholder="{{ __('Media Type') }}">
+                    <select id=media_type wire:model="mediaType"  type="text" class="form-control" placeholder="{{ __('Media Type') }}">
                         <option selected value="image"> Upload Image </option>
                         <option value="image-external"> External Image </option>
-                        <option value="video-external"> External Video </option>
+                        @if($isGallery === false)
+                            <option value="video-external"> External Video </option>
+                        @endif
                     </select>
                 </div>
                 @if($mediaType === 'image')
@@ -250,10 +261,10 @@
                     </div>
                 @else
                     <div class="mb-3">
-                        <label class="col-form-label" for="name">
+                        <label class="col-form-label" for="external-media">
                             External Media
                         </label>
-                        <x-jet-input id=name wire:model.lazy="sUrlMedia"  type="text" class="form-control" placeholder="{{ __('External Media') }}"/>
+                        <x-jet-input id=external-media wire:model.lazy="sUrlMedia"  type="text" class="form-control" placeholder="{{ __('External Media') }}"/>
                     </div>
                 @endif
                 @if($mediaType === 'video-external')
@@ -283,7 +294,72 @@
                         </div>
                     </div>
                 @endif
-
+                @if($isGallery === true)
+                    <hr/>
+                    <div class="de_form">
+                        <h5 class="de_form" for="input_7_9">Modal Data</h5>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="project-modal-title">
+                                Title
+                            </label>
+                            <x-jet-input id=project-modal-title wire:model.lazy="projectModalTitle"  type="text" class="form-control" placeholder="{{ __('Title') }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="project-modal-date">
+                                Date
+                            </label>
+                            <x-jet-input id=project-modal-date wire:model.lazy="projectModalDate"  type="text" class="form-control" placeholder="{{ __('Date') }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="project-modal-location">
+                                Location
+                            </label>
+                            <x-jet-input id=project-modal-location wire:model.lazy="projectModalLocation"  type="text" class="form-control" placeholder="{{ __('Location') }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="project-modal-value">
+                                Value
+                            </label>
+                            <x-jet-input id=project-modal-value wire:model.lazy="projectModalValue"  type="text" class="form-control" placeholder="{{ __('Value') }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="project-modal-category">
+                                Category
+                            </label>
+                            <x-jet-input id=project-modal-category wire:model.lazy="projectModalCategory"  type="text" class="form-control" placeholder="{{ __('Category') }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="project-modal-description">
+                                Description (supported html code)
+                            </label>
+                            <textarea id=project-modal-description wire:model.lazy="projectModalDescription"  type="text" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3 de_form">
+                            <label class="de_form" for="input_7_9">Provide featured images in project modal</label>
+                            <div>
+                                <input id="uploadProjectModalImages" style="display: none" wire:model="uploadProjectModalImages" type="file" accept="image/*">
+                                <button onclick="$('#uploadProjectModalImages').click()" class="btn btn-primary text-white">
+                                    <span class="fa fa-file"> </span> Upload Images
+                                </button>
+                                <span>Max. file size: 10 MB.</span>
+                            </div>
+                        </div>
+                        @if(count($uploadProjectModalImages) > 0)
+                            <div class=" mt20 row" style="display:flow-root; border:1px black dashed; padding: 10px; ">
+                                @foreach($uploadProjectModalImages as $iKey => $image)
+                                    <div class="image-preview-container row">
+                                        <div style="background: url('{{ $image->temporaryUrl() }}') no-repeat center"  class="image col-3 m-1" > </div>
+                                        <div class="overlay col-3">
+                                            <a href="javascript:" wire:click="unsetUploadImage({{$iKey}})" class="icon" title="Remove">
+                                                <i class="fa fa-close"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                @endif
             </div>
         </x-slot>
 

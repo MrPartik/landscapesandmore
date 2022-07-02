@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class ProjectTypes extends Model
+class ProjectDetails extends Model
 {
 
     /**
@@ -13,10 +14,15 @@ class ProjectTypes extends Model
      * @var string[]
      */
     protected $fillable = [
-        'project_type_id',
-        'name',
-        'type',
+        'project_details_id',
+        'project_id',
+        'images',
         'description',
+        'title',
+        'date',
+        'location',
+        'value',
+        'category',
         'created_at',
         'updated_at',
     ];
@@ -25,7 +31,7 @@ class ProjectTypes extends Model
      * Primary Key
      * @var string
      */
-    protected $primaryKey = 'project_type_id';
+    protected $primaryKey = 'project_details_id';
 
     /**
      * The attributes that should be cast.
@@ -43,8 +49,12 @@ class ProjectTypes extends Model
      */
     public $timestamps = true;
 
-    public function projects()
+    /**
+     * Project
+     * @return HasOne
+     */
+    public function project()
     {
-        return $this->hasMany(Projects::class, 'project_type_id', 'project_type_id');
+        return $this->hasOne(Projects::class, 'project_id', 'project_id');
     }
 }

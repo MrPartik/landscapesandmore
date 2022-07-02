@@ -59,6 +59,12 @@ class ProjectType extends DataTableComponent
             Column::make('Description', 'description')
                 ->sortable()
                 ->searchable(),
+            Column::make('Purpose Type', 'type')
+                ->format(function ($mValue, $oRow) {
+                    return ucfirst($mValue);
+                })
+                ->sortable()
+                ->searchable(),
             Column::make('Total of Projects Attached', 'project_type_id')
                 ->format(function ($mValue, $oRow) {
                     return count($oRow->projects);

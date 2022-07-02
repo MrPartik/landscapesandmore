@@ -58,7 +58,9 @@
                                 </li>
                                 <li><a class="{{ $active === 'portfolio' ? 'active' : '' }}" href="javascript:;">Portfolio</a>
                                     <ul>
+                                        <li><a href="{{ url('/portfolio/gallery') }}">Gallery</a> </li>
                                         <li><a href="{{ url('/portfolio/3d-video') }}">3D Videos</a> </li>
+                                        <li><a href="{{ url('/portfolio/featured-project') }}">Featured Projects</a> </li>
                                     </ul>
                                 </li>
                                 <li><a class="{{ $active === 'blog' ? 'active' : '' }}" href="{{ url('/blog') }}">Blog</a></li>
