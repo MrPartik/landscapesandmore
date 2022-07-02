@@ -75,7 +75,7 @@
         }
     </style>
     <div class="col-12">
-        <div class="loading-page" wire:loading.block wire:target="pictureOfProject, thumbnailVideo, setCurrentTab, saveProject">Loading&#8230;</div>
+        <div class="loading-page" wire:loading.block wire:target="uploadProjectModalImages, unsetUploadImage, pictureOfProject, thumbnailVideo, setCurrentTab, saveProject">Loading&#8230;</div>
         <div class="card shadow bg-light">
             <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
                 <ul class="nav nav-tabs" id="ProjectTab" role="tablist">
@@ -298,41 +298,79 @@
                     <hr/>
                     <div class="de_form">
                         <h5 class="de_form" for="input_7_9">Modal Data</h5>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="project-modal-title">
-                                Title
-                            </label>
-                            <x-jet-input id=project-modal-title wire:model.lazy="projectModalTitle"  type="text" class="form-control" placeholder="{{ __('Title') }}"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="project-modal-date">
-                                Date
-                            </label>
-                            <x-jet-input id=project-modal-date wire:model.lazy="projectModalDate"  type="text" class="form-control" placeholder="{{ __('Date') }}"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="project-modal-location">
-                                Location
-                            </label>
-                            <x-jet-input id=project-modal-location wire:model.lazy="projectModalLocation"  type="text" class="form-control" placeholder="{{ __('Location') }}"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="project-modal-value">
-                                Value
-                            </label>
-                            <x-jet-input id=project-modal-value wire:model.lazy="projectModalValue"  type="text" class="form-control" placeholder="{{ __('Value') }}"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="project-modal-category">
-                                Category
-                            </label>
-                            <x-jet-input id=project-modal-category wire:model.lazy="projectModalCategory"  type="text" class="form-control" placeholder="{{ __('Category') }}"/>
+                        <div class="row">
+                            <div class="mb-3 col-12">
+                                <label class="col-form-label" for="project-modal-title">
+                                    Title
+                                </label>
+                                <x-jet-input id=project-modal-title wire:model.lazy="projectModalTitle"  type="text" class="form-control" placeholder="{{ __('Title') }}"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label class="col-form-label" for="project-modal-date">
+                                    Date
+                                </label>
+                                <x-jet-input id=project-modal-date wire:model.lazy="projectModalDate"  type="text" class="form-control" placeholder="{{ __('Date') }}"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label class="col-form-label" for="project-modal-location">
+                                    Location
+                                </label>
+                                <x-jet-input id=project-modal-location wire:model.lazy="projectModalLocation"  type="text" class="form-control" placeholder="{{ __('Location') }}"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label class="col-form-label" for="project-modal-value">
+                                    Value
+                                </label>
+                                <x-jet-input id=project-modal-value wire:model.lazy="projectModalValue"  type="text" class="form-control" placeholder="{{ __('Value') }}"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label class="col-form-label" for="project-modal-category">
+                                    Category
+                                </label>
+                                <x-jet-input id=project-modal-category wire:model.lazy="projectModalCategory"  type="text" class="form-control" placeholder="{{ __('Category') }}"/>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label" for="project-modal-description">
                                 Description (supported html code)
                             </label>
-                            <textarea id=project-modal-description wire:model.lazy="projectModalDescription"  type="text" class="form-control"></textarea>
+                            <div wire:ignore>
+                                <textarea id="project-modal-description"><p></p></textarea>
+                                <script type="application/javascript">
+                                    window.oKothingEditor = null;
+                                    function initializeWysiwyg() {
+                                        if (window.oKothingEditor !== null) {
+                                            window.oKothingEditor.destroy();
+                                            window.oKothingEditor = null;
+                                        }
+                                        window.oKothingEditor = window.KothingEditor.create('project-modal-description', {
+                                            display: "block",
+                                            width: "100%",
+                                            height: "auto",
+                                            popupDisplay: "full",
+                                            toolbarItem: [
+                                                ["undo", "redo"],
+                                                ["font", "fontSize", "formatBlock"],
+                                                [
+                                                    "bold",
+                                                    "underline",
+                                                    "italic",
+                                                    "strike",
+                                                    "subscript",
+                                                    "superscript",
+                                                    "fontColor",
+                                                    "hiliteColor",
+                                                ],
+                                                ["outdent", "indent", "align", "list", "horizontalRule"],
+                                                ["lineHeight", "paragraphStyle", "textStyle"],
+                                                ["preview", "fullScreen"],
+                                            ],
+                                            charCounter: true,
+                                        });
+                                    }
+                                    initializeWysiwyg();
+                                </script>
+                            </div>
                         </div>
                         <div class="mb-3 de_form">
                             <label class="de_form" for="input_7_9">Provide featured images in project modal</label>
@@ -368,9 +406,14 @@
                 {{ __('Nevermind') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="saveProject"  wire:loading.attr="disabled">
+            <x-jet-button id="saveProject" class="ml-2" wire:click="saveProject"  wire:loading.attr="disabled">
                 {{ __('Save') }}
             </x-jet-button>
         </x-slot>
     </x-jet-dialog-modal>
+    <script>
+        $('#saveProject').click(function(){
+            @this.set('projectModalDescription', window.oKothingEditor.getContents());
+        });
+    </script>
 </div>
