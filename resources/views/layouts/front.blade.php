@@ -33,6 +33,7 @@
         <!-- custom font -->
         <link rel="stylesheet" href="{{ url('css/font-style-2.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ url('css/jquery.mb.YTPlayer.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url('css/twentytwenty.css') }}" type="text/css">
 
         @livewireStyles
         @yield('extra-css')
@@ -106,6 +107,8 @@
         <script src="{{ url('js/html5shiv.min.js') }}"></script>
         <![endif]-->
         <script src="{{ url('js/jquery.mb.YTPlayer.min.js') }}"></script>
+        <script src="{{ url('js/jquery.event.move.js') }}"></script>
+        <script src="{{ url('js/jquery.twentytwenty.js') }}"></script>
         <script type="text/javascript">
             (function ($) {
                 "use strict";

@@ -92,8 +92,31 @@
                     </a>
                 </section>
             @endif
+            <section id="section-text" class="no-top no-bottom mt70 sm-mt0">
+                <div class="container-fluid">
+                    <div class="row align-items-center g-0 wow fadeInUp mb5" data-bgcolor="rgba(255,255,255,.9)">
+                        <div class="col-md-6 text-middle">
+                            <div id="beforeandafter" class="twentytwenty-container">
+                                <img src="{{ url('img/featured/before1.png') }}" alt="" class="img-responsive" />
+                                <img src="{{ url('img/featured/after1.jpg') }}" alt="" class="img-responsive" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 text-middle">
+                            <div class="padding50">
+                                <h1><span class="id-color">3D DESIGN</span></h1>
+                                <p>
+                                    Landscaping is a very important part of your home. The more complex an area of land, the more landscaping it requires. If  you’re planning your outdoor living but did not know how to start, we’ve got everything that you need to create the perfect outdoor space for you and your family.
+                                    We provide high quality 3D models of your next landscaping project.
+                                </p>
+                                <a href="{{ url('/portfolio/featured-project') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <!-- parallax section close -->
-            <section id="section-text" class="no-bottom">
+            <section id="" class="no-bottom">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-12 wow fadeInRight" data-wow-delay=".2s">
@@ -301,6 +324,11 @@
 {{--    <script async src="{{ url('js/google-api/maps.js') }}" ></script>--}}
     <script type="text/javascript" src="{{ url('leaflet/googlemapMutant.js') }}"></script>
     <script src="{{ url('leaflet/leaflet-draw/Tooltip.js') }}"></script>
+    <script>
+        $(window).on("load", function(){
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+        });
+    </script>
     <script>
         function visitPayment() {
             Swal.fire({

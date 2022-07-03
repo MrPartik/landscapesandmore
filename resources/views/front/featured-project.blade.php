@@ -10,11 +10,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>Featured Project</h1>
+                            <h1>Fullyard Design and Installation</h1>
                             <ul class="crumb">
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li class="sep">/</li>
-                                <li>Featured Project</li>
+                                <li>Fullyard Design and Installation</li>
                             </ul>
                         </div>
                     </div>
