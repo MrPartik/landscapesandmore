@@ -14,16 +14,19 @@
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <div class="image-featured-accord" style="background-size: cover;text-align-last: center;">
-                                    <a href="{{ url('img/featured/consultation.png') }}" target="_blank">
-                                        <img style="max-height: 500px;" src="{{ url('img/featured/consultation.png') }}" alt="" class="img-responsive col-md-4" />
-                                    </a>
+                                <div class="row">
+                                    <div class="col-md-6 image-featured-accord" style="background-size: cover;text-align-last: center;">
+                                        <a href="{{ url('img/featured/consultation.png') }}" target="_blank">
+                                            <img style="max-height: 500px;" src="{{ url('img/featured/consultation.png') }}" alt="" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6" style="align-self: center;">
+                                        <p style="font-size: 20px">
+                                            The consultation process will be done using Zoom. The consultation is a chance for the client to see what our team and designs can bring to their project. This will give them an opportunity to ask questions, provide any feedback and set expectations for the end result.
+                                            During the consultation, we will listen to your needs and preferences, analyze the landscape in front of us, talk about available options and choose the best one for you.
+                                        </p>
+                                    </div>
                                 </div>
-                                <br/>
-                                <p>
-                                    The consultation process will be done using Zoom. The consultation is a chance for the client to see what our team and designs can bring to their project. This will give them an opportunity to ask questions, provide any feedback and set expectations for the end result.
-                                    During the consultation, we will listen to your needs and preferences, analyze the landscape in front of us, talk about available options and choose the best one for you.
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -35,16 +38,19 @@
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <div class="image-featured-accord" style="background-size: cover;text-align-last: center;">
-                                    <a href="{{ url('img/featured/estimate.png') }}" target="_blank">
-                                        <img style="max-height: 500px;" src="{{ url('img/featured/estimate.png') }}" alt="" class="col-md-4 img-responsive" />
-                                    </a>
+                                <div class="row">
+                                    <div class="col-md-6 image-featured-accord" style="background-size: cover;text-align-last: center;">
+                                        <a href="{{ url('img/featured/estimate.png') }}" target="_blank">
+                                            <img style="max-height: 500px;" src="{{ url('img/featured/estimate.png') }}" alt="" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6" style="align-self: center;">
+                                        <p style="font-size: 20px">
+                                            We are happy to quote a landscape design for your property. Your estimator will look at your specific needs, and customize a different layout that fits best into your home's layout. This includes a budget for all materials, plans for the project and more. Your estimate will be well-thought-out to ensure you get exactly what you need without overspending!
+                                            And that's it! You've got an estimate that's easy to read, is tailored to your needs, and includes all the information our estimator will need to create a beautiful landscape design.
+                                        </p>
+                                    </div>
                                 </div>
-                                <br/>
-                                <p>
-                                    We are happy to quote a landscape design for your property. Your estimator will look at your specific needs, and customize a different layout that fits best into your home's layout. This includes a budget for all materials, plans for the project and more. Your estimate will be well-thought-out to ensure you get exactly what you need without overspending!
-                                    And that's it! You've got an estimate that's easy to read, is tailored to your needs, and includes all the information our estimator will need to create a beautiful landscape design.
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +74,7 @@
                                     </a>
                                 </div>
                                 <br/>
-                                <p>
+                                <p style="font-size: 20px">
                                     Innovation is the key to our success. We always want to make sure that what we are offering you as our client, is at par with your vision. We have a team of experts who will design your landscaping project based on what you want and need.
                                     We take your design to the next level. Aside from the landscape blueprint created by our licensed landscape architect, we also provide 3D visualization of your property. This includes conceptual and video presentation in order to convey information about location, dimensions and amenities.
 
@@ -96,7 +102,7 @@
                                     </a>
                                 </div>
                                 <br/>
-                                <p>
+                                <p style="font-size: 20px">
                                     Are you ready to get started on your landscaping project? It's time to place an order with our team and get to work!
                                     The installation of your project is a perfect process, thanks to our experience and hardworking team.  We handle everything from scheduling work days, ordering materials, and constructing your new outdoor space.  Once the installation is complete, all you have to do is sit back and relax as we take care of any additional details.
                                 </p>
