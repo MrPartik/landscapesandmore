@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => 'Home' . ' Alpharetta Landscaping | ' . (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) ,
+    'title' => 'Alpharetta Landscaping | ' . (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) ,
     'description' => 'Michaelangelo’s provides one of the highest-quality landscapes and design services in Atlanta. We offer landscaping and design, maintenance, and turf care services.'
     ])
 @section('body')
@@ -93,7 +93,7 @@
                 </section>
             @endif
             <section id="section-text" class="no-top no-bottom mt70 sm-mt0">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center g-0 wow fadeInUp mb5" data-bgcolor="rgba(255,255,255,.9)">
                         <div class="col-md-6 text-middle">
                             <div id="beforeandafter" class="twentytwenty-container">

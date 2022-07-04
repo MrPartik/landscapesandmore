@@ -10821,3 +10821,7 @@ body {
     opacity: 1;
     width: 100%;
 }
+
+#wrapper {
+    background-color: white;
+}
