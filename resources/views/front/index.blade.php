@@ -1,5 +1,5 @@
 @extends('layouts.front', [
-    'title' => 'Home' . ' | ' . (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) ,
+    'title' => 'Home' . ' Alpharetta Landscaping | ' . (env('APP_TITLE') ?? 'Michaelangelo\'s Sustainable Landscape and Design Group' ) ,
     'description' => 'Michaelangelo’s provides one of the highest-quality landscapes and design services in Atlanta. We offer landscaping and design, maintenance, and turf care services.'
     ])
 @section('body')
@@ -170,7 +170,7 @@
                                 </div>
                                 <div class="shadow-soft" data-bgimage="url({{ url($oService->image) }})">
                                     <div class="padding40 overlay60">
-                                        <h3>{{ $oService->title }}</h3>
+                                        <h1>{{ $oService->title }}</h1>
                                         <p>{{ $oService->description }}</p>
 {{--                                        <a href="{{ $oService->url }}" class="btn-line-white btn-fullwidth">Read More</a>--}}
                                     </div>
