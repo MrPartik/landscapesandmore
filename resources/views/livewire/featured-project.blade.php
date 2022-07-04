@@ -17,7 +17,6 @@
                             Landscaping is a very important part of your home. The more complex an area of land, the more landscaping it requires. If  you’re planning your outdoor living but did not know how to start, we’ve got everything that you need to create the perfect outdoor space for you and your family.
                             We provide high quality 3D models of your next landscaping project.
                         </p>
-                        <a href="{{ url('/portfolio/featured-project') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View Projects</a>
                         <a href="{{ url('/portfolio/3d-video') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View 3D Videos</a>
                     </div>
                 </div>
