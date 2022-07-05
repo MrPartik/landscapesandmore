@@ -109,11 +109,13 @@
         <script src="{{ url('js/jquery.mb.YTPlayer.min.js') }}"></script>
         <script src="{{ url('js/jquery.event.move.js') }}"></script>
         <script src="{{ url('js/jquery.twentytwenty.js') }}"></script>
-        <script type="text/javascript">
-            (function ($) {
-                "use strict";
-                jQuery(".player").mb_YTPlayer();
-            })(jQuery);
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61672263-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61672263-1');
         </script>
         @livewireScripts
 
@@ -123,6 +125,10 @@
         <!--Start of Tawk.to Script-->
         <script type="text/javascript">
             $(document).ready(function() {
+                (function ($) {
+                    "use strict";
+                    jQuery(".player").mb_YTPlayer();
+                })(jQuery);
                 let sAnnouncementIcon = '#announcement-icon';
                 let sAnnouncementSideBar = '#sidebar-announcements';
                 $(sAnnouncementIcon).click(function() {
