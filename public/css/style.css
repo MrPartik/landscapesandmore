@@ -10825,3 +10825,7 @@ body {
 #wrapper {
     background-color: white;
 }
+
+.de-video-overlay {
+    background: #00000017 !important;
+}
