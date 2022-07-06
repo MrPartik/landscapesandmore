@@ -5,7 +5,7 @@
             <div class="row align-items-center g-0 wow fadeInUp mb5" data-bgcolor="rgba(255,255,255,.9)">
                 <div class="col-md-6 text-middle">
                     <div id="beforeandafter" class="twentytwenty-container">
-                        <img src="{{ url('/img/featured/before1.png') }}" alt="" class="img-responsive" />
+                        <img src="{{ url('/img/featured/before1.jpg') }}" alt="" class="img-responsive" />
                         <img src="{{ url('/img/featured/after1.jpg') }}" alt="" class="img-responsive" />
                     </div>
                 </div>

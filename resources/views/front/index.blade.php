@@ -97,14 +97,14 @@
                     <div class="row align-items-center g-0 wow fadeInUp mb5" data-bgcolor="rgba(255,255,255,.9)">
                         <div class="col-md-6 text-middle">
                             <div id="beforeandafter" class="twentytwenty-container">
-                                <img src="{{ url('img/featured/before1.png') }}" alt="" class="img-responsive" />
+                                <img src="{{ url('img/featured/before1.jpg') }}" alt="" class="img-responsive" />
                                 <img src="{{ url('img/featured/after1.jpg') }}" alt="" class="img-responsive" />
                             </div>
                         </div>
 
                         <div class="col-md-6 text-middle">
                             <div class="padding50">
-                                <h1><span class="id-color">3D DESIGN</span></h1>
+                                <h1><span class="id-color" style="font-size: .75em">Immerse Yourself in Your New Backyard</span></h1>
                                 <p>
                                     Landscaping is a very important part of your home. The more complex an area of land, the more landscaping it requires. If  you’re planning your outdoor living but did not know how to start, we’ve got everything that you need to create the perfect outdoor space for you and your family.
                                     We provide high quality 3D models of your next landscaping project.
