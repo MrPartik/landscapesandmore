@@ -388,12 +388,13 @@
                                         <textarea class="form-control mb-2" rows="10" wire:model="bannerDescription"></textarea>
                                         <button wire:click="saveBanner('description')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
                                     </div>
-                                    <div class="col-8"  >
+                                    <div class="col-4"  >
                                         <label class="font-weight-bold">Banner</label>
                                         <br/>
                                         <span>Change the homepage banner</span>
                                         <br/>
                                         <br/>
+                                        <strong>Desktop</strong>
                                         <br/>
                                         <label class="col-form-label" for="project_type">
                                             Media Type
@@ -423,6 +424,40 @@
                                         @endif
                                         @if($bannerImage !== '')
                                             <button wire:click="saveBanner('media')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
+                                        @endif
+                                    </div>
+                                    <div class="col-4"  >
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <strong>Mobile</strong>
+                                        <br/>
+                                        <label class="col-form-label" for="project_type">
+                                            Media Type
+                                        </label>
+                                        <select id=media_type wire:model.lazy="bannerMediaTypeMobile"  type="text" class="form-control" placeholder="{{ __('Media Type') }}">
+                                            <option selected value="image"> Upload Image </option>
+                                            <option value="image-external"> External Image </option>
+                                        </select>
+                                        <br/>
+                                        @if($bannerMediaTypeMobile === 'image')
+                                            <img  class="mb-2" style="border-radius: 10px;border: 1px dashed; max-width: 100%;" src="{{ url((is_object($bannerImageMobile) ? $bannerImageMobile->temporaryUrl() : env('BANNER_IMAGE_URL_MOBILE', '/img/landscapes/frontyard.png'))) }}"/>
+                                            <br/>
+                                            <input id="uploadBannerImageMobile" style="display: none" wire:model="bannerImageMobile" type="file" accept="image/*"/>
+                                            <button onclick="$('#uploadBannerImageMobile').click()" class="btn btn-primary text-white">
+                                                <span class="fa fa-file"> </span> Upload Image
+                                            </button>
+                                            <p>Max. file size: 10 MB.</p>
+                                        @else
+                                            <div class="col-12 mb-2">
+                                                <label class="col-form-label" for="bannerImage">
+                                                    External Media
+                                                </label>
+                                                <x-jet-input id="bannerImage" wire:model.debounce.500ms="bannerImageMobile"  type="text" class="form-control" placeholder="{{ __('External Media') }}"/>
+                                            </div>
+                                        @endif
+                                        @if($bannerImageMobile !== '')
+                                            <button wire:click="saveBanner('mediaMobile')" class="btn btn-success text-white"><i class="fa fa-save"></i> Save</button>
                                         @endif
                                     </div>
                                 </div>

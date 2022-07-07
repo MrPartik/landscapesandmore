@@ -24,6 +24,8 @@ class Themes extends Component
     public $bannerDescription = 'Install Landscape and Design, Maintenance Services, Turf Care Services';
     public $bannerImage = '';
     public $bannerMediaType = 'image';
+    public $bannerImageMobile = '';
+    public $bannerMediaTypeMobile = 'image';
     public $sCurrentTab = 'announcement';
     public $ourProcessVideoUrl = '';
     public $ourProcessDescription = '';
@@ -46,6 +48,8 @@ class Themes extends Component
         $this->bannerDescription = env('BANNER_DESCRIPTION', $this->bannerDescription);
         $this->bannerMediaType = env('BANNER_MEDIA_TYPE', $this->bannerMediaType);
         $this->bannerImage = env('BANNER_IMAGE_URL', $this->bannerImage);
+        $this->bannerMediaTypeMobile = env('BANNER_MEDIA_TYPE_MOBILE', $this->bannerMediaTypeMobile);
+        $this->bannerImageMobile = env('BANNER_IMAGE_URL_MOBILE', $this->bannerImageMobile);
         $this->initOurProcessData();
         $this->initVideoAfterCounterTheme();
         $this->initProjectTrackerData();
@@ -226,14 +230,19 @@ class Themes extends Component
 
     public function saveBanner(string $sType)
     {
-        if ($sType === 'media') {
-            $mFilePath = $this->bannerImage;
-            if($this->bannerMediaType === 'image' && is_object($mFilePath)) {
-                $mFilePath = $this->bannerImage->storeAs('public', 'banner/banner-' . $this->bannerMediaType . '.' . $this->bannerImage->getClientOriginalExtension());
-                $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
+        if ($sType === 'media' || $sType === 'mediaMobile') {
+            $mFilePath = ($sType === 'media') ? $this->bannerImage : $this->bannerImageMobile;
+            if(($this->bannerMediaType === 'image' || $this->bannerMediaTypeMobile === 'image') && is_object($mFilePath)) {
+                if ($sType === 'media') {
+                    $mFilePath = $this->bannerImage->storeAs('public', 'banner/banner-' . $this->bannerMediaType . '.' . $this->bannerImage->getClientOriginalExtension());
+                    $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
+                } else {
+                    $mFilePath = $this->bannerImageMobile->storeAs('public', 'banner/banner-mobile-' . $this->bannerMediaTypeMobile . '.' . $this->bannerImageMobile->getClientOriginalExtension());
+                    $mFilePath = '/' . str_replace('public', 'storage', $mFilePath);
+                }
             }
-            Utilities::setEnv('BANNER_IMAGE_URL', $mFilePath);
-            Utilities::setEnv('BANNER_MEDIA_TYPE', $this->bannerMediaType);
+            Utilities::setEnv((($sType === 'media') ? 'BANNER_IMAGE_URL' : 'BANNER_IMAGE_URL_MOBILE'), $mFilePath);
+            Utilities::setEnv((($sType === 'media') ? 'BANNER_MEDIA_TYPE' : 'BANNER_MEDIA_TYPE_MOBILE'), (($sType === 'media') ? $this->bannerMediaType : $this->bannerMediaTypeMobile));
             $this->redirect('/admin/themes');
             return true;
         }

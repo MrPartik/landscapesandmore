@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('check-device', function () {
+    return (new \Jenssegers\Agent\Agent())->deviceType();
+});
 Route::get('js/google-api/maps.js', function () {
     $aParameters = request()->all();
     return file_get_contents('https://maps.googleapis.com/maps/api/js?key=' . config('google.api_key') . '&libraries=places&v=weekly&' . http_build_query($aParameters));

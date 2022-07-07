@@ -19,10 +19,11 @@
         <!-- content begin -->
         <div id="content" class="no-bottom no-top">
             <!-- parallax section -->
-            @if(env('BANNER_MEDIA_TYPE', 'image') === 'video-external')
-                <section class="full-height no-padding" data-speed="5" data-type="background">
-                    <div class="de-video-container">
-                        <div class="de-video-content center-y text-center">
+            @if((new \Jenssegers\Agent\Agent())->deviceType() === 'desktop')
+                @if(env('BANNER_MEDIA_TYPE', 'image') === 'video-external')
+                    <section class="full-height no-padding" data-speed="5" data-type="background">
+                        <div class="de-video-container">
+                            <div class="de-video-content center-y text-center">
                                 <h1 class="text-white">Creating Masterpieces</h1>
                                 <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
                                     @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
@@ -31,24 +32,51 @@
                                 </div>
                                 <div class="spacer-single"></div>
                                 <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
-                        </div>
-                        <div class="de-video-overlay"></div>
-                        <!-- load your video here -->
-                        <video autoplay="" loop="" muted="" poster="{{ url('/img/landscapes/zooming-house.jpg') }}">
-                            <source src="{{ env('BANNER_IMAGE_URL') }}" type="" />
-                        </video>
+                            </div>
+                            <div class="de-video-overlay"></div>
+                            <!-- load your video here -->
+                            <video autoplay="" loop="" muted="" poster="{{ url('/img/landscapes/zooming-house.jpg') }}">
+                                <source src="{{ env('BANNER_IMAGE_URL') }}" type="" />
+                            </video>
 
-                    </div>
-                    <a href="#section-text" class="scroll-to">
+                        </div>
+                        <a href="#section-text" class="scroll-to">
                     <span class="mouse">
 						 <span class="scroll"></span>
                     </span>
-                    </a>
-                </section>
-            @elseif(env('BANNER_MEDIA_TYPE', 'image') === 'video-youtube')
-                <section id="section-video-bg" class="full-height no-padding" data-speed="5" data-type="background">
-                    <div class="de-video-container">
-                        <div class="de-video-content center-y text-center">
+                        </a>
+                    </section>
+                @elseif(env('BANNER_MEDIA_TYPE', 'image') === 'video-youtube')
+                    <section id="section-video-bg" class="full-height no-padding" data-speed="5" data-type="background">
+                        <div class="de-video-container">
+                            <div class="de-video-content center-y text-center">
+                                <h1 class="text-white">Creating Masterpieces</h1>
+                                <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
+                                    @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
+                                        <div class="item">{{ $sDescription }}</div>
+                                    @endforeach
+                                </div>
+                                <div class="spacer-single"></div>
+                                <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
+                            </div>
+                            <div class="de-video-overlay"></div>
+                            <!-- load your video here -->
+                            <div class="mk-video-mask"></div>
+
+                            <!-- Video Background - Here you need to replace the videoURL with your youtube video URL -->
+                            <a id="bgndVideo" class="player" data-property="{videoURL:'{{ env('BANNER_IMAGE_URL', 'Pn1zipY-sqk') }}',containment:'#section-video-bg',autoPlay:true, mute:true, startAt:5, opacity:1}">youtube</a>
+
+                            <a href="#section-text" class="scroll-to">
+                        <span class="mouse">
+                             <span class="scroll"></span>
+                        </span>
+                            </a>
+                        </div>
+                    </section>
+                @else
+                    <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url(env('BANNER_IMAGE_URL', 'img/landscapes/frontyard.png')) }}') center fixed" class="full-height" data-type="background">
+                        <div class="center-y text-center">
+                            <div class="spacer-double"></div>
                             <h1 class="text-white">Creating Masterpieces</h1>
                             <div id="text-carousel" class="owl-carousel owl-theme text-slider style-2 border-deco">
                                 @foreach(array_filter(explode(',', env('BANNER_DESCRIPTION', 'Install Landscape and Design, Maintenance Services, Turf Care Services'))) as $sDescription)
@@ -58,22 +86,15 @@
                             <div class="spacer-single"></div>
                             <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
                         </div>
-                        <div class="de-video-overlay"></div>
-                        <!-- load your video here -->
-                        <div class="mk-video-mask"></div>
-
-                        <!-- Video Background - Here you need to replace the videoURL with your youtube video URL -->
-                        <a id="bgndVideo" class="player" data-property="{videoURL:'{{ env('BANNER_IMAGE_URL', 'Pn1zipY-sqk') }}',containment:'#section-video-bg',autoPlay:true, mute:true, startAt:5, opacity:1}">youtube</a>
-
                         <a href="#section-text" class="scroll-to">
                         <span class="mouse">
                              <span class="scroll"></span>
                         </span>
                         </a>
-                    </div>
-                </section>
+                    </section>
+                @endif
             @else
-                <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url(env('BANNER_IMAGE_URL', 'img/landscapes/frontyard.png')) }}') center fixed" class="full-height" data-type="background">
+                <section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(134,109,70,0.4)), url('{{ url(env('BANNER_IMAGE_URL_MOBILE', 'img/landscapes/frontyard.png')) }}') center fixed" class="full-height" data-type="background">
                     <div class="center-y text-center">
                         <div class="spacer-double"></div>
                         <h1 class="text-white">Creating Masterpieces</h1>
@@ -86,13 +107,13 @@
                         <a href="#section-services" class="btn-line-white border-op-20">View Our Services</a>
                     </div>
                     <a href="#section-text" class="scroll-to">
-                        <span class="mouse">
-                             <span class="scroll"></span>
-                        </span>
+                    <span class="mouse">
+                         <span class="scroll"></span>
+                    </span>
                     </a>
                 </section>
             @endif
-            <section id="section-text" class="no-top no-bottom mt70 sm-mt0">
+            <section id="section-text" class=" no-bottom mt70 sm-mt0">
                 <div class="container">
                     <div class="row align-items-center g-0 wow fadeInUp mb5" data-bgcolor="rgba(255,255,255,.9)">
                         <div class="col-md-6 text-middle">
@@ -104,10 +125,9 @@
 
                         <div class="col-md-6 text-middle">
                             <div class="padding50">
-                                <h1><span class="id-color" style="font-size: .75em">Immerse Yourself in Your New Backyard</span></h1>
+                                <h1><span class="id-color" style="font-size: .75em">Immerse Yourself in Your Oasis</span></h1>
                                 <p>
-                                    Landscaping is a very important part of your home. The more complex an area of land, the more landscaping it requires. If  you’re planning your outdoor living but did not know how to start, we’ve got everything that you need to create the perfect outdoor space for you and your family.
-                                    We provide high quality 3D models of your next landscaping project.
+                                    Tired of a backyard that is unusable? Ready to enjoy the outdoors again? Have you been dreaming of finally making your home your Oasis? Start planning your project now with our simple 5 step process. We have the design expertise to listen to what you want and make your dreams a reality. Our design experts will customize a plan to fit your style and budget. Let us help you create the yard of your dreams!
                                 </p>
                                 <a href="{{ url('/portfolio/featured-project') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View Projects</a>
                                 <a href="{{ url('/portfolio/3d-video') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View 3D Videos</a>

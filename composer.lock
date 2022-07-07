@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "007a3e3eb597ca755a0d635b79f6a1b7",
+    "content-hash": "6cf41e138d560a4dcce05280c124d18e",
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
