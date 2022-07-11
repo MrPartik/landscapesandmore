@@ -13,7 +13,7 @@
 
 
     @include('beautymail::templates.widgets.newfeatureStart')
-    <img style="width: 50%; margin-bottom: 10px" src="{{ (env('APP_ENV') === 'local') ? '{{ env('APP_URL') }}/wp-content/uploads/2021/07/logo-4.png' : url(env('LOGO_DARK_URL')) }}"/>
+    <img style="width: 50%; margin-bottom: 10px" src="{{ (env('APP_ENV') === 'local') ? env('APP_URL') . '//img//logo//logo-wide-green.png' : url(env('LOGO_DARK_URL')) }}"/>
     <h4 class="secondary"><strong> Michaelangelo's Sustainable Landscape and Design Group</strong></h4>
     @include('beautymail::templates.widgets.newfeatureEnd')
     <i><p>If you did not expect to receive this email, you may discard this email</p></i>
