@@ -22,7 +22,7 @@ Route::get('/project-tracker', function () {
 //Route::get('/portfolio', function () {
 //    return view('front.projects');
 //});
-Route::get('portfolio/3d-video', function () {
+Route::get('portfolio/3d_video', function () {
     return view('front.rendered-three-d');
 });
 
@@ -30,7 +30,7 @@ Route::get('portfolio/featured-project', function () {
     return view('front.featured-project');
 });
 
-Route::get('portfolio/gallery', function () {
+Route::get('portfolio', function () {
     return view('front.projects');
 });
 Route::get('portfolio/gallery/details/{id}', function ($id) {

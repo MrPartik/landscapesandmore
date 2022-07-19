@@ -130,7 +130,7 @@
                                     Tired of a backyard that is unusable? Ready to enjoy the outdoors again? Have you been dreaming of finally making your home your Oasis? Start planning your project now with our simple 5 step process. We have the design expertise to listen to what you want and make your dreams a reality. Our design experts will customize a plan to fit your style and budget. Let us help you create the yard of your dreams!
                                 </p>
                                 <a href="{{ url('/portfolio/featured-project') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View Projects</a>
-                                <a href="{{ url('/portfolio/3d-video') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View 3D Videos</a>
+                                <a href="{{ url('/portfolio/3d_video') }}" class="btn-on-header btn-line" style="border-color: var(--primary-color-1);color: black;">View 3D Videos</a>
                             </div>
                         </div>
                     </div>
