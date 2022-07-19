@@ -201,7 +201,7 @@
                             icon: 'success',
                             html: 'Thank you for contacting us, one of our representatives will call you to discuss your project further. <br/>' +
                                 'Please allow us 24-48 business hours (Monday - Friday 8:00 am -5:00 pm) from the time you submit this form to review your information. <br/>' +
-                                'You may check the status of your application status here: <a target="_blank" class="btn-link" href="{{ url('/process') }}"> Application Status.</a>',
+                                'You may check the status of your application status here: <a target="_blank" class="btn-link" href="{{ url('/project-tracker') }}"> Application Status.</a>',
                             showCancelButton: false,
                             showConfirmButton: false,
                             showCloseButton: true,

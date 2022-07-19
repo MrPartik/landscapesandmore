@@ -109,13 +109,14 @@
         <script src="{{ url('js/jquery.mb.YTPlayer.min.js') }}"></script>
         <script src="{{ url('js/jquery.event.move.js') }}"></script>
         <script src="{{ url('js/jquery.twentytwenty.js') }}"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61672263-1"></script>
+        ​​<!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZ37F4E2JF"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-61672263-1');
+            gtag('config', 'G-KZ37F4E2JF');
         </script>
         @livewireScripts
 
