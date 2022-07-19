@@ -10286,6 +10286,9 @@ select.list-dt:focus {
 .progress-bar-line.l-5 li {
     width: 20%;
 }
+.progress-bar-line.l-6 li {
+    width: 16.6666667%;
+}
 
 .progress-bar-line .account:before {
     font-family: FontAwesome;
@@ -10324,6 +10327,11 @@ select.list-dt:focus {
 .progress-bar-line .payment:before {
     font-family: FontAwesome;
     content: "\f09d"
+}
+
+.progress-bar-line .installation:before {
+    font-family: FontAwesome;
+    content: "\f85e"
 }
 
 .progress-bar-line .confirm:before {

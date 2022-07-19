@@ -23,12 +23,13 @@
                         <div class="col-md-12 mx-0">
                             <form name="contactForm" id='contact_form' action="javascript:void(0);" autocomplete="off" class="progress-steps-form">
                                 <!-- progressbar -->
-                                <ul class="progress-bar-line l-5">
+                                <ul class="progress-bar-line l-6">
                                     <li class="active spinner"><strong>Project Status</strong></li>
                                     <li class="process-5002 process-5004 process-5018 consultation"><strong>Consultation</strong></li>
                                     <li class="process-5003 process-5019 process-5021 design"><strong>Design</strong></li>
                                     <li class="process-5005 signing"><strong>Contract Signing</strong></li>
                                     <li class="process-5010 sold"><strong>Sold Project</strong></li>
+                                    <li class="process-5007 process-5016 process-5012 process-5014 installation"><strong>Installation</strong></li>
                                 </ul> <!-- fieldsets -->
                                 <fieldset class="process-default">
                                     <div class="form-card">
@@ -40,12 +41,21 @@
                                                     <div style="display: {{ $errors->has('emailAddress') ? 'block' : 'none' }}" class='error'>Please enter your valid E-mail ID.</div>
                                                     <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
                                                 </div>
-                                                <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
+                                                <p wire:loading wire:target="validateEmailInStreak, processValidation"><i class="loader-inline"></i> Validating your email, Please wait...</p>
                                                 @if(($streakApiResult['status'] ?? 500) === 200 && intval($currentStage) === 5001 && $isProcessed === true)
                                                     <div>
                                                         <strong>Thank you for reaching out to us, one of our representatives will reach out to you within 24-48 hours, please keep your lines open.</strong>
                                                     </div>
-                                                @elseif($isProcessed === true && intval($currentStage) === 5017)
+                                                @elseif(($streakApiResult['status'] ?? 500) === 200 && $isProcessed === true)
+                                                    <div>
+                                                        <strong>We have updates in your current inquiry, you want to check it?</strong>
+                                                        <br/>
+                                                        <br/>
+                                                        <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
+                                                        <br/>
+                                                        <br/>
+                                                    </div>
+                                                @elseif($isProcessed === true && intval($currentStage) === 5017 && $streakApiResult['status'] ?? 500) === 500)
                                                     <div>
                                                         <strong>Hi, We noticed that you haven’t responded to us since {{ $sDateContacted }}. </strong>
                                                         <br/>
@@ -53,15 +63,6 @@
                                                         <br/>
                                                         <br/>
                                                         <a id="redirecttocontactus" href="/contact-us?email={{ $emailAddress }}" class="btn-line-black mt-3 ">Redirect to Contact Us Form</a>
-                                                        <br/>
-                                                        <br/>
-                                                    </div>
-                                                @elseif(($streakApiResult['status'] ?? 500) === 200 && $isProcessed === true)
-                                                    <div>
-                                                        <strong>We have updates in your current inquiry, you want to check it?</strong>
-                                                        <br/>
-                                                        <br/>
-                                                            <a href="javascript:;" wire:click="processValidation" class="btn-line-black mt-3 ">Check current status</a>
                                                         <br/>
                                                         <br/>
                                                     </div>
@@ -218,6 +219,28 @@
                                             </div>
                                         </div>
                                 </fieldset>
+                                <fieldset class="process-5007 process-5016 process-5012 process-5014">
+                                    <div class="form-card">
+                                        <h2 class="fs-title text-center">Installation</h2> <br><br>
+                                        <div class="row" style="color: var(--primary-color-1)">
+                                            <div class="col-lg-6 col-md-12" style="text-align-last: center;">
+                                                <i class="fa fa-person-digging" aria-hidden="true" style="color: var(--primary-color-1);font-size: 75px;margin-bottom: 20px;"></i>
+                                                <br>
+                                                <strong>We’re getting ready to start your project! We have sent the detailed information to your email address.</strong>
+                                            </div>
+                                            <div id="sidebar" class="col-md-6">
+                                                <div class="widget widget_text">
+                                                    <h3>Contact Info</h3>
+                                                    <address>
+                                                        <span>2204 Justin Trail Suite 1 Alpharetta, GA 30004</span>
+                                                        <span><strong>Phone:</strong>{{ env('WEBSITE_PHONE_NO', '(770) 209-2344') }}   </span>
+                                                        <span><strong>Email:</strong><a href="mailto:info@landscapesandmore.com">info@landscapesandmore.com</a></span>
+                                                        <span><strong>Web:</strong><a href="{{ env('APP_URL') }}/">{{ env('APP_URL') }}</a></span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </fieldset>
                             </form>
                         </div>
                     </div>
@@ -251,6 +274,7 @@
                                                     <div style="display: {{ $errors->has('emailAddress') ? 'block' : 'none' }}" class='error'>Please enter your valid E-mail ID.</div>
                                                     <input wire:model="emailAddress" type='email' name='Email' id='email' class="form-control" placeholder="Email" required/>
                                                 </div>
+                                                <p wire:loading wire:target="validateEmailInStreak, processValidation"><i class="loader-inline"></i> Validating your email, Please wait...</p>
                                                 @if(($streakApiResult['status'] ?? 500) === 200 && $isProcessed === true)
                                                     <div>
                                                         <strong>We have updates in your current inquiry, you want to check it?</strong>
@@ -270,7 +294,6 @@
                                                         <br/>
                                                     </div>
                                                 @endif
-                                                <p wire:loading wire:target="validateEmailInStreak"><i class="loader-inline"></i> Validating your email, Please wait...</p>
                                             </div>
                                             <div id="sidebar" class="col-md-6">
                                                 <div class="widget widget_text">
